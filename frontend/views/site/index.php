@@ -10,26 +10,28 @@ use yii\helpers\Html;
 AppAsset::register($this);
 $this->title = 'BossTrainer';
 ?>
+<?php
+    $parallaxContain2 = '<div class="container-fluid bg-index">
+    <div id="logo" class="row">
+        <div class="d-none d-lg-block d-xl-block col-md-6 col-lg-6 first-column">'
+        . Html::img('@web/images/iconWHITE.png', ['alt' => 'BossTrainer', 'class' => 'mt-5 mr-4 img-fluid float-right image-primary']) .
+    '</div>
+        <div class="d-none d-lg-block d-xl-block col-xs-12 col-md-6 col-lg-6 second-column">' .
+         Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 img-fluid float-left image-secondary']) .
+    '</div>
+        <div class="d-block d-lg-none d-xl-none col-xs-12 col-md-12 col-lg-6 second-column mx-auto">' .
+        Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 mx-auto d-block img-fluid image-secondary']) .
+        '</div>
+    </div>
+</div>'
+?>
 
 <?= ParallaxWidget::widget([
     'image' => '/images/bg-index.jpg',
     'element' => '.parallax1',
     'minHeight' => '400px',
+    'content' => $parallaxContain2,
 ]); ?>
-<div class="container-fluid bg-index">
-    <div id="logo" class="row">
-        <div class="d-none d-lg-block d-xl-block col-md-6 col-lg-6 first-column">
-            <?= Html::img('@web/images/iconWHITE.png', ['alt'=>'BossTrainer', 'class'=>'mt-5 mr-4 img-fluid float-right image-primary']);?>
-        </div>
-        <div class="d-none d-lg-block d-xl-block col-xs-12 col-md-6 col-lg-6 second-column">
-            <?= Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 img-fluid float-left image-secondary']);?>
-        </div>
-        <div class="d-block d-lg-none d-xl-none col-xs-12 col-md-12 col-lg-6 second-column mx-auto">
-            <?= Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 mx-auto d-block img-fluid image-secondary']);?>
-        </div>
-    </div>
-</div>
-
 <div class="site-index">
     <div class="container">
         <div class="jumbotron">
@@ -122,15 +124,22 @@ $this->title = 'BossTrainer';
             </div>
         </div>
     </div>
+    <?php
+     $parallaxContain2 = '<div class="col-12 mx-auto d-fex align-middle" >'
+         . Html::img('@web/images/logoBlanco.png',
+             ['alt'=>'BossTrainer', 'class'=>'img-fluid d-block mx-auto align-middle']) . '</div>';
+
+    ?>
     <?= ParallaxWidget::widget([
         'image' => '/images/slide4.jpg',
         'element' => '.parallax2',
         'minHeight' => '400px',
+        'content' => $parallaxContain2,
     ]); ?>
 </div>
 <script>
     $logo = document.getElementById("logo");
     $(document).ready(function(){
-        $('.parallax1).append($logo);
+        $('.parallax1).append();
     });
 </script>
