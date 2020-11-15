@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94ac8c90948c1d2391977b39d92130f2",
+    "content-hash": "2767925fb20a7ef6e909511976c28bf5",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -65,6 +65,21 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/materialize",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Dogfalo/materialize.git",
+                "reference": "80e8ed370487aaf1e2185b028f7deda40da94eb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/80e8ed370487aaf1e2185b028f7deda40da94eb9",
+                "reference": "80e8ed370487aaf1e2185b028f7deda40da94eb9"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/punycode",
@@ -369,6 +384,108 @@
             "time": "2020-06-29T00:56:53+00:00"
         },
         {
+            "name": "kingston-kms/yii2-mdbootstrap",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kingston-kms/yii2-mdbootstrap.git",
+                "reference": "774ceaec93063c4015d0717e8b23cb5d24d7d1dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kingston-kms/yii2-mdbootstrap/zipball/774ceaec93063c4015d0717e8b23cb5d24d7d1dd",
+                "reference": "774ceaec93063c4015d0717e8b23cb5d24d7d1dd",
+                "shasum": ""
+            },
+            "require": {
+                "npm-asset/mdbootstrap": "~4",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0",
+                "yiisoft/yii2-bootstrap4": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kingston\\mdbootstrap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Budnikov",
+                    "email": "kingston1853@gmail.com"
+                }
+            ],
+            "description": "Extension to asset MDBootstrap Free with Bootstrap 4 in Yii2 Projects",
+            "keywords": [
+                "MDBootstrap",
+                "bootstrap",
+                "bootstrap4",
+                "material design",
+                "yii",
+                "yii2",
+                "yii2-extension"
+            ],
+            "support": {
+                "issues": "https://github.com/Kingston-kms/yii2-mdbootstrap/issues",
+                "source": "https://github.com/Kingston-kms/yii2-mdbootstrap/tree/master"
+            },
+            "time": "2020-05-07T11:33:45+00:00"
+        },
+        {
+            "name": "macgyer/yii2-materializecss",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MacGyer/yii2-materializecss.git",
+                "reference": "3fb85450e72ad0458c60e7f46a9a8e42989e90af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MacGyer/yii2-materializecss/zipball/3fb85450e72ad0458c60e7f46a9a8e42989e90af",
+                "reference": "3fb85450e72ad0458c60e7f46a9a8e42989e90af",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/materialize": "1.0.0",
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "macgyer\\yii2materializecss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Erdmann",
+                    "homepage": "https://www.matero.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Materialize CSS implementation for Yii2",
+            "homepage": "http://macgyer.github.io/yii2-materializecss",
+            "keywords": [
+                "material design",
+                "materialize",
+                "widgets",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/MacGyer/yii2-materializecss/issues",
+                "source": "https://github.com/MacGyer/yii2-materializecss/tree/master"
+            },
+            "time": "2018-11-16T17:13:57+00:00"
+        },
+        {
             "name": "npm-asset/bootstrap",
             "version": "4.5.3",
             "dist": {
@@ -386,6 +503,18 @@
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/jquery/-/jquery-2.2.4.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/mdbootstrap",
+            "version": "4.19.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/mdbootstrap/-/mdbootstrap-4.19.1.tgz"
             },
             "type": "npm-asset",
             "license": [

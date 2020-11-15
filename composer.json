@@ -18,8 +18,11 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap4" : "^2.0.8",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "kingston-kms/yii2-mdbootstrap": "^1.0",
         "bower-asset/bootstrap": "^3.3",
-        "npm-asset/jquery": "^2.2"
+        "npm-asset/jquery": "^2.2",
+        "macgyer/yii2-materializecss": "~3.0.0"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
