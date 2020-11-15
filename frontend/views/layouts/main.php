@@ -4,9 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
+use yii\bootstrap4\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
@@ -32,7 +32,7 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/images/brand-black.png', ['alt'=>Yii::$app->name, 'style' => 'width:230px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-fixed-top navbar-height navbar-white',
+            'class' => 'navbar navbar-expand-md navbar-light bg-dark',
         ],
     ]);
     $menuItems = [
