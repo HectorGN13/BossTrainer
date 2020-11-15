@@ -20,10 +20,11 @@
     color: #041521 !important;
     font-weight: bold;
     background: #fff;
-    width: 30rem;
+    width: 26rem;
     text-align: center;
 }
 .text-responsive {
+    text-align: center;
     font-size: calc(100% + 1vw + 1vh);
 }
 

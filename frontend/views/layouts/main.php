@@ -32,7 +32,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logoColor.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
+        'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar sticky-top navbar-expand-lg navbar-light',
@@ -79,6 +79,17 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+<script>
+    $('.navbar-brand img').hover(function(){
+        $(this).attr("src", function(index, attr){
+            return attr.replace("logoBlanco.png", "logoRojo.png");
+        });
+    }, function(){
+        $(this).attr("src", function(index, attr){
+            return attr.replace("logoRojo.png", "logoBlanco.png");
+        });
+    });
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
