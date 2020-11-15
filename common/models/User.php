@@ -209,4 +209,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    /**
+     * Gets query for [[Gyms]].
+     *
+     * @return \yii\db\ActiveQuery
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getGyms()
+    {
+        return $this->hasMany(Gym::className(), ['id' => 'gym_id'])->viaTable('user_gym', ['user_id' => 'id']);
+    }
 }

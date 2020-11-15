@@ -3,12 +3,14 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+
 
 AppAsset::register($this);
 ?>
@@ -22,6 +24,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -29,10 +32,10 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/brand-black.png', ['alt'=>Yii::$app->name, 'style' => 'width:230px; margin-top:-12px']),
+        'brandLabel' => Html::img('@web/images/logoColor.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-light bg-dark',
+            'class' => 'navbar sticky-top navbar-expand-lg navbar-light',
         ],
     ]);
     $menuItems = [
@@ -41,29 +44,27 @@ AppAsset::register($this);
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Registrarse', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
+        $menuItems[] = [ 'label' => Html::encode(Yii::$app->user->identity->username), 'items' => [
+            '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
+                'Salir',
+                ['class' => 'btn btn-link logout btn-font-weight-900', 'style' => 'text-decoration: none; text-align: center;']
             )
             . Html::endForm()
-            . '</li>';
+            . '</li>']];
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    <div class="container-fluid">
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
