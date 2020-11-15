@@ -4,15 +4,20 @@
 
 
 use frontend\assets\AppAsset;
+use lanselot\parallax\ParallaxWidget;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-
 $this->title = 'BossTrainer';
 ?>
 
+<?= ParallaxWidget::widget([
+    'image' => '/images/bg-index.jpg',
+    'element' => '.parallax1',
+    'minHeight' => '400px',
+]); ?>
 <div class="container-fluid bg-index">
-    <div class="row">
+    <div id="logo" class="row">
         <div class="d-none d-lg-block d-xl-block col-md-6 col-lg-6 first-column">
             <?= Html::img('@web/images/iconWHITE.png', ['alt'=>'BossTrainer', 'class'=>'mt-5 mr-4 img-fluid float-right image-primary']);?>
         </div>
@@ -117,16 +122,15 @@ $this->title = 'BossTrainer';
             </div>
         </div>
     </div>
-    <div class="parallax-container">
-        <div class="parallax">
-            <?= Html::img('@web/images/slide4.jpg', ['alt'=>'parallax']);?>
-        </div>
-    </div>
-
-
+    <?= ParallaxWidget::widget([
+        'image' => '/images/slide4.jpg',
+        'element' => '.parallax2',
+        'minHeight' => '400px',
+    ]); ?>
 </div>
 <script>
+    $logo = document.getElementById("logo");
     $(document).ready(function(){
-        $('.parallax').parallax();
+        $('.parallax1).append($logo);
     });
 </script>

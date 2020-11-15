@@ -21,8 +21,8 @@
         "kingston-kms/yii2-mdbootstrap": "^1.0",
         "bower-asset/bootstrap": "^3.3",
         "npm-asset/jquery": "^2.2",
-        "macgyer/yii2-materializecss": "~3.0.0"
-
+        "macgyer/yii2-materializecss": "~3.0.0",
+        "lanselot/yii2-parallax-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2767925fb20a7ef6e909511976c28bf5",
+    "content-hash": "58283a0d7b3ad67a21f0ec0525ff84ee",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -434,6 +434,51 @@
                 "source": "https://github.com/Kingston-kms/yii2-mdbootstrap/tree/master"
             },
             "time": "2020-05-07T11:33:45+00:00"
+        },
+        {
+            "name": "lanselot/yii2-parallax-widget",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LANSELOT/yii2-parallax-widget.git",
+                "reference": "4fff870d136658de9dcd57aa1bc50e1fb2892d62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LANSELOT/yii2-parallax-widget/zipball/4fff870d136658de9dcd57aa1bc50e1fb2892d62",
+                "reference": "4fff870d136658de9dcd57aa1bc50e1fb2892d62",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "lanselot\\parallax\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Eremin",
+                    "email": "eremin_100_93@mail.ru"
+                }
+            ],
+            "description": "Wrapper for Yii2 from parallax.js by http://pixelcog.github.io",
+            "keywords": [
+                "extension",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/LANSELOT/yii2-parallax-widget/issues",
+                "source": "https://github.com/LANSELOT/yii2-parallax-widget/tree/master"
+            },
+            "time": "2016-06-05T14:07:33+00:00"
         },
         {
             "name": "macgyer/yii2-materializecss",
