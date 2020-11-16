@@ -33,13 +33,19 @@
         "codeception/module-yii2": "^1.0",
         "codeception/module-filesystem": "^1.0",
         "codeception/verify": "~0.5.0 || ~1.1.0",
-        "symfony/browser-kit": ">=2.7 <=4.2.4"
+        "symfony/browser-kit": ">=2.7 <=4.2.4",
+        "purrweb/yii2-heroku": "*"
     },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "sh post-install-cmd.sh"
+        ]
     },
     "repositories": [
         {
