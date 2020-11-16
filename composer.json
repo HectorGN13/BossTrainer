@@ -22,11 +22,11 @@
         "bower-asset/bootstrap": "^3.3",
         "npm-asset/jquery": "^2.2",
         "macgyer/yii2-materializecss": "~3.0.0",
-        "lanselot/yii2-parallax-widget": "*"
+        "lanselot/yii2-parallax-widget": "*",
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.1.0"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/codeception": "^4.0",
         "codeception/module-asserts": "^1.0",
