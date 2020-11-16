@@ -8,6 +8,10 @@
 .image-primary {
     max-width: 250px;
 }
+img {
+    vertical-align: middle;
+    border-style: none;
+}
 
 /** BODY **/
 .lines-effect {
@@ -15,12 +19,12 @@
     background-position: center center;
     background-repeat: repeat-x;
 }
-.lines-effect > h1 {
+.lines-effect > h1,h3 {
     margin: 2rem auto 3rem auto;
     color: #041521 !important;
     font-weight: bold;
     background: #fff;
-    width: 26rem;
+   /* width: 20rem; Rompe el resoponsive */
     text-align: center;
 }
 .text-responsive {
@@ -52,4 +56,27 @@
     text-transform: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
+}
+
+.btn.btn-rounded {
+    border-radius: 100px;
+}
+.btn-light {
+    color: #000000;
+    background-color: #fff;
+    border-color: #fff;
+}
+.btn-dark {
+    color: #ffffff;
+    background-color: #000000;
+    border-color: #000000;
+}
+.btn:hover {
+    outline: 0 !important;
+    background-color: #d22222;
+    background-image: none;
+    border-color: #d22222;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }

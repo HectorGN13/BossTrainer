@@ -6,19 +6,26 @@ body {
 /** Nav Bar **/
 .navbar {
     background: #000 !important;
-
 }
 .navbar-brand img {
     transition: all 3s;
     padding-left: 12px;
 }
-
-
 .navbar-white {
     background: white !important;
     height: 52px !important;
 }
 
+.links-color{
+    color: #fff !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
+.links-color:hover{
+    color: #e6282f !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -108,10 +115,6 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
-}
-
-.nav li {
-
 }
 
 /* align the logout "link" (button in form) of the navbar */

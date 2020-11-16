@@ -11,19 +11,16 @@ AppAsset::register($this);
 $this->title = 'BossTrainer';
 ?>
 <?php
-    $parallaxContain2 = '<div class="container-fluid bg-index">
-    <div id="logo" class="row">
-        <div class="d-none d-lg-block d-xl-block col-md-6 col-lg-6 first-column">'
-        . Html::img('@web/images/iconWHITE.png', ['alt' => 'BossTrainer', 'class' => 'mt-5 mr-4 img-fluid float-right image-primary']) .
-    '</div>
-        <div class="d-none d-lg-block d-xl-block col-xs-12 col-md-6 col-lg-6 second-column">' .
-         Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 img-fluid float-left image-secondary']) .
-    '</div>
-        <div class="d-block d-lg-none d-xl-none col-xs-12 col-md-12 col-lg-6 second-column mx-auto">' .
-        Html::img('@web/images/mejorAPP.png', ['alt'=>'Mejor App', 'class'=>'my-4 mx-auto d-block img-fluid image-secondary']) .
-        '</div>
+    $parallaxContain2 = sprintf("<div class=\"container-fluid bg-index\">
+    <div id=\"logo\" class=\"row\">
+        <div class=\"d-none d-lg-block d-xl-block col-md-6 col-lg-6 first-column\">%s</div>
+        <div class=\"d-none d-lg-block d-xl-block col-xs-12 col-md-6 col-lg-6 second-column\">%s</div>
+        <div class=\"d-block d-lg-none d-xl-none col-xs-12 col-md-12 col-lg-6 second-column mx-auto\">%s</div>
     </div>
-</div>'
+</div>",
+        Html::img('@web/images/iconWHITE.png', ['alt' => 'BossTrainer', 'class' => 'mt-5 mr-4 img-fluid float-right image-primary']),
+        Html::img('@web/images/mejorAPP.png', ['alt' => 'Mejor App', 'class' => 'my-4 img-fluid float-left image-secondary']),
+        Html::img('@web/images/mejorAPP.png', ['alt' => 'Mejor App', 'class' => 'my-4 mx-auto d-block img-fluid image-secondary']))
 ?>
 
 <?= ParallaxWidget::widget([
@@ -36,7 +33,7 @@ $this->title = 'BossTrainer';
     <div class="container">
         <div class="jumbotron">
             <div class="lines-effect">
-                <h1 class="lines-effect text-responsive">CARACTERÍSTICAS</h1>
+                <h1 class="text-responsive">CARACTERÍSTICAS</h1>
             </div>
             <div class="row">
                 <div class="icon-block pt-lg-5 col-lg-4">
@@ -85,44 +82,12 @@ $this->title = 'BossTrainer';
                 </div>
             </div>
 
-            <p><a class="btn btn-lg btn-primary" href="http://www.yiiframework.com">MÁS INFORMACIÓN</a></p>
+            <p><a class="btn btn-lg btn-rounded btn-dark" href="http://www.yiiframework.com">MÁS INFORMACIÓN</a></p>
         </div>
     </div>
 
     <div class="container body-content">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
     </div>
     <?php
      $parallaxContain2 = '<div class="col-12 mx-auto d-fex align-middle" >'
@@ -136,6 +101,14 @@ $this->title = 'BossTrainer';
         'minHeight' => '400px',
         'content' => $parallaxContain2,
     ]); ?>
+
+    <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto text-center">
+            <h3 class="text-responsive">DISPONIBLE PARA ANDROID & IOS</h3>
+            <?= Html::img('@web/images/google-play.png', ['alt' => 'google play', 'class' => 'img-fluid mr-md-3 mb-3', 'style' => 'width: 200px']) ?>
+            <?= Html::img('@web/images/app-store.png', ['alt' => 'app store', 'class' => 'img-fluid mb-3', 'style' => 'width: 200px']) ?>
+        </div>
+    </div>
 </div>
 <script>
     $logo = document.getElementById("logo");

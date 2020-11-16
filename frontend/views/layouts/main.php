@@ -35,17 +35,18 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar sticky-top navbar-expand-lg navbar-light',
+            'class' => 'navbar sticky-top navbar-expand-lg',
         ],
+
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Home', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'About', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Contact', 'url' => ['/site/contact'], "linkOptions" => ["class" => "links-color"]],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Registrarse', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Registrarse', 'url' => ['/site/signup'], "linkOptions" => ["class" => "links-color"]];
+        $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login'], "linkOptions" => ["class" => "links-color"]];
     } else {
         $menuItems[] = [ 'label' => Html::encode(Yii::$app->user->identity->username), 'items' => [
             '<li>'
