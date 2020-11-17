@@ -22,6 +22,7 @@ body {
     font-weight: bold !important;
 }
 .links-color:hover{
+    transition: all 0.3s ease-in-out;
     color: #e6282f !important;
     font-size: x-large !important;
     font-weight: bold !important;

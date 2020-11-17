@@ -72,6 +72,7 @@ img {
     border-color: #000000;
 }
 .btn:hover {
+    transition: all 0.3s ease-in-out;
     outline: 0 !important;
     background-color: #d22222;
     background-image: none;

@@ -7,7 +7,6 @@
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-use yii\bootstrap4\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
@@ -49,14 +48,12 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login'], "linkOptions" => ["class" => "links-color"]];
     } else {
         $menuItems[] = [ 'label' => Html::encode(Yii::$app->user->identity->username), 'items' => [
-            '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
+             Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
                 'Salir',
                 ['class' => 'btn btn-link logout btn-font-weight-900', 'style' => 'text-decoration: none; text-align: center;']
             )
-            . Html::endForm()
-            . '</li>']];
+            . Html::endForm()]];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
@@ -80,17 +77,6 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
-<script>
-    $('.navbar-brand img').hover(function(){
-        $(this).attr("src", function(index, attr){
-            return attr.replace("logoBlanco.png", "logoRojo.png");
-        });
-    }, function(){
-        $(this).attr("src", function(index, attr){
-            return attr.replace("logoRojo.png", "logoBlanco.png");
-        });
-    });
-</script>
 </body>
 </html>
 <?php $this->endPage() ?>
