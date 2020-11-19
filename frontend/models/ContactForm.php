@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use kekaadrenalin\recaptcha3\ReCaptchaValidator;
 use Yii;
 use yii\base\Model;
 
@@ -12,9 +13,10 @@ class ContactForm extends Model
 {
     public $name;
     public $email;
+    public $phone;
     public $subject;
     public $body;
-    public $verifyCode;
+    public $reCaptcha;
 
 
     /**
@@ -24,11 +26,13 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
+
             [['name', 'email', 'subject', 'body'], 'required'],
+            [['phone'], 'k-phone', 'countryValue' => 'ES'],
             // email has to be a valid email address
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            //reCaptchaV3 google
+            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 0]
         ];
     }
 
@@ -38,7 +42,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => 'Nombre',
+            'email' => 'Correo electrónico',
+            'phone' => 'Teléfono',
+            'subject' => 'Asunto',
+            'body' => 'Mensaje',
         ];
     }
 
@@ -55,7 +63,7 @@ class ContactForm extends Model
             ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
             ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
-            ->setTextBody($this->body)
+            ->setTextBody("Teléfono de contacto: " . $this->phone . "<br>". $this->body )
             ->send();
     }
 }

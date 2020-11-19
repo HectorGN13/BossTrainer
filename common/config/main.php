@@ -17,5 +17,11 @@ return [
                 // ...
             ],
         ],
+        'reCaptcha3' => [
+            'class'      => 'kekaadrenalin\recaptcha3\ReCaptcha',
+            'site_key'   => 'site_key_###',
+            'secret_key' => 'secret_key_###',
+        ],
+
     ],
 ];

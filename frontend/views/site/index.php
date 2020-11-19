@@ -1,11 +1,15 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $model \frontend\models\ContactForm */
 
 
 use frontend\assets\AppAsset;
 use lanselot\parallax\ParallaxWidget;
 use yii\helpers\Html;
+use yii\bootstrap4\ActiveForm;
+use yii\captcha\Captcha;
 
 AppAsset::register($this);
 $this->title = 'BossTrainer';
@@ -103,6 +107,37 @@ $this->title = 'BossTrainer';
     ]); ?>
 
     <div class="row">
+        <div class="col-12">
+            <h3 class="text-responsive">CONTACTO</h3>
+        </div>
+        <div class="col-lg-5 ml-auto mr-auto">
+            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+            <div>
+                <?= $form->field($model, 'name') ?>
+            </div>
+            <div col-md-2 col-lg-2>
+                <?= $form->field($model, 'email') ?>
+            </div>
+            <div col-md-2 col-lg-2>
+                <?= $form->field($model, 'phone') ?>
+            </div>
+            <div>
+                <?= $form->field($model, 'subject') ?>
+            </div>
+            <div>
+                <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+            </div>
+
+            <div class="form-group">
+                <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-lg-8 ml-auto mr-auto text-center">
             <h3 class="text-responsive">DISPONIBLE PARA ANDROID & IOS</h3>
             <?= Html::img('@web/images/google-play.png', ['alt' => 'google play', 'class' => 'img-fluid mr-md-3 mb-3', 'style' => 'width: 200px']) ?>
@@ -110,9 +145,3 @@ $this->title = 'BossTrainer';
         </div>
     </div>
 </div>
-<script>
-    $logo = document.getElementById("logo");
-    $(document).ready(function(){
-        $('.parallax1).append();
-    });
-</script>

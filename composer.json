@@ -24,7 +24,10 @@
         "macgyer/yii2-materializecss": "~3.0.0",
         "lanselot/yii2-parallax-widget": "*",
         "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.1.0"
+        "yiisoft/yii2-gii": "~2.1.0",
+        "kartik-v/yii2-validators": "dev-master",
+        "kartik-v/yii2-widget-activeform": "@dev",
+        "kekaadrenalin/yii2-module-recaptcha-v3": "*"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
@@ -35,6 +38,7 @@
         "codeception/verify": "~0.5.0 || ~1.1.0",
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "purrweb/yii2-heroku": "*"
+
     },
     "config": {
         "process-timeout": 1800,
