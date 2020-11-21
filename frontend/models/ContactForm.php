@@ -33,8 +33,8 @@ class ContactForm extends Model
             [['phone'], 'k-phone', 'countryValue' => 'ES'],
             // email has to be a valid email address
             ['email', 'email'],
-            //reCaptchaV3 google de momento 1 hasta que termine pruebas
-            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 1],
+            //reCaptchaV3 google
+           // [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 0],
             //Terms and use
             [['agree'], 'required', 'requiredValue' => 1, 'message' => 'Por favor, debe aceptar los términos y condiciones de uso para enviar su formulario.']
         ];
@@ -64,12 +64,13 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
+
         return Yii::$app->mailer->compose()
             ->setTo($email)
             ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
             ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
-            ->setTextBody("Teléfono de contacto: " . $this->phone . "<br>". $this->body )
+            ->setHtmlBody($this->body)
             ->send();
     }
 }

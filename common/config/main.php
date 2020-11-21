@@ -19,8 +19,8 @@ return [
         ],
         'reCaptcha3' => [
             'class'      => 'kekaadrenalin\recaptcha3\ReCaptcha',
-            'site_key'   => 'site_key_###',
-            'secret_key' => 'secret_key_###',
+            'site_key'   => '6LdazuUZAAAAAMP17Ct88BJ11nJSAV-jUrW9Mpjh',
+            'secret_key' => '6LdazuUZAAAAAEoMt3WVZmTtZ_F67mH__j4_T9Zy',
         ],
 
     ],

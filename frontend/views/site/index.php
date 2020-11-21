@@ -139,11 +139,16 @@ $this->title = 'BossTrainer';
                     <?= $form->field($model, 'body')->textarea(['rows' => 5]) ?>
                 </div>
 
-                <div class="form-group">
-                    <?= $form->field($model, 'agree',
-                        ['options' => ['tag' => 'span',]])->checkbox(['checked' => false]); ?>
-                    <?= Html::submitButton('Enviar', ['class' => 'float-right btn btn-lg btn-rounded btn-dark', 'name' => 'contact-button']) ?>
+                <div class="row">
+                    <div class="col-6">
+                        <?= $form->field($model, 'agree',
+                            ['options' => ['tag' => 'span',]])->checkbox(['checked' => false]); ?>
+                    </div>
+                    <div class="form-group col-6">
+                        <?= Html::submitButton('Enviar', ['class' => 'float-right btn btn-lg btn-rounded btn-dark', 'name' => 'contact-button']) ?>
+                    </div>
                 </div>
+
 
                 <?php ActiveForm::end(); ?>
             </div>
