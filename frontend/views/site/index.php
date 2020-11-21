@@ -106,42 +106,58 @@ $this->title = 'BossTrainer';
         'content' => $parallaxContain2,
     ]); ?>
 
-    <div class="row">
-        <div class="col-12">
-            <h3 class="text-responsive">CONTACTO</h3>
-        </div>
-        <div class="col-lg-5 ml-auto mr-auto">
-            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-responsive">CONTACTO</h3>
+            </div>
+            <div class="col-12 col-lg-8 ml-auto mr-auto">
+                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-            <div>
-                <?= $form->field($model, 'name') ?>
-            </div>
-            <div col-md-2 col-lg-2>
-                <?= $form->field($model, 'email') ?>
-            </div>
-            <div col-md-2 col-lg-2>
-                <?= $form->field($model, 'phone') ?>
-            </div>
-            <div>
-                <?= $form->field($model, 'subject') ?>
-            </div>
-            <div>
-                <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-            </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <?= $form->field($model, 'name') ?>
+                    </div>
+                    <div class="col-md-7">
+                        <?= $form->field($model, 'surname') ?>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-            </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <?= $form->field($model, 'email') ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $form->field($model, 'phone') ?>
+                    </div>
+                </div>
 
-            <?php ActiveForm::end(); ?>
+                <div>
+                    <?= $form->field($model, 'subject') ?>
+                </div>
+                <div>
+                    <?= $form->field($model, 'body')->textarea(['rows' => 5]) ?>
+                </div>
+
+                <div class="form-group">
+                    <?= $form->field($model, 'agree',
+                        ['options' => ['tag' => 'span',]])->checkbox(['checked' => false]); ?>
+                    <?= Html::submitButton('Enviar', ['class' => 'float-right btn btn-lg btn-rounded btn-dark', 'name' => 'contact-button']) ?>
+                </div>
+
+                <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-8 ml-auto mr-auto text-center">
-            <h3 class="text-responsive">DISPONIBLE PARA ANDROID & IOS</h3>
-            <?= Html::img('@web/images/google-play.png', ['alt' => 'google play', 'class' => 'img-fluid mr-md-3 mb-3', 'style' => 'width: 200px']) ?>
-            <?= Html::img('@web/images/app-store.png', ['alt' => 'app store', 'class' => 'img-fluid mb-3', 'style' => 'width: 200px']) ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ml-auto mr-auto text-center">
+                <h3 class="text-responsive">DISPONIBLE PARA ANDROID & IOS</h3>
+                <?= Html::img('@web/images/google-play.png', ['alt' => 'google play', 'class' => 'img-fluid mr-md-3 mb-3', 'style' => 'width: 200px']) ?>
+                <?= Html::img('@web/images/app-store.png', ['alt' => 'app store', 'class' => 'img-fluid mb-3', 'style' => 'width: 200px']) ?>
+            </div>
         </div>
     </div>
+
 </div>

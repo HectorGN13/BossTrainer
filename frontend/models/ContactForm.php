@@ -12,11 +12,13 @@ use yii\base\Model;
 class ContactForm extends Model
 {
     public $name;
+    public $surname;
     public $email;
     public $phone;
     public $subject;
     public $body;
     public $reCaptcha;
+    public $agree;
 
 
     /**
@@ -27,12 +29,14 @@ class ContactForm extends Model
         return [
             // name, email, subject and body are required
 
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['name', 'surname', 'email', 'subject', 'body'], 'required'],
             [['phone'], 'k-phone', 'countryValue' => 'ES'],
             // email has to be a valid email address
             ['email', 'email'],
-            //reCaptchaV3 google
-            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 0]
+            //reCaptchaV3 google de momento 1 hasta que termine pruebas
+            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 1],
+            //Terms and use
+            [['agree'], 'required', 'requiredValue' => 1, 'message' => 'Por favor, debe aceptar los términos y condiciones de uso para enviar su formulario.']
         ];
     }
 
@@ -43,10 +47,12 @@ class ContactForm extends Model
     {
         return [
             'name' => 'Nombre',
+            'surname' => 'Apellidos',
             'email' => 'Correo electrónico',
             'phone' => 'Teléfono',
             'subject' => 'Asunto',
             'body' => 'Mensaje',
+            'agree' => 'Acepto términos y condiciones de uso.'
         ];
     }
 
