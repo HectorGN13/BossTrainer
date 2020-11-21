@@ -6,11 +6,12 @@
 /* @var $content string */
 
 
-use common\widgets\Alert;
 use frontend\assets\AppAsset;
+use kekaadrenalin\recaptcha3\ReCaptchaWidget;
 use lanselot\parallax\ParallaxWidget;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use pa3py6aka\yii2\ModalAlert;
 
 AppAsset::register($this);
 $this->title = 'BossTrainer';
@@ -113,7 +114,7 @@ $this->title = 'BossTrainer';
                 <h3 class="text-responsive">CONTACTO</h3>
             </div>
             <div class="container-fluid">
-                <?= Alert::widget() ?>
+                <?= ModalAlert::widget() ?>
             </div>
             <div class="col-12 col-lg-8 ml-auto mr-auto">
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
@@ -147,6 +148,7 @@ $this->title = 'BossTrainer';
                     <div class="col-6">
                         <?= $form->field($model, 'agree',
                             ['options' => ['tag' => 'span',]])->checkbox(['checked' => false]); ?>
+                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptchaWidget::class) ?>
                     </div>
                     <div class="form-group col-6">
                         <?= Html::submitButton('Enviar', ['class' => 'float-right btn btn-lg btn-rounded btn-dark', 'name' => 'contact-button']) ?>
