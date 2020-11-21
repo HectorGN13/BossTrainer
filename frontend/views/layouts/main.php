@@ -61,9 +61,7 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
     <div class="container-fluid">
-        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>

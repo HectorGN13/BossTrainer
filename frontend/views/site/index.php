@@ -3,13 +3,14 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap4\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
+/* @var $content string */
 
 
+use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use lanselot\parallax\ParallaxWidget;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use yii\captcha\Captcha;
 
 AppAsset::register($this);
 $this->title = 'BossTrainer';
@@ -110,6 +111,9 @@ $this->title = 'BossTrainer';
         <div class="row">
             <div class="col-12">
                 <h3 class="text-responsive">CONTACTO</h3>
+            </div>
+            <div class="container-fluid">
+                <?= Alert::widget() ?>
             </div>
             <div class="col-12 col-lg-8 ml-auto mr-auto">
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
