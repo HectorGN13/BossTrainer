@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c183b02aa0b67311193e703e0ed89559",
+    "content-hash": "b7de33cc74d1cc14482c8e63fb4b80d4",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -510,6 +510,57 @@
             "time": "2020-07-07T11:16:24+00:00"
         },
         {
+            "name": "kartik-v/strength-meter",
+            "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/strength-meter.git",
+                "reference": "100147f588b12ff819014b445007a0decfd95fbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/strength-meter/zipball/100147f588b12ff819014b445007a0decfd95fbb",
+                "reference": "100147f588b12ff819014b445007a0decfd95fbb",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\strengthmeter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A dynamic strength meter for password input validation with various configurable options.",
+            "homepage": "https://github.com/kartik-v/strength-meter",
+            "keywords": [
+                "bootstrap",
+                "jquery",
+                "meter",
+                "password",
+                "strength"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/strength-meter/issues",
+                "source": "https://github.com/kartik-v/strength-meter/tree/master"
+            },
+            "time": "2018-01-20T17:52:01+00:00"
+        },
+        {
             "name": "kartik-v/yii2-krajee-base",
             "version": "v2.0.5",
             "source": {
@@ -564,6 +615,67 @@
                 "source": "https://github.com/kartik-v/yii2-krajee-base/tree/master"
             },
             "time": "2019-03-13T17:14:54+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-password",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-password.git",
+                "reference": "aae7007b2dd32ffe688269a8fd56ab940d819cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-password/zipball/aae7007b2dd32ffe688269a8fd56ab940d819cf4",
+                "reference": "aae7007b2dd32ffe688269a8fd56ab940d819cf4",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/strength-meter": "~1.1",
+                "kartik-v/yii2-krajee-base": ">=2.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\password\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Useful password strength validation utilities for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-password",
+            "keywords": [
+                "auth",
+                "bootstrap",
+                "extension",
+                "form",
+                "input",
+                "jquery",
+                "password",
+                "strength",
+                "yii",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-password/issues",
+                "source": "https://github.com/kartik-v/yii2-password/tree/master"
+            },
+            "time": "2020-06-23T08:34:10+00:00"
         },
         {
             "name": "kartik-v/yii2-validators",
@@ -5889,7 +6001,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-validators": 20,
-        "kartik-v/yii2-widget-activeform": 20
+        "kartik-v/yii2-widget-activeform": 20,
+        "kartik-v/yii2-password": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

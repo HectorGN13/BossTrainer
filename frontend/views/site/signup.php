@@ -4,6 +4,7 @@
 /* @var $form yii\bootstrap4\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
 
+use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
@@ -23,7 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'email') ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password')->widget(PasswordInput::classname(), [
+                    'pluginOptions' => [
+                        'showMeter' => false,
+                        'toggleMask' => false,
+                    ]
+                ])?>
+
+                <?= $form->field($model, 'passwordConfirm')->passwordInput() ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

@@ -1,6 +1,8 @@
 <?php
 namespace frontend\models;
 
+use kartik\password\StrengthValidator;
+use phpDocumentor\Reflection\Types\Null_;
 use Yii;
 use yii\base\Model;
 use common\models\User;
@@ -13,6 +15,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $passwordConfirm;
 
 
     /**
@@ -23,17 +26,36 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
+            ['username', 'filter', 'filter'=>'strtolower'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.'],
             ['username', 'string', 'min' => 3, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
+            ['email', 'filter', 'filter'=>'strtolower'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electronico ya existe.'],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            [
+                ['password'], StrengthValidator::className(),
+                'min' => 8,
+                'minError'=>'Has introducido {found} caracteres. El mínimo requerido es 8.',
+                'upper' => 1,
+                'upperError'=> 'Debes introducir al menos una mayúscula.',
+                'digit' => 1,
+                'digitError'=> 'Debes introducir al menos un dígito.',
+                'userAttribute'=>'username',
+                'hasUser' => true,
+                'hasUserError'=> 'La contraseña no puede contener el nombre de usuario.',
+                'preset' => null,
+                'special' => 0,
+            ],
+
+            ['passwordConfirm', 'required'],
+            ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden." ],
         ];
     }
 
@@ -49,8 +71,8 @@ class SignupForm extends Model
         }
         
         $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
+        $user->username = mb_strtolower($this->username);
+        $user->email = mb_strtolower($this->email);
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
