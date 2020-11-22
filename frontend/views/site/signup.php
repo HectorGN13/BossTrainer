@@ -14,7 +14,7 @@ SignupAsset::register($this);
 $this->title = 'Registrarse';
 ?>
 <div class="site-signup">
-    <div class="container my-5">
+    <div class="container scale-up-center my-5">
         <div class="row white center-vertically col-md-7 ml-auto mr-auto rounded-top">
             <div class="col-md-10 ml-auto mr-auto pt-5 ">
                 <?= Html::img('@web/images/logoColor.png', ['alt' => 'BossTrainer', 'class' => 'col-md-8 img-fluid mx-auto d-block']) ?>
