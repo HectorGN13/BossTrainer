@@ -1,6 +1,8 @@
 body {
-    background-image: url("../images/cross-five-3.jpg");
+    background-image: url("../images/CoverGirl.jpg");
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: 105%;
 }
 
 .invalid-feedback {

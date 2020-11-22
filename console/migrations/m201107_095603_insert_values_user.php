@@ -9,14 +9,14 @@ class m201107_095603_insert_values_user extends Migration
 
     public function safeUp()
     {
-        $password_hash = Yii::$app->getSecurity()->generatePasswordHash('alba1234');
+        $password_hash = Yii::$app->getSecurity()->generatePasswordHash('Alba1234');
         $auth_key = Yii::$app->security->generateRandomString();
         $password_reset_token = Yii::$app->security->generateRandomString() ;
         $table = $this->_user;
         $time = time();
 
         $this->insert( $table, [
-            'username' => 'Hector',
+            'username' => 'hector',
             'auth_key' => $auth_key,
             'password_hash' => $password_hash,
             'password_reset_token' => $password_reset_token,
@@ -29,7 +29,7 @@ class m201107_095603_insert_values_user extends Migration
 
     public function safeDown()
     {
-        $this->delete( "{{%user}}", ['username' => 'Hector']);
+        $this->delete( "{{%user}}", ['username' => 'hector']);
     }
 
     /*
