@@ -1,0 +1,27 @@
+body {
+    background-image: url("../images/cross-five-3.jpg");
+    background-position: center;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 -15px 0 -15px !important;
+    padding: 0;
+}
+
+.white {
+    background: rgba(255, 255, 255, 0.7)
+}
+.dark {
+    background: rgba(0, 0, 0, 0.7)
+}
+
+.center-vertically {
+    display: flex;
+    align-items: center;
+}

@@ -25,19 +25,19 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message' => 'Debes introducir un nombre de usuario.'],
             ['username', 'filter', 'filter'=>'strtolower'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.'],
-            ['username', 'string', 'min' => 3, 'max' => 255],
+            ['username', 'string', 'min' => 3, 'max' => 255, 'message' => 'La longitud del nombre de usuario no puede ser inferior a 3'],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Debes introducir un correo electrónico.'],
             ['email', 'email'],
             ['email', 'filter', 'filter'=>'strtolower'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electronico ya existe.'],
 
-            ['password', 'required'],
+            ['password', 'required', 'message' => 'Debes introducir una contraseña.'],
 
             [
                 ['password'], StrengthValidator::className(),
@@ -54,8 +54,21 @@ class SignupForm extends Model
                 'special' => 0,
             ],
 
-            ['passwordConfirm', 'required'],
+            ['passwordConfirm', 'required', 'message' => 'Debes confirmar tu contraseña.'],
             ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden." ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de usuario',
+            'email' => 'Correo electrónico',
+            'password' => 'Contraseña',
+            'passwordConfirm' => 'Confirmar contraseña'
         ];
     }
 
