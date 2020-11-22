@@ -40,8 +40,8 @@ body {
  */
 
 .scale-up-center {
-    -webkit-animation: scale-up-center 1s ease-in both;
-    animation: scale-up-center 1s ease-in both;
+    -webkit-animation: scale-up-center 0.6s ease-in both;
+    animation: scale-up-center 0.6s ease-in both;
 }
 @-webkit-keyframes scale-up-center {
     0% {

@@ -48,7 +48,7 @@ $this->title = 'Registrarse';
                     'options' => [
                         'class' => 'alert-info',
                     ],
-                    'body' => 'Aviso: El registro solo está disponible para atletas, si eres propietario de un gimnasio, por favor póngase en contacto con nosotros a través de nuestro formulario.',
+                    'body' => 'Aviso: El registro solo está disponible para atletas, si eres propietario de un gimnasio, por favor póngase en contacto con nosotros a través de nuestro ' . Html::a('formulario de contacto.', ['site/index', '#' => 'contact']),
                 ]); ?>
             </div>
         </div>

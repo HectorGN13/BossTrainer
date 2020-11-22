@@ -108,7 +108,7 @@ $this->title = 'BossTrainer';
         'content' => $parallaxContain2,
     ]); ?>
 
-    <div class="container">
+    <div class="container" id="contact" style="padding: 64px 15px">
         <div class="row">
             <div class="col-12">
                 <h3 class="text-responsive">CONTACTO</h3>
@@ -161,7 +161,7 @@ $this->title = 'BossTrainer';
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding: 64px 15px">
         <div class="row">
             <div class="col-lg-8 ml-auto mr-auto text-center">
                 <h3 class="text-responsive">DISPONIBLE PARA ANDROID & IOS</h3>
