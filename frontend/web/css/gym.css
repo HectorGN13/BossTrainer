@@ -1,0 +1,24 @@
+.widget-header {
+    overflow: hidden;
+    z-index: 0;
+}
+.widget-img {
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    position: absolute;
+    top: 170px;
+    left: 120px;
+}
+.img-md {
+    width: 64px;
+    height: 64px;
+}
+.widget-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+

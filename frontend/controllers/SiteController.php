@@ -143,7 +143,13 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('info',[
+                ['Te has registrado correctamente.',
+                'Muchas gracias por registrarte. 
+                Hemos enviado a tu email un correo de verificación. 
+                Este proceso puede tardar varios minutos, 
+                si todavía no lo has recibido compruebe su bandeja de spam, 
+                o utilice este enlace.']]);
             return $this->goHome();
         }
 

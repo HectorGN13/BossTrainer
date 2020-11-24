@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use app\models\UserGym;
 use Yii;
 
 /**
