@@ -21,7 +21,7 @@ class m201110_154221_insert_values_gym extends Migration
 
         $this->insert( $table, [
             'name' => 'gym central box',
-            'address' => 'C/ falsa 1, 11540 Cadiz',
+            'address' => 'C/ falsa 1',
             'email' => 'admin@centralbox.com',
             'auth_key' => Yii::$app->security->generateRandomString(),
             'password_hash' => Yii::$app->getSecurity()->generatePasswordHash('centralbox'),
@@ -32,7 +32,7 @@ class m201110_154221_insert_values_gym extends Migration
 
         $this->insert( $table, [
             'name' => 'gym orbital',
-            'address' => 'C/ verdadera 20, 11540 Cadiz',
+            'address' => 'C/ verdadera 20',
             'email' => 'admin@orbital.com',
             'auth_key' => Yii::$app->security->generateRandomString(),
             'password_hash' => Yii::$app->getSecurity()->generatePasswordHash('orbital'),

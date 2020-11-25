@@ -40,14 +40,16 @@ class Gym extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'address', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status'], 'default', 'value' => null],
-            [['status'], 'integer'],
+            [['status', 'id_provincia', 'postal_code'], 'default', 'value' => null],
+            [['status', 'id_provincia', 'postal_code'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'address', 'email', 'password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
+            [['description'], 'string', 'max' => 320],
             [['email'], 'unique'],
             [['name'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['id_provincia'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['id_provincia' => 'id']],
         ];
     }
 
@@ -68,6 +70,9 @@ class Gym extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
+            'id_provincia' => 'Id Provincia',
+            'postal_code' => 'Código postal',
+            'description' => 'Descripción',
         ];
     }
 
@@ -78,7 +83,7 @@ class Gym extends \yii\db\ActiveRecord
      */
     public function getUserGyms()
     {
-        return $this->hasMany(UserGym::className(), ['gym_id' => 'id']);
+        return $this->hasMany(UserGym::class, ['gym_id' => 'id'])->inverseOf('gym');;
     }
 
     /**
@@ -88,7 +93,16 @@ class Gym extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('user_gym', ['gym_id' => 'id']);
+        return $this->hasMany(User::class, ['id' => 'user_id'])->viaTable('user_gym', ['gym_id' => 'id']);
     }
 
+    /**
+     * Gets query for [[Provincia]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProvincia()
+    {
+        return $this->hasOne(Provincias::class, ['id' => 'id_provincia'])->inverseOf('gyms');
+    }
 }
