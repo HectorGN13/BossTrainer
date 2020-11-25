@@ -29,7 +29,6 @@ class m201125_153346_add_id_provincia_column_to_gym_table extends Migration
             'id',
             'CASCADE'
         );
-
     }
 
     /**
