@@ -27,6 +27,7 @@ $this->title = 'Gimnasios';
                     <div class="card-body py-5">
                         <h5 class="card-title mt-3"><?= $model->name ?></h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><?= $model->address ?></p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
