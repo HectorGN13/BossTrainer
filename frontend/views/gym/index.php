@@ -11,9 +11,11 @@ GymsAsset::register($this);
 $this->title = 'Gimnasios';
 ?>
 <div class="gym-index">
-
-
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="container" >
+        <div class="d-flex justify-content-end" style="margin: 60px;">
+            <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+    </div>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
         <?php foreach ($dataProvider->models as $model):?>
@@ -28,7 +30,7 @@ $this->title = 'Gimnasios';
                         <h5 class="card-title mt-3"><?= $model->name ?></h5>
                         <p class="card-text"><?= $model->description ?></p>
                         <p class="card-text"><?= $model->address ?>, <?= $model->postal_code ?></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <?= Html::a('Ver', ['view', 'id' => $model->id], ['class'=>'btn btn-primary']) ?>
                     </div>
                 </div>
             </div>

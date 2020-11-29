@@ -14,7 +14,7 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                '/gym/ver/<id:\d+>' => 'gym/view',
+                '<controller:[\w-]+>/<id:\d+>' => '<controller>/view',
             ],
         ],
         'reCaptcha3' => [

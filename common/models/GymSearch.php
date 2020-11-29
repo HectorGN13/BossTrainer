@@ -11,6 +11,9 @@ use common\models\Gym;
  */
 class GymSearch extends Gym
 {
+
+    public $globalSearch;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class GymSearch extends Gym
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'address', 'email', 'auth_key', 'password_hash', 'password_reset_token', 'created_at', 'updated_at', 'verification_token'], 'safe'],
+            [['name', 'globalSearch', 'address', 'email', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -64,13 +67,9 @@ class GymSearch extends Gym
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'address', $this->address])
-            ->andFilterWhere(['ilike', 'email', $this->email])
-            ->andFilterWhere(['ilike', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['ilike', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['ilike', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['ilike', 'verification_token', $this->verification_token]);
+        $query->orFilterWhere(['ilike', 'name', $this->globalSearch])
+            ->orFilterWhere(['ilike', 'address', $this->globalSearch])
+            ->orFilterWhere(['ilike', 'email', $this->globalSearch]);
 
         return $dataProvider;
     }
