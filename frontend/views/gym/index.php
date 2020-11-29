@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 GymsAsset::register($this);
 $this->title = 'Gimnasios';
+
 ?>
 <div class="gym-index">
     <div class="container" >
@@ -29,8 +30,11 @@ $this->title = 'Gimnasios';
                     <div class="card-body py-5">
                         <h5 class="card-title mt-3"><?= $model->name ?></h5>
                         <p class="card-text"><?= $model->description ?></p>
-                        <p class="card-text"><?= $model->address ?>, <?= $model->postal_code ?></p>
-                        <?= Html::a('Ver', ['view', 'id' => $model->id], ['class'=>'btn btn-primary']) ?>
+                        <p class="card-text"><?= $model->address ?>, <?= $model->postal_code ?> <?php
+                            if(isset($model->provincia->nombre_provincia)) echo $model->provincia->nombre_provincia;
+                            ?></p>
+
+                        <?= Html::a('Visitar', ['view', 'id' => $model->id], ['class'=>'btn btn-dark btn-rounded']) ?>
                     </div>
                 </div>
             </div>
