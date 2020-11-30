@@ -40,8 +40,8 @@ class Gym extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'address', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status', 'id_provincia', 'postal_code'], 'default', 'value' => null],
-            [['status', 'id_provincia', 'postal_code'], 'integer'],
+            [['status', 'provincia_id', 'postal_code'], 'default', 'value' => null],
+            [['status', 'provincia_id', 'postal_code'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'address', 'email', 'password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
@@ -49,7 +49,7 @@ class Gym extends \yii\db\ActiveRecord
             [['email'], 'unique'],
             [['name'], 'unique'],
             [['password_reset_token'], 'unique'],
-            [['id_provincia'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['id_provincia' => 'id']],
+            [['provincia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['provincia_id' => 'id']],
         ];
     }
 
@@ -70,7 +70,7 @@ class Gym extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
-            'id_provincia' => 'Id Provincia',
+            'provincia_id' => 'Id Provincia',
             'postal_code' => 'Código postal',
             'description' => 'Descripción',
         ];
@@ -103,6 +103,6 @@ class Gym extends \yii\db\ActiveRecord
      */
     public function getProvincia()
     {
-        return $this->hasOne(Provincias::class, ['id' => 'id_provincia'])->inverseOf('gyms');
+        return $this->hasOne(Provincias::class, ['id' => 'provincia_id'])->inverseOf('gyms');
     }
 }

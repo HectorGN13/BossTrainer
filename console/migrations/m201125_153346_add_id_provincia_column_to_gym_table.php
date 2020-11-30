@@ -12,19 +12,19 @@ class m201125_153346_add_id_provincia_column_to_gym_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{%gym}}', 'id_provincia', $this->integer()->defaultValue(null));
+        $this->addColumn('{{%gym}}', 'provincia_id', $this->integer()->defaultValue(null));
 
         $this->createIndex(
-            '{{%idx-gym-id_provincia}}',
+            '{{%idx-gym-provincia_id}}',
             '{{%gym}}',
-            'id_provincia'
+            'provincia_id'
         );
 
         // add foreign key for table `{{%gym}}`
         $this->addForeignKey(
-            '{{%fk-gym-id_provincia}}',
+            '{{%fk-gym-provincia_id}}',
             '{{%gym}}',
-            'id_provincia',
+            'provincia_id',
             '{{%provincias}}',
             'id',
             'CASCADE'
@@ -38,17 +38,17 @@ class m201125_153346_add_id_provincia_column_to_gym_table extends Migration
     {
         // drops foreign key for table `{{%gym}}`
         $this->dropForeignKey(
-            '{{%fk-gym-id_provincia}}',
+            '{{%fk-gym-provincia_id}}',
             '{{%gym}}'
         );
 
-        // drops index for column `user_id`
+        // drops index for column `provincias_id`
         $this->dropIndex(
-            '{{%idx-gym-id_provincia}}',
-            '{{%user_gym}}'
+            '{{%idx-gym-provincia_id}}',
+            '{{%provincias}}'
         );
 
 
-        $this->dropColumn('{{%gym}}', 'id_provincia');
+        $this->dropColumn('{{%gym}}', 'provincia_id');
     }
 }

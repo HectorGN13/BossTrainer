@@ -14,7 +14,7 @@ class m201118_192052_insert_values_provincias extends Migration
      */
     public function safeUp()
     {
-        Yii::$app->db->createCommand()->batchInsert($this->_provincias, ['cp_key', 'nombre_provincia'], [
+        Yii::$app->db->createCommand()->batchInsert($this->_provincias, ['id', 'nombre_provincia'], [
             [2,'Albacete'],
             [3,'Alicante/Alacant'],
             [4,'Almería'],

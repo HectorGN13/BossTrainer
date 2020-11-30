@@ -14,7 +14,6 @@ class m201118_191200_create_provincias_table extends Migration
     {
         $this->createTable('{{%provincias}}', [
             'id' => $this->primaryKey(),
-            'cp_key' => $this->smallInteger(6)->notNull()->unique(),
             'nombre_provincia' => $this->string(30)->notNull(),
         ]);
     }

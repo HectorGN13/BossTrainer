@@ -28,7 +28,7 @@ class m201125_165042_insert_values_gym extends Migration
             'created_at' => $time,
             'updated_at' => $time,
             'postal_code' => '11407',
-            'id_provincia' => '13',
+            'provincia_id' => '11',
             'description' => 'Situados en pleno centro de la ciudad de Jerez "Boxeo Jerez" es uno de los mejores gimnasios 
             de alto rendimiento para deportistas de elíte y en especial para boxeadores. Tambien se dan clases para principiantes
             y amateurs. Además disponemos de 2 salas de spining y un cuadrilatero.'
@@ -44,7 +44,7 @@ class m201125_165042_insert_values_gym extends Migration
             'created_at' => $time,
             'updated_at' => $time,
             'postal_code' => '11570',
-            'id_provincia' => '13',
+            'provincia_id' => '11',
             'description' => 'Disfruta haciendo deporte sin preocupaciones, aqui desconectaras en el bar de nuestro gymnasio, 
             donde podrás tomarte unas cañas mientras tus hijos estan en clases de natación. Dispone de piscina climatizada
             saunas y mucho más. ¡Aquí te esperamos!'

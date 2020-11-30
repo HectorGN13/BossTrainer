@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "provincias".
  *
  * @property int $id
- * @property int $cp_key
  * @property string $nombre_provincia
  *
  * @property Gym[] $gyms
@@ -29,11 +28,7 @@ class Provincias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cp_key', 'nombre_provincia'], 'required'],
-            [['cp_key'], 'default', 'value' => null],
-            [['cp_key'], 'integer'],
             [['nombre_provincia'], 'string', 'max' => 30],
-            [['cp_key'], 'unique'],
         ];
     }
 
@@ -44,7 +39,6 @@ class Provincias extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'cp_key' => 'Cp Key',
             'nombre_provincia' => 'Nombre Provincia',
         ];
     }
@@ -56,6 +50,6 @@ class Provincias extends \yii\db\ActiveRecord
      */
     public function getGyms()
     {
-        return $this->hasMany(Gym::className(), ['id_provincia' => 'id'])->inverseOf('provincia');
+        return $this->hasMany(Gym::className(), ['provincia_id' => 'id'])->inverseOf('provincia');
     }
 }
