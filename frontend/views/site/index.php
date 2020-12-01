@@ -33,7 +33,7 @@ $this->title = 'BossTrainer';
     'image' => '/images/bg-index.jpg',
     'element' => '.parallax1',
     'minHeight' => '400px',
-   // 'content' => $parallaxContain2,
+    'content' => $parallaxContain2,
 ]); ?>
 <div class="site-index">
     <div class="container">
@@ -96,7 +96,7 @@ $this->title = 'BossTrainer';
 
     </div>
     <?php
-     $parallaxContain2 = '<div class="col-12 mx-auto d-fex align-middle" >'
+     $parallaxContain3 = '<div class="col-12 mx-auto d-fex align-middle" >'
          . Html::img('@web/images/logoBlanco.png',
              ['alt'=>'BossTrainer', 'class'=>'img-fluid d-block mx-auto align-middle']) . '</div>';
 
@@ -105,7 +105,7 @@ $this->title = 'BossTrainer';
         'image' => '/images/slide4.jpg',
         'element' => '.parallax2',
         'minHeight' => '400px',
-        'content' => $parallaxContain2,
+        'content' => $parallaxContain3,
     ]); ?>
 
     <div class="container" id="contact" style="padding: 64px 15px">
