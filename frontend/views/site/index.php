@@ -6,9 +6,9 @@
 /* @var $content string */
 
 
+
 use frontend\assets\AppAsset;
 use kekaadrenalin\recaptcha3\ReCaptchaWidget;
-use lanselot\parallax\ParallaxWidget;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use pa3py6aka\yii2\ModalAlert;
@@ -29,12 +29,13 @@ $this->title = 'BossTrainer';
         Html::img('@web/images/mejorAPP.png', ['alt' => 'Mejor App', 'class' => 'my-4 mx-auto d-block img-fluid image-secondary']))
 ?>
 
-<?= ParallaxWidget::widget([
+<?= frontend\parallax\CustomParallax::widget([
     'image' => '/images/bg-index.jpg',
     'element' => '.parallax1',
     'minHeight' => '400px',
-   // 'content' => $parallaxContain2,
+    'content' => $parallaxContain2,
 ]); ?>
+
 <div class="site-index">
     <div class="container">
         <div class="jumbotron">
@@ -101,12 +102,12 @@ $this->title = 'BossTrainer';
              ['alt'=>'BossTrainer', 'class'=>'img-fluid d-block mx-auto align-middle']) . '</div>';
 
     ?>
-    <?= ParallaxWidget::widget([
-        'image' => '/images/slide4.jpg',
-        'element' => '.parallax2',
-        'minHeight' => '400px',
-        //'content' => $parallaxContain3,
-    ]); ?>
+        <?= frontend\parallax\CustomParallax::widget([
+                'image' => '/images/slide4.jpg',
+               'element' => '.parallax2',
+               'minHeight' => '400px',
+            'content' => $parallaxContain3,
+        ]) ?>
 
     <div class="container" id="contact" style="padding: 64px 15px">
         <div class="row">
