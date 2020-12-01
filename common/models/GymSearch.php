@@ -21,7 +21,8 @@ class GymSearch extends Gym
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'globalSearch', 'address', 'email', 'created_at', 'updated_at', 'provincia.nombre_provincia'], 'safe'],
+            [['name', 'globalSearch', 'address', 'email', 'created_at', 'updated_at', 'provincia.nombre_provincia',
+                'localidad.nombre_localidad'], 'safe'],
         ];
     }
 
@@ -36,7 +37,7 @@ class GymSearch extends Gym
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['provincia.nombre_provincia']);
+        return array_merge(parent::attributes(), ['provincia.nombre_provincia', 'localidad.nombre_localidad']);
     }
 
     /**
@@ -48,7 +49,7 @@ class GymSearch extends Gym
      */
     public function search($params)
     {
-        $query = Gym::find()->joinWith('provincia p');
+        $query = Gym::find()->joinWith('provincia p')->joinWith('localidad l');
 
         // add conditions that should always apply here
 
@@ -75,7 +76,8 @@ class GymSearch extends Gym
         $query->orFilterWhere(['ilike', 'name', $this->globalSearch])
             ->orFilterWhere(['ilike', 'address', $this->globalSearch])
             ->orFilterWhere(['ilike', 'email', $this->globalSearch])
-            ->orFilterWhere(['ilike', 'p.nombre_provincia', $this->globalSearch]);
+            ->orFilterWhere(['ilike', 'p.nombre_provincia', $this->globalSearch])
+            ->orFilterWhere(['ilike', 'l.nombre_localidad', $this->globalSearch]);;
 
         return $dataProvider;
     }

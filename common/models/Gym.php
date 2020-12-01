@@ -50,6 +50,7 @@ class Gym extends \yii\db\ActiveRecord
             [['name'], 'unique'],
             [['password_reset_token'], 'unique'],
             [['provincia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['provincia_id' => 'id']],
+            [['localidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => localidades::class, 'targetAttribute' => ['localidad_id' => 'id']],
         ];
     }
 
@@ -70,9 +71,10 @@ class Gym extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
-            'provincia_id' => 'Id Provincia',
+            'provincia_id' => 'Provincia ID',
             'postal_code' => 'Código postal',
             'description' => 'Descripción',
+            'localidad_id' => 'Localidad ID',
         ];
     }
 
@@ -104,5 +106,15 @@ class Gym extends \yii\db\ActiveRecord
     public function getProvincia()
     {
         return $this->hasOne(Provincias::class, ['id' => 'provincia_id'])->inverseOf('gyms');
+    }
+
+    /**
+     * Gets query for [[Localidad]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLocalidad()
+    {
+        return $this->hasOne(Localidades::className(), ['id' => 'localidad_id'])->inverseOf('gyms');
     }
 }
