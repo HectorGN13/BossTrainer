@@ -30,9 +30,10 @@ $this->title = 'Gimnasios';
                     <div class="card-body py-5">
                         <h5 class="card-title mt-3"><?= $model->name ?></h5>
                         <p class="card-text"><?= $model->description ?></p>
-                        <p class="card-text"><?= $model->address ?>, <?= $model->postal_code ?> </p>
+                        <p class="card-text"><?php if(isset($model->address)) echo $model->address . ","; ?>
+                            <?=  $model->postal_code ?> </p>
                         <p class="card-text"><?php if(isset($model->localidad->nombre_localidad))
-                                echo $model->localidad->nombre_localidad; ?>. <?php if(isset($model->provincia->nombre_provincia))
+                                echo $model->localidad->nombre_localidad . "."; ?> <?php if(isset($model->provincia->nombre_provincia))
                                 echo $model->provincia->nombre_provincia; ?></p>
                         <?= Html::a('Visitar', ['view', 'id' => $model->id], ['class'=>'btn btn-dark btn-rounded']) ?>
                     </div>
