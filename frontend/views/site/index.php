@@ -33,7 +33,7 @@ $this->title = 'BossTrainer';
     'image' => '/images/bg-index.jpg',
     'element' => '.parallax1',
     'minHeight' => '400px',
-    'content' => $parallaxContain2,
+   // 'content' => $parallaxContain2,
 ]); ?>
 <div class="site-index">
     <div class="container">
@@ -105,7 +105,7 @@ $this->title = 'BossTrainer';
         'image' => '/images/slide4.jpg',
         'element' => '.parallax2',
         'minHeight' => '400px',
-        'content' => $parallaxContain3,
+        //'content' => $parallaxContain3,
     ]); ?>
 
     <div class="container" id="contact" style="padding: 64px 15px">
