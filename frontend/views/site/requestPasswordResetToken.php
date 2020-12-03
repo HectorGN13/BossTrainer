@@ -13,7 +13,7 @@ $this->title = '¿Olvidaste tu contraseña?';
     <p>No te preocupes. Introduce tu email y te enviaremos las instrucciones para recuperar tu contraseña.</p>
     <div class="row">
         <div class="col-12">
-            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form', 'enableAjaxValidation' => true]); ?>
 
                 <?= $form->field($model, 'email')->textInput(['autofocus' => true])->input('email',  ['placeholder' => "Introduce tu correo."])->label(false) ?>
 

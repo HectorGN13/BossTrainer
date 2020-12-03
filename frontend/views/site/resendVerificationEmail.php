@@ -13,7 +13,7 @@ $this->title = 'Reenviar correo de verificación';
 
     <div class="row">
         <div class="col-12">
-            <?php $form = ActiveForm::begin(['id' => 'resend-verification-email-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'resend-verification-email-form', 'enableAjaxValidation' => true]); ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true])->input('email',  ['placeholder' => "Introduce tu correo."])->label(false) ?>
 
