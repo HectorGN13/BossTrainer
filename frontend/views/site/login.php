@@ -8,7 +8,7 @@ use frontend\assets\LoginAsset;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\modal;
+use yii\bootstrap4\Modal;
 
 $this->title = 'Login';
 LoginAsset::register($this);
@@ -49,22 +49,22 @@ LoginAsset::register($this);
     </div>
 </div>
 <?php
-modal::begin([
+Modal::begin([
     'title' => '<h2>¿Olvidaste tu contraseña?</h2>',
     'id' => 'modalPass',
   //  'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent'></div>";
-modal::end();
+Modal::end();
 ?>
 <?php
-modal::begin([
+Modal::begin([
     'title' => '<h2>Correo de verificación.</h2>',
     'id' => 'modalEmail',
    // 'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent'></div>";
-modal::end();
+Modal::end();
 ?>
