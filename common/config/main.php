@@ -34,7 +34,7 @@ return [
                 'username' => $username,
                 'password' => $password,
                 'charset' => 'utf8',
-            ] + $extra,
+        ] + $extra,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
