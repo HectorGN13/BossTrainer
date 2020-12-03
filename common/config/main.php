@@ -1,9 +1,9 @@
 <?php
 $host = '127.0.0.1';
 $port = '5433';
-$dbname = 'BossTrainer';
+$dbname = 'postgresql-horizontal-41488';
 $username = 'postgres';
-$password = 'alba1234';
+$password = 'postgres';
 $extra = [];
 return [
     'aliases' => [
