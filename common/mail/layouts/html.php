@@ -50,7 +50,10 @@ use yii\helpers\Html;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
-
+        .text-responsive {
+            text-align: center;
+            font-size: calc(100% + 1vw + 1vh);
+        }
         table,
         td {
             mso-table-lspace: 0pt;
@@ -107,6 +110,7 @@ use yii\helpers\Html;
         div[style*="margin: 16px 0;"] {
             margin: 0 !important;
         }
+
     </style>
     <?php $this->head() ?>
 </head>
