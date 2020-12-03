@@ -174,10 +174,15 @@ class SiteController extends Controller
                 Yii::$app->session->setFlash('error', 'Lo sentimos, no podemos restablecer la contraseña de la dirección de correo proporcionada.');
             }
         }
-
-        return $this->renderAjax('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('requestPasswordResetToken', [
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('requestPasswordResetToken', [
+                'model' => $model
+            ]);
+        }
     }
 
     /**
@@ -251,9 +256,15 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('error', 'Lo sentimos, no podemos reenviar el correo electrónico de verificación para la dirección de correo electrónico proporcionada.');
             return $this->refresh();
         }
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('resendVerificationEmail', [
+                'model' => $model
+            ]);
+        } else {
+            return $this->render('resendVerificationEmail', [
+                'model' => $model
+            ]);
+        }
 
-        return $this->renderAjax('resendVerificationEmail', [
-            'model' => $model
-        ]);
     }
 }

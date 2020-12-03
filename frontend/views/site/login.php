@@ -50,9 +50,9 @@ LoginAsset::register($this);
 </div>
 <?php
 modal::begin([
-    'title' => '<h2>Restaurar contraseña.</h2>',
+    'title' => '<h2>¿Olvidaste tu contraseña?</h2>',
     'id' => 'modalPass',
-    'size' => 'modal-lg'
+  //  'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent'></div>";
@@ -60,9 +60,9 @@ modal::end();
 ?>
 <?php
 modal::begin([
-    'title' => '<h2>Reenviar correo.</h2>',
+    'title' => '<h2>Correo de verificación.</h2>',
     'id' => 'modalEmail',
-    'size' => 'modal-lg'
+   // 'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent'></div>";
