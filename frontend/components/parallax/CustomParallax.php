@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\parallax;
+namespace frontend\components\parallax;
 
 use Yii;
 use yii\base\Widget;

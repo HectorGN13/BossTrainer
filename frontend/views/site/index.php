@@ -11,6 +11,7 @@ use frontend\assets\AppAsset;
 use kekaadrenalin\recaptcha3\ReCaptchaWidget;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use frontend\components\parallax\CustomParallax;
 
 AppAsset::register($this);
 $this->title = 'BossTrainer';
@@ -28,7 +29,7 @@ $this->title = 'BossTrainer';
         Html::img('@web/images/mejorAPP.png', ['alt' => 'Mejor App', 'class' => 'my-4 mx-auto d-block img-fluid image-secondary']))
 ?>
 
-<?= frontend\parallax\CustomParallax::widget([
+<?= CustomParallax::widget([
     'image' => '/images/bg-index.jpg',
     'element' => '.parallax1',
     'minHeight' => '400px',
@@ -101,7 +102,7 @@ $this->title = 'BossTrainer';
              ['alt'=>'BossTrainer', 'class'=>'img-fluid d-block mx-auto align-middle']) . '</div>';
 
     ?>
-        <?= frontend\parallax\CustomParallax::widget([
+        <?= CustomParallax::widget([
                 'image' => '/images/slide4.jpg',
                'element' => '.parallax2',
                'minHeight' => '400px',

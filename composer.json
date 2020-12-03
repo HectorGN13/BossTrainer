@@ -27,7 +27,6 @@
         "kartik-v/yii2-validators": "dev-master",
         "kartik-v/yii2-widget-activeform": "@dev",
         "kekaadrenalin/yii2-module-recaptcha-v3": "*",
-        "pa3py6aka/yii2-modal-alert-widget": "^1.3",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "kartik-v/yii2-password": "@dev"
     },

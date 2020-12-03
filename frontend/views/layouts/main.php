@@ -4,12 +4,11 @@
 /* @var $content string */
 
 
-use pa3py6aka\yii2\ModalAlert;
+use frontend\components\modalalert\ModalAlert;
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use frontend\assets\AppAsset;
-use common\widgets\Alert;
 
 
 AppAsset::register($this);
