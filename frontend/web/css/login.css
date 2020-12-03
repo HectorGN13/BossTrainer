@@ -5,6 +5,17 @@ body {
     background-size: 105%;
 }
 
+#restorePassLink, #restoreVerificationEmail {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+#restoreVerificationEmail:hover, #restorePassLink:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
+}
+
 .invalid-feedback {
     display: block;
 }

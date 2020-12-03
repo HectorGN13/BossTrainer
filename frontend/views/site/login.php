@@ -5,12 +5,15 @@
 /* @var $model \frontend\models\LoginForm */
 
 use frontend\assets\LoginAsset;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\modal;
 
 $this->title = 'Login';
 LoginAsset::register($this);
 ?>
+
 <div class="site-login">
     <div class="container scale-up-center my-5">
         <div class="row white center-vertically col-md-7 ml-auto mr-auto rounded-top">
@@ -29,9 +32,11 @@ LoginAsset::register($this);
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div style="color:#6b6b6b;margin:1em 0">
-                    ¿Has olvidado tu contraseña? <?= Html::a('Restaurar contraseña.', ['site/request-password-reset']) ?>
+                    ¿Has olvidado tu contraseña? <?= Html::a('Restaurar contraseña', '#', ['value' =>Url::to('request-password-reset'), 'id' => 'restorePassLink']) ?>
+
                     <br>
-                    ¿No has recibido el correo de verificación? <?= Html::a('Reenviar.', ['site/resend-verification-email']) ?>
+                    ¿No has recibido el correo de verificación? <?= Html::a('Reenviar.', '#', ['value' =>Url::to('resend-verification-email'), 'id' => 'restoreVerificationEmail']) ?>
+
                 </div>
 
                 <div class="form-group float-right">
@@ -43,3 +48,23 @@ LoginAsset::register($this);
         </div>
     </div>
 </div>
+<?php
+modal::begin([
+    'title' => '<h2>Restaurar contraseña.</h2>',
+    'id' => 'modalPass',
+    'size' => 'modal-lg'
+]);
+
+echo "<div id='modalContent'></div>";
+modal::end();
+?>
+<?php
+modal::begin([
+    'title' => '<h2>Reenviar correo.</h2>',
+    'id' => 'modalEmail',
+    'size' => 'modal-lg'
+]);
+
+echo "<div id='modalContent'></div>";
+modal::end();
+?>

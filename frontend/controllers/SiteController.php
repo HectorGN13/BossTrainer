@@ -169,15 +169,13 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Por favor, revise su correo electrónico para obtener más instrucciones.');
-
                 return $this->redirect('login');
             } else {
                 Yii::$app->session->setFlash('error', 'Lo sentimos, no podemos restablecer la contraseña de la dirección de correo proporcionada.');
-                return $this->refresh();
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
+        return $this->renderAjax('requestPasswordResetToken', [
             'model' => $model,
         ]);
     }
@@ -254,7 +252,7 @@ class SiteController extends Controller
             return $this->refresh();
         }
 
-        return $this->render('resendVerificationEmail', [
+        return $this->renderAjax('resendVerificationEmail', [
             'model' => $model
         ]);
     }
