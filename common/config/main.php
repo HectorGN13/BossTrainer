@@ -1,9 +1,9 @@
 <?php
-$host = '127.0.0.1';
-$port = '5433';
-$dbname = 'postgresql-horizontal-41488';
-$username = 'postgres';
-$password = 'postgres';
+$host = 'ec2-54-247-107-109.eu-west-1.compute.amazonaws.com';
+$port = '5432';
+$dbname = 'd77jse7a3aa00i';
+$username = 'mrdwwkjbslmuhh';
+$password = '2a4a07c860f8bf19e0d1b921561a6cbc416acc4a2626f73dbfe8cc43c528e655';
 $extra = [];
 return [
     'aliases' => [
