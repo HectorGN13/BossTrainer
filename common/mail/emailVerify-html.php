@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 $verifyLink = Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'token' => $user->verification_token]);
 ?>
-<div style="font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> ¡Estamos encantados de tenerte aquí!  Prepárate para entrenar duro en tu gimnasio con BossTrainer. </div>
+<div style="font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> ¡Estamos encantados de tenerte aquí!  Prepárate para un duro entrenamiento en tu gimnasio con BossTrainer. </div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <!-- LOGO -->
     <tr>

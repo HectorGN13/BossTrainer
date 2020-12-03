@@ -4,6 +4,7 @@
 /* @var $content string */
 
 
+use pa3py6aka\yii2\ModalAlert;
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
@@ -61,6 +62,9 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
+    <div class="container-fluid">
+        <?= ModalAlert::widget() ?>
+    </div>
     <div class="container-fluid">
         <?= $content ?>
     </div>

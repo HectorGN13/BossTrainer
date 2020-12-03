@@ -11,7 +11,6 @@ use frontend\assets\AppAsset;
 use kekaadrenalin\recaptcha3\ReCaptchaWidget;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use pa3py6aka\yii2\ModalAlert;
 
 AppAsset::register($this);
 $this->title = 'BossTrainer';
@@ -113,9 +112,6 @@ $this->title = 'BossTrainer';
         <div class="row">
             <div class="col-12">
                 <h3 class="text-responsive">CONTACTO</h3>
-            </div>
-            <div class="container-fluid">
-                <?= ModalAlert::widget() ?>
             </div>
             <div class="col-12 col-lg-8 ml-auto mr-auto">
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
