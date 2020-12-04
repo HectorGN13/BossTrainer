@@ -124,6 +124,11 @@ a.desc:after {
     border: none;
 }
 
+.special-border {
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;

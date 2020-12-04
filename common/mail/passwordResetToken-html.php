@@ -58,11 +58,6 @@ $resetLink = Yii::$app->urlManager->createAbsoluteUrl(['site/reset-password', 't
                 </tr> <!-- COPY -->
                 <tr>
                     <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p style="margin: 0;">Si no quieres ingresar unan ueva contraseña o no has sido quien lo ha solicitado, simplemente ignora este mensaje</p>
-                    </td>
-                </tr> <!-- COPY -->
-                <tr>
-                    <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                         <p style="margin: 0;">Si esto no funciona, copie y pege el siguiente link en su navegador:</p>
                     </td>
                 </tr> <!-- COPY -->
@@ -71,6 +66,11 @@ $resetLink = Yii::$app->urlManager->createAbsoluteUrl(['site/reset-password', 't
                         <p style="margin: 0;"><?= Html::a(Html::encode($resetLink), $resetLink) ?></p>
                     </td>
                 </tr>
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                        <p style="margin: 0;">Si no quieres ingresar una nueva contraseña o no has sido quien lo ha solicitado, simplemente ignora este mensaje</p>
+                    </td>
+                </tr> <!-- COPY -->
                 <tr>
                     <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                         <p style="margin: 0;">Si tiene alguna pregunta, no dude en contactar con nosotros; siempre estaremos encantados de ayudarle.</p>

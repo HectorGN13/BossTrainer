@@ -32,6 +32,11 @@ img {
     font-size: calc(100% + 1vw + 1vh);
 }
 
+.special-border {
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
 .jumbotron .row {
     margin-bottom: 3em;
 }

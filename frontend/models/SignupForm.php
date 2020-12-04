@@ -28,13 +28,13 @@ class SignupForm extends Model
             ['username', 'required', 'message' => 'Debes introducir un nombre de usuario.'],
             ['username', 'filter', 'filter'=>'strtolower'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.'],
-            ['username', 'string', 'min' => 3, 'max' => 255, 'message' => 'La longitud del nombre de usuario no puede ser inferior a 3'],
+            ['username', 'string', 'min' => 3, 'max' => 60, 'message' => 'La longitud del nombre de usuario no puede ser inferior a 3'],
 
             ['email', 'trim'],
             ['email', 'required', 'message' => 'Debes introducir un correo electrónico.'],
             ['email', 'email'],
             ['email', 'filter', 'filter'=>'strtolower'],
-            ['email', 'string', 'max' => 255],
+            ['email', 'string', 'max' => 60],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electronico ya existe.'],
 
             ['password', 'required', 'message' => 'Debes introducir una contraseña.'],

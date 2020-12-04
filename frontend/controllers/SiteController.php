@@ -207,9 +207,11 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'Se ha actualizado su contraseña.');
+            Yii::$app->session->setFlash('success', [
+                ['Contraseña actualizada',
+                    '¡Perfecto! Su contraseña se ha actualizado correctamente, ya puedes acceder al sistema.']]);
 
-            return $this->goHome();
+            return $this->redirect('login');
         }
 
         return $this->render('resetPassword', [
