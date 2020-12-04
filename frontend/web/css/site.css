@@ -20,6 +20,10 @@ body {
     color: #fff !important;
     font-size: x-large !important;
     font-weight: bold !important;
+    display:block;
+    padding: .9375rem !important;
+    line-height: 20px;
+    text-transform: uppercase;
 }
 .links-color:hover{
     transition: all 0.3s ease-in-out;

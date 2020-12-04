@@ -28,7 +28,8 @@
         "kartik-v/yii2-widget-activeform": "@dev",
         "kekaadrenalin/yii2-module-recaptcha-v3": "*",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "kartik-v/yii2-password": "@dev"
+        "kartik-v/yii2-password": "@dev",
+        "dz0wkn/yii2-material-kit": "1.0.x-dev"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
