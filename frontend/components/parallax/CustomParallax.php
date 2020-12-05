@@ -6,9 +6,7 @@ use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
-/**
- * This is just an example.
- */
+
 class CustomParallax extends Widget
 {
     public $image;
