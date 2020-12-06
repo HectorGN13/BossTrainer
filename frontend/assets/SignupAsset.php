@@ -13,7 +13,6 @@ class SignupAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/bootstrap.css',
         'css/index.css',
         'css/signup.css'
     ];

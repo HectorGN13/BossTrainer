@@ -30,7 +30,7 @@ AppAsset::register($this);
         /** SIDEBAR **/
 
         #sidebar {
-            background:#5bc995;
+            background: #000000;
             height:100vh;
             width:240px;
             position:fixed;
@@ -53,10 +53,13 @@ AppAsset::register($this);
             height:170px;
             border-radius: 50%;
             overflow: hidden;
+            background: white;
             box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
         }
 
         #sidebar h3 {
+            color: white !important;
+            background: black;
             font-weight:normal;
             margin-bottom:0;
         }
@@ -69,8 +72,6 @@ AppAsset::register($this);
 
         #sidebar ul li {
             padding: 0.5em 1em 0.5em 3em;
-            font-size: 0.95em;
-            font-weight: 500;
             background-repeat: no-repeat;
             background-position: left 15px center;
             background-size: auto 20px;
@@ -79,7 +80,7 @@ AppAsset::register($this);
         }
 
         #sidebar ul li:hover {
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 253, 253, 0.3);
         }
         #sidebar ul li:focus {
             outline: none;
@@ -90,7 +91,7 @@ AppAsset::register($this);
             margin-left: 0;
         }
         #wrapper.toggled #togglebutton {
-            margin-left: -200px;
+            margin-left: -240px;
         }
         @media (min-width: 768px) {
             #wrapper.toggled #sidebar {
@@ -98,6 +99,11 @@ AppAsset::register($this);
             }
         }
 
+        @media (max-width: 768px) {
+            #wrapper.toggled #sidebar {
+                margin-left: -15rem;
+            }
+        }
         .button-special {
             background: black;
             display: flex;
@@ -204,7 +210,7 @@ AppAsset::register($this);
                 </div>
                 <div class="img bg-wrap text-center py-4 pt-5">
                     <div class="avatar">
-                        <img src="https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos-810x540.jpg" class="img-responsive" alt="foto perfil"/>
+                        <img src="https://assets.stickpng.com/images/59cfc95ed3b1936210a5dddd.png" class="img-responsive" alt="foto perfil"/>
                         <h3>Patricia Henderson</h3>
                     </div>
                 </div>
@@ -212,8 +218,8 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => ['site/index'],
-                            'label' => 'Home',
-                            'icon' => 'home'
+                            'label' => ' Home',
+                            'icon' => 'fas fa-home'
                         ],
                         [
                             'url' => ['site/about'],
@@ -233,7 +239,7 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
-<footer class="footer">
+<footer class="footer text-white">
     <div class="container">
         <div class="row">
             <div class="mr-auto">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>

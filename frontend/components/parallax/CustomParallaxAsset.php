@@ -3,7 +3,6 @@
 namespace frontend\components\parallax;
 
 
-use Yii;
 use yii\web\AssetBundle;
 
 class CustomParallaxAsset extends AssetBundle
