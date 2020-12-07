@@ -1,5 +1,5 @@
 .nav-label {
-    color: white;
+    color: #181818;
     font-size: 1.1em;
     font-weight: 500;
 }
@@ -9,10 +9,10 @@
 #sidebar ul li a i {
     font-weight: 500;
     font-size: 1.1em;
-    color: white;
+    color: #181818
 }
 #sidebar ul .active a span, #sidebar ul .active a i {
-    color: #e6282f ;
+    color: #181818;
 }
 
 /** tooglebutton **/
