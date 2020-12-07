@@ -10,6 +10,8 @@ use yii\helpers\Url;
 class NavSidebar extends Widget
 {
     public $items = [];
+    public $imgProfile = "";
+    public $nameProfile = "";
 
     public function init()
     {
@@ -29,8 +31,20 @@ class NavSidebar extends Widget
     public function run()
     {
 
-        $navHtml = '<ul class="mb-5">';
-        
+        $navHtml = '<nav id="sidebar">';
+
+        //Toogle button
+        $navHtml .= '<div id="togglebutton" class="button-special">
+                    <i class="fas fa-chevron-right"></i></div>';
+        //Profile
+        $navHtml .= ' <div class="img bg-wrap text-center py-4 pt-5">';
+        $navHtml .= '<div class="avatar">';
+        $navHtml .= '<img src="'.$this->imgProfile.'" class="img-responsive" alt="foto perfil"/>';
+        $navHtml .= '<h3>'.$this->nameProfile.'</h3>';
+        $navHtml .= '</div></div>';
+
+        //items
+        $navHtml .= '<ul class="mb-5">';
         foreach ($this->items as $item) {
             if (Yii::$app->controller->route == trim($item['url'][0], '/')) {
                 $activeMenu = 'active';
@@ -47,8 +61,9 @@ class NavSidebar extends Widget
             $navHtml .= '</a>';
             $navHtml .= '</li>';
         }
-    
         $navHtml .= '</ul>';
+
+        $navHtml .= '</nav>';
         
 
         return $navHtml;

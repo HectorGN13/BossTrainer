@@ -12,6 +12,10 @@ class NavSidebarAsset extends AssetBundle
         'css/nav-sidebar.css'
     ];
 
+    public $js = [
+        'js/nav-sidebar.js',
+    ];
+
     public function init()
     {
         // Tell AssetBundle where the assets files are

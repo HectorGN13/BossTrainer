@@ -27,83 +27,6 @@ AppAsset::register($this);
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <style>
-        /** SIDEBAR **/
-
-        #sidebar {
-            background: #000000;
-            height:100vh;
-            width:240px;
-            position:fixed;
-            top:0;
-            left:0;
-            z-index:5;
-            outline:none;
-            -webkit-transition: margin .25s ease-out;
-            -moz-transition: margin .25s ease-out;
-            -o-transition: margin .25s ease-out;
-            transition: margin .25s ease-out;
-        }
-        #sidebar .avatar {
-            background:rgba(0,0,0,0.1);
-            padding:2em 0.5em;
-            text-align:center;
-        }
-        #sidebar .avatar img {
-            width: 170px;
-            height:170px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
-        }
-
-        #sidebar h3 {
-            color: white !important;
-            background: black;
-            font-weight:normal;
-            margin-bottom:0;
-        }
-
-        #sidebar ul {
-            list-style: none;
-            padding: 0.5em 0;
-            margin: 0;
-        }
-
-        #sidebar ul li {
-            padding: 0.5em 1em 0.5em 3em;
-            background-repeat: no-repeat;
-            background-position: left 15px center;
-            background-size: auto 20px;
-            transition: all 0.15s linear;
-            cursor: pointer;
-        }
-
-        #sidebar ul li:hover {
-            background-color: rgba(255, 253, 253, 0.3);
-        }
-        #sidebar ul li:focus {
-            outline: none;
-        }
-
-        /**Accion de ocultar**/
-        #wrapper.toggled #sidebar {
-            margin-left: 0;
-        }
-        #wrapper.toggled #togglebutton {
-            margin-left: -240px;
-        }
-        @media (min-width: 768px) {
-            #wrapper.toggled #sidebar {
-                margin-left: -15rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #wrapper.toggled #sidebar {
-                margin-left: -15rem;
-            }
-        }
         .button-special {
             background: black;
             display: flex;
@@ -137,18 +60,6 @@ AppAsset::register($this);
             border-color: rgba(0,0,0,0.1);
         }
 
-        /** tooglebutton **/
-        #togglebutton {
-            width: 30px;
-            height: 50px;
-            top: 70px;
-            left: 235px;
-            -webkit-transition: margin .25s ease-out;
-            -moz-transition: margin .25s ease-out;
-            -o-transition: margin .25s ease-out;
-            transition: margin .25s ease-out;
-        }
-
         #content {
             width: 100%;
             padding: 0;
@@ -157,8 +68,6 @@ AppAsset::register($this);
             -o-transition: all 0.3s;
             transition: all 0.3s;
         }
-
-
 
     </style>
 </head>
@@ -203,18 +112,11 @@ AppAsset::register($this);
     </div>
     <div class="container-fluid">
         <div id="wrapper" class="wrapper d-flex align-items-stretch">
-            <nav id="sidebar">
-                <!-- Toggle button -->
-                <div id="togglebutton" class="button-special">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-                <div class="img bg-wrap text-center py-4 pt-5">
-                    <div class="avatar">
-                        <img src="https://assets.stickpng.com/images/59cfc95ed3b1936210a5dddd.png" class="img-responsive" alt="foto perfil"/>
-                        <h3>Patricia Henderson</h3>
-                    </div>
-                </div>
-                <?= NavSidebar::widget([
+            <?php
+            if (!Yii::$app->user->isGuest) {
+                echo NavSidebar::widget([
+                    'imgProfile' =>  'https://assets.stickpng.com/images/59cfc95ed3b1936210a5dddd.png',
+                    'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
                             'url' => ['site/index'],
@@ -227,8 +129,9 @@ AppAsset::register($this);
                             'icon' => 'info-sign'
                         ],
                     ],
-                ]) ?>
-            </nav>
+                ]);
+            }
+            ?>
             <div id="content" class="container-fluid">
                 <?= $content ?>
             </div>
