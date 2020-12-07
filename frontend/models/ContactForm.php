@@ -34,7 +34,7 @@ class ContactForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             //reCaptchaV3 google
-            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 1],
+            [['reCaptcha'], ReCaptchaValidator::className(), 'acceptance_score' => 0.5],
             //Terms and use
             [['agree'], 'required', 'requiredValue' => 1, 'message' => 'Por favor, debe aceptar los términos y condiciones de uso para enviar su formulario.']
         ];
