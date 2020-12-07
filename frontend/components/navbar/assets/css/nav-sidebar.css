@@ -102,20 +102,20 @@
 }
 
 /**Accion de ocultar**/
- #sidebar.toggled {
+ #wrapper.toggled #sidebar {
     margin-left: 0;
 }
-#sidebar.toggled #togglebutton {
+#wrapper.toggled #togglebutton {
     margin-left: -240px;
 }
 @media (min-width: 768px) {
-    #sidebar.toggled #sidebar {
+    #wrapper.toggled #sidebar {
         margin-left: -15rem;
     }
 }
 
 @media (max-width: 768px) {
-    #sidebar.toggled #sidebar {
+    #wrapper.toggled #sidebar {
         margin-left: -15rem;
     }
 }
