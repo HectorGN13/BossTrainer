@@ -41,6 +41,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'user/view/<id:\d+>' => 'user/view',
             ],
         ],
 
