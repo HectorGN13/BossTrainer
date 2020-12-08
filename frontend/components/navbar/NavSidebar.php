@@ -37,7 +37,7 @@ class NavSidebar extends Widget
         $navHtml .= '<div id="togglebutton" class="button-special">
                     <i class="fas fa-chevron-right"></i></div>';
         //Profile
-        $navHtml .= ' <div class="img bg-wrap text-center py-4 pt-5">';
+        $navHtml .= ' <div class="img bg-wrap text-center pt-5">';
         $navHtml .= '<div class="avatar">';
         $navHtml .= '<img src="'.$this->imgProfile.'" class="img-responsive" alt="foto perfil"/>';
         $navHtml .= '<h3>'.$this->nameProfile.'</h3>';
@@ -45,6 +45,7 @@ class NavSidebar extends Widget
 
         //items
         $navHtml .= '<ul class="mb-5">';
+        $navHtml .= '<hr>';
         foreach ($this->items as $item) {
             if (Yii::$app->controller->route == trim($item['url'][0], '/')) {
                 $activeMenu = 'active';
@@ -54,12 +55,14 @@ class NavSidebar extends Widget
             
             $navHtml .= '<li class="'.$activeMenu.'"><a href = "'.Url::to($item['url']).'">';
             $navHtml .= '<i data-toggle="tooltip" data-placement="right" title="'.$item['label'].'" class="'.$item['icon'].'"></i>';
-            $navHtml .= '<span class="nav-label">'.$item['label'].'</span>';
+            $navHtml .= '<span class="nav-label" style="margin-left: 15px">'.$item['label'].'</span>';
             if (isset($item['badge'])) {
                 $navHtml .= '<span class="badge">'.$item['badge'].'</span>';
             }
+            $navHtml .= '<i class="fas fa-chevron-right" style="float: right;"></i>';
             $navHtml .= '</a>';
             $navHtml .= '</li>';
+            $navHtml .= '<hr>';
         }
         $navHtml .= '</ul>';
 
