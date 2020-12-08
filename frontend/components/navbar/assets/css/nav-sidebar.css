@@ -51,7 +51,7 @@
     position:fixed;
     top:0;
     left:0;
-    z-index:-5;
+    z-index:0;
     outline:none;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
@@ -104,7 +104,7 @@
 }
 
 #sidebar ul li:hover {
-    background-color: rgba(239, 239, 239, 0.3) !important;
+    background-color: rgba(239, 239, 239, 0.8) !important;
 }
 #sidebar ul li:focus {
     outline: none;

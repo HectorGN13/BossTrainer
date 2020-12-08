@@ -115,18 +115,43 @@ AppAsset::register($this);
             <?php
             if (!Yii::$app->user->isGuest) {
                 echo NavSidebar::widget([
-                    'imgProfile' =>  'https://assets.stickpng.com/images/59cfc95ed3b1936210a5dddd.png',
+                    'imgProfile' =>  'https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg',
                     'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
-                            'url' => ['site/index'],
-                            'label' => ' Home',
-                            'icon' => 'fas fa-home'
+                            'url' => ['site/benchmarks'],
+                            'label' => ' Mis Benchmarks',
+                            'icon' => 'fas fa-trophy'
                         ],
                         [
-                            'url' => ['site/about'],
-                            'label' => 'about',
-                            'icon' => 'info-sign'
+                            'url' => ['site/abilities'],
+                            'label' => ' Mis Habilidades',
+                            'icon' => 'fas fa-running'
+                        ],
+                        [
+                            'url' => ['site/rms'],
+                            'label' => ' Mis RMs',
+                            'icon' => 'fas fa-medal'
+                        ],
+                        [
+                            'url' => ['site/marks'],
+                            'label' => ' Otras Marcas',
+                            'icon' => 'fas fa-star'
+                        ],
+                        [
+                            'url' => ['site/schedule'],
+                            'label' => ' Mi Agenda',
+                            'icon' => 'fas fa-calendar-check'
+                        ],
+                        [
+                            'url' => ['site/my-gyms'],
+                            'label' => ' Mis Gyms',
+                            'icon' => 'fas fa-dumbbell'
+                        ],
+                        [
+                            'url' => ['site/profile'],
+                            'label' => ' Mi Perfil',
+                            'icon' => 'fas fa-user-circle'
                         ],
                     ],
                 ]);
