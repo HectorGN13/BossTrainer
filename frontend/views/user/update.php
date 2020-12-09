@@ -1,5 +1,6 @@
 <?php
 
+use kartik\password\PasswordInput;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 
@@ -34,15 +35,21 @@ $this->title = 'Mi perfil';
                                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><?= isset($model->name) ? Html::encode($model->name) : "Todavía no tienes nombre" ?></h4>
                                         <p class="mb-0"><?= $model->username ?></p>
                                         <div class="mt-2">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-rounded btn-dark" type="button">
                                                 <i class="fa fa-fw fa-camera"></i>
                                                 <span>Cambiar Foto</span>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="text-center text-sm-right">
-                                        <span class="badge badge-secondary">administrator</span>
-                                        <div class="text-muted"><small><?= $model->created_at ?></small></div>
+                                        <?php
+                                            if( $model->status == 10) {
+                                                echo Html::tag('span','Registrado' , ['class' => 'badge badge-success']);
+                                            } else {
+                                                echo Html::tag('span','No registrado' , ['class' => 'badge badge-secondary']);
+                                            }
+                                        ?>
+                                        <div class="text-muted"><small><?= Yii::$app->formatter->format($model->created_at, 'date'); ?></small></div>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +109,11 @@ $this->title = 'Mi perfil';
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <?= $form->field($model, 'password')->textInput()->input('password') ?>
+                                                            <?= $form->field($model, 'password')->widget(PasswordInput::classname(), [
+                                                                'pluginOptions' => [
+                                                                    'showMeter' => true,
+                                                                    'toggleMask' => false,
+                                                                ]]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -117,7 +128,7 @@ $this->title = 'Mi perfil';
                                         </div>
                                         <div class="row">
                                             <div class="col d-flex justify-content-end">
-                                                <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+                                                <?= Html::submitButton('Guardar Cambios', ['class' => 'float-right btn btn-rounded btn-dark', 'name' => 'saveChanges-button']) ?>
                                             </div>
                                             <?php ActiveForm::end(); ?>
                                         </div>
