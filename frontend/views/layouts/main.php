@@ -2,7 +2,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
+/* @var $model common\models\User */
 
 use frontend\components\modalalert\ModalAlert;
 use frontend\components\navbar\NavSidebar;
@@ -10,7 +10,6 @@ use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use frontend\assets\AppAsset;
-
 
 AppAsset::register($this);
 ?>
@@ -120,37 +119,37 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => ['site/benchmarks'],
-                            'label' => ' Mis Benchmarks',
+                            'label' => 'Mis Benchmarks',
                             'icon' => 'fas fa-trophy'
                         ],
                         [
                             'url' => ['site/abilities'],
-                            'label' => ' Mis Habilidades',
+                            'label' => 'Mis Habilidades',
                             'icon' => 'fas fa-running'
                         ],
                         [
                             'url' => ['site/rms'],
-                            'label' => ' Mis RMs',
+                            'label' => 'Mis RMs',
                             'icon' => 'fas fa-medal'
                         ],
                         [
                             'url' => ['site/marks'],
-                            'label' => ' Otras Marcas',
+                            'label' => 'Otras Marcas',
                             'icon' => 'fas fa-star'
                         ],
                         [
                             'url' => ['site/schedule'],
-                            'label' => ' Mi Agenda',
+                            'label' => 'Mi Agenda',
                             'icon' => 'fas fa-calendar-check'
                         ],
                         [
                             'url' => ['site/my-gyms'],
-                            'label' => ' Mis Gyms',
+                            'label' => 'Mis Gyms',
                             'icon' => 'fas fa-dumbbell'
                         ],
                         [
-                            'url' => ['site/profile'],
-                            'label' => ' Mi Perfil',
+                            'url' => ['user/update', 'id' => Yii::$app->user->identity->id],
+                            'label' => 'Mi Perfil',
                             'icon' => 'fas fa-user-circle'
                         ],
                     ],

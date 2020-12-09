@@ -22,6 +22,15 @@ return [
             'site_key'   => '6LdazuUZAAAAAMP17Ct88BJ11nJSAV-jUrW9Mpjh',
             'secret_key' => '6LdazuUZAAAAAEoMt3WVZmTtZ_F67mH__j4_T9Zy',
         ],
+        'awssdk' => [
+            'class' => 'fedemotta\awssdk\AwsSdk',
+            'credentials' => [
+                'key' => getenv('AWS_ACCESS_KEY_ID'),
+                'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
+            ],
+            'region' => 'eu-west-3',
+            'version' => 'latest',
+        ],
     ],
 
 ];

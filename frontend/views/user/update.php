@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -7,11 +8,12 @@ use yii\helpers\Html;
 
 $this->title = 'Mi perfil';
 
+
 ?>
 
-<div class="user-update container">
+<div class="user-update container pt-5">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="py-4"><?= Html::encode($this->title) ?></h1>
 
     <div class="col">
         <div class="row">
@@ -29,24 +31,23 @@ $this->title = 'Mi perfil';
                                 </div>
                                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                     <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-                                        <p class="mb-0">@johnny.s</p>
-                                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
+                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><?= isset($model->name) ? Html::encode($model->name) : "Todavía no tienes nombre" ?></h4>
+                                        <p class="mb-0"><?= $model->username ?></p>
                                         <div class="mt-2">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fa fa-fw fa-camera"></i>
-                                                <span>Change Photo</span>
+                                                <span>Cambiar Foto</span>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="text-center text-sm-right">
                                         <span class="badge badge-secondary">administrator</span>
-                                        <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                                        <div class="text-muted"><small><?= $model->created_at ?></small></div>
                                     </div>
                                 </div>
                             </div>
                             <ul class="nav nav-tabs">
-                                <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                <li class="nav-item"><a href="" class="active nav-link">Configuración</a></li>
                             </ul>
                             <div class="tab-content pt-3">
                                 <div class="tab-pane active">
@@ -55,31 +56,34 @@ $this->title = 'Mi perfil';
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
+                                                        <?php
+                                                        $form = ActiveForm::begin([
+                                                            'id' => 'login-form',
+                                                        ]);
+                                                        ?>
                                                         <div class="form-group">
-                                                            <label>Full Name</label>
-                                                            <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                                                            <?= $form->field($model, 'name')->textInput()->input('text', ['placeholder' =>
+                                                                isset($model->name) ? Html::encode($model->name) : "Escríbe tu nombre completo." ]) ?>
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label>Username</label>
-                                                            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                                                            <?= $form->field($model, 'username')->textInput()->input('text', ['placeholder' => Html::encode($model->username)]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label>Email</label>
-                                                            <input class="form-control" type="text" placeholder="user@example.com">
+                                                            <?= $form->field($model, 'email')->textInput()->input('email', ['placeholder' => Html::encode($model->email)]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col mb-3">
                                                         <div class="form-group">
-                                                            <label>About</label>
-                                                            <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                                                            <?= $form->field($model, 'bio')->textarea(['rows' => '6', 'placeholder'=>
+                                                                isset($model->bio) ? Html::encode($model->bio) : "Cuéntanos algo sobre ti." ])->hint('0/320 Caracteres.') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,36 +91,35 @@ $this->title = 'Mi perfil';
                                         </div>
                                         <div class="row">
                                             <div class="col-12 col-sm-6 mb-3">
-                                                <div class="mb-2"><b>Change Password</b></div>
+                                                <div class="mb-2"><b>Cambiar contraseña</b></div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label>Current Password</label>
-                                                            <input class="form-control" type="password" placeholder="••••••">
+                                                            <?= $form->field($model, 'passwordActual')->textInput()->input('password') ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label>New Password</label>
-                                                            <input class="form-control" type="password" placeholder="••••••">
+                                                            <?= $form->field($model, 'password')->textInput()->input('password') ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                                            <input class="form-control" type="password" placeholder="••••••"></div>
+                                                            <?= $form->field($model, 'passwordConfirm')->textInput()->input('password') ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col d-flex justify-content-end">
-                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                <button class="btn btn-primary" type="submit">Guardar Cambios</button>
                                             </div>
+                                            <?php ActiveForm::end(); ?>
                                         </div>
                                     </form>
                                 </div>

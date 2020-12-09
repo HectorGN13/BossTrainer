@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use kartik\password\StrengthValidator;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -21,12 +22,19 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $profile_img
+ * @property string $name
+ * @property string $bio
  */
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+
+    public $password;
+    public $passwordConfirm;
+    public $passwordActual;
 
 
     /**
@@ -53,8 +61,56 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['username', 'trim'],
+            ['username', 'required', 'message' => 'Debes introducir un nombre de usuario.'],
+            ['username', 'filter', 'filter'=>'strtolower'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.'],
+            ['username', 'string', 'min' => 3, 'max' => 60, 'message' => 'La longitud del nombre de usuario no puede ser inferior a 3'],
+
+            ['email', 'trim'],
+            ['email', 'required', 'message' => 'Debes introducir un correo electrónico.'],
+            ['email', 'email'],
+            ['email', 'filter', 'filter'=>'strtolower'],
+            ['email', 'string', 'max' => 60],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electronico ya existe.'],
+
+
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+
+            [
+                ['password'], StrengthValidator::className(),
+                'min' => 8,
+                'minError'=>'Has introducido {found} caracteres. El mínimo requerido es 8.',
+                'upper' => 1,
+                'upperError'=> 'Debes introducir al menos una mayúscula.',
+                'digit' => 1,
+                'digitError'=> 'Debes introducir al menos un dígito.',
+                'userAttribute'=>'username',
+                'hasUser' => true,
+                'hasUserError'=> 'La contraseña no puede contener el nombre de usuario.',
+                'preset' => null,
+                'special' => 0,
+            ],
+            ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden." ],
+            ['bio', 'string', 'max' => 320, 'message' => 'La biografía no puede superar los 320 caracteres.'],
+
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de usuario',
+            'email' => 'Correo electrónico',
+            'password' => 'Nueva contraseña',
+            'passwordConfirm' => 'Confirmar contraseña',
+            'bio' => 'Mi biografía',
+            'name' => 'Nombre',
+            'passwordActual' => 'Contraseña actual'
         ];
     }
 

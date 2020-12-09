@@ -2,7 +2,6 @@
 namespace frontend\models;
 
 use kartik\password\StrengthValidator;
-use phpDocumentor\Reflection\Types\Null_;
 use Yii;
 use yii\base\Model;
 use common\models\User;

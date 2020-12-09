@@ -50,9 +50,9 @@ class UserController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionProfile($id)
     {
-        return $this->render('view', [
+        return $this->render('profile', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -64,13 +64,28 @@ class UserController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id = null)
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($id === null) {
+            if (Yii::$app->user->isGuest) {
+                Yii::$app->session->setFlash('error', 'Debe estar logueado para editar su perfil.');
+                return $this->goHome();
+            } else {
+                $model = Yii::$app->user->identity;
+            }
+        } else {
+            $model = User::findOne($id);
         }
+
+        $model->password = '';
+
+        if ($model->load(Yii::$app->request->post()) &&  $model->save()){
+            Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
+            return $this->redirect(['profile', 'id' => $model->id]);
+        }
+
+        $model->password = '';
+        $model->passwordConfirm = '';
 
         return $this->render('update', [
             'model' => $model,
