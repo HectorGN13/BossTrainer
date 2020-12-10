@@ -2,13 +2,17 @@
 
 namespace frontend\controllers;
 
+use app\models\ImagenForm;
 use Yii;
 use common\models\User;
 use common\models\UserSearch;
+use yii\bootstrap4\ActiveForm;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -29,7 +33,7 @@ class UserController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['update'],
+                'only' => ['update', 'profile'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -57,33 +61,78 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id = null)
+
+//    /**
+//     * Updates an existing User model.
+//     * If update is successful, the browser will be redirected to the 'view' page.
+//     * @param integer $id
+//     * @return mixed
+//     * @throws NotFoundHttpException
+//     */
+//    public function actionUpdate($id)
+//    {
+////        $img = new ImagenForm();
+////        $model = $this->findModel($id);
+////        $previous_photo = $model->profile_img;
+////        if (Yii::$app->request->isPost) {
+////            if ($model->load(Yii::$app->request->post())) {
+////                $upload = UploadedFile::getInstance($img, 'imagen');
+////                if(is_object($upload)){
+////                    $upload_filename = 'images/user/' . $upload->baseName . '.' . $upload->extension;
+////                    $upload->saveAs($upload_filename);
+////                    $model->profile_img = $upload_filename;
+////                }else{
+////                    $model->profile_img = $previous_photo;
+////                }
+////                if ($model->save()) {
+////                    Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
+////                    return $this->redirect(['profile', 'id' => $model->id]);
+////                } else {
+////                    Yii::$app->session->setFlash('error', 'Error al modificar su perfil.');
+////                }
+////            }
+////        }
+////        return $this->render('update', [
+////            'model' => $model,
+////        ]);
+//
+//        $model = User::findOne($id);
+//
+//
+//        if ($model->load(Yii::$app->request->post())){
+//            $model->save();
+//            Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
+//            return $this->redirect(['profile', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('update', [
+//            'model' => $model,
+//        ]);
+//
+//
+//    }
+
+
+
+    public function actionUpdate($id)
     {
-        if ($id === null) {
-            if (Yii::$app->user->isGuest) {
-                Yii::$app->session->setFlash('error', 'Debe estar logueado para editar su perfil.');
-                return $this->goHome();
-            } else {
-                $model = Yii::$app->user->identity;
-            }
-        } else {
-            $model = User::findOne($id);
+
+        $model = $this->findModel($id);
+        //$model->scenario = User::SCENARIO_UPDATE;
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        $model->password = '';
-
-        if ($model->load(Yii::$app->request->post()) &&  $model->save()){
-            Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->session->setFlash('success', 'Se ha modificado correctamente.');
+//            var_dump($model->validate());
+//            var_dump($model);
+//            die();
             return $this->redirect(['profile', 'id' => $model->id]);
         }
 
+        $model->oldPassword = '';
         $model->password = '';
         $model->passwordConfirm = '';
 

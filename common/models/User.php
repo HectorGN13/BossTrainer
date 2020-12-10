@@ -1,7 +1,7 @@
 <?php
 namespace common\models;
 
-use kartik\password\StrengthValidator;
+use app\models\UserGym;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -32,9 +32,13 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
-    public $password;
+    const SCENARIO_UPDATE = 'update';
+
     public $passwordConfirm;
-    public $passwordActual;
+    public $password;
+    public $oldPassword;
+
+
 
 
     /**
@@ -61,40 +65,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required', 'message' => 'Debes introducir un nombre de usuario.'],
-            ['username', 'filter', 'filter'=>'strtolower'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.'],
-            ['username', 'string', 'min' => 3, 'max' => 60, 'message' => 'La longitud del nombre de usuario no puede ser inferior a 3'],
+            ['email', 'required', 'message' => 'El correo electrónico no puede estar vacío'],
+            ['email', 'email', 'message' => 'El formato no es válido, tienes que introducir un correo real.'],
+            [['profile_img'], 'string', 'max' => 200],
+            [['name'], 'string', 'max' => 100, 'message' => 'El nombre no puede superar los 100 caracteres.'],
+            ['bio', 'string', 'max' => 320, 'message' => 'Tu biografía no puede superar los 320 caracteres.'],
+            [['email'], 'trim'],
+            [['username'], 'trim'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'La direccion de correo ya está en uso.'],
+            [['password_reset_token'], 'unique'],
+            [['username'], 'unique'],
 
-            ['email', 'trim'],
-            ['email', 'required', 'message' => 'Debes introducir un correo electrónico.'],
-            ['email', 'email'],
-            ['email', 'filter', 'filter'=>'strtolower'],
-            ['email', 'string', 'max' => 60],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electronico ya existe.'],
-
-
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-
-            [
-                ['password'], StrengthValidator::className(),
-                'min' => 8,
-                'minError'=>'Has introducido {found} caracteres. El mínimo requerido es 8.',
-                'upper' => 1,
-                'upperError'=> 'Debes introducir al menos una mayúscula.',
-                'digit' => 1,
-                'digitError'=> 'Debes introducir al menos un dígito.',
-                'userAttribute'=>'username',
-                'hasUser' => true,
-                'hasUserError'=> 'La contraseña no puede contener el nombre de usuario.',
-                'preset' => null,
-                'special' => 0,
-            ],
-            ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden." ],
-            ['bio', 'string', 'max' => 320, 'message' => 'La biografía no puede superar los 320 caracteres.'],
-
+            ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden.",
+                'on' => [self::SCENARIO_DEFAULT, self::SCENARIO_UPDATE],],
         ];
     }
 
@@ -104,13 +87,22 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'username' => 'Nombre de usuario',
+            'id' => 'ID',
+            'username' => 'Nombre de usuario.',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'Password Hash',
+            'password_reset_token' => 'Password Reset Token',
             'email' => 'Correo electrónico',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'verification_token' => 'Verification Token',
+            'profile_img' => 'Profile Img',
+            'name' => 'Nombre',
+            'bio' => 'Mi biografía',
             'password' => 'Nueva contraseña',
             'passwordConfirm' => 'Confirmar contraseña',
-            'bio' => 'Mi biografía',
-            'name' => 'Nombre',
-            'passwordActual' => 'Contraseña actual'
+            'oldPassword' => 'Contraseña actual'
         ];
     }
 
@@ -276,4 +268,42 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Gym::className(), ['id' => 'gym_id'])->viaTable('user_gym', ['user_id' => 'id']);
     }
+
+    /**
+     * Gets query for [[UserGyms]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserGyms()
+    {
+        return $this->hasMany(UserGym::className(), ['user_id' => 'id'])->inverseOf('user');
+    }
+
+
+    /**
+     * @param bool $insert
+     * @return bool
+     * @throws \yii\base\Exception
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        if (!$insert) {
+                //if($this->validatePassword($this->oldPassword)){
+                if ($this->password === null) {
+                    $this->password = $this->getOldAttribute('password');
+                } else {
+                    $this->password = $this->setPassword($this->password);
+                }
+//            } else {
+//                $this->addError('password', "Ups algo ha ocurrido mal.");
+//            }
+        }
+
+        return true;
+    }
+
 }
