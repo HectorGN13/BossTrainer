@@ -40,7 +40,6 @@ class User extends ActiveRecord implements IdentityInterface
 
 
 
-
     /**
      * {@inheritdoc}
      */
@@ -76,8 +75,16 @@ class User extends ActiveRecord implements IdentityInterface
             [['password_reset_token'], 'unique'],
             [['username'], 'unique'],
 
-            ['passwordConfirm', 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden.",
-                'on' => [self::SCENARIO_DEFAULT, self::SCENARIO_UPDATE],],
+            [['oldPassword'], 'trim', 'on' => [self::SCENARIO_DEFAULT]],
+            [['oldPassword'], function($attribute, $params, $validator) {
+                if (!empty($this->$attribute) && !$this->validatePassword($this->$attribute)) {
+                    $this->addError('oldPassword','Contraseña incorrecta');
+                }
+            }],
+            
+            [['password'], 'trim', 'on' => [self::SCENARIO_DEFAULT]],
+            [['passwordConfirm'], 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden.",
+                'on' => [self::SCENARIO_DEFAULT, self::SCENARIO_UPDATE]],
         ];
     }
 
@@ -291,16 +298,23 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        if (!$insert) {
-                //if($this->validatePassword($this->oldPassword)){
-                if ($this->password === null) {
+        if(!$insert) {
+
+            if ( $this->scenario === self::SCENARIO_DEFAULT) {
+                if (empty($this->oldPassword) || is_null($this->oldPassword) ) {
                     $this->password = $this->getOldAttribute('password');
-                } else {
-                    $this->password = $this->setPassword($this->password);
+                } elseif (empty($this->password) || is_null($this->password)) {
+                    $this->password = $this->getOldAttribute('password');
+                }else {
+                    if ($this->validatePassword($this->oldPassword)){
+                        if ($this->password === null) {
+                            $this->password = $this->getOldAttribute('password');
+                        } else {
+                            $this->password = $this->setPassword($this->password);
+                        }
+                    }
                 }
-//            } else {
-//                $this->addError('password', "Ups algo ha ocurrido mal.");
-//            }
+            }
         }
 
         return true;

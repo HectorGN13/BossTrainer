@@ -118,19 +118,16 @@ class UserController extends Controller
     {
 
         $model = $this->findModel($id);
-        //$model->scenario = User::SCENARIO_UPDATE;
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Se ha modificado correctamente.');
-//            var_dump($model->validate());
-//            var_dump($model);
-//            die();
             return $this->redirect(['profile', 'id' => $model->id]);
         }
+
 
         $model->oldPassword = '';
         $model->password = '';

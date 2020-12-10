@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce8275a24fa5200b540e8fc938a2048b",
+    "content-hash": "1242e3e33e5b83cdf0c381f0ab600536",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.168.1",
+            "version": "3.168.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d648085cce7bfadc8973a8ded401921583c1e3f9"
+                "reference": "1d6a976da857d13b156bd63613ee086c13f6dc29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d648085cce7bfadc8973a8ded401921583c1e3f9",
-                "reference": "d648085cce7bfadc8973a8ded401921583c1e3f9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1d6a976da857d13b156bd63613ee086c13f6dc29",
+                "reference": "1d6a976da857d13b156bd63613ee086c13f6dc29",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.168.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.168.2"
             },
-            "time": "2020-12-09T19:17:01+00:00"
+            "time": "2020-12-10T19:35:18+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
