@@ -6,6 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\User */
 
 $this->title = 'Mi perfil';
+
 ?>
 
 <div class="user-update">
