@@ -2,7 +2,7 @@ body {
     background-image: url("../images/CoverGirl.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 105%;
+
 }
 
 #restorePassLink, #restoreVerificationEmail {
@@ -74,5 +74,11 @@ body {
     100% {
         -webkit-transform: scale(1);
         transform: scale(1);
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        background-size: 105%;
     }
 }
