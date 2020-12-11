@@ -61,8 +61,8 @@ use yii\bootstrap4\ActiveForm;
                                                 <div class="row">
                                                     <div class="col">
 
-<!--                                                    --><?//= $form->field($model, 'name')->textInput(['maxlength' => true])->input('text', ['placeholder' =>
-//                                                        (isset($model->name) && !empty($model->name)) ? Html::encode($model->name) : "Escríbe tu nombre completo." ]) ?>
+                                                    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->input('text', ['placeholder' =>
+                                                        (isset($model->name) && !empty($model->name)) ? Html::encode($model->name) : "Escríbe tu nombre completo." ]) ?>
 
                                                     </div>
                                                     <div class="col">
