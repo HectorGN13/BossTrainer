@@ -10,8 +10,6 @@ use yii\widgets\DetailView;
 YiiAsset::register($this);
 ?>
 <div class="user-view">
-
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

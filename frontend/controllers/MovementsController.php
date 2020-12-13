@@ -2,14 +2,13 @@
 
 namespace frontend\controllers;
 
-use common\models\Record;
 use Yii;
 use common\models\Movements;
 use common\models\MovementsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
+
 
 /**
  * MovementsController implements the CRUD actions for Movements model.
@@ -41,7 +40,18 @@ class MovementsController extends Controller
         $searchModel = new MovementsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $type);
 
+        switch ($type) {
+            case 'benchmark':
+                $title = 'Mis Benchmarks';
+                break;
+            case 'rms':
+                $title = 'Mis Rms';
+                break;
+        }
+
+
         return $this->render('index', [
+            'title' => $title,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

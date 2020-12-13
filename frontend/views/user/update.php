@@ -9,12 +9,8 @@ $this->title = 'Mi perfil';
 
 ?>
 
-<div class="user-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="user-update pt-5">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>

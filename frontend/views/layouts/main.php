@@ -123,17 +123,17 @@ AppAsset::register($this);
                             'icon' => 'fas fa-trophy'
                         ],
                         [
-                            'url' => ['site/abilities'],
+                            'url' => ['movements/index', 'type' => 'ability'],
                             'label' => 'Mis Habilidades',
                             'icon' => 'fas fa-running'
                         ],
                         [
-                            'url' => ['site/rms'],
+                            'url' => ['movements/index', 'type' => 'rms'],
                             'label' => 'Mis RMs',
                             'icon' => 'fas fa-medal'
                         ],
                         [
-                            'url' => ['site/marks'],
+                            'url' => ['movements/index', 'type' => 'mark'],
                             'label' => 'Otras Marcas',
                             'icon' => 'fas fa-star'
                         ],

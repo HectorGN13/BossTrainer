@@ -70,9 +70,30 @@ class Movements extends \yii\db\ActiveRecord
         return $this->hasMany(Record::className(), ['movements_id' => 'id'])->inverseOf('movements');
     }
 
+    /**
+     * @return string
+     */
+    public function getTypeMeasure()
+    {
+        switch ($this->measure) {
+            case 'Time':
+                $value = ' min';
+                break;
+            case 'Kg':
+                $value = ' Kg';
+                break;
+            case 'Reps':
+                $value = ' Reps';
+                break;
+            default:
+                $value = '';
+                break;
+        }
+       return $value;
+    }
 
     /**
-     * Gets query for [[Records]].
+     * Gets query for [[Records of Movements]].
      *
      * @return \yii\db\ActiveQuery
      */
@@ -95,19 +116,5 @@ class Movements extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('record', ['movements_id' => 'id']);
-    }
-
-    public function recordValue($model)
-    {
-        $movement = $model->id;
-        $user_id = Yii::$app->user->id;
-        $records = \common\models\Record::find()
-            ->select('value')
-            ->where(['user_id' => $user_id])
-            ->andFilterWhere(['movements_id' => $movement])
-            ->indexBy('movements_id')
-            ->column();
-        $records = array_shift($records);
-        return $records;
     }
 }
