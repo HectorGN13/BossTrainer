@@ -24,8 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
         'itemView' => function ($model, $key, $index, $widget) {
-            return Html::a(Html::encode($model->title) . $model::recordValue($model), ['record/index']);
+
+            return Html::a(Html::encode($model->title) . $model->recordsMovements, ['record/index']);
         },
+
     ]) ?>
 
 

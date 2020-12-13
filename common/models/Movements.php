@@ -70,6 +70,23 @@ class Movements extends \yii\db\ActiveRecord
         return $this->hasMany(Record::className(), ['movements_id' => 'id'])->inverseOf('movements');
     }
 
+
+    /**
+     * Gets query for [[Records]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRecordsMovements()
+    {
+         $query = $this->hasMany(Record::className(), ['movements_id' => 'id'])
+            ->select('value')
+            ->onCondition(['movements_id' => $this->id])
+            ->inverseOf('movements')
+            ->column();
+
+        return array_shift($query);
+    }
+
     /**
      * Gets query for [[Users]].
      *
