@@ -18,7 +18,8 @@ class m201204_082417_create_movements_table extends Migration
             'description' => $this->string(400)->notNull(),
             'measure' => $this->string(12)->notNull(),
             'video' => $this->string(),
-            'img' => $this->string(),
+            'img' => $this->text(),
+            'type' => $this->string(),
         ]);
     }
 

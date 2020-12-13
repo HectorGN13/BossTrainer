@@ -8,11 +8,14 @@ use common\models\User;
 use common\models\UserSearch;
 use yii\bootstrap4\ActiveForm;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
 use yii\web\UploadedFile;
+
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -57,6 +60,19 @@ class UserController extends Controller
     public function actionProfile($id)
     {
         return $this->render('profile', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     *
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionMyBenchmarks($id)
+    {
+        return $this->render('myBechmarks', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -111,9 +127,72 @@ class UserController extends Controller
 //
 //
 //    }
+//
+//
+//    public function actionUpload($id)
+//    {
+//        $model = new ImagenForm();
+//        var_dump('Estes en subir imagen perfil');
+//
+//        if (Yii::$app->request->isPost) {
+//            $model->imagen = UploadedFile::getInstance($model, 'imagen');
+//            if ($model->subida($id) && $model->subidaAws($id)) {
+//                Yii::$app->session->setFlash('success', 'Imagen subida con exito');
+//                $model->borradoLocal($id);
+//                return $this->redirect('usuarios/view');
+//            }
+//        }
+//
+//        return $this->render('imagen', [
+//            'model' => $model,
+//        ]);
+//    }
+//
+//    /**
+//     *
+//     * @param $id
+//     * @return string|Response
+//     * @throws NotFoundHttpException
+//     */
+//    public function actionUpdatePhoto($id)
+//    {
+//        $model = $this->findModel($id);
+//        $oldFile = $model->getImageFile();
+//        $oldAvatar = $model->avatar;
+//        $oldFileName = $model->filename;
+//
+//        if ($model->load(Yii::$app->request->post())) {
+//            // process uploaded image file instance
+//            $image = $model->uploadImage();
+//
+//            // revert back if no valid file instance uploaded
+//            if ($image === false) {
+//                $model->avatar = $oldAvatar;
+//                $model->filename = $oldFileName;
+//            }
+//
+//            if ($model->save()) {
+//                // upload only if valid uploaded file instance found
+//                if ($image !== false && unlink($oldFile)) { // delete old and overwrite
+//                    $path = $model->getImageFile();
+//                    $image->saveAs($path);
+//                }
+//                return $this->redirect(['view', 'id'=>$model->_id]);
+//            } else {
+//                // error in saving model
+//            }
+//        }
+//        return $this->render('update', [
+//            'model'=>$model,
+//        ]);
+//    }
 
 
-
+    /**
+     * @param $id
+     * @return array|string|Response
+     * @throws NotFoundHttpException
+     */
     public function actionUpdate($id)
     {
 

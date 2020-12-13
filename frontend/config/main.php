@@ -44,7 +44,6 @@ return [
                 'user/profile/<id:\d+>' => 'user/profile',
             ],
         ],
-
     ],
     'params' => $params,
 ];

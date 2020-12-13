@@ -7,6 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
 
 /**
  * User model
@@ -25,6 +26,7 @@ use yii\web\IdentityInterface;
  * @property string $profile_img
  * @property string $name
  * @property string $bio
+ * @property array $avatar
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -38,7 +40,11 @@ class User extends ActiveRecord implements IdentityInterface
     public $password;
     public $oldPassword;
 
-
+    /**
+     * @var mixed image the attribute for rendering the file input
+     * widget for upload on the form
+     */
+    public $image;
 
     /**
      * {@inheritdoc}
@@ -85,6 +91,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['password'], 'trim', 'on' => [self::SCENARIO_DEFAULT]],
             [['passwordConfirm'], 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden.",
                 'on' => [self::SCENARIO_DEFAULT, self::SCENARIO_UPDATE]],
+            [['profile_img', 'image', 'avatar'], 'safe'],
+            [['image'], 'file', 'extensions'=>'jpg, gif, png'],
         ];
     }
 
@@ -257,6 +265,7 @@ class User extends ActiveRecord implements IdentityInterface
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+
     /**
      * Removes password reset token
      */
@@ -286,6 +295,76 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(UserGym::className(), ['user_id' => 'id'])->inverseOf('user');
     }
 
+    /**
+     * fetch stored image file name with complete path
+     * @return string
+     */
+    public function getImageFile()
+    {
+        return isset($this->avatar) ? Yii::$app->params['uploadPath'] . $this->avatar : null;
+    }
+
+    /**
+     * fetch stored image url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+        $avatar = isset($this->avatar) ? $this->avatar : 'default_user.jpg';
+        return Yii::$app->params['uploadUrl'] . $avatar;
+    }
+
+    /**
+     * Process upload of image
+     * @return mixed the uploaded image instance
+     */
+    public function uploadImage() {
+        // get the uploaded file instance. for multiple file uploads
+        // the following data will return an array (you may need to use
+        // getInstances method)
+        $image = UploadedFile::getInstance($this, 'image');
+
+        // if no image was uploaded abort the upload
+        if (empty($image)) {
+            return false;
+        }
+
+        // store the source file name
+        $this->profile_img = $image->name;
+        $array = explode(".", $image->name);
+        $ext = end($array);
+
+        // generate a unique file name
+        $this->avatar = Yii::$app->security->generateRandomString().".{$ext}";
+
+        // the uploaded image instance
+        return $image;
+    }
+
+    /**
+     * Process deletion of image
+     * @return boolean the status of deletion
+     */
+    public function deleteImage() {
+        $file = $this->getImageFile();
+
+        // check if file exists on server
+        if (empty($file) || !file_exists($file)) {
+            return false;
+        }
+
+        // check if uploaded file can be deleted on server
+        if (!unlink($file)) {
+            return false;
+        }
+
+        // if deletion successful, reset your file attributes
+        $this->avatar = null;
+        $this->profile_img = null;
+
+        return true;
+    }
 
     /**
      * @param bool $insert
@@ -320,4 +399,23 @@ class User extends ActiveRecord implements IdentityInterface
         return true;
     }
 
+    /**
+     * Gets query for [[Records]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRecords()
+    {
+        return $this->hasMany(Record::className(), ['user_id' => 'id'])->inverseOf('user');
+    }
+
+    /**
+     * Gets query for [[Movements]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMovements()
+    {
+        return $this->hasMany(Movements::className(), ['id' => 'movements_id'])->viaTable('record', ['user_id' => 'id']);
+    }
 }

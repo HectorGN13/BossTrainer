@@ -118,7 +118,7 @@ AppAsset::register($this);
                     'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
-                            'url' => ['site/benchmarks'],
+                            'url' => ['movements/index', 'type' => 'benchmark'],
                             'label' => 'Mis Benchmarks',
                             'icon' => 'fas fa-trophy'
                         ],
