@@ -42,6 +42,9 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'user/profile/<id:\d+>' => 'user/profile',
+                'movements' => 'movements/index',
+                'movements/<type:\w+>' => 'movements/index',
+                'user/profile/edit/<id:\d+>' => 'user/update',
             ],
         ],
     ],

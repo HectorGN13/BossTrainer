@@ -18,7 +18,7 @@ $this->title = $title;
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
-            'layout' => '{items}',
+            'layout' => '{items}{pager}',
             'columns' => [
                 [
                     'header' => 'Ejercicio',
@@ -38,10 +38,12 @@ $this->title = $title;
                     'header' => 'Añadir Record',
                     'content' => function ($model, $key, $index, $widget) {
                         return Html::a(Html::tag('span',
-                            'editar'),
+                            (isset($model->recordsMovements))
+                                ? 'Editar' : 'Añadir', ['class' => ' btn btn-sm btn-dark']),
                             (isset($model->recordsMovements))
                                 ? ['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]
-                                : ['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]);
+                                : ['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
+                            ['data-method' => 'POST']);
                     }
                 ]
             ]

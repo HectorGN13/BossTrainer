@@ -118,22 +118,22 @@ AppAsset::register($this);
                     'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
-                            'url' => ['movements/index', 'type' => 'benchmark'],
+                            'url' => ['movements/benchmark'],
                             'label' => 'Mis Benchmarks',
                             'icon' => 'fas fa-trophy'
                         ],
                         [
-                            'url' => ['movements/index', 'type' => 'ability'],
+                            'url' => ['movements/ability'],
                             'label' => 'Mis Habilidades',
                             'icon' => 'fas fa-running'
                         ],
                         [
-                            'url' => ['movements/index', 'type' => 'rms'],
+                            'url' => ['movements/rms'],
                             'label' => 'Mis RMs',
                             'icon' => 'fas fa-medal'
                         ],
                         [
-                            'url' => ['movements/index', 'type' => 'mark'],
+                            'url' => ['movements/mark'],
                             'label' => 'Otras Marcas',
                             'icon' => 'fas fa-star'
                         ],
@@ -148,7 +148,7 @@ AppAsset::register($this);
                             'icon' => 'fas fa-dumbbell'
                         ],
                         [
-                            'url' => ['user/update', 'id' => Yii::$app->user->identity->id],
+                            'url' => ['user/profile/edit/'.Yii::$app->user->identity->id],
                             'label' => 'Mi Perfil',
                             'icon' => 'fas fa-user-circle'
                         ],

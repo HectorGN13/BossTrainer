@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\models\Movements;
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -40,39 +41,28 @@ class MovementsSearch extends Movements
      */
     public function search($params, $type)
     {
+
+        $query = Movements::find()->select(['movements.*', 'r.*'])
+            ->orderBy('title')
+            ->joinWith('records r')
+            ->joinWith('users u');
+
         switch ($type) {
             case 'benchmark':
-                $query = Movements::find()->select(['movements.*', 'r.*'])
-                    ->where(['type' => 'benchmark'])
-                    ->orderBy('title')
-                    ->joinWith('records r')
-                    ->joinWith('users u');
+                $query->where(['type' => 'benchmark']);
                 break;
             case 'rms':
-                $query = Movements::find()->select(['movements.*', 'r.*'])
-                    ->where(['type' => 'rms'])
-                    ->orderBy('title')
-                    ->joinWith('records r')
-                    ->joinWith('users u');
+                $query->where(['type' => 'rms']);
                 break;
             case 'ability':
-                $query = Movements::find()->select(['movements.*', 'r.*'])
-                    ->where(['type' => 'ability'])
-                    ->orderBy('title')
-                    ->joinWith('records r')
-                    ->joinWith('users u');
+                $query->where(['type' => 'ability']);
                 break;
             case 'mark':
-                $query = Movements::find()->select(['movements.*', 'r.*'])
-                    ->where(['type' => 'mark'])
-                    ->orderBy('title')
-                    ->joinWith('records r')
-                    ->joinWith('users u');
+                $query->where(['type' => 'mark']);
                 break;
             default:
-                $query = Movements::find()->select(['movements.*', 'r.*'])
-                ->orderBy('title')
-                ->all();
+                $query = Movements::find()
+                ->orderBy('title');
                 break;
         }
 
@@ -80,6 +70,9 @@ class MovementsSearch extends Movements
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20,
+            ],
         ]);
 
         $this->load($params);

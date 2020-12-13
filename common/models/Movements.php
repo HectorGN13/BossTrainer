@@ -101,7 +101,7 @@ class Movements extends \yii\db\ActiveRecord
     {
          $query = $this->hasMany(Record::className(), ['movements_id' => 'id'])
             ->select('value')
-            ->onCondition(['movements_id' => $this->id])
+            ->onCondition(['movements_id' => $this->id, 'user_id' => Yii::$app->user->id])
             ->inverseOf('movements')
             ->column();
 

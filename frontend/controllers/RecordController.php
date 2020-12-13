@@ -2,10 +2,10 @@
 
 namespace frontend\controllers;
 
-use common\models\MovementsSearch;
 use Yii;
 use common\models\Record;
 use common\models\RecordSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +25,19 @@ class RecordController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['update', 'create', 'delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rules, $action) {
+                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
+                        },
+                    ],
                 ],
             ],
         ];
@@ -68,8 +81,11 @@ class RecordController extends Controller
     public function actionCreate()
     {
         $model = new Record();
+        $model->user_id = Yii::$app->request->get('user_id');
+        $model->movements_id = Yii::$app->request->get('movements_id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
         }
 
