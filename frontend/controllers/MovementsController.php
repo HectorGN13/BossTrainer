@@ -47,6 +47,15 @@ class MovementsController extends Controller
             case 'rms':
                 $title = 'Mis Rms';
                 break;
+            case 'ability':
+                $title = 'Mis Habilidades';
+                break;
+            case 'mark':
+                $title = 'Otras Marcas';
+                break;
+            default:
+                $title = 'Otros';
+                break;
         }
 
 

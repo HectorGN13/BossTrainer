@@ -44,14 +44,35 @@ class MovementsSearch extends Movements
             case 'benchmark':
                 $query = Movements::find()->select(['movements.*', 'r.*'])
                     ->where(['type' => 'benchmark'])
+                    ->orderBy('title')
                     ->joinWith('records r')
                     ->joinWith('users u');
                 break;
             case 'rms':
                 $query = Movements::find()->select(['movements.*', 'r.*'])
                     ->where(['type' => 'rms'])
+                    ->orderBy('title')
                     ->joinWith('records r')
                     ->joinWith('users u');
+                break;
+            case 'ability':
+                $query = Movements::find()->select(['movements.*', 'r.*'])
+                    ->where(['type' => 'ability'])
+                    ->orderBy('title')
+                    ->joinWith('records r')
+                    ->joinWith('users u');
+                break;
+            case 'mark':
+                $query = Movements::find()->select(['movements.*', 'r.*'])
+                    ->where(['type' => 'mark'])
+                    ->orderBy('title')
+                    ->joinWith('records r')
+                    ->joinWith('users u');
+                break;
+            default:
+                $query = Movements::find()->select(['movements.*', 'r.*'])
+                ->orderBy('title')
+                ->all();
                 break;
         }
 
