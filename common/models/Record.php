@@ -31,7 +31,6 @@ class Record extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'movements_id'], 'required'],
-            [['user_id', 'movements_id'], 'default', 'value' => null],
             [['user_id', 'movements_id'], 'integer'],
             [['value'], 'string', 'max' => 255],
             [['user_id', 'movements_id'], 'unique', 'targetAttribute' => ['user_id', 'movements_id']],
@@ -46,9 +45,9 @@ class Record extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
-            'movements_id' => 'Movements ID',
-            'value' => 'Value',
+            'user_id' => 'Usuario ID',
+            'movements_id' => 'Movimientos ID',
+            'value' => 'Valor',
         ];
     }
 

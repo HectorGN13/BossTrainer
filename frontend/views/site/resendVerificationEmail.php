@@ -10,7 +10,6 @@ $this->title = 'Reenviar correo de verificación';
 ?>
 <div class="site-resend-verification-email">
     <p>Por favor, introduzca su dirección de correo electrónico. Asegúrese de que sea una dirección de email válida, ya que se le enviará un enlace para verificar su cuenta.</p>
-
     <div class="row">
         <div class="col-12">
             <?php $form = ActiveForm::begin(['id' => 'resend-verification-email-form', 'enableAjaxValidation' => true]); ?>

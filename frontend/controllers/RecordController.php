@@ -2,13 +2,16 @@
 
 namespace frontend\controllers;
 
+
 use Yii;
 use common\models\Record;
 use common\models\RecordSearch;
+use yii\bootstrap4\ActiveForm;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * RecordController implements the CRUD actions for Record model.
@@ -83,15 +86,28 @@ class RecordController extends Controller
         $model = new Record();
         $model->user_id = Yii::$app->request->get('user_id');
         $model->movements_id = Yii::$app->request->get('movements_id');
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Se ha creado con éxito su record.');
+            return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+
     }
 
     /**

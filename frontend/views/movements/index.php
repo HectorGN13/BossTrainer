@@ -1,8 +1,10 @@
 <?php
 
+use frontend\assets\MovementsAssets;
 use yii\grid\GridView;
 use yii\helpers\Html;
-
+use yii\helpers\Url;
+use yii\bootstrap4\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\MovementsSearch */
@@ -10,6 +12,7 @@ use yii\helpers\Html;
 /* @var $title frontend\controllers\MovementsController */
 
 $this->title = $title;
+MovementsAssets::register($this);
 ?>
 <div class="movements-index pt-5">
     <div class="movements-list container">
@@ -19,6 +22,7 @@ $this->title = $title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'options' => ['class' => 'custom-table'],
+            'tableOptions' => ['class' => 'table table-hover table-sm'],
             'layout' => '{items}{pager}',
             'columns' => [
                 [
@@ -43,13 +47,13 @@ $this->title = $title;
                             ['data-method' => 'POST',  'class' => 'px-1']);
 
                         $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-dark']),
-                            ['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
-                            ['data-method' => 'POST', 'class' => 'px-1']);
+                            '#',
+                            ['value' =>Url::to(['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'id' => 'uploadRecord']);
 
 
                         $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-success']),
-                            ['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
-                            ['data-method' => 'POST']);
+                            '#',
+                            ['value' =>Url::to(['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'id' => 'addRecord']);
 
                         return (isset($model->recordsMovements)) ?  $upd . $del : $add;
 
@@ -60,3 +64,13 @@ $this->title = $title;
         ])?>
     </div>
 </div>
+<?php
+Modal::begin([
+    'title' => (isset($model->recordsMovements)) ? '<h2>Actualizar Record.</h2>' : '<h2>Añadir Record.</h2>',
+    'id' => 'modalRecord',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent'></div>";
+Modal::end();
+?>

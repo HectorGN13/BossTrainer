@@ -9,19 +9,22 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="record-form">
+    <p>Por favor, introduzca un Record. Asegúrese de que el formato es el correcto.</p>
+    <div class="row">
+        <div class="col-12">
+        <?php $form = ActiveForm::begin(['id' => 'modalRecord', 'enableAjaxValidation' => true]); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
+        <?= $form->field($model, 'movements_id')->textInput()->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'movements_id')->textInput()->hiddenInput()->label(false) ?>
+        <?= $form->field($model, 'value')->textInput(['maxlength' => true, 'autofocus' => true])->input('text',  ['placeholder' => "Introduce tu marca."])->label(false) ?>
 
-    <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
+        <div class="d-flex justify-content-center form-group">
+            <?= Html::submitButton('Guardar', ['class' => 'btn btn-lg btn-rounded btn-dark']) ?>
+        </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

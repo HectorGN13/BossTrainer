@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\User;
+
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -16,7 +16,6 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 /**
