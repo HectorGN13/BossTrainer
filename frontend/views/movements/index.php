@@ -1,6 +1,5 @@
 <?php
 
-use macgyer\yii2materializecss\widgets\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -13,11 +12,13 @@ use yii\helpers\Html;
 $this->title = $title;
 ?>
 <div class="movements-index pt-5">
-    <div class="movements-list container pt-5">
-        <h1 class="py-4"><?= Html::encode($this->title) ?></h1>
-
+    <div class="movements-list container">
+        <div class="lines-effect">
+            <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
+        </div>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
+            'options' => ['class' => 'custom-table'],
             'layout' => '{items}{pager}',
             'columns' => [
                 [
@@ -35,18 +36,27 @@ $this->title = $title;
                       }
                 ],
                 [
-                    'header' => 'Añadir Record',
+                    'header' => 'Acciones',
                     'content' => function ($model, $key, $index, $widget) {
-                        return Html::a(Html::tag('span',
-                            (isset($model->recordsMovements))
-                                ? 'Editar' : 'Añadir', ['class' => ' btn btn-sm btn-dark']),
-                            (isset($model->recordsMovements))
-                                ? ['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]
-                                : ['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
+                        $del =  Html::a(Html::tag('span','<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-sm btn-danger']),
+                            ['record/delete', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
+                            ['data-method' => 'POST',  'class' => 'px-1']);
+
+                        $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-dark']),
+                            ['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
+                            ['data-method' => 'POST', 'class' => 'px-1']);
+
+
+                        $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-success']),
+                            ['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
                             ['data-method' => 'POST']);
+
+                        return (isset($model->recordsMovements)) ?  $upd . $del : $add;
+
+
                     }
-                ]
+                ],
             ]
-        ]) ?>
+        ])?>
     </div>
 </div>

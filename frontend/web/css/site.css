@@ -60,6 +60,13 @@ html, body {height: 100%;}
     font-style: italic;
 }
 
+.custom-table table thead {
+    background: black !important;
+    color: white !important;
+}
+
+
+
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
     position: relative;

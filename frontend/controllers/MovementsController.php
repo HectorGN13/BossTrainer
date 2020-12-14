@@ -42,13 +42,13 @@ class MovementsController extends Controller
 
         switch ($type) {
             case 'benchmark':
-                $title = 'Mis Benchmarks';
+                $title = 'Benchmarks';
                 break;
             case 'rms':
-                $title = 'Mis Rms';
+                $title = 'Reps. máximas';
                 break;
             case 'ability':
-                $title = 'Mis Habilidades';
+                $title = 'Habilidades';
                 break;
             case 'mark':
                 $title = 'Otras Marcas';
