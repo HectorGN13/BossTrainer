@@ -45,7 +45,7 @@ class MovementsController extends Controller
                 $title = 'Benchmarks';
                 break;
             case 'rms':
-                $title = 'Reps. máximas';
+                $title = 'Repetición a máxima carga.';
                 break;
             case 'ability':
                 $title = 'Habilidades';
@@ -76,6 +76,7 @@ class MovementsController extends Controller
      */
     public function actionView($id)
     {
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

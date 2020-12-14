@@ -10,4 +10,10 @@ $(function (){
         find('#modalContent').
         load($(this).attr('value'));
     });
+
+    $('.movementsCard').click(function () {
+        $('#modalMovement').modal('show').
+        find('#modalContent').
+        load($(this).attr('value'));
+    });
 });

@@ -28,7 +28,7 @@ MovementsAssets::register($this);
                 [
                     'header' => 'Ejercicio',
                     'content' => function ($model, $key, $index, $widget) {
-                        return Html::a(Html::encode($model->title), ['view', 'id' => $model->id]);
+                        return Html::a(Html::encode($model->title),'#', ['value' => Url::to(['view', 'id' => $model->id]), 'class' => 'movementCard'] );
                     }
                 ],
                 [
@@ -76,6 +76,15 @@ Modal::end();
 Modal::begin([
     'title' =>'<h2>Actualizar Record.</h2>',
     'id' => 'modalUpdRecord',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent'></div>";
+Modal::end();
+?>
+<?php
+Modal::begin([
+    'id' => 'modalMovement',
     // 'size' => 'modal-lg',
 ]);
 

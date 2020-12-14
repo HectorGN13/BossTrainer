@@ -1,42 +1,22 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Movements */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Movements', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
-<div class="movements-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description',
-            'measure',
-            'video',
-            'img:ntext',
-            'type',
-        ],
-    ]) ?>
-
+<div class="container movements-view">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<?= $model->img ?>" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><?= $model->title ?></h5>
+            <p class="card-text"><?= $model->description ?></p>
+            <a href="<?= $model->video ?>" class="btn btn-dark">Ver video</a>
+        </div>
+    </div>
 </div>
