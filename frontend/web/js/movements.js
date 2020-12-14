@@ -1,12 +1,12 @@
 $(function (){
-    $('#addRecord').click(function () {
-        $('#modalRecord').modal('show').
+    $('.addRecord').click(function () {
+        $('#modalAddRecord').modal('show').
         find('#modalContent').
         load($(this).attr('value'));
     });
 
-    $('#uploadRecord').click(function () {
-        $('#modalRecord').modal('show').
+    $('.uploadRecord').click(function () {
+        $('#modalUpdRecord').modal('show').
         find('#modalContent').
         load($(this).attr('value'));
     });

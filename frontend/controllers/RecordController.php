@@ -92,10 +92,12 @@ class RecordController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Se ha creado con éxito su record.');
-            return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
-        } else {
-            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha añadido con éxito su record.');
+                return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
         }
 
         if (Yii::$app->request->isAjax) {
@@ -121,14 +123,29 @@ class RecordController extends Controller
     public function actionUpdate($user_id, $movements_id)
     {
         $model = $this->findModel($user_id, $movements_id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+           if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
+                return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+           } else {
+               Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+           }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('update', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -141,9 +158,13 @@ class RecordController extends Controller
      */
     public function actionDelete($user_id, $movements_id)
     {
-        $this->findModel($user_id, $movements_id)->delete();
-
-        return $this->redirect(['index']);
+        if ($this->findModel($user_id, $movements_id)->delete() != false ) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado con éxito su record.');
+            return $this->redirect(['movements/index']);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            return $this->redirect(['movements/index']);
+        }
     }
 
     /**

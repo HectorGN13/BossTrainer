@@ -60,6 +60,7 @@ html, body {height: 100%;}
     font-style: italic;
 }
 
+.custom-table table{ text-align: center;}
 .custom-table table thead {
     background: black !important;
     color: white !important;

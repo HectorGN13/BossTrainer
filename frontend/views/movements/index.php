@@ -48,16 +48,14 @@ MovementsAssets::register($this);
 
                         $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-dark']),
                             '#',
-                            ['value' =>Url::to(['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'id' => 'uploadRecord']);
+                            ['value' =>Url::to(['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'uploadRecord']);
 
 
                         $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-success']),
                             '#',
-                            ['value' =>Url::to(['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'id' => 'addRecord']);
+                            ['value' =>Url::to(['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'addRecord']);
 
                         return (isset($model->recordsMovements)) ?  $upd . $del : $add;
-
-
                     }
                 ],
             ]
@@ -66,8 +64,18 @@ MovementsAssets::register($this);
 </div>
 <?php
 Modal::begin([
-    'title' => (isset($model->recordsMovements)) ? '<h2>Actualizar Record.</h2>' : '<h2>Añadir Record.</h2>',
-    'id' => 'modalRecord',
+    'title' => '<h2>Añadir Record.</h2>',
+    'id' => 'modalAddRecord',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent'></div>";
+Modal::end();
+?>
+<?php
+Modal::begin([
+    'title' =>'<h2>Actualizar Record.</h2>',
+    'id' => 'modalUpdRecord',
     // 'size' => 'modal-lg',
 ]);
 
