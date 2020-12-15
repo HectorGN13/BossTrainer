@@ -19,7 +19,7 @@ class m201214_214550_create_weight_table extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'value' => $this->smallInteger()->notNull(),
-            'create_at' => $this->date()->notNull(),
+            'create_at' => $this->dateTime()->notNull(),
         ]);
 
         // creates index for column `user_id`
