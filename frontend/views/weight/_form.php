@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -9,19 +10,31 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="weight-form">
+    <p>Por favor, introduzca un nuevo Registro.</p>
+    <div class="row">
+        <div class="col-12 d-inline-block">
+        <?php $form = ActiveForm::begin(['id' => 'modalRecord', 'enableAjaxValidation' => true]); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+        <?= $form->field($model, 'value')->textInput()->input('number',  ['placeholder' => "Introduce un registro."])->label(false) ?>
 
-    <?= $form->field($model, 'value')->textInput() ?>
+        <?= $form->field($model, 'create_at')->widget(DatePicker::classname(), [
+            'options' => ['placeholder' => 'Fecha del registro.'],
+            'language' => 'es',
+            'type' => DatePicker::TYPE_COMPONENT_APPEND,
+            'pluginOptions' => [
+                'autoclose'=>true,
+                'format' => 'yyyy-m-d',
+            ]
+        ])->label(false);?>
 
-    <?= $form->field($model, 'create_at')->textInput() ?>
+        <div class="d-flex justify-content-center form-group">
+            <?= Html::submitButton('Guardar', ['class' => 'btn btn-lg btn-rounded btn-dark']) ?>
+        </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
+

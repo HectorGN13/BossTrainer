@@ -5,11 +5,13 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Weight;
 use frontend\models\WeightSeach;
+use yii\bootstrap4\ActiveForm;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * WeightController implements the CRUD actions for Weight model.
@@ -28,19 +30,19 @@ class WeightController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['update', 'create', 'delete'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rules, $action) {
-                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
-                        },
-                    ],
-                ],
-            ],
+//            'access' => [
+//                'class' => AccessControl::class,
+//                'only' => ['update', 'create', 'delete'],
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['@'],
+//                        'matchCallback' => function ($rules, $action) {
+//                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
+//                        },
+//                    ],
+//                ],
+//            ],
         ];
     }
 
@@ -63,18 +65,6 @@ class WeightController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Weight model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
 
     /**
      * Creates a new Weight model.
@@ -84,14 +74,30 @@ class WeightController extends Controller
     public function actionCreate()
     {
         $model = new Weight();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->user_id = Yii::$app->request->get('user_id');
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha añadido un nuevo registro.');
+                return $this->redirect(['weight/index']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+
+        }
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

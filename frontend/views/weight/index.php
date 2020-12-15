@@ -1,9 +1,12 @@
 <?php
 
+use frontend\assets\WeightAsset;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
@@ -11,14 +14,15 @@ use yii\web\JsExpression;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Mi progreso';
-
+WeightAsset::register($this);
 ?>
 <div class="weight-index">
     <div class="container">
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Añadir registro', ['create'], ['class' => 'btn btn-info mt-3']) ?>
+            <?= Html::a('Añadir registro', '#',
+                ['value' =>Url::to(['weight/create', 'user_id' => Yii::$app->user->id]), 'class' => 'btn btn-info mt-3', 'id' => 'addProgress']); ?>
         </p>
     <div>
         <?php
@@ -80,3 +84,13 @@ $this->title = 'Mi progreso';
     </div>
     </div>
 </div>
+<?php
+Modal::begin([
+    'title' => '<h2>Añadir Registro.</h2>',
+    'id' => 'modalAddProgress',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent'></div>";
+Modal::end();
+?>
