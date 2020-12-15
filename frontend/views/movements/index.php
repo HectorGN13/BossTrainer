@@ -51,7 +51,7 @@ MovementsAssets::register($this);
                             ['value' =>Url::to(['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'uploadRecord']);
 
 
-                        $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-success']),
+                        $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-info']),
                             '#',
                             ['value' =>Url::to(['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'addRecord']);
 

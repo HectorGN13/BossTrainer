@@ -143,7 +143,7 @@ AppAsset::register($this);
                             'icon' => 'fas fa-calendar-check'
                         ],
                         [
-                            'url' => ['site/progress'],
+                            'url' => ['weight/index'],
                             'label' => 'Mi Progreso',
                             'icon' => 'fas fa-weight'
                         ],
