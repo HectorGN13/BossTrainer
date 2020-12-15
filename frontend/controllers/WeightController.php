@@ -54,8 +54,10 @@ class WeightController extends Controller
     {
         $searchModel = new WeightSeach();
         $dataProvider = new ActiveDataProvider([
-            'query' => Weight::find()->
-            where(['user_id' =>  Yii::$app->user->identity->id ]),
+            'query' => Weight::find()
+                ->where(['user_id' =>  Yii::$app->user->identity->id ])
+                ->orderBy(['create_at'=> SORT_ASC]),
+            'sort' => ['attributes' => ['create_at', 'id']],
         ]);
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
