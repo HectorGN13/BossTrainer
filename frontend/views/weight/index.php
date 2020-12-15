@@ -4,7 +4,6 @@ use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\VarDumper;
 use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
@@ -29,8 +28,7 @@ $this->title = 'Mi progreso';
                 'credits' => ['enabled' => false],
                 'title' => ['text' => 'Mi progreso'],
                 'xAxis' => [
-                    'categories' => new SeriesDataHelper($dataProvider, ['create_at:date'])
-
+                    'categories' => new SeriesDataHelper($dataProvider, ['create_at:date']),
                 ],
                 'yAxis' => [
                     'title' => ['text' => 'Kg']
@@ -40,8 +38,9 @@ $this->title = 'Mi progreso';
                         'name' => 'Peso corporal',
                         'data' => new SeriesDataHelper($dataProvider, ['value'])
                     ]
-                ]
+                ],
             ],
+
             'scripts' => [
                 'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
                 'modules/exporting',

@@ -2,6 +2,7 @@
 namespace common\models;
 
 use app\models\UserGym;
+use frontend\models\Weight;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -70,6 +71,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
             ['email', 'required', 'message' => 'El correo electrónico no puede estar vacío'],
             ['email', 'email', 'message' => 'El formato no es válido, tienes que introducir un correo real.'],
             [['profile_img'], 'string', 'max' => 200],
@@ -378,7 +381,6 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         if(!$insert) {
-
             if ( $this->scenario === self::SCENARIO_DEFAULT) {
                 if (empty($this->oldPassword) || is_null($this->oldPassword) ) {
                     $this->password = $this->getOldAttribute('password');
@@ -417,5 +419,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function getMovements()
     {
         return $this->hasMany(Movements::className(), ['id' => 'movements_id'])->viaTable('record', ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Weights]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWeights()
+    {
+        return $this->hasMany(Weight::className(), ['user_id' => 'id'])->inverseOf('user');
     }
 }

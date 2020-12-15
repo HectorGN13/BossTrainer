@@ -5,6 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Weight;
 use frontend\models\WeightSeach;
+use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,6 +28,19 @@ class WeightController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['update', 'create', 'delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rules, $action) {
+                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
+                        },
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -36,7 +51,11 @@ class WeightController extends Controller
     public function actionIndex()
     {
         $searchModel = new WeightSeach();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Weight::find()->
+            where(['user_id' =>  Yii::$app->user->identity->id ]),
+        ]);
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

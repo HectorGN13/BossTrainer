@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use frontend\models\Weight;
@@ -17,7 +18,8 @@ class WeightSeach extends Weight
     public function rules()
     {
         return [
-            [['id', 'user_id', 'value', 'create_at'], 'integer'],
+            [['id', 'user_id', 'value'], 'integer'],
+            [['create_at'], 'date'],
         ];
     }
 
@@ -39,7 +41,10 @@ class WeightSeach extends Weight
      */
     public function search($params)
     {
-        $query = Weight::find();
+        $query = Weight::find()
+            ->where($this->user_id == Yii::$app->user->identity->id)
+            ->joinWith('user u')
+            ->orderBy('create_at');
 
         // add conditions that should always apply here
 

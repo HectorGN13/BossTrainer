@@ -33,7 +33,8 @@ class Weight extends \yii\db\ActiveRecord
         return [
             [['user_id', 'value', 'create_at'], 'required'],
             [['user_id', 'value', 'create_at'], 'default', 'value' => null],
-            [['user_id', 'value', 'create_at'], 'integer'],
+            [['user_id', 'value'], 'integer'],
+            [['create_at'], 'date'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -46,8 +47,8 @@ class Weight extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'value' => 'Value',
-            'create_at' => 'Create At',
+            'value' => 'Valor',
+            'create_at' => 'Fecha',
         ];
     }
 
