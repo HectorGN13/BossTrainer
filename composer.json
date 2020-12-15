@@ -31,7 +31,8 @@
         "kartik-v/yii2-password": "@dev",
         "dz0wkn/yii2-material-kit": "1.0.x-dev",
         "aws/aws-sdk-php": "^3.168",
-        "fedemotta/yii2-aws-sdk": "^2.0"
+        "fedemotta/yii2-aws-sdk": "^2.0",
+        "miloschuman/yii2-highcharts-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",

@@ -11,7 +11,7 @@ $(function (){
         load($(this).attr('value'));
     });
 
-    $('.movementsCard').click(function () {
+    $('.movementCard').click(function () {
         $('#modalMovement').modal('show').
         find('#modalContent').
         load($(this).attr('value'));
