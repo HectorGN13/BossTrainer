@@ -30,19 +30,19 @@ class WeightController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-//            'access' => [
-//                'class' => AccessControl::class,
-//                'only' => ['update', 'create', 'delete'],
-//                'rules' => [
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                        'matchCallback' => function ($rules, $action) {
-//                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
-//                        },
-//                    ],
-//                ],
-//            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['update', 'create', 'delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rules, $action) {
+                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
+                        },
+                    ],
+                ],
+            ],
         ];
     }
 
