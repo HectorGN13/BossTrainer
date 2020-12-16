@@ -22,7 +22,7 @@ WeightAsset::register($this);
 
         <p>
             <?= Html::a('Añadir registro', '#',
-                ['value' =>Url::to(['weight/create', 'user_id' => Yii::$app->user->id]), 'class' => 'btn btn-info mt-3', 'id' => 'addProgress']); ?>
+                ['value' =>Url::to(['weight/create']), 'class' => 'btn btn-info mt-3', 'id' => 'addProgress']); ?>
         </p>
     <div>
         <?php
@@ -66,16 +66,18 @@ WeightAsset::register($this);
                     'attribute' => 'Fecha',
                     'format' => ['date', 'php:d M Y'],
                     'value' => 'create_at',
+                    'enableSorting' => true,
                 ],
                 [
                    'attribute' => 'Peso',
                    'value' => 'value',
+                    'enableSorting' => true,
                 ],
                 [
                     'header' => 'Acciones',
                     'content' => function ($model, $key, $index, $widget) {
                         return Html::a(Html::tag('span','<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-sm btn-danger']),
-                            ['weight/delete', 'id' => $model->id, 'user_id' => $model->user_id],
+                            ['weight/delete', 'id' => $model->id],
                             ['data-method' => 'POST',  'class' => 'px-1']);
                     }
                 ],

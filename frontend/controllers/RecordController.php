@@ -24,23 +24,20 @@ class RecordController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['update', 'create', 'delete'],
+                'only' => ['update', 'delete', 'create'],
                 'rules' => [
                     [
                         'allow' => true,
                         'roles' => ['@'],
-                        'matchCallback' => function ($rules, $action) {
-                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
-                        },
                     ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
             ],
         ];
@@ -69,10 +66,10 @@ class RecordController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($user_id, $movements_id)
+    public function actionView($movements_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($user_id, $movements_id),
+            'model' => $this->findModel( $movements_id),
         ]);
     }
 
@@ -84,7 +81,7 @@ class RecordController extends Controller
     public function actionCreate()
     {
         $model = new Record();
-        $model->user_id = Yii::$app->request->get('user_id');
+        $model->user_id = Yii::$app->user->identity->id;
         $model->movements_id = Yii::$app->request->get('movements_id');
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -94,7 +91,7 @@ class RecordController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Se ha añadido con éxito su record.');
-                return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
             } else {
                 Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
             }
@@ -120,9 +117,9 @@ class RecordController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($user_id, $movements_id)
+    public function actionUpdate($movements_id)
     {
-        $model = $this->findModel($user_id, $movements_id);
+        $model = $this->findModel($movements_id);
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
@@ -131,7 +128,7 @@ class RecordController extends Controller
         if ($model->load(Yii::$app->request->post())) {
            if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
-                return $this->redirect(['view', 'user_id' => $model->user_id, 'movements_id' => $model->movements_id]);
+                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
            } else {
                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
            }
@@ -151,14 +148,13 @@ class RecordController extends Controller
     /**
      * Deletes an existing Record model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $user_id
      * @param integer $movements_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($user_id, $movements_id)
+    public function actionDelete($movements_id)
     {
-        if ($this->findModel($user_id, $movements_id)->delete() != false ) {
+        if ($this->findModel($movements_id)->delete() != false ) {
             Yii::$app->session->setFlash('success', 'Se ha borrado con éxito su record.');
             return $this->redirect(['movements/index']);
         } else {
@@ -170,14 +166,13 @@ class RecordController extends Controller
     /**
      * Finds the Record model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $user_id
      * @param integer $movements_id
      * @return Record the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($user_id, $movements_id)
+    protected function findModel($movements_id)
     {
-        if (($model = Record::findOne(['user_id' => $user_id, 'movements_id' => $movements_id])) !== null) {
+        if (($model = Record::findOne(['user_id' => Yii::$app->user->identity->id, 'movements_id' => $movements_id])) !== null) {
             return $model;
         }
 

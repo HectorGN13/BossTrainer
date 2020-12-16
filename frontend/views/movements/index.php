@@ -48,12 +48,12 @@ MovementsAssets::register($this);
 
                         $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-dark']),
                             '#',
-                            ['value' =>Url::to(['record/update', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'uploadRecord']);
+                            ['value' =>Url::to(['record/update', 'movements_id' => $model->id]), 'class' => 'uploadRecord']);
 
 
                         $add = Html::a(Html::tag('span','Añadir', ['class' => 'btn btn-sm btn-info']),
                             '#',
-                            ['value' =>Url::to(['record/create', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id]), 'class' => 'addRecord']);
+                            ['value' =>Url::to(['record/create', 'movements_id' => $model->id]), 'class' => 'addRecord']);
 
                         return (isset($model->recordsMovements)) ?  $upd . $del : $add;
                     }

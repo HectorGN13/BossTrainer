@@ -15,8 +15,6 @@ use yii\widgets\ActiveForm;
         <div class="col-12 d-inline-block">
         <?php $form = ActiveForm::begin(['id' => 'modalRecord', 'enableAjaxValidation' => true]); ?>
 
-        <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
-
         <?= $form->field($model, 'value')->textInput()->input('number',  ['placeholder' => "Introduce un registro."])->label(false) ?>
 
         <?= $form->field($model, 'create_at')->widget(DatePicker::classname(), [

@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
         <div class="col-12">
         <?php $form = ActiveForm::begin(['id' => 'modalRecord', 'enableAjaxValidation' => true]); ?>
 
-        <?= $form->field($model, 'user_id')->textInput()->hiddenInput()->label(false) ?>
-
         <?= $form->field($model, 'movements_id')->textInput()->hiddenInput()->label(false) ?>
 
         <?= $form->field($model, 'value')->textInput(['maxlength' => true, 'autofocus' => true])->input('text',  ['placeholder' => "Introduce tu marca."])->label(false) ?>

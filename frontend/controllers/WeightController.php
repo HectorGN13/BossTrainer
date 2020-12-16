@@ -24,23 +24,20 @@ class WeightController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['update', 'create', 'delete'],
+                'only' => ['update', 'delete', 'create'],
                 'rules' => [
                     [
                         'allow' => true,
                         'roles' => ['@'],
-                        'matchCallback' => function ($rules, $action) {
-                            return Yii::$app->user->identity->id == Yii::$app->request->get('user_id');
-                        },
                     ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
             ],
         ];
@@ -57,7 +54,7 @@ class WeightController extends Controller
             'query' => Weight::find()
                 ->where(['user_id' =>  Yii::$app->user->identity->id ])
                 ->orderBy(['create_at'=> SORT_ASC]),
-            'sort' => ['attributes' => ['create_at', 'id']],
+            'sort' => ['attributes' => ['create_at', 'value']],
         ]);
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -76,7 +73,7 @@ class WeightController extends Controller
     public function actionCreate()
     {
         $model = new Weight();
-        $model->user_id = Yii::$app->request->get('user_id');
+        $model->user_id = Yii::$app->user->identity->id;
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
@@ -100,26 +97,6 @@ class WeightController extends Controller
                 'model' => $model,
             ]);
         }
-    }
-
-    /**
-     * Updates an existing Weight model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
