@@ -117,4 +117,24 @@ class Gym extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Localidades::className(), ['id' => 'localidad_id'])->inverseOf('gyms');
     }
+
+    /**
+     * Gets query for [[GymBoards]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGymBoards()
+    {
+        return $this->hasMany(GymBoard::className(), ['gym_id' => 'id'])->inverseOf('gym');
+    }
+
+    /**
+     * Gets query for [[Boards]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBoards()
+    {
+        return $this->hasMany(Board::className(), ['id' => 'board_id'])->viaTable('gym_board', ['gym_id' => 'id']);
+    }
 }
