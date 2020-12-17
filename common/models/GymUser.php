@@ -1,9 +1,8 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
-use common\models\Gym;
-use common\models\User;
+use DateTime;
 use Yii;
 
 /**
@@ -16,7 +15,7 @@ use Yii;
  * @property Gym $gym
  * @property User $user
  */
-class UserGym extends \yii\db\ActiveRecord
+class GymUser extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -37,8 +36,8 @@ class UserGym extends \yii\db\ActiveRecord
             [['user_id', 'gym_id'], 'integer'],
             [['created_at'], 'safe'],
             [['user_id', 'gym_id'], 'unique', 'targetAttribute' => ['user_id', 'gym_id']],
-            [['gym_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gym::class, 'targetAttribute' => ['gym_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['gym_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gym::className(), 'targetAttribute' => ['gym_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -61,7 +60,7 @@ class UserGym extends \yii\db\ActiveRecord
      */
     public function getGym()
     {
-        return $this->hasOne(Gym::class, ['id' => 'gym_id'])->inverseOf('userGyms');
+        return $this->hasOne(Gym::className(), ['id' => 'gym_id'])->inverseOf('gymUsers');
     }
 
     /**
@@ -71,6 +70,6 @@ class UserGym extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::class, ['id' => 'user_id'])->inverseOf('userGyms');
+        return $this->hasOne(User::className(), ['id' => 'user_id'])->inverseOf('gymUsers');
     }
 }

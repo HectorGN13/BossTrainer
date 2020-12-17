@@ -19,7 +19,7 @@ class m201110_172653_create_junction_table_for_user_and_gym_tables extends Migra
         $this->createTable('{{%user_gym}}', [
             'user_id' => $this->integer(),
             'gym_id' => $this->integer(),
-            'created_at' => $this->timestamp(),
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'PRIMARY KEY(user_id, gym_id)',
         ]);
 

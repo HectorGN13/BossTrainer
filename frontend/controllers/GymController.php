@@ -2,12 +2,16 @@
 
 namespace frontend\controllers;
 
+
+use common\models\GymUser;
+use DateTime;
 use Yii;
 use common\models\Gym;
 use common\models\GymSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * GymController implements the CRUD actions for Gym model.
@@ -124,4 +128,27 @@ class GymController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /**
+     *
+     */
+    public function actionFollow()
+    {
+        $follow = new GymUser();
+        $user_id = Yii::$app->user->id;
+        $gym_id = Yii::$app->request->get('id');
+
+        $query = GymUser::find()->where(['user_id' => $user_id])->andWhere(['gym_id' => $gym_id ]);
+        if ($query->exists()) {
+            GymUser::findOne(['user_id' => $user_id, 'gym_id' => $gym_id])->delete();
+        } else {
+            $follow->gym_id = $gym_id;
+            $follow->user_id = $user_id;
+            
+            $follow->save();
+        }
+
+        $this->redirect(['gym/view/', 'id' => $gym_id]);
+    }
+
 }

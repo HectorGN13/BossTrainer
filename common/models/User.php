@@ -1,7 +1,6 @@
 <?php
 namespace common\models;
 
-use app\models\UserGym;
 use frontend\models\Weight;
 use Yii;
 use yii\base\NotSupportedException;
@@ -293,9 +292,9 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getUserGyms()
+    public function getGymUsers()
     {
-        return $this->hasMany(UserGym::className(), ['user_id' => 'id'])->inverseOf('user');
+        return $this->hasMany(GymUser::className(), ['user_id' => 'id'])->inverseOf('user');
     }
 
     /**

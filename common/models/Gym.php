@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use app\models\UserGym;
+
 use Yii;
 
 /**
@@ -20,7 +20,7 @@ use Yii;
  * @property string $updated_at
  * @property string|null $verification_token
  *
- * @property UserGym[] $userGyms
+ * @property GymUser[] $GymUsers
  * @property User[] $users
  */
 class Gym extends \yii\db\ActiveRecord
@@ -83,9 +83,9 @@ class Gym extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getUserGyms()
+    public function getGymUsers()
     {
-        return $this->hasMany(UserGym::class, ['gym_id' => 'id'])->inverseOf('gym');;
+        return $this->hasMany(GymUser::class, ['gym_id' => 'id'])->inverseOf('gym');
     }
 
     /**
@@ -136,5 +136,13 @@ class Gym extends \yii\db\ActiveRecord
     public function getBoards()
     {
         return $this->hasMany(Board::className(), ['id' => 'board_id'])->viaTable('gym_board', ['gym_id' => 'id']);
+    }
+
+    /**
+     * @return bool
+     */
+    public function userFollowExist()
+    {
+        return $this->getGymUsers()->onCondition(['user_id' => Yii::$app->user->id])->exists();
     }
 }
