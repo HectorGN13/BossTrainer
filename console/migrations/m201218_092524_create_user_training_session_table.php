@@ -37,14 +37,14 @@ class m201218_092524_create_user_training_session_table extends Migration
 
         // creates index for column `training_session_id`
         $this->createIndex(
-            '{{%idx-user_training_session_id}}',
+            '{{%idx-user_training_session-training_session_id}}',
             '{{%user_training_session}}',
             'training_session_id'
         );
 
         // add foreign key for table `{{%training_session}}`
         $this->addForeignKey(
-            '{{%fk-user_training_session_id}}',
+            '{{%fk-user_training_session-training_session_id}}',
             '{{%user_training_session}}',
             'training_session_id',
             '{{%training_session}}',
