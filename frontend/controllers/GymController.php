@@ -144,7 +144,7 @@ class GymController extends Controller
         } else {
             $follow->gym_id = $gym_id;
             $follow->user_id = $user_id;
-            
+
             $follow->save();
         }
 
