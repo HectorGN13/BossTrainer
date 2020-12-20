@@ -70,7 +70,7 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => ['trainingsession/index'],
-                            'label' => 'Sesiones de entrenamientos ',
+                            'label' => 'Entrenamientos',
                             'icon' => 'fas fa-clipboard-list'
                         ],
                         [

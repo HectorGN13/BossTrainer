@@ -35,7 +35,8 @@
         "miloschuman/yii2-highcharts-widget": "*",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-widget-datetimepicker": "dev-master",
-        "kartik-v/yii2-editors": "@dev"
+        "kartik-v/yii2-editors": "@dev",
+        "kartik-v/yii2-icons": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
