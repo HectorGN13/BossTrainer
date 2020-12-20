@@ -1,14 +1,16 @@
 <?php
 
-
 use frontend\assets\MaterialAsset;
 use yii\helpers\Html;
 use yii\grid\GridView;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Gym */
+/* @var $trainingSessionDataProvider backend\models\TrainingSession */
+/* @var $trainingSessionSearchModel backend\models\TrainingSessionSearch */
+
 $this->title = $model->name;
 MaterialAsset::register($this);
-\yii\helpers\VarDumper::dump($model->userFollowExist());
 ?>
 <body class="profile-page sidebar-collapse">
 <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://images7.alphacoders.com/105/thumb-1920-1052530.jpg); transform: translate3d(0px, 0px, 0px);"></div>
@@ -80,6 +82,7 @@ MaterialAsset::register($this);
                 </div>
                 <div class="tab-pane text-center gallery" id="ranking">
                     <div class="row">
+
 
                     </div>
                 </div>

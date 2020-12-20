@@ -4,7 +4,6 @@ namespace frontend\controllers;
 
 
 use common\models\GymUser;
-use DateTime;
 use Yii;
 use common\models\Gym;
 use common\models\GymSearch;
@@ -140,7 +139,6 @@ class GymController extends Controller
     }
 
     /**
-     *
      */
     public function actionFollow()
     {
@@ -160,8 +158,11 @@ class GymController extends Controller
 
         $this->redirect(['gym/view/', 'id' => $gym_id]);
     }
-    //Join training session
-    public function actionJoin($id)
+
+    /**
+     * @return \yii\web\Response
+     */
+    public function actionJoin()
     {
         $useTrainingSession = new UserTrainingSession();
         $userId = Yii::$app->user->id;
@@ -172,12 +173,12 @@ class GymController extends Controller
             $useTrainingSession->user_id = $userId;
             $useTrainingSession->training_session_id = $trainingSessionId;
             $useTrainingSession->save();
-            Yii::$app->session->setFlash('success', "You joined this course successfully.");
+            Yii::$app->session->setFlash('success', "Te has unido correctamente.");
             return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
         }
         else
         {
-            Yii::$app->session->setFlash('error', "You have already joined this course.");
+            Yii::$app->session->setFlash('error', "Ya estabas unido/a a esta sesion de entrenamiento.");
             return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
         }
     }

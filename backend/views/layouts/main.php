@@ -50,18 +50,9 @@ AppAsset::register($this);
             'class' => 'navbar sticky-top navbar-expand-lg navbar-inverse border-0',
         ],
     ]);
-    
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login'], "linkOptions" => ["class" => "links-color"]];
-    } else {
-        $menuItems[] = [ 'label' => Html::encode(Yii::$app->user->identity->username), 'items' => [
-             Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Salir',
-                ['class' => 'btn btn-link logout btn-font-weight-900', 'style' => 'text-decoration: none; text-align: center;', 'id' => 'user-navbar']
-            )
-            . Html::endForm()]];
-    }
+    $menuItems = [
+        ['label' => Html::tag('i','', ['class' => 'fas fa-inbox']), 'url' => ['#'], "linkOptions" => ["class" => '']],
+    ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right user-navbar'],
         'items' => $menuItems,
@@ -76,13 +67,16 @@ AppAsset::register($this);
             <?php
             if (!Yii::$app->user->isGuest) {
                 echo NavSidebar::widget([
-                    //'imgProfile' =>  'https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg',
-                    //'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
                             'url' => ['trainingsession/index'],
-                            'label' => 'Training Session',
-                            'icon' => 'fas fa-trophy'
+                            'label' => 'Sesiones de entrenamientos ',
+                            'icon' => 'fas fa-clipboard-list'
+                        ],
+                        [
+                            'url' => ['board/index'],
+                            'label' => 'Pizarras',
+                            'icon' => 'fas fa-chalkboard-teacher'
                         ]
                     ],
                 ]);
