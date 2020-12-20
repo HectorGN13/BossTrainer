@@ -86,9 +86,12 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Inicio', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
         ['label' => 'Sobre Nosotros', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'Contacto', 'url' => ['/site/index/#contact'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'Gimnasios', 'url' => ['/gym'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Contacto', 'url' => ['/site/index/#Contact'], "linkOptions" => ["class" => "links-color"]],
+
     ];
+    if (!Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Gimnasios', 'url' => ['/gym'], "linkOptions" => ["class" => "links-color"]];
+    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Registrarse', 'url' => ['/site/signup'], "linkOptions" => ["class" => "links-color"]];
         $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login'], "linkOptions" => ["class" => "links-color"]];

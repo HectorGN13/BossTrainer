@@ -51,6 +51,7 @@
     position:fixed;
     top:0;
     left:0;
+    overflow-y: scroll;
     z-index:5;
     outline:none;
     -webkit-transition: margin .25s ease-out;
@@ -58,6 +59,17 @@
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#sidebar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 #sidebar .avatar {
     background: #000000;
     padding:2em 0.5em;
