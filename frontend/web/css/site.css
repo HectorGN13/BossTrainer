@@ -12,6 +12,9 @@ html, body {height: 100%;}
     background: white !important;
     height: 52px !important;
 }
+.navbar-brand{
+    padding-right: 3rem !important;
+}
 
 .links-color{
     color: #fff !important;
@@ -28,6 +31,27 @@ html, body {height: 100%;}
     font-size: x-large !important;
     font-weight: bold !important;
 }
+.links-color :last-of-type{
+    margin-right: 3rem !important;
+}
+
+.links-color-button{
+    color: #fff !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+    display:block;
+    padding: .9375rem !important;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+.links-color-button:hover{
+    transition: all 0.3s ease-in-out;
+    color: #ffffff !important;
+    background-color: #d22222 !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;

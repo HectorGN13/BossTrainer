@@ -79,26 +79,21 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar sticky-top navbar-expand-lg',
+            'class' => 'navbar navbar-dark sticky-top navbar-expand-lg',
         ],
 
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'About', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'Contact', 'url' => ['/site/contact'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Inicio', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Sobre Nosotros', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Contacto', 'url' => ['/site/index/#contact'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Gimnasios', 'url' => ['/gym'], "linkOptions" => ["class" => "links-color"]],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Registrarse', 'url' => ['/site/signup'], "linkOptions" => ["class" => "links-color"]];
         $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login'], "linkOptions" => ["class" => "links-color"]];
     } else {
-        $menuItems[] = [ 'label' => Html::encode(Yii::$app->user->identity->username), 'items' => [
-             Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Salir',
-                ['class' => 'btn btn-link logout btn-font-weight-900', 'style' => 'text-decoration: none; text-align: center;']
-            )
-            . Html::endForm()]];
+        $menuItems[] = [ 'label' => 'Salir', 'url' => ['/site/logout'], "linkOptions" => ["class" => "btn btn-dark btn-rounded links-color-button", 'data-method' => 'POST']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
