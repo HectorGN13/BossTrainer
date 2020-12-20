@@ -3,7 +3,7 @@
 
 use frontend\assets\MaterialAsset;
 use yii\helpers\Html;
-
+use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Gym */
 $this->title = $model->name;
@@ -58,6 +58,11 @@ MaterialAsset::register($this);
                                     <i class="fas fa-medal"></i> RANKING
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#training_session" role="tab" data-toggle="tab">
+                                    <i class="fas fa-medal"></i> TRAINING SESSION
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -76,6 +81,47 @@ MaterialAsset::register($this);
                 <div class="tab-pane text-center gallery" id="ranking">
                     <div class="row">
 
+                    </div>
+                </div>
+                <div class="tab-pane text-center gallery" id="training_session">
+                    <div class="row">
+                        <?= GridView::widget([
+                                'dataProvider' => $trainingSessionDataProvider,
+                                'filterModel' => $trainingSessionSearchModel,
+                                'columns' => [
+                                    ['class' => 'yii\grid\SerialColumn'],
+                                    'description:ntext',
+                                    'start_time',
+                                    'end_time',
+                                    'capacity',
+                                    [
+                                      'class' => 'yii\grid\ActionColumn',
+                                      'header' => 'Actions',
+                                      'headerOptions' => ['style' => 'color:#337ab7'],
+                                      'template' => '{join}',
+                                      'buttons' => [
+                                        'join' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-pencil">Join</span>', $url, [
+                                                    'title' => 'Edit',
+                                                    'class' => 'btn btn-primary'
+                                            ]);
+                                        }/*,
+                                        'delete' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                                                'title' => 'Delete',
+                                                'class' => 'btn btn-danger ml-1',
+                                                'data' => [
+                                                     'method' => 'post',
+                                                      // use it if you want to confirm the action
+                                                      'confirm' => 'Are you sure?',
+                                                  ],
+                                            ]);
+                                        }*/
+
+                                      ],
+                                  ],
+                                ],
+                            ]); ?>
                     </div>
                 </div>
             </div>

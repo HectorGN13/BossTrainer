@@ -11,8 +11,8 @@ use common\models\GymSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
-
+use backend\models\TrainingSessionSearch;
+use backend\models\UserTrainingSession;
 /**
  * GymController implements the CRUD actions for Gym model.
  */
@@ -56,8 +56,18 @@ class GymController extends Controller
      */
     public function actionView($id)
     {
+        $searchModel = new GymSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $trainingSessionSearchModel = new TrainingSessionSearch();
+        $trainingSessionSearchModel->created_by = $id;
+        $traingSessionDataProvider = $trainingSessionSearchModel->search(Yii::$app->request->queryParams);
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'trainingSessionSearchModel' => $trainingSessionSearchModel,
+            'trainingSessionDataProvider' => $traingSessionDataProvider
         ]);
     }
 
@@ -144,11 +154,31 @@ class GymController extends Controller
         } else {
             $follow->gym_id = $gym_id;
             $follow->user_id = $user_id;
-
+            
             $follow->save();
         }
 
         $this->redirect(['gym/view/', 'id' => $gym_id]);
     }
-
+    //Join training session
+    public function actionJoin($id)
+    {
+        $useTrainingSession = new UserTrainingSession();
+        $userId = Yii::$app->user->id;
+        $trainingSessionId = Yii::$app->request->get('id');
+        $userCount = UserTrainingSession::find()->where(['user_id' => $userId, 'training_session_id' => $trainingSessionId])->count();
+        if($userCount < 1)
+        {
+            $useTrainingSession->user_id = $userId;
+            $useTrainingSession->training_session_id = $trainingSessionId;
+            $useTrainingSession->save();
+            Yii::$app->session->setFlash('success', "You joined this course successfully.");
+            return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+        }
+        else
+        {
+            Yii::$app->session->setFlash('error', "You have already joined this course.");
+            return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+        }
+    }
 }

@@ -33,7 +33,8 @@
         "aws/aws-sdk-php": "^3.168",
         "fedemotta/yii2-aws-sdk": "^2.0",
         "miloschuman/yii2-highcharts-widget": "*",
-        "kartik-v/yii2-widget-datepicker": "dev-master"
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-widget-datetimepicker": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
