@@ -8,8 +8,6 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use backend\components\navbar\NavSidebar;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 use frontend\components\modalalert\ModalAlert;
 AppAsset::register($this);
 ?>
@@ -27,7 +25,7 @@ AppAsset::register($this);
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <style>
         #content {
-            /*width: 100%;*/
+            width: 100%;
             margin-left:15%;
             padding: 0;
             min-height: 100vh;
@@ -44,7 +42,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar sticky-top navbar-expand-lg navbar-inverse border-0',
@@ -62,7 +60,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <?= ModalAlert::widget() ?>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div id="wrapper" class="wrapper d-flex align-items-stretch">
             <?php
             if (!Yii::$app->user->isGuest) {

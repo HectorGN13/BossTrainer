@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\web\YiiAsset;
+
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Board */
@@ -9,31 +10,41 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Boards', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+\backend\assets\BoardAsset::register($this);
 ?>
-<div class="board-view">
+<div class="container">
+    <div class="board-view col-12">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+        <p>
+            <?= Html::a('Editar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Borrar', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => '¿Estas seguro de que quieres borrar este elemento?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+        </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'body:ntext',
-            'created_by',
-        ],
-    ]) ?>
+        <div class="container">
+            <div id="text" class="white-board col-12">
+                <?php
 
+                $config = HTMLPurifier_Config::createDefault();
+                $config->set('HTML.SafeIframe', true);
+                $config->set('URI.SafeIframeRegexp', '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%');
+                $purifier = new HTMLPurifier($config);
+
+                $raw = $model->body;
+
+                echo $purifier->purify($raw)
+
+                ?>
+            </div>
+        </div>
+
+    </div>
 </div>
+

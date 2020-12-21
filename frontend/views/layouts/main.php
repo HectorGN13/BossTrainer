@@ -169,12 +169,12 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
-<footer class="footer text-white">
+
+<footer class="footer">
     <div class="container">
-        <div class="row">
-            <div class="mr-auto">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
-            <div class=""> <?= Yii::powered() ?> </div>
-        </div>
+        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+
+        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
