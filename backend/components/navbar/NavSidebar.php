@@ -17,7 +17,9 @@ class NavSidebar extends Widget
     {
         parent::init();
         $this->registerAssets();
+
     }
+
 
     /**
      * Registers the needed assets
@@ -53,7 +55,7 @@ class NavSidebar extends Widget
                 $activeMenu = '';
             }
             
-            $navHtml .= '<li class="'.$activeMenu.'"><a href = "'.Url::to($item['url']).'">';
+            $navHtml .= '<li class="'.$activeMenu.'"><a href = "'.Url::to($item['url']).'"'.$item['options'].'>';
             $navHtml .= '<i data-toggle="tooltip" data-placement="right" title="'.$item['label'].'" class="'.$item['icon'].'"></i>';
             $navHtml .= '<span class="nav-label" style="margin-left: 15px">'.$item['label'].'</span>';
             if (isset($item['badge'])) {

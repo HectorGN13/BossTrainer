@@ -70,13 +70,21 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => ['trainingsession/index'],
+                            'options' => '',
                             'label' => 'Entrenamientos',
                             'icon' => 'fas fa-clipboard-list'
                         ],
                         [
                             'url' => ['board/index'],
+                            'options' => '',
                             'label' => 'Pizarras',
                             'icon' => 'fas fa-chalkboard-teacher'
+                        ],
+                        [
+                            'url' => ['site/logout'],
+                            'options' => 'data-method=POST',
+                            'label' => 'Desconectarse',
+                            'icon' => 'fas fa-power-off'
                         ]
                     ],
                 ]);
