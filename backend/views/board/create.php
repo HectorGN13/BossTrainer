@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Board */
 
-$this->title = 'Create Board';
-$this->params['breadcrumbs'][] = ['label' => 'Boards', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Nueva Pizarra';
 ?>
 <div class="board-create">
 

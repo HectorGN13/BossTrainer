@@ -19,13 +19,13 @@ FontAwesomeAsset::register($this);
 
     <?= $form->field($model, 'body')->widget(Summernote::class, [
         'options' => [
-                'placeholder' => 'Edit your blog content here...',
+                'placeholder' => 'Edita tu pizarra aquí...',
             ]
-    ])->textarea(['rows' => 10]);
+    ])->textarea(['rows' => 15]);
     ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Añadir', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
