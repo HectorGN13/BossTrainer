@@ -10,10 +10,11 @@ use yii\helpers\Html;
 $this->title = $model->title;
 BoardAsset::register($this);
 ?>
-<div class="container">
-    <div class="board-view col-12">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+<div class="board-view">
+    <div class="container">
+        <div class="lines-effect">
+            <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
+        </div>
 
         <p>
             <?= Html::a('Editar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

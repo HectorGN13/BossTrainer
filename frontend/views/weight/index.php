@@ -78,7 +78,13 @@ WeightAsset::register($this);
                     'content' => function ($model, $key, $index, $widget) {
                         return Html::a(Html::tag('span','<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-sm btn-danger']),
                             ['weight/delete', 'id' => $model->id],
-                            ['data-method' => 'POST',  'class' => 'px-1']);
+                            [
+                                'data' => [
+                                    'confirm' => '¿Estas seguro de que quieres borrar este elemento?',
+                                    'method' => 'post',
+                                    ],
+                                'class' => 'px-1'
+                            ]);
                     }
                 ],
             ],

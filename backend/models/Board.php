@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use common\models\Gym;
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "board".
@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Gym $createdBy
  */
-class Board extends \yii\db\ActiveRecord
+class Board extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -47,8 +47,8 @@ class Board extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'body' => 'Body',
+            'title' => 'Título',
+            'body' => 'Contenido',
             'created_by' => 'Created By',
         ];
     }
