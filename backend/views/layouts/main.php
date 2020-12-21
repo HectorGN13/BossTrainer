@@ -45,7 +45,7 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar sticky-top navbar-expand-lg navbar-dark bg-dark',
+            'class' => 'navbar navbar-dark sticky-top navbar-expand-lg',
         ],
     ]);
     $menuItems = [
@@ -92,7 +92,7 @@ AppAsset::register($this);
                 <?= $content ?>
             </div>
             <!-- botton arriba-->
-            <div id="button-up" class="button-special bg-dark">
+            <div id="button-up" class="button-special">
                 <i class="fas fa-chevron-up"></i>
             </div>
         </div>

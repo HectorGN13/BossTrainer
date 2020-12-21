@@ -3,6 +3,21 @@ body {
     height: 100%;
 }
 
+.navbar {
+    background: #1E202F !important;
+}
+.navbar-brand img {
+    transition: all 3s;
+    padding-left: 12px;
+}
+.navbar-white {
+    background: white !important;
+    height: 52px !important;
+}
+.navbar-brand{
+    padding-right: 3rem !important;
+}
+
 body.blank {
     display: flex;
     padding: 40px 0;
@@ -30,8 +45,8 @@ body.blank .wrap > div {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
+    background-color: #1E202F;
+    border-top: 1px solid #1E202F;
     padding-top: 20px;
 }
 

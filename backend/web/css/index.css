@@ -67,14 +67,14 @@ img {
     border-radius: 100px;
 }
 .btn-light {
-    color: #000000;
+    color: #1E202F;
     background-color: #fff;
     border-color: #fff;
 }
 .btn-dark {
     color: #ffffff;
-    background-color: #000000;
-    border-color: #000000;
+    background-color: #1E202F;
+    border-color: #1E202F;
 }
 .btn:hover {
     transition: all 0.3s ease-in-out;
