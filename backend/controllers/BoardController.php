@@ -66,8 +66,10 @@ class BoardController extends Controller
     {
         $model = new Board();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->created_by = Yii::$app->user->id;
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [

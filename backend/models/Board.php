@@ -3,8 +3,7 @@
 namespace backend\models;
 
 use common\models\Gym;
-use common\models\GymBoard;
-use yii\db\ActiveRecord;
+use Yii;
 
 /**
  * This is the model class for table "board".
@@ -12,11 +11,11 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property string $title
  * @property string $body
+ * @property int|null $created_by
  *
- * @property GymBoard[] $gymBoards
- * @property Gym[] $gyms
+ * @property Gym $createdBy
  */
-class Board extends ActiveRecord
+class Board extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -34,7 +33,10 @@ class Board extends ActiveRecord
         return [
             [['title', 'body'], 'required'],
             [['body'], 'string'],
-            [['title'], 'string', 'max' => 60],
+            [['created_by'], 'default', 'value' => null],
+            [['created_by'], 'integer'],
+            [['title'], 'string', 'max' => 255],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => Gym::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -45,28 +47,19 @@ class Board extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Titulo',
-            'body' => 'Cuerpo',
+            'title' => 'Title',
+            'body' => 'Body',
+            'created_by' => 'Created By',
         ];
     }
 
     /**
-     * Gets query for [[GymBoards]].
+     * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGymBoards()
+    public function getCreatedBy()
     {
-        return $this->hasMany(GymBoard::className(), ['board_id' => 'id'])->inverseOf('board');
-    }
-
-    /**
-     * Gets query for [[Gyms]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGyms()
-    {
-        return $this->hasMany(Gym::className(), ['id' => 'gym_id'])->viaTable('gym_board', ['board_id' => 'id']);
+        return $this->hasOne(Gym::className(), ['id' => 'created_by'])->inverseOf('boards');
     }
 }

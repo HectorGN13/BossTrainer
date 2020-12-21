@@ -17,7 +17,7 @@ class BoardSearch extends Board
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'created_by'], 'integer'],
             [['title', 'body'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class BoardSearch extends Board
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'created_by' => $this->created_by,
         ]);
 
         $query->andFilterWhere(['ilike', 'title', $this->title])
