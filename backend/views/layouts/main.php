@@ -9,6 +9,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use backend\components\navbar\NavSidebar;
 use frontend\components\modalalert\ModalAlert;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -26,7 +27,6 @@ AppAsset::register($this);
     <style>
         #content {
             width: 100%;
-            margin-left:15%;
             padding: 0;
             min-height: 100vh;
             -webkit-transition: all 0.3s;

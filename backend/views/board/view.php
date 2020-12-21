@@ -1,16 +1,14 @@
 <?php
 
+use backend\assets\BoardAsset;
 use yii\helpers\Html;
-use yii\web\YiiAsset;
 
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Board */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Boards', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\backend\assets\BoardAsset::register($this);
+BoardAsset::register($this);
 ?>
 <div class="container">
     <div class="board-view col-12">

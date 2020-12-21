@@ -1,36 +1,45 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BoardSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Boards';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Pizarras';
+
 ?>
 <div class="board-index">
-    <div class="container">
-        <h1><?= Html::encode($this->title) ?></h1>
+    <div class="board-list container">
+        <div class="lines-effect">
+            <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
+        </div>
+            <p>
+                <?= Html::a('Crear Pizarra', ['create'], ['class' => 'btn btn-pink']) ?>
+            </p>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'options' => ['class' => 'custom-table'],
+                'tableOptions' => ['class' => 'table table-hover table-sm'],
+                'layout' => '{items}{pager}',
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'title',
+                    [
+                        'header' => 'Acciones',
+                        'content' => function ($model, $key, $index, $widget) {
+                            $del =  Html::a(Html::tag('span','<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-sm btn-danger']),
+                                ['board/delete', 'id' => $model->id],
+                                ['data-method' => 'POST',  'class' => 'px-1']);
 
-        <p>
-            <?= Html::a('Create Board', ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
-
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-        <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-
-                'title',
-                'body:ntext',
-
-                ['class' => 'yii\grid\ActionColumn'],
-            ],
-        ]); ?>
+                            $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-success']),
+                                ['board/update', 'id' => $model->id], ['class' => 'uploadBoard']);
+                            return  $upd . $del ;
+                        }
+                    ],
+                ],
+            ]); ?>
     </div>
 </div>
