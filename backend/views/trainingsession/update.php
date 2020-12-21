@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /* @var $model backend\models\TrainingSession */
 
 $this->title = 'Update Training Session: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Training Sessions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="training-session-update">
 

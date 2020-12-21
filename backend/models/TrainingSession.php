@@ -5,6 +5,8 @@ namespace backend\models;
 use Yii;
 use backend\models\UserTrainingSession;
 use common\models\User;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 use yii\db\Query;
 /**
  * This is the model class for table "training_session".
@@ -18,7 +20,7 @@ use yii\db\Query;
  *
  * @property UserTrainingSession[] $userTrainingSessions
  */
-class TrainingSession extends \yii\db\ActiveRecord
+class TrainingSession extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -61,16 +63,15 @@ class TrainingSession extends \yii\db\ActiveRecord
     /**
      * Gets query for [[UserTrainingSessions]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return array|ActiveQuery|ActiveRecord[]
      */
     public function getUserTrainingSessions()
     {
         $training_session_id = $this->id;
-        $collection = UserTrainingSession::find()
-        ->joinWith('user')
-        ->where(['training_session_id' => $training_session_id])
-        ->all();
-        return $collection;
+        return UserTrainingSession::find()
+            ->joinWith('user')
+            ->where(['training_session_id' => $training_session_id])
+            ->all();
         
         //return $this->hasMany(UserTrainingSession::className(), ['training_session_id' => 'user_id']);
     }

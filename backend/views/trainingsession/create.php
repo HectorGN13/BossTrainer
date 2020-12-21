@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /* @var $model backend\models\TrainingSession */
 
 $this->title = 'Create Training Session';
-$this->params['breadcrumbs'][] = ['label' => 'Training Sessions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="training-session-create">
 

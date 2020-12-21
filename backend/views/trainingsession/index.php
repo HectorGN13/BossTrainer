@@ -8,7 +8,6 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Training Sessions';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="training-session-index">
 

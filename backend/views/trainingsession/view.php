@@ -1,15 +1,14 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\TrainingSession */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Training Sessions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
 <div class="training-session-view">
 
