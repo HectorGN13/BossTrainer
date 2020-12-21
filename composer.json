@@ -37,7 +37,8 @@
         "kartik-v/yii2-widget-datetimepicker": "dev-master",
         "kartik-v/yii2-editors": "@dev",
         "kartik-v/yii2-icons": "@dev",
-        "ezyang/htmlpurifier": "^4.13"
+        "ezyang/htmlpurifier": "^4.13",
+        "antkaz/yii2-vue": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",

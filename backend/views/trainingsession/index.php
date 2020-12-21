@@ -7,18 +7,19 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Training Sessions';
+$this->title = 'Sesiones de Entreno';
 ?>
 <div class="training-session-index">
-    <div class="container">
-        <h1><?= Html::encode($this->title) ?></h1>
+        <div class="training-session-list container">
+            <div class="lines-effect">
+                <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
+            </div>
 
-        <p>
-            <?= Html::a('Create Training Session', ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
 
         <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-
+            <p>
+                <?= Html::a('Crear sesión', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
