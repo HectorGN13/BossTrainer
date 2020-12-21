@@ -28,13 +28,13 @@ $this->title = 'Gimnasios';
                 </div>
                 <div class="card text-center">
                     <div class="card-body py-5">
-                        <h5 class="card-title mt-3"><?= $model->name ?></h5>
-                        <p class="card-text"><?= $model->description ?></p>
-                        <p class="card-text"><?php if(isset($model->address)) echo $model->address . ","; ?>
-                            <?=  $model->postal_code ?> </p>
+                        <h5 class="card-title mt-3"><?= Html::encode($model->name) ?></h5>
+                        <p class="card-text"><?= Html::encode($model->description) ?></p>
+                        <p class="card-text"><?php if(isset($model->address)) echo Html::encode($model->address) . ","; ?>
+                            <?=  Html::encode($model->postal_code) ?> </p>
                         <p class="card-text"><?php if(isset($model->localidad->nombre_localidad))
-                                echo $model->localidad->nombre_localidad . "."; ?> <?php if(isset($model->provincia->nombre_provincia))
-                                echo $model->provincia->nombre_provincia; ?></p>
+                                echo Html::encode($model->localidad->nombre_localidad) . "."; ?> <?php if(isset($model->provincia->nombre_provincia))
+                                echo Html::encode($model->provincia->nombre_provincia); ?></p>
                         <?= Html::a('Visitar', ['view', 'id' => $model->id], ['class'=>'btn btn-dark btn-rounded']) ?>
                     </div>
                 </div>

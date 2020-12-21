@@ -11,26 +11,26 @@ $this->title = 'Boards';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="board-index">
+    <div class="container">
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <p>
+            <?= Html::a('Create Board', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
 
-    <p>
-        <?= Html::a('Create Board', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                'title',
+                'body:ntext',
 
-            'title',
-            'body:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]); ?>
+    </div>
 </div>

@@ -5,8 +5,8 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 use backend\components\navbar\NavSidebar;
 use frontend\components\modalalert\ModalAlert;
 AppAsset::register($this);
@@ -45,14 +45,14 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/images/logoBlanco.png', ['alt'=>Yii::$app->name, 'style' => 'width:210px; margin-top:-12px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar sticky-top navbar-expand-lg navbar-inverse border-0',
+            'class' => 'navbar sticky-top navbar-expand-lg navbar-dark bg-dark',
         ],
     ]);
     $menuItems = [
         ['label' => Html::tag('i','', ['class' => 'fas fa-inbox']), 'url' => ['#'], "linkOptions" => ["class" => '']],
     ];
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right user-navbar'],
+        'options' => ['class' => 'navbar-nav navbar-right user-navbar navbar navbar-dark bg-dark'],
         'items' => $menuItems,
     ]);
     NavBar::end();
@@ -92,18 +92,19 @@ AppAsset::register($this);
                 <?= $content ?>
             </div>
             <!-- botton arriba-->
-            <div id="button-up" class="button-special">
+            <div id="button-up" class="button-special bg-dark">
                 <i class="fas fa-chevron-up"></i>
             </div>
         </div>
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer text-white">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <div class="row">
+            <div class="mr-auto">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
+            <div class=""> <?= Yii::powered() ?> </div>
+        </div>
     </div>
 </footer>
 

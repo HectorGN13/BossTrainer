@@ -33,10 +33,10 @@ class NavSidebar extends Widget
     public function run()
     {
 
-        $navHtml = '<nav id="sidebar" class="mt-5 navbar-inverse">';
+        $navHtml = '<nav id="sidebar" class="mt-5 navbar-dark bg-dark">';
 
         //Toogle button
-        $navHtml .= '<div id="togglebutton" class="button-special">
+        $navHtml .= '<div id="togglebutton" class="button-special bg-dark">
                     <i class="fas fa-chevron-right"></i></div>';
         //Profile
         /*$navHtml .= ' <div class="img bg-wrap text-center pt-5">';
