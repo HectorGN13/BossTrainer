@@ -78,117 +78,6 @@ class UserController extends Controller
         ]);
     }
 
-
-//    /**
-//     * Updates an existing User model.
-//     * If update is successful, the browser will be redirected to the 'view' page.
-//     * @param integer $id
-//     * @return mixed
-//     * @throws NotFoundHttpException
-//     */
-//    public function actionUpdate($id)
-//    {
-////        $img = new ImagenForm();
-////        $model = $this->findModel($id);
-////        $previous_photo = $model->profile_img;
-////        if (Yii::$app->request->isPost) {
-////            if ($model->load(Yii::$app->request->post())) {
-////                $upload = UploadedFile::getInstance($img, 'imagen');
-////                if(is_object($upload)){
-////                    $upload_filename = 'images/user/' . $upload->baseName . '.' . $upload->extension;
-////                    $upload->saveAs($upload_filename);
-////                    $model->profile_img = $upload_filename;
-////                }else{
-////                    $model->profile_img = $previous_photo;
-////                }
-////                if ($model->save()) {
-////                    Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
-////                    return $this->redirect(['profile', 'id' => $model->id]);
-////                } else {
-////                    Yii::$app->session->setFlash('error', 'Error al modificar su perfil.');
-////                }
-////            }
-////        }
-////        return $this->render('update', [
-////            'model' => $model,
-////        ]);
-//
-//        $model = User::findOne($id);
-//
-//
-//        if ($model->load(Yii::$app->request->post())){
-//            $model->save();
-//            Yii::$app->session->setFlash('success', 'Su perfil se ha modificado correctamente.');
-//            return $this->redirect(['profile', 'id' => $model->id]);
-//        }
-//
-//        return $this->render('update', [
-//            'model' => $model,
-//        ]);
-//
-//
-//    }
-//
-//
-//    public function actionUpload($id)
-//    {
-//        $model = new ImagenForm();
-//        var_dump('Estes en subir imagen perfil');
-//
-//        if (Yii::$app->request->isPost) {
-//            $model->imagen = UploadedFile::getInstance($model, 'imagen');
-//            if ($model->subida($id) && $model->subidaAws($id)) {
-//                Yii::$app->session->setFlash('success', 'Imagen subida con exito');
-//                $model->borradoLocal($id);
-//                return $this->redirect('usuarios/view');
-//            }
-//        }
-//
-//        return $this->render('imagen', [
-//            'model' => $model,
-//        ]);
-//    }
-//
-//    /**
-//     *
-//     * @param $id
-//     * @return string|Response
-//     * @throws NotFoundHttpException
-//     */
-//    public function actionUpdatePhoto($id)
-//    {
-//        $model = $this->findModel($id);
-//        $oldFile = $model->getImageFile();
-//        $oldAvatar = $model->avatar;
-//        $oldFileName = $model->filename;
-//
-//        if ($model->load(Yii::$app->request->post())) {
-//            // process uploaded image file instance
-//            $image = $model->uploadImage();
-//
-//            // revert back if no valid file instance uploaded
-//            if ($image === false) {
-//                $model->avatar = $oldAvatar;
-//                $model->filename = $oldFileName;
-//            }
-//
-//            if ($model->save()) {
-//                // upload only if valid uploaded file instance found
-//                if ($image !== false && unlink($oldFile)) { // delete old and overwrite
-//                    $path = $model->getImageFile();
-//                    $image->saveAs($path);
-//                }
-//                return $this->redirect(['view', 'id'=>$model->_id]);
-//            } else {
-//                // error in saving model
-//            }
-//        }
-//        return $this->render('update', [
-//            'model'=>$model,
-//        ]);
-//    }
-
-
     /**
      * @param $id
      * @return array|string|Response
@@ -203,7 +92,28 @@ class UserController extends Controller
             return ActiveForm::validate($model);
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $avatarImage = Yii::$app->request->post('hidden_profile_img');
+            if(isset($_FILES['User']) && !empty($_FILES['User']['name']['profile_img']))
+            {
+                $file = $_FILES['User'];
+                $file_name = $file['name']['profile_img'];   
+                $temp_file_location = $file['tmp_name']['profile_img']; 
+                Yii::$app->awssdk->region = 'eu-central-1';
+                $aws = Yii::$app->awssdk->getAwsSdk();
+
+                $s3 = $aws->createS3();    
+                $result = $s3->putObject([
+                    'ACL' => 'public-read',
+                    'Bucket' => 'bosstrainer1',
+                    'Key'    => $file_name,
+                    'SourceFile' => $temp_file_location         
+                ]);
+                if($result['@metadata']['statusCode'] == 200)
+                    $avatarImage =  isset($result['ObjectURL']) ? $result['ObjectURL'] : '';
+            }
+            $model->profile_img = $avatarImage;
+            $model->save();
             Yii::$app->session->setFlash('success', 'Se ha modificado correctamente.');
             return $this->redirect(['profile', 'id' => $model->id]);
         }

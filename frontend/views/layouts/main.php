@@ -111,8 +111,9 @@ AppAsset::register($this);
         <div id="wrapper" class="wrapper d-flex align-items-stretch">
             <?php
             if (!Yii::$app->user->isGuest) {
+                $avatarImage = !empty(Yii::$app->user->identity->profile_img) ? Yii::$app->user->identity->profile_img : 'https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg';
                 echo NavSidebar::widget([
-                    'imgProfile' =>  'https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg',
+                    'imgProfile' =>  $avatarImage,
                     'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
                     'items' => [
                         [
