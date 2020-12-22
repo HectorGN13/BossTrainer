@@ -10,7 +10,7 @@ use common\models\UserTrainingSession;
 /* @var $searchModel backend\models\TrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Training Sessions';
+$this->title = 'Sesiones de entrenamientos';
 $this->params['breadcrumbs'][] = $this->title;
 $userTrainingSession = new UserTrainingSession();
 ?>
@@ -22,7 +22,7 @@ $userTrainingSession = new UserTrainingSession();
           </div>
 
         <p>
-            <?= Html::a('Create Training Session', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Crear Entreno', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
       </div>
     </div>
@@ -102,7 +102,7 @@ $userTrainingSession = new UserTrainingSession();
                   <?php
                   $members = $userTrainingSession->getSessionMembers($session['id']);
                   $totalMembers = count($members);
-                  $remainSeat = (int)$session['capacity'] + (int)$totalMembers;
+                  $remain = (int)$session['capacity'] + (int)$totalMembers;
                   $userId = Yii::$app->user->id;
                   $isUserJoined = $userTrainingSession->isSessionIsJoined($session['id'], $userId);
                   ?>
@@ -117,14 +117,14 @@ $userTrainingSession = new UserTrainingSession();
                       ?>
                       <div class="session-user session-user-box"><img src="<?= $profileImage?>" title="<?= $username?>" alt="<?= $username?>" width="70" height="70" class="session-user-img session-user-box"></div>
                   <?php endforeach;?>
-                  <?php for($index=0;$index<$remainSeat;$index++):?>
+                  <?php for($index=0;$index<$remain;$index++):?>
                       <div class="session-user session-user-box"></div>
                   <?php endfor;?>
               </div>
               <div class="col-lg-3 col-md-3 text-left">
-                  <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Edit</a>
-                  <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="Are you sure?" data-method="post">Delete</a>
-                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">View Description</button>
+                  <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Editar</a>
+                  <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="¿Estas seguro de que quieres eliminar esta sesión?" data-method="post">Borrar</a>
+                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver descripción</button>
               </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ $userTrainingSession = new UserTrainingSession();
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 text-center">
-            <button class="btn btn-primary mb-3 mt-3" type="button" id="btn-load-more">Load More</button>
+            <button class="btn btn-primary mb-3 mt-3" type="button" id="btn-load-more">Cargar más</button>
             <input type="hidden" id="row" value="0">
             <input type="hidden" id="all" value="<?php echo $totalSessionCount; ?>">
         </div>
@@ -155,7 +155,7 @@ $userTrainingSession = new UserTrainingSession();
         var allcount = Number($('#all').val());
         if(allcount < 12)
         {
-            $("#btn-load-more").text("No more session available...");
+            $("#btn-load-more").text("No hay más sesiones disponibles...");
         }
         // Load more data
         $('#btn-load-more').click(function(){

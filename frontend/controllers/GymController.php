@@ -4,14 +4,16 @@ namespace frontend\controllers;
 
 
 use common\models\GymUser;
+use DateTime;
 use Yii;
 use common\models\Gym;
 use common\models\GymSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\models\TrainingSessionSearch;
-use backend\models\UserTrainingSession;
+use common\models\TrainingSession;
+use common\models\UserTrainingSession;
+
 /**
  * GymController implements the CRUD actions for Gym model.
  */
@@ -57,16 +59,16 @@ class GymController extends Controller
     {
         $searchModel = new GymSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $trainingSessionSearchModel = new TrainingSessionSearch();
-        $trainingSessionSearchModel->created_by = $id;
-        $traingSessionDataProvider = $trainingSessionSearchModel->search(Yii::$app->request->queryParams);
-        
+        $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',date('Y-m-d 00:00:01')])->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])->andWhere(['=', 'created_by',$id]);
+        $totalSessionCount = $trainingSessions->count();
+        $trainingSessions = $trainingSessions->limit(12)->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'trainingSessionSearchModel' => $trainingSessionSearchModel,
-            'trainingSessionDataProvider' => $traingSessionDataProvider
+            'trainingSessions' => $trainingSessions,
+            'totalSessionCount' => $totalSessionCount,
+            'gym_id' => $id
         ]);
     }
 
@@ -181,5 +183,13 @@ class GymController extends Controller
             Yii::$app->session->setFlash('error', "Ya estabas unido/a a esta sesion de entrenamiento.");
             return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
         }
+    }
+    //leave the training session
+    public function actionLeave($id)
+    {
+        $userId = Yii::$app->user->id;
+        $useTrainingSession = UserTrainingSession::find()->where(['user_id' => $userId, 'training_session_id' => $id])->one()->delete();
+        Yii::$app->session->setFlash('success', "You leaved this session successfully.");
+        return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
     }
 }

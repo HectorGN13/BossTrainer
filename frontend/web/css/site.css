@@ -179,3 +179,86 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.training-session-heading{
+    background: #24A3E6;
+}
+#btn-change-date{
+    background: #24a3e6;
+    color: #fff;
+        border: 0;
+    padding: 7px 13px;
+}
+#btn-change-date:hover{
+    border: none;
+}
+.btn-prev-date{
+    border: none;
+    font-weight: 600;
+    background: #24a3e6;
+    color: #fff;
+    padding: 7px 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.date-picker-container{
+    background: #ddddddbf;
+}
+.btn-next-date{
+    border: none;
+    font-weight: 600;
+    background: #24a3e6;
+    color: #fff;
+    padding: 7px 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.btn-day-change:focus{
+    outline: none;
+}
+.session-user{
+    float: left;
+    height: 70px;
+    background: #CCDB38;
+    width: 70px;
+    margin: 5px;
+}
+.session-user:nth-child(10n+1) {
+    clear: left;
+}
+.btn-join-session{
+    background: #ccdb38;
+}
+.btn-join-session:hover{
+    outline: none;
+    background: #ccdb38 !important;
+    border:none;
+}
+.btn-actions{
+    color: #fff;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.btn-notity-session, .btn-notity-session:hover, .btn-edit-session, .btn-edit-session:hover{
+    background: #24a3e6 !important;
+    color: #fff !important;
+    border:none;
+}
+.session-user-img{
+    float: left;
+    height: 70px !important;
+    width: 70px !important;
+    margin: 0px !important;
+    background: #fff;
+}
+@media only screen and (max-width: 769px) {
+  .session-user:nth-child(4n+1) {
+        clear: left;
+    }
+    .session-user{
+        height: 65px !important;
+        width: 65px !important;
+    }
+    .session-user:nth-child(10n+1) {
+        clear: inherit;
+    }
+}
