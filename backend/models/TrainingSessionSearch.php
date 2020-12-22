@@ -4,7 +4,7 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\TrainingSession;
+use common\models\TrainingSession;
 use Yii;
 /**
  * TrainingSessionSearch represents the model behind the search form of `backend\models\TrainingSession`.
