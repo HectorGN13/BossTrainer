@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 use common\models\User;
@@ -67,5 +67,23 @@ class UserTrainingSession extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+    //get training session members
+    public function getSessionMembers($sessionId)
+    {
+        $users = UserTrainingSession::find()
+        ->joinWith('user')
+        ->where(['training_session_id' => $sessionId])
+        ->all();
+        return $users;
+    }
+    //check user have joined session or not
+    public function isSessionIsJoined($sessionId, $userId)
+    {
+        $userCount = UserTrainingSession::find()
+        ->where(['training_session_id' => $sessionId])
+        ->andWhere(['user_id' => $userId])
+        ->count();
+        return ($userCount > 0) ? true : false;
     }
 }

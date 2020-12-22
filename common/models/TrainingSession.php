@@ -1,9 +1,9 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
-use backend\models\UserTrainingSession;
+use common\models\UserTrainingSession;
 use common\models\User;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;

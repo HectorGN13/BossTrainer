@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
     <?= Html::submitButton('Filter By Current Day', ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Reset',['trainingsession/index'], ['class' => 'btn btn-outline-secondary']) ?>
     </div>
-    <!--<?= $form->field($model, 'id') ?>
+    <!-- <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'description') ?>
 
