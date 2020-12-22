@@ -14,10 +14,12 @@ $this->title = 'Training Sessions';
 $this->params['breadcrumbs'][] = $this->title;
 $userTrainingSession = new UserTrainingSession();
 ?>
-<div class="training-session-index ">
+<div class="training-session-index container">
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        <h1><?= Html::encode($this->title) ?></h1>
+          <div class="lines-effect">
+              <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
+          </div>
 
         <p>
             <?= Html::a('Create Training Session', ['create'], ['class' => 'btn btn-success']) ?>
