@@ -43,11 +43,12 @@ MovementsAssets::register($this);
                     'header' => 'Acciones',
                     'content' => function ($model, $key, $index, $widget) {
                         $del =  Html::a(Html::tag('span','<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-sm btn-danger']),
-                            ['record/delete', 'user_id' => Yii::$app->user->id, 'movements_id' => $model->id],
+                            ['record/delete'],
                             [
                                 'data' => [
                                     'confirm' => '¿Estas seguro de que quieres borrar este elemento?',
                                     'method' => 'post',
+                                    'params' => ['movements_id' => $key],
                                 ],
                                 'class' => 'px-1'
                             ]

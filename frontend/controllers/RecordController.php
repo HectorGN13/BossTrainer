@@ -61,7 +61,6 @@ class RecordController extends Controller
 
     /**
      * Displays a single Record model.
-     * @param integer $user_id
      * @param integer $movements_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -91,7 +90,7 @@ class RecordController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Se ha añadido con éxito su record.');
-                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
+                return $this->goBack();
             } else {
                 Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
             }
@@ -148,12 +147,12 @@ class RecordController extends Controller
     /**
      * Deletes an existing Record model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $movements_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($movements_id)
+    public function actionDelete()
     {
+        $movements_id = Yii::$app->request->post('movements_id');
         if ($this->findModel($movements_id)->delete() != false ) {
             Yii::$app->session->setFlash('success', 'Se ha borrado con éxito su record.');
             return $this->redirect(['movements/index']);
