@@ -25,10 +25,9 @@ return [
         'awssdk' => [
             'class' => 'fedemotta\awssdk\AwsSdk',
             'credentials' => [
-                //'key' => getenv('AWS_ACCESS_KEY_ID'),
-                'key' => 'AKIAIDGLP27T6J6H73LA',
-                //'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
-                'secret' => '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'
+                'key' => getenv('AWS_ACCESS_KEY_ID'),
+                'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
+
             ],
             'region' => 'eu-central-1',
             'version' => 'latest',
