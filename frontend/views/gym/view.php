@@ -1,24 +1,23 @@
 <?php
 
-use frontend\assets\MaterialAsset;
+use frontend\assets\GymsAsset;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use kartik\date\DatePicker;
 use yii\web\JsExpression;
 use yii\helpers\Url;
 use common\models\UserTrainingSession;
+use common\models\Board;
 /* @var $this yii\web\View */
 /* @var $model common\models\Gym */
 /* @var $trainingSessionDataProvider backend\models\TrainingSession */
 /* @var $trainingSessionSearchModel backend\models\TrainingSessionSearch */
 
 $this->title = $model->name;
-//MaterialAsset::register($this);
+GymsAsset::register($this);
 \yii\helpers\VarDumper::dump($model->userFollowExist());
 $userTrainingSession = new UserTrainingSession();
 ?>
 <body class="profile-page sidebar-collapse">
-<link rel="stylesheet" href="<?= Yii::$app->request->baseUrl?>/css/material-kit.css"/>
 <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://images7.alphacoders.com/105/thumb-1920-1052530.jpg); transform: translate3d(0px, 0px, 0px);"></div>
 <div class="main main-raised">
     <div class="profile-content">
@@ -83,7 +82,29 @@ $userTrainingSession = new UserTrainingSession();
                 </div>
                 <div class="tab-pane text-center gallery" id="board">
                     <div class="row">
+                        <div class="container">
+<!--                            <div class="lines-effect">-->
+<!--                                <h1 class="text-responsive" style="text-transform: uppercase">--><?//= Html::encode($this->title) ?><!--</h1>-->
+<!--                            </div>-->
+<!---->
+<!--                            <div class="container">-->
+<!--                                <div id="text" class="white-board col-12">-->
+<!--                                    --><?php
+//
+//                                    $config = HTMLPurifier_Config::createDefault();
+//                                    $config->set('HTML.SafeIframe', true);
+//                                    $config->set('URI.SafeIframeRegexp', '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%');
+//                                    $purifier = new HTMLPurifier($config);
+//
+//                                    $raw = $model->body;
+//
+//                                    echo $purifier->purify($raw)
+//
+//                                    ?>
+<!--                                </div>-->
+<!--                            </div>-->
 
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane text-center gallery" id="ranking">
@@ -243,7 +264,6 @@ $script = <<< JS
         $('#btn-load-more').click(function(){
             applyFilter();
         });
-
         $('#btn-change-date').click(function(){
             var popup =$(this).offset();
             var popupTop = popup.top - 20;

@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+use common\models\Gym;
 use Yii;
-use backend\models\Board;
-use backend\models\BoardSearch;
+use common\models\Board;
+use common\models\BoardSearch;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,7 +27,7 @@ class BoardController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['view', 'index', 'create', 'update', 'delete'],
+                        'actions' => ['view', 'index', 'create', 'update', 'delete', 'default'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -136,5 +138,35 @@ class BoardController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     *
+     */
+    public function actionDefault()
+    {
+        $id = Yii::$app->request->post('id');
+        $gym = Gym::findOne(Yii::$app->user->id);
+        $query = Gym::find()->where(['default_board' => $id]);
+        
+        if ($query->exists()) {
+            $gym->default_board = null;
+            if ($gym->save()) {
+                Yii::$app->session->setFlash('success', 'Ya no es tu pizarra por defecto.');
+                return $this->redirect(['index']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+        } else {
+            $gym->default_board = $id;
+            if ($gym->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito.');
+                return $this->redirect(['index']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+        }
+
+        return $this->redirect(['index']);
     }
 }

@@ -189,7 +189,7 @@ class GymController extends Controller
     {
         $userId = Yii::$app->user->id;
         $useTrainingSession = UserTrainingSession::find()->where(['user_id' => $userId, 'training_session_id' => $id])->one()->delete();
-        Yii::$app->session->setFlash('success', "You leaved this session successfully.");
+        Yii::$app->session->setFlash('success', "Te has salido de la sesión de entrenamiento correctamente.");
         return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
     }
 }

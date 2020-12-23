@@ -42,8 +42,19 @@ $this->title = 'Pizarras';
                             );
 
                             $upd = Html::a(Html::tag('span','<i class="fas fa-pen"></i>', ['class' => 'btn btn-sm btn-success']),
-                                ['board/update', 'id' => $model->id], ['class' => 'uploadBoard']);
-                            return  $upd . $del ;
+                                ['board/update', 'id' => $key], ['class' => 'uploadBoard']);
+
+                            $default = Html::a(Html::tag('span','Por defecto', ['class' => 'btn btn-sm btn-info']),
+                                ['board/default'],
+                                [
+                                        'data' => [
+                                            'method' => 'post',
+                                            'params' => ['id' => $key],
+                                        ],
+                                    'class' => 'px-1'
+                                ]
+                            );
+                            return  $upd . $del . $default ;
                         }
                     ],
                 ],

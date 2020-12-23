@@ -15,6 +15,8 @@ class GymsAsset extends AssetBundle
         'css/site.css',
         'css/index.css',
         'css/gym.css',
+        'css/material-kit.css',
+        'board.css'
     ];
     public $js = [
         'js/script.js',

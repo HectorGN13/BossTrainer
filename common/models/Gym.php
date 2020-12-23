@@ -4,6 +4,7 @@ namespace common\models;
 
 
 use Yii;
+use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 /**
  * This is the model class for table "gym".
@@ -22,6 +23,10 @@ use yii\web\IdentityInterface;
  *
  * @property GymUser[] $GymUsers
  * @property User[] $users
+ * @property Board[] $boards
+ * @property Board $default_board
+ * @property Localidades $localidad_id
+ * @property Provincias $provincia_id
  */
 class Gym extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -52,6 +57,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             [['email'], 'unique'],
             [['name'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['default_board'], 'exist', 'skipOnError' => true, 'targetClass' => Board::className(), 'targetAttribute' => ['default_board' => 'id']],
             [['provincia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['provincia_id' => 'id']],
             [['localidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => localidades::class, 'targetAttribute' => ['localidad_id' => 'id']],
         ];
@@ -78,6 +84,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             'postal_code' => 'Código postal',
             'description' => 'Descripción',
             'localidad_id' => 'Localidad ID',
+            'default_board' => 'Pizarra por defecto',
         ];
     }
 
@@ -121,15 +128,6 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasOne(Localidades::className(), ['id' => 'localidad_id'])->inverseOf('gyms');
     }
 
-    /**
-     * Gets query for [[GymBoards]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGymBoards()
-    {
-        return $this->hasMany(GymBoard::className(), ['gym_id' => 'id'])->inverseOf('gym');
-    }
 
     /**
      * Gets query for [[Boards]].
@@ -138,7 +136,17 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getBoards()
     {
-        return $this->hasMany(Board::className(), ['id' => 'board_id'])->viaTable('gym_board', ['gym_id' => 'id']);
+        return $this->hasMany(Board::className(), ['created_by' => 'id'])->inverseOf('createdBy');
+    }
+
+    /**
+     * Gets query for [[DefaultBoard]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDefaultBoard()
+    {
+        return $this->hasOne(Board::className(), ['id' => 'default_board'])->inverseOf('gyms');
     }
 
     /**

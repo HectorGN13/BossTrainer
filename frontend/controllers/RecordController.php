@@ -111,7 +111,6 @@ class RecordController extends Controller
     /**
      * Updates an existing Record model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $user_id
      * @param integer $movements_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found

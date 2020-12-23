@@ -2,7 +2,8 @@
 
 namespace common\models;
 
-use Yii;
+use common\models\Gym;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "board".
@@ -10,11 +11,11 @@ use Yii;
  * @property int $id
  * @property string $title
  * @property string $body
+ * @property int|null $created_by
  *
- * @property GymBoard[] $gymBoards
- * @property Gym[] $gyms
+ * @property Gym $createdBy
  */
-class Board extends \yii\db\ActiveRecord
+class Board extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -32,7 +33,10 @@ class Board extends \yii\db\ActiveRecord
         return [
             [['title', 'body'], 'required'],
             [['body'], 'string'],
-            [['title'], 'string', 'max' => 4000],
+            [['created_by'], 'default', 'value' => null],
+            [['created_by'], 'integer'],
+            [['title'], 'string', 'max' => 255],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => Gym::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -43,19 +47,20 @@ class Board extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'body' => 'Body',
+            'title' => 'Título',
+            'body' => 'Contenido',
+            'created_by' => 'Created By',
         ];
     }
 
     /**
-     * Gets query for [[GymBoards]].
+     * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGymBoards()
+    public function getCreatedBy()
     {
-        return $this->hasMany(GymBoard::className(), ['board_id' => 'id'])->inverseOf('board');
+        return $this->hasOne(Gym::className(), ['id' => 'created_by'])->inverseOf('boards');
     }
 
     /**
@@ -63,8 +68,8 @@ class Board extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGyms()
+    public function getGymDefault()
     {
-        return $this->hasMany(Gym::className(), ['id' => 'gym_id'])->viaTable('gym_board', ['board_id' => 'id']);
+        return $this->hasOne(Gym::className(), ['default_board' => 'id'])->inverseOf('defaultBoard');
     }
 }
