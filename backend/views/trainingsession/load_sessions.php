@@ -18,7 +18,7 @@ $userTrainingSession = new UserTrainingSession();
               <?php
               $members = $userTrainingSession->getSessionMembers($session['id']);
               $totalMembers = count($members);
-              $remainSeat = (int)$session['capacity'] + (int)$totalMembers;
+              $remainSeat = (int)$session['capacity'] - (int)$totalMembers;
               $userId = Yii::$app->user->id;
               $isUserJoined = $userTrainingSession->isSessionIsJoined($session['id'], $userId);
               ?>
@@ -35,9 +35,9 @@ $userTrainingSession = new UserTrainingSession();
               <?php endfor;?>
           </div>
           <div class="col-lg-3 col-md-3 text-left">
-              <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Edit</a>
-              <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="Are you sure?" data-method="post">Delete</a>
-              <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">View Description</button>
+              <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Editar</a>
+              <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="¿Estas seguro de eliminar sta sesión?" data-method="post">Eliminar</a>
+              <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver descripción</button>
           </div>
       </div>
     </div>

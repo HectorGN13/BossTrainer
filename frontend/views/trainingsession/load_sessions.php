@@ -18,7 +18,7 @@ $userTrainingSession = new UserTrainingSession();
               <?php
               $members = $userTrainingSession->getSessionMembers($session['id']);
               $totalMembers = count($members);
-              $remainSeat = (int)$session['capacity'] + (int)$totalMembers;
+              $remainSeat = (int)$session['capacity'] - (int)$totalMembers;
               $userId = Yii::$app->user->id;
               $isUserJoined = $userTrainingSession->isSessionIsJoined($session['id'], $userId);
               ?>

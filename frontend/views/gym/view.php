@@ -51,11 +51,6 @@ $userTrainingSession = new UserTrainingSession();
                     <div class="profile-tabs">
                         <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#schedule" role="tab" data-toggle="tab">
-                                    <i class="fas fa-clock"></i> HORARIOS
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="#board" role="tab" data-toggle="tab">
                                     <i class="fas fa-chalkboard"></i> PIZARRA
                                 </a>
@@ -67,7 +62,7 @@ $userTrainingSession = new UserTrainingSession();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#training_session" role="tab" data-toggle="tab">
-                                    <i class="fas fa-medal"></i> TRAINING SESSION
+                                    <i class="fas fa-clock"></i> HORARIOS
                                 </a>
                             </li>
                         </ul>
@@ -255,7 +250,7 @@ $userTrainingSession = new UserTrainingSession();
 $script = <<< JS
     $(document).ready(function(){
         var allcount = Number($('#all').val());
-        if(allcount < 12)
+        if(allcount < 10)
         {
             $("#btn-load-more").text("No hay más sesiones disponibles...");
         }
@@ -341,12 +336,12 @@ function applyFilter(isFilterApplied = false)
             type: 'post',
             data: {row:row,gym_id:$("#gym_id").val(),current_day: current_day, _csrf : $("#csrf_token").val()},
             beforeSend:function(){
-                $("#btn-load-more").text("Loading...");
+                $("#btn-load-more").text("Cargando...");
             },
             success: function(response){
-                // Setting little delay while displaying new content
+                // pequeño delay mientras se agregan las publicaciones
                 setTimeout(function() {
-                    // appending posts after last post with class="post"
+                    // agrega clases después de la última publicación con class = "post"
                     if(isFilterApplied)
                     {
                       $("#session-container").html(response).show().fadeIn("slow");
@@ -358,14 +353,14 @@ function applyFilter(isFilterApplied = false)
                     if(!isFilterApplied)
                     var rowno = row + rowperpage;
 
-                    // checking row value is greater than allcount or not
+                    // detecta si el valor de las filas es más grande que allcount o no
                     if(rowno > allcount || response == ''){
 
-                        // Change the text and background
-                        $("#btn-load-more").text("No more session available...");
+                        // cambia el texto y el background
+                        $("#btn-load-more").text("No hay más sesiones disponibles...");
                         $("#btn-load-more").css("background","darkorchid");
                     }else{
-                        $("#btn-load-more").text("Load more");
+                        $("#btn-load-more").text("Cargar más");
                     }
                 }, 2000);
             }

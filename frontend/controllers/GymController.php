@@ -184,7 +184,7 @@ class GymController extends Controller
             return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
         }
     }
-    //leave the training session
+
     public function actionLeave($id)
     {
         $userId = Yii::$app->user->id;
