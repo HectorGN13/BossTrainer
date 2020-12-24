@@ -141,7 +141,7 @@ class TrainingsessionController extends Controller
             $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',$currentDay.' 00:00:01'])->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])->andWhere(['=', 'created_by',$gymId])->limit($rowperpage)->offset($row)->all();
             //check user follow this gym
             $isUserFollow = GymUser::find()->where(['=', 'user_id', Yii::$app->user->id])->count();
-            $html = $this->renderPartial('//trainingsession/load_sessions',['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => ($isUserFollow > 0) ? true : false]);
+            $html = $this->renderPartial('//trainingsession/load_sessions',['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
             echo $html;exit;
         }
     }
