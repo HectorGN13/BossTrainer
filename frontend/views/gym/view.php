@@ -45,6 +45,7 @@ $userTrainingSession = new UserTrainingSession();
             </div>
             <div class="description text-center">
                 <p><?= $model->description ?></p>
+                <?php echo Yii::$app->request->baseUrl ?>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
