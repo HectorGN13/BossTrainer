@@ -17,64 +17,6 @@ GymsAsset::register($this);
 \yii\helpers\VarDumper::dump($model->userFollowExist());
 $userTrainingSession = new UserTrainingSession();
 ?>
-<?php
-$script = <<< JS
-    $(document).ready(function(){
-        var allcount = Number($('#all').val());
-        if(allcount < 10)
-        {
-            $("#btn-load-more").text("No hay más sesiones disponibles...");
-        }
-        // Load more data
-        $('#btn-load-more').click(function(){
-            applyFilter();
-        });
-        $('#btn-change-date').click(function(){
-            var popup =$(this).offset();
-            var popupTop = popup.top - 20;
-            var popupLeft = popup.left ;
-            $('.datepicker.datepicker-dropdown').css({
-              'top' : popupTop,
-              'left' : popupLeft
-             });
-        });
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth()+1;
-        var prevDay = parseInt(day) - 1;
-        var prevMonth = date.getMonth()+1;
-        if(prevDay < 1)
-        {
-            var substractedDate = substractDate(date, 0, -1, 0);
-            var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
-            prevDay = prevDay.getDate();
-            var prevMonth = substractedDate.getMonth()+1;
-            //console.log(prevDay+'/'+prevMonth);
-        }
-        var nextDay = parseInt(day) + 1;
-        $('.btn-prev-date').html('< '+prevDay + '/' + prevMonth);
-        $('.btn-next-date').html(nextDay + '/' + month + ' >');
-        $('.training-session-heading').html(day+'/'+month);
-        $(document).on("click", ".btn-view-description", function(){
-            var id = $(this).data('id');
-            var href = $(this).data('href');
-            $.ajax({
-                type: 'get',
-                url: href,
-                data: {id: id},
-                success: function(response){
-                    if(response != '')
-                    {
-                        $("#session-description-modal .modal-content").html(response);
-                        $("#session-description-modal").modal('show');
-                    }
-                }
-            })
-        });
-    });
- JS;
-$this->registerJs($script);
-?>
 <body class="profile-page sidebar-collapse">
 <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://images7.alphacoders.com/105/thumb-1920-1052530.jpg); transform: translate3d(0px, 0px, 0px);"></div>
 <div class="main main-raised">
@@ -304,6 +246,65 @@ $this->registerJs($script);
 <input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl. '/trainingsession/getsessions' ?>">
 <input type="hidden" id="csrf_token" value="<?=Yii::$app->request->getCsrfToken()?>">
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<?php
+$script = <<< JS
+    $(document).ready(function(){
+        var allcount = Number($('#all').val());
+        if(allcount < 10)
+        {
+            $("#btn-load-more").text("No hay más sesiones disponibles...");
+        }
+        // Load more data
+        $('#btn-load-more').click(function(){
+            applyFilter();
+        });
+        $('#btn-change-date').click(function(){
+            var popup =$(this).offset();
+            var popupTop = popup.top - 20;
+            var popupLeft = popup.left ;
+            $('.datepicker.datepicker-dropdown').css({
+              'top' : popupTop,
+              'left' : popupLeft
+             });
+        });
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth()+1;
+        var prevDay = parseInt(day) - 1;
+        var prevMonth = date.getMonth()+1;
+        if(prevDay < 1)
+        {
+            var substractedDate = substractDate(date, 0, -1, 0);
+            var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
+            prevDay = prevDay.getDate();
+            var prevMonth = substractedDate.getMonth()+1;
+            //console.log(prevDay+'/'+prevMonth);
+        }
+        var nextDay = parseInt(day) + 1;
+        $('.btn-prev-date').html('< '+prevDay + '/' + prevMonth);
+        $('.btn-next-date').html(nextDay + '/' + month + ' >');
+        $('.training-session-heading').html(day+'/'+month);
+        $(document).on("click", ".btn-view-description", function(){
+            var id = $(this).data('id');
+            var href = $(this).data('href');
+            $.ajax({
+                type: 'get',
+                url: href,
+                data: {id: id},
+                success: function(response){
+                    if(response != '')
+                    {
+                        $("#session-description-modal .modal-content").html(response);
+                        $("#session-description-modal").modal('show');
+                    }
+                }
+            })
+        });
+    });
+ JS;
+ $this->registerJs($script);
+ ?>
 <script>
 function substractDate(input, days, months, years) {
     return new Date(
@@ -339,9 +340,9 @@ function applyFilter(isFilterApplied = false)
                 $("#btn-load-more").text("Cargando...");
             },
             success: function(response){
-                // pequeño delay mientras se agregan las publicaciones
+                // pequeño delay mientras se agregan las clases
                 setTimeout(function() {
-                    // agrega clases después de la última publicación con class = "post"
+                    // agrega clases después de la última
                     if(isFilterApplied)
                     {
                       $("#session-container").html(response).show().fadeIn("slow");
@@ -354,10 +355,10 @@ function applyFilter(isFilterApplied = false)
                     var rowno = row + rowperpage;
 
                     // detecta si el valor de las filas es más grande que allcount o no
-                    if(rowno > allcount || response == ''){
+                    if(rowno >= allcount || response == ''){
 
                         // cambia el texto y el background
-                        $("#btn-load-more").text("No hay más sesiones disponibles...");
+                        $("#btn-load-more").text("No hay sesiones disponibles...");
                         $("#btn-load-more").css("background","darkorchid");
                     }else{
                         $("#btn-load-more").text("Cargar más");
