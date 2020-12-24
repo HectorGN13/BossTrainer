@@ -71,11 +71,10 @@ class UserTrainingSession extends \yii\db\ActiveRecord
     //get training session members
     public function getSessionMembers($sessionId)
     {
-        $users = UserTrainingSession::find()
+        return UserTrainingSession::find()
         ->joinWith('user')
         ->where(['training_session_id' => $sessionId])
         ->all();
-        return $users;
     }
     //check user have joined session or not
     public function isSessionIsJoined($sessionId, $userId)
@@ -84,6 +83,6 @@ class UserTrainingSession extends \yii\db\ActiveRecord
         ->where(['training_session_id' => $sessionId])
         ->andWhere(['user_id' => $userId])
         ->count();
-        return ($userCount > 0) ? true : false;
+        return $userCount > 0;
     }
 }

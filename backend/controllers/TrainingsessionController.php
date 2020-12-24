@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\GymUser;
+
 class TrainingsessionController extends Controller
 {
     /**
@@ -18,16 +19,6 @@ class TrainingsessionController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['view', 'index', 'create', 'update', 'delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -65,8 +56,7 @@ class TrainingsessionController extends Controller
     public function actionView($id)
     {
         $trainingSession = $this->findModel($id);
-        $html = $this->renderPartial('//trainingsession/view',['trainingSession'=>$trainingSession]);
-        echo $html;exit;
+        return $this->renderAjax('view',['trainingSession'=>$trainingSession]);
     }
 
     /**
@@ -139,23 +129,39 @@ class TrainingsessionController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * @return array|mixed|null
+     */
     public function actiongetdetail()
     {
-        $id = Yii::$app->request->post('id');
-        echo $id;exit;
+        return Yii::$app->request->post('id');
     }
-    //Carga mas sesiones
+
+
+    /**
+     * @return string
+     */
     public function actionGetsessions()
     {
         if (Yii::$app->request->isAjax) {
             $row = Yii::$app->request->post('row');
             $currentDay = Yii::$app->request->post('current_day');
-            $rowperpage = 10;
-            $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',$currentDay.' 00:00:01'])->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])->andWhere(['=', 'created_by',Yii::$app->user->id])->limit($rowperpage)->offset($row)->all();
-            // Comprueba que el usuario siga al gymnasio
-            $isUserFollow = GymUser::find()->where(['=', 'user_id', Yii::$app->user->id])->count();
-            $html = $this->renderPartial('//trainingsession/load_sessions',['trainingSessions'=>$trainingSessions, 'gym_id' => Yii::$app->user->id, 'is_user_follow_gym' => $isUserFollow > 0]);
-            echo $html;exit;
+            $rowPerPage = 10;
+            $trainingSessions = TrainingSession::find()
+                ->where(['>=', 'start_time',$currentDay.' 00:00:01'])
+                ->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])
+                ->andWhere(['=', 'created_by',Yii::$app->user->id])
+                ->limit($rowPerPage)
+                ->offset($row)
+                ->all();
+
+
+            $isUserFollow = GymUser::find()
+                ->where(['=', 'user_id', Yii::$app->user->id])
+                ->count();
+
+            return $this->renderPartial('sessions',
+                ['trainingSessions'=>$trainingSessions, 'gym_id' => Yii::$app->user->id, 'is_user_follow_gym' => $isUserFollow > 0]);
         }
     }
 }

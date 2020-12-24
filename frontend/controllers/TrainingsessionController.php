@@ -126,27 +126,33 @@ class TrainingsessionController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    //get training session description
+
+    /**
+     * @return array|mixed|null
+     */
     public function actiongetdetail()
     {
         return Yii::$app->request->post('id');
     }
-    //load more sessions
+
+    /**
+     * @return string
+     */
     public function actionGetsessions()
     {
         if (Yii::$app->request->isAjax) {
             $gymId = Yii::$app->request->post('gym_id');
             $row = Yii::$app->request->post('row');
             $currentDay = Yii::$app->request->post('current_day');
-            $rowperpage = 10;
+            $rowPerPage = 10;
             $trainingSessions = TrainingSession::find()
                 ->where(['>=', 'start_time',$currentDay.' 00:00:01'])
                 ->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])
                 ->andWhere(['=', 'created_by',$gymId])
-                ->limit($rowperpage)
+                ->limit($rowPerPage)
                 ->offset($row)
                 ->all();
-            //check user follow this gym
+
             $isUserFollow = GymUser::find()
                 ->where(['=', 'user_id', Yii::$app->user->id])
                 ->count();

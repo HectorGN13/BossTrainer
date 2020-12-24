@@ -6,12 +6,12 @@ use kartik\date\DatePicker;
 use yii\web\JsExpression;
 use yii\helpers\Url;
 use common\models\UserTrainingSession;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\TrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Sesiones de entrenamientos';
-$this->params['breadcrumbs'][] = $this->title;
 $userTrainingSession = new UserTrainingSession();
 ?>
 <div class="training-session-index container">
@@ -22,7 +22,7 @@ $userTrainingSession = new UserTrainingSession();
           </div>
 
         <p>
-            <?= Html::a('Crear Entreno', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Crear Entreno', ['create'], ['class' => 'btn btn-pink']) ?>
         </p>
       </div>
     </div>
@@ -91,10 +91,10 @@ $userTrainingSession = new UserTrainingSession();
         <div class="session-item">
           <div class="row">
               <div class="col-lg-10 col-md-10 text-left">
-                  <h4 class="session-title"><?= $session['title']?></h4>
+                  <h4 class="session-title"><?= Html::encode($session['title'])?></h4>
               </div>
               <div class="col-lg-2 col-md-2 text-right">
-                  <h4 class="session-start-time"><?= date('H:i', strtotime($session['start_time']))?></h4>
+                  <h4 class="session-start-time"><?= Html::encode(date('H:i', strtotime($session['start_time'])))?></h4>
               </div>
           </div>
           <div class="row">
@@ -124,7 +124,7 @@ $userTrainingSession = new UserTrainingSession();
               <div class="col-lg-3 col-md-3 text-left">
                   <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Editar</a>
                   <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="¿Estas seguro de que quieres eliminar esta sesión?" data-method="post">Borrar</a>
-                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver descripción</button>
+                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['view', 'id' => $session['id']])?>">Ver descripción</button>
               </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ $userTrainingSession = new UserTrainingSession();
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 text-center">
-            <button class="btn btn-primary mb-3 mt-3" type="button" id="btn-load-more">Cargar más</button>
+            <button class="btn btn-pink mb-3 mt-3" type="button" id="btn-load-more">Cargar más</button>
             <input type="hidden" id="row" value="0">
             <input type="hidden" id="all" value="<?php echo $totalSessionCount; ?>">
         </div>
@@ -153,7 +153,7 @@ $userTrainingSession = new UserTrainingSession();
  $script = <<< JS
     $(document).ready(function(){
         var allcount = Number($('#all').val());
-        if(allcount < 12)
+        if(allcount < 10)
         {
             $("#btn-load-more").text("No hay más sesiones disponibles...");
         }
@@ -256,14 +256,14 @@ function applyFilter(isFilterApplied = false)
                     if(!isFilterApplied)
                     var rowno = row + rowperpage;
 
-                    // checking row value is greater than allcount or not
+                    // detecta si el valor de las filas es más grande que allcount o no
                     if(rowno > allcount || response == ''){
 
-                        // Change the text and background
-                        $("#btn-load-more").text("No more session available...");
+                        // cambia el texto y el background
+                        $("#btn-load-more").text("No hay sesiones disponibles...");
                         $("#btn-load-more").css("background","darkorchid");
                     }else{
-                        $("#btn-load-more").text("Load more");
+                        $("#btn-load-more").text("Cargar más");
                     }
                 }, 2000);
             }

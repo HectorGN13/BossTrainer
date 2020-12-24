@@ -150,10 +150,10 @@ a.desc:after {
 }
 
 .training-session-heading{
-    background: #24A3E6;
+    background: #041521;
 }
 #btn-change-date{
-    background: #24a3e6;
+    background: #041521;
     color: #fff;
 }
 #btn-change-date:hover{
@@ -162,7 +162,7 @@ a.desc:after {
 .btn-prev-date{
     border: none;
     font-weight: 600;
-    background: #24a3e6;
+    background: #041521;
     color: #fff;
     padding: 7px 15px;
     border-top-left-radius: 15px;
@@ -174,7 +174,7 @@ a.desc:after {
 .btn-next-date{
     border: none;
     font-weight: 600;
-    background: #24a3e6;
+    background: #041521;
     color: #fff;
     padding: 7px 15px;
     border-top-right-radius: 15px;
@@ -186,7 +186,7 @@ a.desc:after {
 .session-user{
     float: left;
     height: 70px;
-    background: #CCDB38;
+    background: #1e0722;
     width: 70px;
     margin: 5px;
 }
@@ -194,11 +194,11 @@ a.desc:after {
     clear: left;
 }
 .btn-join-session{
-    background: #ccdb38;
+    background: #1e0722;
 }
 .btn-join-session:hover{
     outline: none;
-    background: #ccdb38 !important;
+    background: #1e0722 !important;
     border:none;
 }
 .btn-actions{
