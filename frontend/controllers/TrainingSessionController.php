@@ -149,7 +149,7 @@ class TrainingsessionController extends Controller
             $isUserFollow = GymUser::find()
                 ->where(['=', 'user_id', Yii::$app->user->id])
                 ->count();
-            return $this->renderPartial(Url::to(['trainingsession/loadSessions']),
+            return $this->renderPartial('loadSessions',
                 ['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
         }
     }
