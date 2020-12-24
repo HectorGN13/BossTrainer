@@ -52,8 +52,8 @@ class TrainingsessionController extends Controller
     public function actionView($id)
     {
         $trainingSession = $this->findModel($id);
-        $html = $this->renderAjax('/trainingsession/view',['trainingSession'=>$trainingSession]);
-        echo $html;exit;
+        return $this->renderPartial('/trainingsession/view',['trainingSession'=>$trainingSession]);
+
     }
 
     /**
@@ -128,8 +128,7 @@ class TrainingsessionController extends Controller
     //get training session description
     public function actiongetdetail()
     {
-        $id = Yii::$app->request->post('id');
-        echo $id;exit;
+        return Yii::$app->request->post('id');
     }
     //load more sessions
     public function actionGetsessions()
@@ -150,9 +149,8 @@ class TrainingsessionController extends Controller
             $isUserFollow = GymUser::find()
                 ->where(['=', 'user_id', Yii::$app->user->id])
                 ->count();
-            $html = $this->renderPartial(Url::to(['trainingsession/load_sessions']),
+            return $this->renderPartial(Url::to(['trainingsession/load_sessions']),
                 ['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
-            echo $html;exit;
         }
     }
 }
