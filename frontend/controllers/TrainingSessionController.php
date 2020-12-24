@@ -52,7 +52,7 @@ class TrainingsessionController extends Controller
     public function actionView($id)
     {
         $trainingSession = $this->findModel($id);
-        $html = $this->renderPartial('//trainingsession/view',['trainingSession'=>$trainingSession]);
+        $html = $this->renderAjax('/trainingsession/view',['trainingSession'=>$trainingSession]);
         echo $html;exit;
     }
 
