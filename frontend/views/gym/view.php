@@ -306,36 +306,44 @@ $script = <<< JS
  $this->registerJs($script);
  ?>
 <script>
+/**
+ *
+ * @param input
+ * @param days
+ * @param months
+ * @param years
+ * @returns {Date}
+ */
 function substractDate(input, days, months, years) {
-    return new Date(
-      input.getFullYear() + years, 
-      input.getMonth() + months, 
-      Math.min(
-        input.getDate() + days,
-        new Date(input.getFullYear() + years, input.getMonth() + months + 1, 0).getDate()
-      )
-    );
+return new Date(
+  input.getFullYear() + years,
+  input.getMonth() + months,
+  Math.min(
+    input.getDate() + days,
+    new Date(input.getFullYear() + years, input.getMonth() + months + 1, 0).getDate()
+  ));
 }
-function applyFilter(isFilterApplied = false)
-{
+
+    /**
+     *
+     * @param isFilterApplied
+     */
+function applyFilter(isFilterApplied = false) {
     var row = Number($('#row').val());
     var allcount = Number($('#all').val());
     var rowperpage = 10;
-    if(!isFilterApplied)
-    {
-      row = row + rowperpage;  
-    }
-    else
-    {
+    if(!isFilterApplied) {
+      row = row + rowperpage;
+    } else {
       row = 0;
     }
-    var current_day = $("#current_day").val();
+    var currentDay = $("#current_day").val();
     if(row <= allcount){
         $("#row").val(row);
         $.ajax({
             url: $("#get_more_sessions").val(),
             type: 'post',
-            data: {row:row,gym_id:$("#gym_id").val(),current_day: current_day, _csrf : $("#csrf_token").val()},
+            data: {row:row,gym_id:$("#gym_id").val(),current_day: currentDay, _csrf : $("#csrf_token").val()},
             beforeSend:function(){
                 $("#btn-load-more").text("Cargando...");
             },
@@ -349,7 +357,7 @@ function applyFilter(isFilterApplied = false)
                     }
                     else
                     {
-                      $(".session-item:last").after(response).show().fadeIn("slow");  
+                      $(".session-item:last").after(response).show().fadeIn("slow");
                     }
                     if(!isFilterApplied)
                     var rowno = row + rowperpage;
@@ -368,16 +376,17 @@ function applyFilter(isFilterApplied = false)
         });
     }
 }
-function prevNextDate(type)
-{
+
+/**
+ *
+ * @param type
+ */
+function prevNextDate(type) {
     var currentDay = $("#current_day").val();
     var date = new Date(currentDay);
-    if(type == 'prev')
-    {
+    if(type == 'prev') {
         date = substractDate(date, -1, 0, 0);
-    }
-    else
-    {
+    } else {
         var nextDay = date.setDate(date.getDate() + 1);
         date = new Date(nextDay);
     }
@@ -387,8 +396,7 @@ function prevNextDate(type)
     var prevDay = parseInt(day) - 1;
     var prevMonth = date.getMonth()+1;
     var year = date.getFullYear();
-    if(prevDay < 1)
-    {
+    if(prevDay < 1) {
         var substractedDate = substractDate(date, 0, -1, 0);
         var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
         prevDay = prevDay.getDate();
