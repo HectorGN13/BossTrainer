@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\GymUser;
+
 class TrainingsessionController extends Controller
 {
     /**
@@ -52,7 +53,7 @@ class TrainingsessionController extends Controller
     public function actionView($id)
     {
         $trainingSession = $this->findModel($id);
-        return $this->renderPartial('/trainingsession/view',['trainingSession'=>$trainingSession]);
+        return $this->renderAjax('view',['trainingSession'=>$trainingSession]);
 
     }
 
@@ -149,7 +150,7 @@ class TrainingsessionController extends Controller
             $isUserFollow = GymUser::find()
                 ->where(['=', 'user_id', Yii::$app->user->id])
                 ->count();
-            return $this->renderPartial('loadSessions',
+            return $this->renderPartial('loadsessions',
                 ['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
         }
     }
