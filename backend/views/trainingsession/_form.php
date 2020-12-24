@@ -9,44 +9,53 @@ use kartik\datetime\DateTimePicker;
 ?>
 
 <div class="training-session-form">
+    <div class="row">
+        <div class="col-12">
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'title')->textInput()->input('text',  ['placeholder' => "Introduce el nombre de la sesión."])->label(false) ?>
+            <?= $form->field($model, 'description')->textInput()->input('text',  ['placeholder' => "Introduce una descripción."])->label(false) ?>
 
-    <?= $form->field($model, 'title')->textInput() ?>
-    <?= $form->field($model, 'description')->textInput() ?>
+            <?php
+            echo $form->field($model, 'start_time')->widget(DateTimePicker::classname(), [
+                'name' => 'start_time',
+                'type' => DateTimePicker::TYPE_INPUT,
+                'value' => date('d-M-Y H:i A'),
+                'model' => $model,
+                'options' => [
+                    'placeholder' => 'Introduce la hora de Inicio.',
+                ],
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format' => 'dd-M-yyyy HH:ii P',
+                ]
+            ])->label(false);
+            ?>
 
-    <?php
-    echo $form->field($model, 'start_time')->widget(DateTimePicker::classname(), [
-        'name' => 'start_time',
-        'type' => DateTimePicker::TYPE_INPUT,
-        'value' => date('d-M-Y H:i A'),
-        'model' => $model,
-        'pluginOptions' => [
-            'autoclose'=>true,
-            'format' => 'dd-M-yyyy HH:ii P'
-        ]
-    ]);
-    ?>
+            <?php
+            echo $form->field($model, 'end_time')->widget(DateTimePicker::classname(), [
+                'name' => 'start_time',
+                'type' => DateTimePicker::TYPE_INPUT,
+                'value' => date('d-M-Y H:i A'),
+                'model' => $model,
+                'options' => [
+                    'placeholder' => 'Introduce la hora de Fin.',
+                ],
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format' => 'dd-M-yyyy HH:ii P'
+                ],
+            ])->label(false);
+            ?>
 
-    <?php
-    echo $form->field($model, 'end_time')->widget(DateTimePicker::classname(), [
-        'name' => 'start_time',
-        'type' => DateTimePicker::TYPE_INPUT,
-        'value' => date('d-M-Y H:i A'),
-        'model' => $model,
-        'pluginOptions' => [
-            'autoclose'=>true,
-            'format' => 'dd-M-yyyy HH:ii P'
-        ]
-    ]);
-    ?>
+            <?= $form->field($model, 'capacity')->textInput(['type' => 'number', 'min' => 1])->input('number',  ['placeholder' => "Introduce el aforo."])->label(false) ?>
 
-    <?= $form->field($model, 'capacity')->textInput(['type' => 'number', 'min' => 1]) ?>
+            <div class="d-flex justify-content-center form-group">
+                <?= Html::submitButton('Guardar', ['class' => 'btn btn-lg btn-rounded btn-dark-blue']) ?>
+            </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?php ActiveForm::end(); ?>
+
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

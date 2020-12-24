@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use common\models\TrainingSession;
 use backend\models\TrainingSessionSearch;
+use yii\web\Response;
+use yii\bootstrap4\ActiveForm;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -68,15 +70,25 @@ class TrainingsessionController extends Controller
     {
         $model = new TrainingSession();
 
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
         if ($model->load(Yii::$app->request->post())) {
             $model->created_by = Yii::$app->user->id;
             $model->save();
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

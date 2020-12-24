@@ -1,5 +1,7 @@
 <?php
 
+use backend\assets\SessionsAssets;
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
@@ -13,6 +15,7 @@ use common\models\UserTrainingSession;
 
 $this->title = 'Sesiones de entrenamientos';
 $userTrainingSession = new UserTrainingSession();
+SessionsAssets::register($this);
 ?>
 <div class="training-session-index container">
     <div class="row">
@@ -20,9 +23,8 @@ $userTrainingSession = new UserTrainingSession();
           <div class="lines-effect">
               <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
           </div>
-
         <p>
-            <?= Html::a('Crear Entreno', ['create'], ['class' => 'btn btn-pink']) ?>
+            <?= Html::a('Crear Entreno', '#', ['value' => Url::to('create'), 'class' => 'btn btn-pink', 'id' => 'addSession']) ?>
         </p>
       </div>
     </div>
@@ -122,7 +124,7 @@ $userTrainingSession = new UserTrainingSession();
                   <?php endfor;?>
               </div>
               <div class="col-lg-3 col-md-3 text-left">
-                  <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block">Editar</a>
+                  <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block uploadSession">Editar</a>
                   <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="¿Estas seguro de que quieres eliminar esta sesión?" data-method="post">Borrar</a>
                   <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['view', 'id' => $session['id']])?>">Ver descripción</button>
               </div>
@@ -149,6 +151,26 @@ $userTrainingSession = new UserTrainingSession();
 <input type="hidden" id="current_day" value="<?= date('Y-m-d')?>">
 <input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl. '/trainingsession/getsessions' ?>">
 <input type="hidden" id="csrf_token" value="<?=Yii::$app->request->getCsrfToken()?>">
+<?php
+Modal::begin([
+    'title' => '<h2>Añadir Sesión.</h2>',
+    'id' => 'modalAddSession',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent1'></div>";
+Modal::end();
+?>
+<?php
+Modal::begin([
+    'title' =>'<h2>Editar Sesión.</h2>',
+    'id' => 'modalUpdSession',
+    // 'size' => 'modal-lg',
+]);
+
+echo "<div id='modalContent2'></div>";
+Modal::end();
+?>
 <?php 
  $script = <<< JS
     $(document).ready(function(){
