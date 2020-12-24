@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\TrainingSession;
 use backend\models\TrainingSessionSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -149,7 +150,7 @@ class TrainingsessionController extends Controller
             $isUserFollow = GymUser::find()
                 ->where(['=', 'user_id', Yii::$app->user->id])
                 ->count();
-            $html = $this->renderPartial('/trainingsession/load_sessions',
+            $html = $this->renderPartial(Url::to(['trainingsession/load_sessions']),
                 ['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
             echo $html;exit;
         }
