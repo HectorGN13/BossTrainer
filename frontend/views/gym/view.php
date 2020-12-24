@@ -45,7 +45,6 @@ $userTrainingSession = new UserTrainingSession();
             </div>
             <div class="description text-center">
                 <p><?= $model->description ?></p>
-                <?php echo Yii::$app->request->baseUrl ?>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
@@ -244,10 +243,10 @@ $userTrainingSession = new UserTrainingSession();
 </div>
 <input type="hidden" id="gym_id" value="<?= $gym_id?>">
 <input type="hidden" id="current_day" value="<?= date('Y-m-d')?>">
-<input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl. '/trainingsession/getsessions' ?>">
+<input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl.'/trainingsession/getsessions' ?>">
 <input type="hidden" id="csrf_token" value="<?=Yii::$app->request->getCsrfToken()?>">
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 <?php
 $script = <<< JS
     $(document).ready(function(){
@@ -290,7 +289,7 @@ $script = <<< JS
             $.ajax({
                 type: 'get',
                 url: href,
-                data: {id: id},
+                data: {id:id},
                 success: function(response){
                     if(response !== '') {
                         $("#session-description-modal .modal-content").html(response);
@@ -341,7 +340,7 @@ function applyFilter(isFilterApplied = false) {
         $.ajax({
             url: $("#get_more_sessions").val(),
             type: 'post',
-            data: {row:row,gym_id:$("#gym_id").val(),current_day: currentDay, _csrf : $("#csrf_token").val()},
+            data: {row:row,gym_id:$("#gym_id").val(),current_day:currentDay,_csrf:$("#csrf_token").val()},
             beforeSend:function(){
                 $("#btn-load-more").text("Cargando...");
             },
