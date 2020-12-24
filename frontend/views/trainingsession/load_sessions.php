@@ -36,14 +36,13 @@ $userTrainingSession = new UserTrainingSession();
           </div>
           <div class="col-lg-3 col-md-3 text-left">
               <?php if($is_user_follow_gym):?>
-                <?php if(!$isUserJoined):?>
-                  <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Unirse</a>
-                <?php else:?>
-                  <a  href="<?= Url::to(['gym/leave', 'id' => $session['id']])?>" class="btn btn-actions btn-exit-session btn-block btn-danger">Salir</a>
-                <?php endif;?>
-                <?php if($totalMembers == $session['capacity']):?>
-                <button type="button" class="btn btn-actions btn-notity-session btn-block">Notificar</button>
-                <?php endif;?>
+                  <?php if(!$isUserJoined && $totalMembers < $session['capacity']):?>
+                      <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Unirse</a>
+                  <?php elseif (!$isUserJoined && $totalMembers >= $session['capacity']):?>
+                      <button type="button" class="btn btn-actions btn-notity-session btn-block">Avisar</button>
+                  <?php else:?>
+                      <a <?= $userId."  ".$session['id']?> href="<?= Url::to(['gym/leave', 'id' => $session['id']])?>" class="btn btn-actions btn-exit-session btn-block btn-danger">Salirse</a>
+                  <?php endif;?>
               <?php endif;?>
               
               <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver Descripción</button>

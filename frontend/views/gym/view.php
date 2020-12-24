@@ -215,7 +215,7 @@ $userTrainingSession = new UserTrainingSession();
                                     <?php endif;?>
                                   <?php endif;?>
                                   
-                                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver Descripción</button>
+                                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingSession/view', 'id' => $session['id']])?>">Ver Descripción</button>
                               </div>
                           </div>
                         </div>
@@ -243,7 +243,7 @@ $userTrainingSession = new UserTrainingSession();
 </div>
 <input type="hidden" id="gym_id" value="<?= $gym_id?>">
 <input type="hidden" id="current_day" value="<?= date('Y-m-d')?>">
-<input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl. '/trainingsession/getsessions' ?>">
+<input type="hidden" id="get_more_sessions" value="<?php echo Yii::$app->request->baseUrl. '/trainingSession/getSessions' ?>">
 <input type="hidden" id="csrf_token" value="<?=Yii::$app->request->getCsrfToken()?>">
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <?php 
