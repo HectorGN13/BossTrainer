@@ -251,8 +251,7 @@ $userTrainingSession = new UserTrainingSession();
 $script = <<< JS
     $(document).ready(function(){
         var allcount = Number($('#all').val());
-        if(allcount < 10)
-        {
+        if(allcount < 10) {
             $("#btn-load-more").text("No hay más sesiones disponibles...");
         }
         // Load more data
@@ -273,8 +272,7 @@ $script = <<< JS
         var month = date.getMonth()+1;
         var prevDay = parseInt(day) - 1;
         var prevMonth = date.getMonth()+1;
-        if(prevDay < 1)
-        {
+        if(prevDay < 1) {
             var substractedDate = substractDate(date, 0, -1, 0);
             var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
             prevDay = prevDay.getDate();
@@ -293,8 +291,7 @@ $script = <<< JS
                 url: href,
                 data: {id: id},
                 success: function(response){
-                    if(response != '')
-                    {
+                    if(response !== '') {
                         $("#session-description-modal .modal-content").html(response);
                         $("#session-description-modal").modal('show');
                     }
