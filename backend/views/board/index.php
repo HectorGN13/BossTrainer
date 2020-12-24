@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 
 /* @var $this yii\web\View */
@@ -26,7 +27,16 @@ $this->title = 'Pizarras';
                 'layout' => '{items}{pager}',
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'title',
+                    [
+                        'attribute'=>'title',
+                        'format'=>'raw',
+                        'value' => function($model, $key, $index, $widget)
+                        {
+                            return Html::a($model->title, ['board/view','id'=> $key]);
+                        }
+                    ],
+
+
                     [
                         'header' => 'Acciones',
                         'content' => function ($model, $key, $index, $widget) {
@@ -60,4 +70,7 @@ $this->title = 'Pizarras';
                 ],
             ]); ?>
     </div>
+    <?php Pjax::begin(['id'=>'id-pjax']); ?>
+    Content that needs to be updated
+    <?php Pjax::end(); ?>
 </div>

@@ -190,7 +190,7 @@ $userTrainingSession = new UserTrainingSession();
                                   <?php
                                   $members = $userTrainingSession->getSessionMembers($session['id']);
                                   $totalMembers = count($members);
-                                  $remainSeat = (int)$session['capacity'] + (int)$totalMembers;
+                                  $remainSeat = (int)$session['capacity'] - (int)$totalMembers;
                                   $userId = Yii::$app->user->id;
                                   $isUserJoined = $userTrainingSession->isSessionIsJoined($session['id'], $userId);
                                   ?>
@@ -211,17 +211,16 @@ $userTrainingSession = new UserTrainingSession();
                               </div>
                               <div class="col-lg-3 col-md-3 text-left">
                                   <?php if($model->userFollowExist()):?>
-                                    <?php if(!$isUserJoined):?>
-                                      <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Join</a>
+                                    <?php if(!$isUserJoined && $totalMembers < $session['capacity']):?>
+                                      <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Unirse</a>
+                                    <?php elseif (!$isUserJoined && $totalMembers >= $session['capacity']):?>
+                                      <button type="button" class="btn btn-actions btn-notity-session btn-block">Avisar</button>
                                     <?php else:?>
-                                      <a <?= $userId."  ".$session['id']?> href="<?= Url::to(['gym/leave', 'id' => $session['id']])?>" class="btn btn-actions btn-exit-session btn-block btn-danger">Exit</a>
-                                    <?php endif;?>
-                                    <?php if($totalMembers == $session['capacity']):?>
-                                      <button type="button" class="btn btn-actions btn-notity-session btn-block">Notify</button>
+                                      <a <?= $userId."  ".$session['id']?> href="<?= Url::to(['gym/leave', 'id' => $session['id']])?>" class="btn btn-actions btn-exit-session btn-block btn-danger">Salirse</a>
                                     <?php endif;?>
                                   <?php endif;?>
                                   
-                                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">View Description</button>
+                                  <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver Descripción</button>
                               </div>
                           </div>
                         </div>
@@ -258,7 +257,7 @@ $script = <<< JS
         var allcount = Number($('#all').val());
         if(allcount < 12)
         {
-            $("#btn-load-more").text("No more session available...");
+            $("#btn-load-more").text("No hay más sesiones disponibles...");
         }
         // Load more data
         $('#btn-load-more').click(function(){
@@ -325,7 +324,7 @@ function applyFilter(isFilterApplied = false)
 {
     var row = Number($('#row').val());
     var allcount = Number($('#all').val());
-    var rowperpage = 12;
+    var rowperpage = 10;
     if(!isFilterApplied)
     {
       row = row + rowperpage;  

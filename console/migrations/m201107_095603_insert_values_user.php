@@ -24,12 +24,23 @@ class m201107_095603_insert_values_user extends Migration
             'created_at' => $time,
             'updated_at' => $time,
         ]);
+
+        $this->insert( $table, [
+            'username' => 'admin',
+            'auth_key' => $auth_key,
+            'password_hash' => $password_hash,
+            'password_reset_token' => Yii::$app->security->generateRandomString(),
+            'email' => 'admin@iesdonana.org',
+            'created_at' => $time,
+            'updated_at' => $time,
+        ]);
     }
 
 
     public function safeDown()
     {
         $this->delete( "{{%user}}", ['username' => 'hector']);
+        $this->delete( "{{%user}}", ['username' => 'admin']);
     }
 
     /*
