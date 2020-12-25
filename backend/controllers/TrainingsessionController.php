@@ -38,9 +38,12 @@ class TrainingsessionController extends Controller
     {
         $searchModel = new TrainingSessionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',date('Y-m-d 00:00:01')])->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')]);
+        $trainingSessions = TrainingSession::find()
+            ->where(['>=', 'start_time',date('Y-m-d 00:00:01')])
+            ->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])
+            ->orderBy(['start_time'=>SORT_ASC]);
         $totalSessionCount = $trainingSessions->count();
-        $trainingSessions = $trainingSessions->limit(12)->all();
+        $trainingSessions = $trainingSessions->limit(10)->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -101,14 +104,29 @@ class TrainingsessionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
+                return $this->redirect(['index']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('update', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -163,6 +181,7 @@ class TrainingsessionController extends Controller
                 ->where(['>=', 'start_time',$currentDay.' 00:00:01'])
                 ->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])
                 ->andWhere(['=', 'created_by',Yii::$app->user->id])
+                ->orderBy(['start_time'=>SORT_ASC])
                 ->limit($rowPerPage)
                 ->offset($row)
                 ->all();

@@ -18,7 +18,7 @@ $this->title = 'Pizarras';
             <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
         </div>
             <p>
-                <?= Html::a('Crear Pizarra', ['create'], ['class' => 'btn btn-pink']) ?>
+                <?= Html::a('Crear Pizarra', ['create'], ['class' => 'btn btn-warning']) ?>
             </p>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
@@ -27,6 +27,7 @@ $this->title = 'Pizarras';
                 'layout' => '{items}{pager}',
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
+
                     [
                         'attribute'=>'title',
                         'format'=>'raw',
@@ -35,8 +36,6 @@ $this->title = 'Pizarras';
                             return Html::a($model->title, ['board/view','id'=> $key]);
                         }
                     ],
-
-
                     [
                         'header' => 'Acciones',
                         'content' => function ($model, $key, $index, $widget) {
@@ -70,7 +69,14 @@ $this->title = 'Pizarras';
                 ],
             ]); ?>
     </div>
-    <?php Pjax::begin(['id'=>'id-pjax']); ?>
-    Content that needs to be updated
-    <?php Pjax::end(); ?>
+    <div class="container">
+        <?php Pjax::begin(['id'=>'id-pjax']); ?>
+        Content that needs to be updated
+        <?php Pjax::end(); ?>
+    </div>
 </div>
+<script>
+    function loadBoard(){
+
+    }
+</script>

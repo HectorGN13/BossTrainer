@@ -12,6 +12,7 @@ use yii\db\Query;
  * This is the model class for table "training_session".
  *
  * @property int $id
+ * @property string $title
  * @property string $description
  * @property string $start_time
  * @property string $end_time

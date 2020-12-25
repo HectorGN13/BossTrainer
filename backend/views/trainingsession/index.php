@@ -24,13 +24,13 @@ SessionsAssets::register($this);
               <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
           </div>
         <p>
-            <?= Html::a('Crear Entreno', '#', ['value' => Url::to('create'), 'class' => 'btn btn-pink', 'id' => 'addSession']) ?>
+            <?= Html::a('Crear Entreno', '#', ['value' => Url::to('create'), 'class' => 'btn btn-warning', 'id' => 'addSession']) ?>
         </p>
       </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 col-md-12 text-center">
-            <h2 class="m-0 pt-2 pb-2 training-session-heading"><?= date('d/m')?></h2>
+        <div class="col-lg-12 col-md-12 text-center rounded">
+            <h2 class="m-0 pt-2 pb-2 training-session-heading rounded"><?= date('d/m')?></h2>
         </div>
         <div class="col-lg-12 col-md-12 text-center mt-3 mb-3 d-flex">
             <div class="col-lg-2 col-md-2 text-right p-0">
@@ -95,7 +95,7 @@ SessionsAssets::register($this);
               <div class="col-lg-10 col-md-10 text-left">
                   <h4 class="session-title"><?= Html::encode($session['title'])?></h4>
               </div>
-              <div class="col-lg-2 col-md-2 text-right">
+              <div class="col-lg-2 col-md-2 text-right rounded">
                   <h4 class="session-start-time"><?= Html::encode(date('H:i', strtotime($session['start_time'])))?></h4>
               </div>
           </div>
@@ -124,7 +124,7 @@ SessionsAssets::register($this);
                   <?php endfor;?>
               </div>
               <div class="col-lg-3 col-md-3 text-left">
-                  <a href="<?= Url::base(true);?>/trainingsession/update?id=<?= $session['id']?>" class="btn btn-actions btn-edit-session btn-block uploadSession">Editar</a>
+                  <?= Html::a('Editar', '#', ['value' => Url::to(['update', 'id' => $session['id']]) , 'class' => 'btn btn-actions btn-edit-session btn-block uploadSession', 'id' => 'addSession']) ?>
                   <a href="<?= Url::base(true);?>/trainingsession/delete?id=<?= $session['id']?>" class="btn btn-actions btn-danger btn-block" data-confirm="¿Estas seguro de que quieres eliminar esta sesión?" data-method="post">Borrar</a>
                   <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-id="<?= $session['id']?>" data-href="<?= Url::to(['view', 'id' => $session['id']])?>">Ver descripción</button>
               </div>
@@ -134,7 +134,7 @@ SessionsAssets::register($this);
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 text-center">
-            <button class="btn btn-pink mb-3 mt-3" type="button" id="btn-load-more">Cargar más</button>
+            <button class="btn btn-dark mb-3 mt-3" type="button" id="btn-load-more">Cargar más</button>
             <input type="hidden" id="row" value="0">
             <input type="hidden" id="all" value="<?php echo $totalSessionCount; ?>">
         </div>
@@ -209,22 +209,7 @@ Modal::end();
         $('.btn-prev-date').html('< '+prevDay + '/' + prevMonth);
         $('.btn-next-date').html(nextDay + '/' + month + ' >');
         $('.training-session-heading').html(day+'/'+month);
-        $(document).on("click", ".btn-view-description", function(){
-            var id = $(this).data('id');
-            var href = $(this).data('href');
-            $.ajax({
-                type: 'get',
-                url: href,
-                data: {id: id},
-                success: function(response){
-                    if(response != '')
-                    {
-                        $("#session-description-modal .modal-content").html(response);
-                        $("#session-description-modal").modal('show');
-                    }
-                }
-            })
-        });
+
     });
  JS;
  $this->registerJs($script);
@@ -236,21 +221,21 @@ function substractDate(input, days, months, years) {
       input.getMonth() + months, 
       Math.min(
         input.getDate() + days,
-        new Date(input.getFullYear() + years, input.getMonth() + months + 1, 0).getDate()
+        new Date(
+            input.getFullYear() + years,
+            input.getMonth() + months + 1,
+            0
+        ).getDate()
       )
     );
 }
-function applyFilter(isFilterApplied = false)
-{
+function applyFilter(isFilterApplied = false) {
     var row = Number($('#row').val());
     var allcount = Number($('#all').val());
-    var rowperpage = 12;
-    if(!isFilterApplied)
-    {
+    var rowperpage = 10;
+    if(!isFilterApplied) {
       row = row + rowperpage;  
-    }
-    else
-    {
+    } else {
       row = 0;
     }
     var current_day = $("#current_day").val();
@@ -283,7 +268,7 @@ function applyFilter(isFilterApplied = false)
 
                         // cambia el texto y el background
                         $("#btn-load-more").text("No hay sesiones disponibles...");
-                        $("#btn-load-more").css("background","darkorchid");
+                        $("#btn-load-more").class('btn-warning');
                     }else{
                         $("#btn-load-more").text("Cargar más");
                     }
@@ -296,12 +281,9 @@ function prevNextDate(type)
 {
     var currentDay = $("#current_day").val();
     var date = new Date(currentDay);
-    if(type == 'prev')
-    {
+    if(type == 'prev') {
         date = substractDate(date, -1, 0, 0);
-    }
-    else
-    {
+    } else {
         var nextDay = date.setDate(date.getDate() + 1);
         date = new Date(nextDay);
     }
@@ -311,8 +293,7 @@ function prevNextDate(type)
     var prevDay = parseInt(day) - 1;
     var prevMonth = date.getMonth()+1;
     var year = date.getFullYear();
-    if(prevDay < 1)
-    {
+    if(prevDay < 1) {
         var substractedDate = substractDate(date, 0, -1, 0);
         var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
         prevDay = prevDay.getDate();

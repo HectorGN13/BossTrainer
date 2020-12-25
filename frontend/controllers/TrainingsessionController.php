@@ -36,7 +36,11 @@ class TrainingsessionController extends Controller
     {
         $searchModel = new TrainingSessionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',date('Y-m-d 00:00:01')])->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])->all();
+        $trainingSessions = TrainingSession::find()
+            ->where(['>=', 'start_time',date('Y-m-d 00:00:01')])
+            ->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])
+            ->orderBy(['start_time'=>SORT_ASC])
+            ->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -149,6 +153,7 @@ class TrainingsessionController extends Controller
                 ->where(['>=', 'start_time',$currentDay.' 00:00:01'])
                 ->andWhere(['<=', 'end_time',$currentDay.' 23:59:59'])
                 ->andWhere(['=', 'created_by',$gymId])
+                ->orderBy(['start_time'=>SORT_ASC])
                 ->limit($rowPerPage)
                 ->offset($row)
                 ->all();
