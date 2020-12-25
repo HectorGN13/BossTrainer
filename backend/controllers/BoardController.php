@@ -27,7 +27,7 @@ class BoardController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['view', 'index', 'create', 'update', 'delete', 'default'],
+                        'actions' => ['view', 'index', 'create', 'update', 'delete', 'default', 'getboard'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -141,7 +141,7 @@ class BoardController extends Controller
     }
 
     /**
-     *
+     * @return \yii\web\Response
      */
     public function actionDefault()
     {
@@ -168,5 +168,17 @@ class BoardController extends Controller
         }
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionGetboard()
+    {
+        if (Yii::$app->request->isAjax) {
+            $id = Yii::$app->request->post('board_id');
+
+            return $this->renderAjax('view', ['id' => $id]);
+        }
     }
 }

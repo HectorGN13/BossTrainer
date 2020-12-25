@@ -249,9 +249,7 @@ function applyFilter(isFilterApplied = false) {
                 $("#btn-load-more").text("Loading...");
             },
             success: function(response){
-                // Setting little delay while displaying new content
                 setTimeout(function() {
-                    // appending posts after last post with class="post"
                     if(isFilterApplied)
                     {
                       $("#session-container").html(response).show().fadeIn("slow");
@@ -263,7 +261,7 @@ function applyFilter(isFilterApplied = false) {
                     if(!isFilterApplied)
                     var rowno = row + rowperpage;
 
-                    // detecta si el valor de las filas es más grande que allcount o no
+                    // detecta si el numero de las filas es más grande que allcount o no
                     if(rowno > allcount || response == ''){
 
                         // cambia el texto y el background

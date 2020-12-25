@@ -6,12 +6,13 @@ use yii\widgets\Pjax;
 
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\BoardSearch */
+/* @var $searchModel common\models\BoardSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Pizarras';
 
 ?>
+
 <div class="board-index">
     <div class="board-list container">
         <div class="lines-effect">
@@ -33,7 +34,10 @@ $this->title = 'Pizarras';
                         'format'=>'raw',
                         'value' => function($model, $key, $index, $widget)
                         {
-                            return Html::a($model->title, ['board/view','id'=> $key]);
+                            return Html::a($model->title,'#',
+                                [
+                                    'onclick' => "loadBoard($key)",
+                                ]);
                         }
                     ],
                     [
@@ -69,14 +73,25 @@ $this->title = 'Pizarras';
                 ],
             ]); ?>
     </div>
-    <div class="container">
-        <?php Pjax::begin(['id'=>'id-pjax']); ?>
-        Content that needs to be updated
-        <?php Pjax::end(); ?>
+    <div id="board-view-container">
+
     </div>
 </div>
-<script>
-    function loadBoard(){
 
+<script>
+    function loadBoard ($key) {
+        alert($key);
+        $.ajax({
+           url: '<?= Yii::$app->request->baseUrl. '/board/getboard' ?>',
+           type: 'POST',
+           data: {
+               board_id : $key,
+               _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
+           },
+           success: function (response) {
+               $("#board-view-container").html(response).show().fadeIn("slow");
+           }
+        });
     }
 </script>
+
