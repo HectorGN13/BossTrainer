@@ -57,8 +57,34 @@ class NotificationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView()
     {
+        $notification_id = Yii::$app->request->post('id');
+
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
+                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('update', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -71,11 +97,16 @@ class NotificationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $notification_id = Yii::$app->request->post('id');
+        if ($this->findModel($notification_id)->delete() != false ) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado con éxito.');
+            return $this->redirect(['notification/index']);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            return $this->redirect(['notification/index']);
+        }
     }
 
     /**
@@ -96,6 +127,7 @@ class NotificationController extends Controller
 
     public function actionNotifications () {
         $userId = Yii::$app->user->id;
+        $searchModel = new NotificationSearch();
 
         $query = Notification::find()
             ->where(['=', 'recipient',$userId])
@@ -106,12 +138,14 @@ class NotificationController extends Controller
         ]);
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('_notification', [
+            return $this->renderAjax('index', [
                 'dataProvider' => $dataProvider,
+                'searchModel' => $searchModel,
             ]);
         } else {
-            return $this->render('_notification', [
+            return $this->render('index', [
                 'dataProvider' => $dataProvider,
+                'searchModel' => $searchModel,
             ]);
         }
 

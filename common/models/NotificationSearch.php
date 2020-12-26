@@ -41,7 +41,8 @@ class NotificationSearch extends Notification
      */
     public function search($params)
     {
-        $query = Notification::find();
+        $query = Notification::find()
+            ->orderBy('created_at DESC');
 
         // add conditions that should always apply here
 

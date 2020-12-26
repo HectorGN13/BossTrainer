@@ -9,6 +9,7 @@ use DateTime;
 use Yii;
 use common\models\Gym;
 use common\models\GymSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -43,6 +44,27 @@ class GymController extends Controller
     {
         $searchModel = new GymSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists my Gym models.
+     * @return mixed
+     */
+    public function actionMygyms()
+    {
+        $searchModel = new GymSearch();
+        $query = Gym::find()
+            ->joinWith('gymUsers u');
+
+        $query->filterWhere(['=','u.user_id', intval(Yii::$app->user->id)]);
+        $dataProvider = new ActiveDataProvider([
+                'query' => $query
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

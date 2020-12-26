@@ -86,7 +86,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Inicio', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
         ['label' => 'Sobre Nosotros', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'Contacto', 'url' => ['/site/index/#Contact'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Contacto', 'url' => ['/site/index/#contact'], "linkOptions" => ["class" => "links-color"]],
 
     ];
     if (!Yii::$app->user->isGuest) {
@@ -147,9 +147,14 @@ AppAsset::register($this);
                             'icon' => 'fas fa-weight'
                         ],
                         [
-                            'url' => ['site/my-gyms'],
-                            'label' => 'Mis Gyms',
+                            'url' => ['gym/mygyms'],
+                            'label' => 'Mis Gimnasios',
                             'icon' => 'fas fa-dumbbell'
+                        ],
+                        [
+                            'url' => ['notification/notifications'],
+                            'label' => "Notificaciones " . (isset($notf_count) ? "<span class='badge badge-dark'>1</span>" : ""),
+                            'icon' => 'fas fa-bell'
                         ],
                         [
                             'url' => ['user/profile/edit/'.Yii::$app->user->identity->id],
