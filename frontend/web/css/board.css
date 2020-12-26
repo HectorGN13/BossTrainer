@@ -13,3 +13,9 @@
     font-size: 1.5em;
     color: #1f75fe;
 }
+
+.custom-table table{ text-align: center;}
+.custom-table table thead {
+    background: #373739 !important;
+    color: white !important;
+}

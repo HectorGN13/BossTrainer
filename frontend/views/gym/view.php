@@ -9,12 +9,12 @@ use common\models\UserTrainingSession;
 use common\models\Board;
 /* @var $this yii\web\View */
 /* @var $model common\models\Gym */
-/* @var $trainingSessionDataProvider backend\models\TrainingSession */
+/* @var $trainingSessionDataProvider common\models\TrainingSession */
 /* @var $trainingSessionSearchModel backend\models\TrainingSessionSearch */
 
 $this->title = $model->name;
 GymsAsset::register($this);
-\yii\helpers\VarDumper::dump($model->userFollowExist());
+\yii\helpers\VarDumper::dump('default_board');
 $userTrainingSession = new UserTrainingSession();
 ?>
 <body class="profile-page sidebar-collapse">
@@ -78,26 +78,36 @@ $userTrainingSession = new UserTrainingSession();
                 <div class="tab-pane text-center gallery" id="board">
                     <div class="row">
                         <div class="container">
-<!--                            <div class="lines-effect">-->
-<!--                                <h1 class="text-responsive" style="text-transform: uppercase">--><?//= Html::encode($this->title) ?><!--</h1>-->
-<!--                            </div>-->
-<!---->
-<!--                            <div class="container">-->
-<!--                                <div id="text" class="white-board col-12">-->
-<!--                                    --><?php
-//
-//                                    $config = HTMLPurifier_Config::createDefault();
-//                                    $config->set('HTML.SafeIframe', true);
-//                                    $config->set('URI.SafeIframeRegexp', '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%');
-//                                    $purifier = new HTMLPurifier($config);
-//
-//                                    $raw = $model->body;
-//
-//                                    echo $purifier->purify($raw)
-//
-//                                    ?>
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="lines-effect">
+                                <?php if (isset($default_board)): ?>
+                                <h1 class="text-responsive" style="text-transform: uppercase">
+                                    <?= Html::encode($default_board->title) ?>
+                                </h1>
+                                <?php else: ?>
+                                <h3 style="text-transform: uppercase">
+                                   <?= Html::encode("La pizarra no está disponible...") ?>
+                                </h3>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="container">
+                                <?php if (isset($default_board)): ?>
+                                <div id="text" class="white-board col-12">
+                                    <?php
+
+                                    $config = HTMLPurifier_Config::createDefault();
+                                    $config->set('HTML.SafeIframe', true);
+                                    $config->set('URI.SafeIframeRegexp', '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%');
+                                    $purifier = new HTMLPurifier($config);
+
+                                    $raw = $default_board->body;
+
+                                    echo $purifier->purify($raw)
+
+                                    ?>
+                                </div>
+                                <?php endif; ?>
+                            </div>
 
                         </div>
                     </div>

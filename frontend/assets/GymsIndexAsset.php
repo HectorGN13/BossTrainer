@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class GymsAsset extends AssetBundle
+class GymsIndexAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -15,7 +15,6 @@ class GymsAsset extends AssetBundle
         'css/site.css',
         'css/index.css',
         'css/gym.css',
-        'css/material-kit.css',
         'css/board.css'
     ];
     public $js = [

@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 
+use common\models\Board;
 use common\models\GymUser;
 use DateTime;
 use Yii;
@@ -58,16 +59,19 @@ class GymController extends Controller
     public function actionView($id)
     {
         $searchModel = new GymSearch();
+        $model = $this->findModel($id);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $trainingSessions = TrainingSession::find()->where(['>=', 'start_time',date('Y-m-d 00:00:01')])->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])->andWhere(['=', 'created_by',$id]);
         $totalSessionCount = $trainingSessions->count();
-        $trainingSessions = $trainingSessions->limit(12)->all();
+        $trainingSessions = $trainingSessions->limit(10)->all();
+        $boardDefault = Board::findOne($model->default_board);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'trainingSessions' => $trainingSessions,
             'totalSessionCount' => $totalSessionCount,
+            'default_board' => $boardDefault,
             'gym_id' => $id
         ]);
     }

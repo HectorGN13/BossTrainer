@@ -1,13 +1,13 @@
 <?php
 
-use frontend\assets\GymsAsset;
+use frontend\assets\GymsIndexAsset;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\GymSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-GymsAsset::register($this);
+GymsIndexAsset::register($this);
 $this->title = 'Gimnasios';
 
 ?>

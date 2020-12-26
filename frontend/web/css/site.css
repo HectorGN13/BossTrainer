@@ -169,6 +169,10 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
+
+    .navbar-brand{
+        width: 200px;
+    }
 }
 
 .nav > li > form > button.logout:focus,
