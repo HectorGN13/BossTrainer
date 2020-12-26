@@ -80,6 +80,7 @@ class RecordController extends Controller
     public function actionCreate()
     {
         $model = new Record();
+
         $model->user_id = Yii::$app->user->identity->id;
         $model->movements_id = Yii::$app->request->get('movements_id');
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
@@ -87,7 +88,7 @@ class RecordController extends Controller
             return ActiveForm::validate($model);
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Se ha añadido con éxito su record.');
                 return $this->goBack();

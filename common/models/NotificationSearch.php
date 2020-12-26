@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Board;
+use common\models\Notification;
 
 /**
- * BoardSearch represents the model behind the search form of `backend\models\Board`.
+ * NotificationSearch represents the model behind the search form of `common\models\Notification`.
  */
-class BoardSearch extends Board
+class NotificationSearch extends Notification
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class BoardSearch extends Board
     public function rules()
     {
         return [
-            [['id', 'created_by'], 'integer'],
-            [['title', 'body'], 'safe'],
+            [['id', 'recipient', 'read'], 'integer'],
+            [['title', 'body', 'created_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class BoardSearch extends Board
      */
     public function search($params)
     {
-        $query = Board::find();
+        $query = Notification::find();
 
         // add conditions that should always apply here
 
@@ -60,12 +60,14 @@ class BoardSearch extends Board
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_by' => $this->created_by,
+            'recipient' => $this->recipient,
+            'read' => $this->read,
+            'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'title', $this->title]);
-        $query->andFilterWhere(['ilike', 'body', $this->body]);
-        $query->andFilterWhere(['created_by' => Yii::$app->user->id]);
+        $query->andFilterWhere(['ilike', 'title', $this->title])
+            ->andFilterWhere(['ilike', 'body', $this->body])
+            ->andFilterWhere(['recipient' => Yii::$app->user->id]);
 
         return $dataProvider;
     }
