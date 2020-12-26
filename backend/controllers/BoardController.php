@@ -172,13 +172,11 @@ class BoardController extends Controller
 
     /**
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionGetboard()
     {
-        if (Yii::$app->request->isAjax) {
-            $id = Yii::$app->request->post('board_id');
-
-            return $this->renderAjax('view', ['id' => $id]);
-        }
+        $id = Yii::$app->request->post('board_id');
+        return $this->renderAjax('view',  ['model' => $this->findModel($id)]);
     }
 }

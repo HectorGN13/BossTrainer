@@ -32,11 +32,11 @@ class Notification extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['recipient', 'title', 'body', 'read', 'created_at'], 'required'],
-            [['recipient', 'read'], 'default', 'value' => null],
+            [['recipient', 'title', 'body'], 'required'],
+            [['recipient'], 'default', 'value' => null],
             [['recipient', 'read'], 'integer'],
             [['body'], 'string'],
-            [['created_at'], 'safe'],
+            [['created_at', 'read', 'recipient', 'title', 'body'], 'safe'],
             [['title'], 'string', 'max' => 255],
             [['recipient'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['recipient' => 'id']],
         ];
@@ -62,7 +62,7 @@ class Notification extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getRecipient0()
+    public function getRecipient()
     {
         return $this->hasOne(User::className(), ['id' => 'recipient'])->inverseOf('notifications');
     }

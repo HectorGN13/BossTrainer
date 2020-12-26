@@ -5,6 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Notification;
 use common\models\NotificationSearch;
+use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -90,5 +92,28 @@ class NotificationController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionNotifications () {
+        $userId = Yii::$app->user->id;
+
+        $query = Notification::find()
+            ->where(['=', 'recipient',$userId])
+            ->orderBy(['created_at'=>SORT_DESC]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('_notification', [
+                'dataProvider' => $dataProvider,
+            ]);
+        } else {
+            return $this->render('_notification', [
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
     }
 }

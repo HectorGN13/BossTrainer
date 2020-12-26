@@ -70,4 +70,16 @@ class Record extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id'])->inverseOf('records');
     }
+
+    public function beforeSave($insert)
+    {
+        $notification = new Notification();
+        $notification->recipient = Yii::$app->user->id;
+        $notification->title = "¡Felicitaciones!";
+        $notification->body = "Enhorabuena, has batido un nuevo record.";
+
+        $notification->save();
+
+        return parent::beforeSave($insert);
+    }
 }
