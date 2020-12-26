@@ -10,7 +10,7 @@ use yii\helpers\Html;
 $this->title = $model->title;
 BoardAsset::register($this);
 ?>
-<div class="board-view">
+<div class="board-view mt-5">
     <div class="container">
         <div id="text" class="white-board col-12">
             <?php

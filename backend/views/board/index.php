@@ -1,5 +1,6 @@
 <?php
 
+use backend\assets\BoardAsset;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
@@ -10,11 +11,11 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Pizarras';
-
+BoardAsset::register($this);
 ?>
 
 <div class="board-index">
-    <div class="board-list container">
+    <div class="board-list container mb-5">
         <div class="lines-effect">
             <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
         </div>
@@ -73,14 +74,13 @@ $this->title = 'Pizarras';
                 ],
             ]); ?>
     </div>
-    <div id="board-view-container">
+    <div id="board-view-container" class="mt-5">
 
     </div>
 </div>
 
 <script>
     function loadBoard ($key) {
-        alert($key);
         $.ajax({
            url: '<?= Yii::$app->request->baseUrl. '/board/getboard' ?>',
            type: 'POST',
