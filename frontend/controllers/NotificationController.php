@@ -60,34 +60,16 @@ class NotificationController extends Controller
     public function actionView()
     {
         $notification_id = Yii::$app->request->post('id');
-
-        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
-            return ActiveForm::validate($model);
-        }
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
-                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
-            } else {
-                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
-            }
-        }
-
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('update', [
-                'model' => $model,
+        $model = $this->findModel($notification_id);
+        $model->read = 9;
+        if ($model->save()) {
+            return $this->render('view', [
+                'model' => $this->findModel($notification_id),
             ]);
-        }else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+             return $this->goHome();
         }
-
-
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
     }
 
     /**
@@ -150,4 +132,26 @@ class NotificationController extends Controller
         }
 
     }
+
+    /**
+     * Displays a single Notification model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionRead()
+    {
+        $notification_id = Yii::$app->request->post('id');
+        $model = $this->findModel($notification_id);
+        $model->read = 9;
+        if ($model->save()) {
+            return $this->render('view', [
+                'model' => $this->findModel($notification_id),
+            ]);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            return $this->goHome();
+        }
+    }
+
 }
