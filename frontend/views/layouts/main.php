@@ -10,8 +10,26 @@ use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use frontend\assets\AppAsset;
+use yii\helpers\Url;
 
+$url = Url::to(['user/notify']);
 AppAsset::register($this);
+$script = <<<EOT
+$.ajax({
+    type: 'get',
+    url: '$url',
+    success: function(response){
+        if (response != 0) {
+        response = JSON.parse(response);
+        $('#countNotify').text(response);
+        } else {
+            $('#countNotify').hide();
+        }
+    }
+})
+EOT;
+$this->registerJs($script);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -153,7 +171,7 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => ['notification/notifications'],
-                            'label' => "Notificaciones " . (isset($notf_count) ? "<span class='badge badge-dark'>1</span>" : ""),
+                            'label' => "Notificaciones " . "<span id='countNotify' class='badge badge-dark'></span>",
                             'icon' => 'fas fa-bell'
                         ],
                         [

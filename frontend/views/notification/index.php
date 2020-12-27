@@ -16,6 +16,9 @@ $this->title = 'Mis Notificaciones';
         </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'options' => ['class' => 'custom-table'],
+        'tableOptions' => ['class' => 'table table-hover table-sm'],
+        'layout' => '{items}{pager}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
@@ -43,7 +46,7 @@ $this->title = 'Mis Notificaciones';
                         [
                             'data' => [
                                 'method' => 'post',
-                                'params' => ['notification_id' => $key],
+                                'params' => ['id' => $key],
                             ],
                             'class' => 'px-1'
                         ]

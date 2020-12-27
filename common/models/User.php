@@ -429,4 +429,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Weight::className(), ['user_id' => 'id'])->inverseOf('user');
     }
+
+    /**
+     * Gets query for [[Notifications]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNotifications()
+    {
+        return $this->hasMany(Notification::className(), ['recipient' => 'id'])->inverseOf('recipient0');
+    }
 }

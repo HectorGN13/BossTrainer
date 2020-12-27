@@ -143,15 +143,17 @@ class NotificationController extends Controller
     {
         $notification_id = Yii::$app->request->post('id');
         $model = $this->findModel($notification_id);
-        $model->read = 9;
+        if ( $model->read == 10) {
+            $model->read = 9;
+        } else {
+            $model->read = 10;
+        }
+
         if ($model->save()) {
-            return $this->render('view', [
-                'model' => $this->findModel($notification_id),
-            ]);
+            return $this->redirect(['notification/index']);
         } else {
             Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
             return $this->goHome();
         }
     }
-
 }

@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use app\models\ImagenForm;
+use common\models\Notification;
 use Yii;
 use common\models\User;
 use common\models\UserSearch;
@@ -22,6 +23,7 @@ use yii\web\UploadedFile;
  */
 class UserController extends Controller
 {
+
     /**
      * {@inheritdoc}
      */
@@ -142,5 +144,19 @@ class UserController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionNotify()
+    {
+        Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+        $count = User::find()
+            ->joinWith('notifications n')
+            ->where(['user.id' => Yii::$app->user->id])
+            ->andWhere(['n.read' => 10])
+            ->count();
+
+
+        return json_encode($count);
     }
 }

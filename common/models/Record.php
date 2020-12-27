@@ -73,10 +73,14 @@ class Record extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
+        $query = Movements::find()
+            ->select('title')
+            ->where([ 'id' => $this->movements_id])
+            ->scalar();
         $notification = new Notification();
         $notification->recipient = Yii::$app->user->id;
         $notification->title = "¡Felicitaciones!";
-        $notification->body = "Enhorabuena, has batido un nuevo record.";
+        $notification->body = "Enhorabuena, has batido un nuevo record en " . $query . "." ;
 
         $notification->save();
 
