@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use frontend\models\WaitingList;
+use macgyer\yii2materializecss\widgets\form\Select;
 use Yii;
 use common\models\UserTrainingSession;
 use common\models\User;
@@ -75,5 +77,56 @@ class TrainingSession extends ActiveRecord
             ->all();
         
         //return $this->hasMany(UserTrainingSession::className(), ['training_session_id' => 'user_id']);
+    }
+
+    /**
+     * Gets query for [[WaitingLists]].
+     *
+     * @return ActiveQuery
+     */
+    public function getWaitingLists()
+    {
+        return $this->hasMany(WaitingList::className(), ['training_session_id' => 'id'])->inverseOf('trainingSession');
+    }
+
+    /**
+     * @return bool
+     */
+    public function userWaitingExist()
+    {
+        return $this->getWaitingLists()->onCondition(['user_id' => Yii::$app->user->id])->exists();
+    }
+
+    /**
+     * @param bool $insert
+     * @param array $changedAttributes
+     * @return bool|void
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+
+       if ($insert == false && ($changedAttributes['capacity'] < $this->capacity)) {
+
+           $name = TrainingSession::find()
+               ->select('title')
+               ->where([ 'id' => $this->id])
+               ->scalar();
+
+           $recipients = WaitingList::find()
+               ->where(['training_session_id' => $this->id])
+               ->all();
+
+           foreach ($recipients as $recipient) {
+               $notification = new Notification();
+               $notification->recipient = $recipient['user_id'];
+               $notification->title = "¡Plaza libre!";
+               $notification->body = "¡Bien! ha quedado una plaza libre en la sesión de entrenamiento " . $name . ".";
+
+               $notification->save();
+
+           }
+
+           return parent::beforeSave($insert);
+       }
     }
 }

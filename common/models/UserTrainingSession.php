@@ -2,8 +2,12 @@
 
 namespace common\models;
 
+use frontend\models\WaitingList;
 use Yii;
 use common\models\User;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "user_training_session".
  *
@@ -14,7 +18,7 @@ use common\models\User;
  * @property TrainingSession $trainingSession
  * @property User $user
  */
-class UserTrainingSession extends \yii\db\ActiveRecord
+class UserTrainingSession extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -52,7 +56,7 @@ class UserTrainingSession extends \yii\db\ActiveRecord
     /**
      * Gets query for [[TrainingSession]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getTrainingSession()
     {
@@ -62,13 +66,17 @@ class UserTrainingSession extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-    //get training session members
+
+    /**
+     * @param $sessionId
+     * @return array|ActiveRecord[]
+     */
     public function getSessionMembers($sessionId)
     {
         return UserTrainingSession::find()
@@ -76,7 +84,12 @@ class UserTrainingSession extends \yii\db\ActiveRecord
         ->where(['training_session_id' => $sessionId])
         ->all();
     }
-    //check user have joined session or not
+
+    /**
+     * @param $sessionId
+     * @param $userId
+     * @return bool
+     */
     public function isSessionIsJoined($sessionId, $userId)
     {
         $userCount = UserTrainingSession::find()
@@ -84,5 +97,29 @@ class UserTrainingSession extends \yii\db\ActiveRecord
         ->andWhere(['user_id' => $userId])
         ->count();
         return $userCount > 0;
+    }
+
+    public function afterDelete()
+    {
+        $name = TrainingSession::find()
+            ->select('title')
+            ->where([ 'id' => $this->training_session_id])
+            ->scalar();
+
+        $recipients = WaitingList::find()
+            ->where(['training_session_id' => $this->training_session_id])
+            ->all();
+
+        foreach ($recipients as $recipient) {
+            $notification = new Notification();
+            $notification->recipient = $recipient['user_id'];
+            $notification->title = "¡Plaza libre!";
+            $notification->body = "¡Bien! ha quedado una plaza libre en la sesión de entrenamiento " . $name . ".";
+
+            $notification->save();
+
+        }
+
+        return parent::afterDelete();
     }
 }

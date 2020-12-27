@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\WaitingList;
 use Yii;
 use common\models\TrainingSession;
 use backend\models\TrainingSessionSearch;
@@ -165,4 +166,38 @@ class TrainingsessionController extends Controller
                 ['trainingSessions'=>$trainingSessions, 'gym_id' => $gymId, 'is_user_follow_gym' => $isUserFollow > 0]);
         }
     }
+
+    /**
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+     public function actionAddwaitinglist()
+     {
+         $waiting_list = new WaitingList();
+         $user_id = Yii::$app->user->id;
+         $training_session_id = Yii::$app->request->get('id');
+
+
+         $query = WaitingList::find()->where(['user_id' => $user_id])->andWhere(['training_session_id' => $training_session_id ]);
+         if ($query->exists()) {
+             WaitingList::findOne(['user_id' => $user_id, 'training_session_id' => $training_session_id])->delete();
+             Yii::$app->session->setFlash('success', "Ya no estas en la lista de espera.");
+         } else {
+             $waiting_list->training_session_id = $training_session_id;
+             $waiting_list->user_id = $user_id;
+
+             if ($waiting_list->save()) {
+                 Yii::$app->session->setFlash('success',[
+                     ['Estas en la lista de espera',
+                         'Te has añadido correctamente a la lista de espera, te enviaremos una notificación cuando quede un hueco libre.']]);
+             } else {
+                 Yii::$app->session->setFlash('error',[
+                     ['Error',
+                         'Lo sentimos pero algo ha ocurrido mal.']]);
+             }
+         }
+
+         $this->redirect(['gym/view/', 'id' => self::findModel($training_session_id)->created_by]);
+     }
 }

@@ -80,7 +80,7 @@ class Record extends \yii\db\ActiveRecord
         $notification = new Notification();
         $notification->recipient = Yii::$app->user->id;
         $notification->title = "¡Felicitaciones!";
-        $notification->body = "Enhorabuena, has batido un nuevo record en " . $query . "." ;
+        $notification->body = "Enhorabuena, has batido un nuevo record en " . $query . ".";
 
         $notification->save();
 

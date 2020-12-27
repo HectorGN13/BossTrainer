@@ -219,7 +219,7 @@ $userTrainingSession = new UserTrainingSession();
                                     <?php if(!$isUserJoined && $totalMembers < $session['capacity']):?>
                                       <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Unirse</a>
                                     <?php elseif (!$isUserJoined && $totalMembers >= $session['capacity']):?>
-                                      <button type="button" class="btn btn-actions btn-notity-session btn-block">Avisar</button>
+                                      <?= Html::a((!$session->userWaitingExist()) ? 'Avisar': 'Dejar de avisar',['trainingsession/addwaitinglist', 'id' => $session['id']], ['class' => 'btn btn-actions btn-notity-session btn-block']) ?>
                                     <?php else:?>
                                       <a <?= $userId."  ".$session['id']?> href="<?= Url::to(['gym/leave', 'id' => $session['id']])?>" class="btn btn-actions btn-exit-session btn-block btn-danger">Salirse</a>
                                     <?php endif;?>
