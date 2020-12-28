@@ -1,60 +1,19 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    <a href="https://bosstrainer.herokuapp.com/" target="_blank">
+        <img src="https://ibb.co/Nn8WH9D" height="100px">
     </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
+    <h1 align="center">BOSSTRAINER®</h1>
     <br>
 </p>
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+BossTrainer es una aplicación orientada a la gestión de gimnasios, debido a la situacion que nos encontramos por la 
+ pandemia del covid-19. Centré mis esfuerzos para que la aplicación facilitara a los usuarios la experiencia a la hora 
+ de reservar clases o sesiones de entrenamientos. 
+ 
+ Actualmente dispone de un seguimiento de metas y objetivos, notificaciones en tiempo real, gestion de reservas, 
+ tabla de records personales y mucho más. Está dividida en dos partes [Bosstrainer](https://bosstrainer.herokuapp.com/) 
+ (Es la parte pública de la aplicación) y [Bosstrainer/backend](https://bosstrainer.herokuapp.com/backend) (parte de administración)
+donde los propietarios gestionarán todo lo concierne a su gimnasio (Sesiones de entrenamiento, Usuarios, tarifas, etc...).  
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+La documentación está recogida en: [docs/guide/README.md](docs/guide/README.md).
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.com/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.com/yiisoft/yii2-app-advanced)
-
-DIRECTORY STRUCTURE
--------------------
-
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
