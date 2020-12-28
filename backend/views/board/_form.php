@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 use kartik\icons\FontAwesomeAsset;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Board */
+/* @var $model common\models\Board */
 /* @var $form yii\widgets\ActiveForm */
 FontAwesomeAsset::register($this);
 ?>

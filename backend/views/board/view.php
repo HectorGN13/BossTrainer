@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Board */
+/* @var $model common\models\Board */
 
 $this->title = $model->title;
 BoardAsset::register($this);

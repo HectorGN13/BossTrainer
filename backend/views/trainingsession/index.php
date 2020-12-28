@@ -155,7 +155,7 @@ SessionsAssets::register($this);
 Modal::begin([
     'title' => '<h2>Añadir Sesión.</h2>',
     'id' => 'modalAddSession',
-    // 'size' => 'modal-lg',
+    'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent1'></div>";
@@ -165,7 +165,7 @@ Modal::end();
 Modal::begin([
     'title' =>'<h2>Editar Sesión.</h2>',
     'id' => 'modalUpdSession',
-    // 'size' => 'modal-lg',
+    'size' => 'modal-lg',
 ]);
 
 echo "<div id='modalContent2'></div>";

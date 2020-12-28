@@ -1,6 +1,7 @@
 <?php
 
 use frontend\assets\GymsAsset;
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use kartik\date\DatePicker;
 use yii\web\JsExpression;
@@ -244,11 +245,19 @@ $userTrainingSession = new UserTrainingSession();
     </div>
 </div>
 <div id="session-description-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      
-    </div>
+  <div class="modal-dialog modal-lg">
+      <?php
+
+      $config = HTMLPurifier_Config::createDefault();
+      $config->set('HTML.SafeIframe', true);
+      $config->set('URI.SafeIframeRegexp', '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%');
+      $purifier = new HTMLPurifier($config);
+
+      $raw = '<div class="modal-content"></div>';
+
+      echo $purifier->purify($raw)
+
+      ?>
   </div>
 </div>
 <input type="hidden" id="gym_id" value="<?= $gym_id?>">

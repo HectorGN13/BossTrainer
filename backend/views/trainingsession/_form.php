@@ -1,11 +1,15 @@
 <?php
 
+use kartik\editors\Summernote;
+use kartik\icons\FontAwesomeAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
+
 /* @var $this yii\web\View */
-/* @var $model backend\models\TrainingSession */
+/* @var $model common\models\TrainingSession */
 /* @var $form yii\widgets\ActiveForm */
+FontAwesomeAsset::register($this);
 ?>
 
 <div class="training-session-form">
@@ -14,7 +18,12 @@ use kartik\datetime\DateTimePicker;
             <?php $form = ActiveForm::begin(); ?>
 
             <?= $form->field($model, 'title')->textInput()->input('text',  ['placeholder' => "Introduce el nombre de la sesión."])->label(false) ?>
-            <?= $form->field($model, 'description')->textInput()->input('text',  ['placeholder' => "Introduce una descripción."])->label(false) ?>
+            <?= $form->field($model, 'description')->widget(Summernote::class, [
+                'options' => [
+                    'placeholder' => 'Edita tu pizarra aquí...',
+                ]
+            ])->textarea(['rows' => 10])->label(false);
+            ?>
 
             <?php
             echo $form->field($model, 'start_time')->widget(DateTimePicker::classname(), [
