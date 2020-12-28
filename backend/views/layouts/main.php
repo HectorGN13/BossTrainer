@@ -79,11 +79,17 @@ AppAsset::register($this);
                             'icon' => 'fas fa-chalkboard-teacher'
                         ],
                         [
+                            'url' => ['site/broadcast'],
+                            'options' => '',
+                            'label' => 'Broadcast',
+                            'icon' => 'fas fa-bullhorn'
+                        ],
+                        [
                             'url' => ['site/logout'],
                             'options' => 'data-method=POST',
                             'label' => 'Desconectarse',
                             'icon' => 'fas fa-power-off'
-                        ]
+                        ],
                     ],
                 ]);
             }

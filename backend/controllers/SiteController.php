@@ -1,6 +1,8 @@
 <?php
 namespace backend\controllers;
 
+use common\models\GymUser;
+use common\models\Notification;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -26,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'broadcast'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -99,4 +101,38 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+
+    /**
+     * @return string
+     */
+    public function actionBroadcast()
+    {
+        $model = new Notification();
+        if ($model->load(Yii::$app->request->post())) {
+            $var = false;
+            $recipients = GymUser::find()
+                ->where(['gym_id' => Yii::$app->user->id])
+                ->all();
+
+            foreach ($recipients as $recipient) {
+                $model->recipient = $recipient['user_id'];
+                 if ($model->save()) {
+                     $var = true;
+                 }
+            }
+
+            if ($var) {
+                Yii::$app->session->setFlash('success', 'Su mensaje se ha difundido con éxito.');
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('createBroadcast', [
+            'model' => $model,
+        ]);
+    }
+
 }

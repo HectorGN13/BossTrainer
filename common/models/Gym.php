@@ -5,6 +5,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 /**
  * This is the model class for table "gym".
@@ -296,12 +297,23 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
-
     /**
      * Removes password reset token
      */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @param $gymId
+     * @return array|ActiveRecord[]
+     */
+    public function getGymMembers($gymId)
+    {
+        return GymUser::find()
+            ->joinWith('user')
+            ->where(['gym_id' => $gymId])
+            ->all();
     }
 }

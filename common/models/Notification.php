@@ -50,8 +50,8 @@ class Notification extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'recipient' => 'Recipient',
-            'title' => 'Title',
-            'body' => 'Body',
+            'title' => 'Título',
+            'body' => 'Cuerpo del mensaje',
             'read' => 'Read',
             'created_at' => 'Created At',
         ];
