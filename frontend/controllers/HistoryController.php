@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\UserTrainingSession;
 use frontend\models\UserTrainingSessionSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,7 +37,9 @@ class HistoryController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserTrainingSessionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' =>UserTrainingSession::find()->where(['user_id' => Yii::$app->user->identity->id]),
+        ]);;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

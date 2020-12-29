@@ -1,7 +1,10 @@
 <?php
 
+use common\models\Gym;
+use common\models\TrainingSession;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\UserTrainingSessionSearch */
@@ -20,29 +23,44 @@ $this->title = 'Mi Historial';
             'tableOptions' => ['class' => 'table table-hover table-sm'],
             'layout' => '{items}{pager}',
             'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+                [
+                    'attribute' => 'ID de la sesión',
+                    'value' => 'id',
+                ],
                 [
                     'header' => 'Nombre de la sesión',
                     'content' => function ($model, $key, $index, $widget) {
-                       // return
-                    }
+                        $trainingSession = TrainingSession::findOne($model->training_session_id);
+                        return Html::encode($trainingSession->title);
+                    },
+                    'enableSorting' => true,
                 ],
                 [
                     'header' => 'Gimnasio',
                     'content' => function ($model, $key, $index, $widget) {
-                        // return
-                    }
+                        $trainingSession = TrainingSession::findOne($model->training_session_id);
+                        $gym = Gym::findOne($trainingSession->created_by);
+                        return Html::a(Html::encode($gym->name), ['gym/view', 'id' => $trainingSession->created_by]);
+
+                    },
+                    'enableSorting' => true,
                 ],
                 [
                     'header' => 'Fecha',
                     'content' => function ($model, $key, $index, $widget) {
-                        // return
-                    }
+                        $trainingSession = TrainingSession::findOne($model->training_session_id);
+                        $date = new DateTime($trainingSession->start_time);
+                        return Html::encode($date->format('d/m/Y H:i:s'));
+                    },
+                    'enableSorting' => true,
                 ],
                 [
                     'header' => 'Calificación',
                     'content' => function ($model, $key, $index, $widget) {
                         // return
-                    }
+                    },
+                    'enableSorting' => true,
                 ],
         ],
     ]); ?>

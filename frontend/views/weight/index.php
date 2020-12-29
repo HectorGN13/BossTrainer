@@ -69,8 +69,8 @@ WeightAsset::register($this);
                     'enableSorting' => true,
                 ],
                 [
-                   'attribute' => 'Peso',
-                   'value' => 'value',
+                    'attribute' => 'Peso',
+                    'value' => 'value',
                     'enableSorting' => true,
                 ],
                 [
