@@ -22,6 +22,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <style>
@@ -77,6 +78,12 @@ AppAsset::register($this);
                             'options' => '',
                             'label' => 'Pizarras',
                             'icon' => 'fas fa-chalkboard-teacher'
+                        ],
+                        [
+                            'url' => ['site/invoice'],
+                            'options' => '',
+                            'label' => 'FacturasGEN',
+                            'icon' => 'fas fa-receipt'
                         ],
                         [
                             'url' => ['site/broadcast'],

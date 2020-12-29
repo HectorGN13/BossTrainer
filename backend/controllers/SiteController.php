@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Gym;
 use common\models\GymUser;
 use common\models\Notification;
 use Yii;
@@ -8,6 +9,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\web\Response;
+use kartik\mpdf\Pdf;
 
 /**
  * Site controller
@@ -28,7 +31,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'broadcast'],
+                        'actions' => ['logout', 'index', 'broadcast', 'invoice', 'pdf'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -134,5 +137,16 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * @return string
+     */
+    public function actionInvoice()
+    {
+        return $this->render('invoice',[
+            'model' => Gym::findOne(Yii::$app->user->id),
+        ]);
+    }
+
 
 }

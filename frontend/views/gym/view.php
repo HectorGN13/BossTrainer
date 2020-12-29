@@ -322,111 +322,111 @@ $script = <<< JS
  $this->registerJs($script);
  ?>
 <script>
-/**
- *
- * @param input
- * @param days
- * @param months
- * @param years
- * @returns {Date}
- */
-function substractDate(input, days, months, years) {
-return new Date(
-  input.getFullYear() + years,
-  input.getMonth() + months,
-  Math.min(
-    input.getDate() + days,
-    new Date(input.getFullYear() + years, input.getMonth() + months + 1, 0).getDate()
-  ));
-}
+    /**
+     *
+     * @param input
+     * @param days
+     * @param months
+     * @param years
+     * @returns {Date}
+     */
+    function substractDate(input, days, months, years) {
+    return new Date(
+      input.getFullYear() + years,
+      input.getMonth() + months,
+      Math.min(
+        input.getDate() + days,
+        new Date(input.getFullYear() + years, input.getMonth() + months + 1, 0).getDate()
+      ));
+    }
 
     /**
      *
      * @param isFilterApplied
      */
-function applyFilter(isFilterApplied = false) {
-    var row = Number($('#row').val());
-    var allcount = Number($('#all').val());
-    var rowperpage = 10;
-    if(!isFilterApplied) {
-      row = row + rowperpage;
-    } else {
-      row = 0;
+    function applyFilter(isFilterApplied = false) {
+        var row = Number($('#row').val());
+        var allcount = Number($('#all').val());
+        var rowperpage = 10;
+        if(!isFilterApplied) {
+          row = row + rowperpage;
+        } else {
+          row = 0;
+        }
+        var currentDay = $("#current_day").val();
+        if(row <= allcount){
+            $("#row").val(row);
+            $.ajax({
+                url: $("#get_more_sessions").val(),
+                type: 'post',
+                data: {row:row,gym_id:$("#gym_id").val(),current_day:currentDay,_csrf:$("#csrf_token").val()},
+                beforeSend:function(){
+                    $("#btn-load-more").text("Cargando...");
+                },
+                success: function(response){
+                    // pequeño delay mientras se agregan las clases
+                    setTimeout(function() {
+                        // agrega clases después de la última
+                        if(isFilterApplied)
+                        {
+                          $("#session-container").html(response).show().fadeIn("slow");
+                        }
+                        else
+                        {
+                          $(".session-item:last").after(response).show().fadeIn("slow");
+                        }
+                        if(!isFilterApplied)
+                        var rowno = row + rowperpage;
+
+                        // detecta si el valor de las filas es más grande que allcount o no
+                        if(rowno >= allcount || response == ''){
+
+                            // cambia el texto y el background
+                            $("#btn-load-more").text("No hay sesiones disponibles...");
+                            $("#btn-load-more").css("background","darkorchid");
+                        }else{
+                            $("#btn-load-more").text("Cargar más");
+                        }
+                    }, 2000);
+                }
+            });
+        }
     }
-    var currentDay = $("#current_day").val();
-    if(row <= allcount){
-        $("#row").val(row);
-        $.ajax({
-            url: $("#get_more_sessions").val(),
-            type: 'post',
-            data: {row:row,gym_id:$("#gym_id").val(),current_day:currentDay,_csrf:$("#csrf_token").val()},
-            beforeSend:function(){
-                $("#btn-load-more").text("Cargando...");
-            },
-            success: function(response){
-                // pequeño delay mientras se agregan las clases
-                setTimeout(function() {
-                    // agrega clases después de la última
-                    if(isFilterApplied)
-                    {
-                      $("#session-container").html(response).show().fadeIn("slow");
-                    }
-                    else
-                    {
-                      $(".session-item:last").after(response).show().fadeIn("slow");
-                    }
-                    if(!isFilterApplied)
-                    var rowno = row + rowperpage;
 
-                    // detecta si el valor de las filas es más grande que allcount o no
-                    if(rowno >= allcount || response == ''){
-
-                        // cambia el texto y el background
-                        $("#btn-load-more").text("No hay sesiones disponibles...");
-                        $("#btn-load-more").css("background","darkorchid");
-                    }else{
-                        $("#btn-load-more").text("Cargar más");
-                    }
-                }, 2000);
-            }
-        });
-    }
-}
-
-/**
- *
- * @param type
- */
-function prevNextDate(type) {
-    var currentDay = $("#current_day").val();
-    var date = new Date(currentDay);
-    if(type == 'prev') {
-        date = substractDate(date, -1, 0, 0);
-    } else {
+    /**
+     *
+     * @param type
+     */
+    function prevNextDate(type) {
+        var currentDay = $("#current_day").val();
+        var date = new Date(currentDay);
+        if(type == 'prev') {
+            date = substractDate(date, -1, 0, 0);
+        } else {
+            var nextDay = date.setDate(date.getDate() + 1);
+            date = new Date(nextDay);
+        }
+        //console.log(date);
+        var day = date.getDate();
+        var month = date.getMonth()+1;
+        var prevDay = parseInt(day) - 1;
+        var prevMonth = date.getMonth()+1;
+        var year = date.getFullYear();
+        if(prevDay < 1) {
+            var substractedDate = substractDate(date, 0, -1, 0);
+            var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
+            prevDay = prevDay.getDate();
+            var prevMonth = substractedDate.getMonth()+1;
+            //console.log(prevDay+'/'+prevMonth);
+        }
         var nextDay = date.setDate(date.getDate() + 1);
         date = new Date(nextDay);
+        var nextDay = date.getDate();
+        var nextMonth = date.getMonth()+1;
+        $('.btn-prev-date').html('< '+prevDay + '/' + prevMonth);
+        $('.btn-next-date').html(nextDay + '/' + nextMonth + ' >');
+        $('.training-session-heading').html(day+'/'+month);
+        $("#current_day").val(year+'-'+month+'-'+day)
+        applyFilter(true);
     }
-    //console.log(date);
-    var day = date.getDate();
-    var month = date.getMonth()+1;
-    var prevDay = parseInt(day) - 1;
-    var prevMonth = date.getMonth()+1;
-    var year = date.getFullYear();
-    if(prevDay < 1) {
-        var substractedDate = substractDate(date, 0, -1, 0);
-        var prevDay = new Date(substractedDate.getYear(), substractedDate.getMonth() + 1, 0);
-        prevDay = prevDay.getDate();
-        var prevMonth = substractedDate.getMonth()+1;
-        //console.log(prevDay+'/'+prevMonth);
-    }
-    var nextDay = date.setDate(date.getDate() + 1);
-    date = new Date(nextDay);
-    var nextDay = date.getDate();
-    var nextMonth = date.getMonth()+1;
-    $('.btn-prev-date').html('< '+prevDay + '/' + prevMonth);
-    $('.btn-next-date').html(nextDay + '/' + nextMonth + ' >');
-    $('.training-session-heading').html(day+'/'+month);
-    $("#current_day").val(year+'-'+month+'-'+day)
-    applyFilter(true);
-}
 </script>
