@@ -155,9 +155,9 @@ $this->registerJs($script);
                             'icon' => 'fas fa-star'
                         ],
                         [
-                            'url' => ['site/schedule'],
-                            'label' => 'Mi Agenda',
-                            'icon' => 'fas fa-calendar-check'
+                            'url' => ['history/index'],
+                            'label' => 'Mi Historial',
+                            'icon' => 'fas fa-history'
                         ],
                         [
                             'url' => ['weight/index'],
