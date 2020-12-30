@@ -5,6 +5,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 /**
@@ -71,7 +72,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             [['password_reset_token'], 'unique'],
             [['default_board'], 'exist', 'skipOnError' => true, 'targetClass' => Board::class, 'targetAttribute' => ['default_board' => 'id']],
             [['provincia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['provincia_id' => 'id']],
-            [['localidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => localidades::class, 'targetAttribute' => ['localidad_id' => 'id']],
+            [['localidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => Localidades::class, 'targetAttribute' => ['localidad_id' => 'id']],
         ];
     }
 
@@ -108,7 +109,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[UserGyms]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getGymUsers()
     {
@@ -118,7 +119,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Users]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUsers()
     {
@@ -128,7 +129,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Provincia]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProvincia()
     {
@@ -138,7 +139,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Localidad]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getLocalidad()
     {
@@ -149,7 +150,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Boards]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBoards()
     {
@@ -159,7 +160,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[DefaultBoard]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getDefaultBoard()
     {
