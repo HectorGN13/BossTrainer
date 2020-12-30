@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "notification".
@@ -16,7 +17,7 @@ use Yii;
  *
  * @property User $recipient0
  */
-class Notification extends \yii\db\ActiveRecord
+class Notification extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -38,7 +39,7 @@ class Notification extends \yii\db\ActiveRecord
             [['body'], 'string'],
             [['created_at', 'read', 'recipient', 'title', 'body'], 'safe'],
             [['title'], 'string', 'max' => 255],
-            [['recipient'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['recipient' => 'id']],
+            [['recipient'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['recipient' => 'id']],
         ];
     }
 

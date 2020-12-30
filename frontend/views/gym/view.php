@@ -19,7 +19,7 @@ GymsAsset::register($this);
 $userTrainingSession = new UserTrainingSession();
 ?>
 <body class="profile-page sidebar-collapse">
-<div class="page-header header-filter" data-parallax="true" style="background-image: url(https://images7.alphacoders.com/105/thumb-1920-1052530.jpg); transform: translate3d(0px, 0px, 0px);"></div>
+<div class="page-header header-filter" data-parallax="true" style="background-image: url(<?= $model->banner_img?>); transform: translate3d(0px, 0px, 0px);"></div>
 <div class="main main-raised">
     <div class="profile-content">
         <div class="container">
@@ -28,7 +28,7 @@ $userTrainingSession = new UserTrainingSession();
                     <?= Html::a((!$model->userFollowExist()) ? 'Unirse al Gim': 'Dejar el Gim', ['gym/follow','id' => $model->id], ['class' => 'btn btn-dark btn-md btn-follow']) ?>
                     <div class="profile">
                         <div class="avatar">
-                            <img src="https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/p960x960/79534733_1177160199156807_7504685025900625920_o.jpg?_nc_cat=102&ccb=2&_nc_sid=85a577&_nc_ohc=rMJwuG_4Cz4AX_1GL3X&_nc_oc=AQkvv29dUmYgGHB3CiqzzIkrvb1NM6rFVqVAISsFpW0t1GxJ6-Akz1RYNn0rLl8H1eM&_nc_ht=scontent-mad1-1.xx&tp=6&oh=88610b4e7f0167d8cd295421c0248f16&oe=5FF04473" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px;">
+                            <img src="<?= $model->profile_img?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px;">
                         </div>
 
                         <div class="name">

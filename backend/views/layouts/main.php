@@ -92,6 +92,12 @@ AppAsset::register($this);
                             'icon' => 'fas fa-bullhorn'
                         ],
                         [
+                            'url' => ['site/settings'],
+                            'options' => '',
+                            'label' => 'Settings',
+                            'icon' => 'fas fa-tools'
+                        ],
+                        [
                             'url' => ['site/logout'],
                             'options' => 'data-method=POST',
                             'label' => 'Desconectarse',

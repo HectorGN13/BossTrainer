@@ -22,9 +22,9 @@ $this->title = 'Gimnasios';
         <?php foreach ($dataProvider->models as $model):?>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="https://via.placeholder.com/500x320/" alt="Image" class="card-img-top img-responsive widget-header">
+                <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header">
                 <div class="text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" class="rounded-circle widget-img" alt="">
+                    <img src="<?= $model->profile_img?>" class="rounded-circle widget-img" alt="">
                 </div>
                 <div class="card text-center">
                     <div class="card-body py-5">

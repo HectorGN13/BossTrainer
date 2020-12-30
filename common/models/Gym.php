@@ -21,6 +21,8 @@ use yii\web\IdentityInterface;
  * @property string $created_at
  * @property string $updated_at
  * @property string|null $verification_token
+ * @property string|null $profile_img
+ * @property string|null $banner_img
  *
  * @property GymUser[] $GymUsers
  * @property User[] $users
@@ -34,6 +36,10 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+    const SCENARIO_UPDATE = 'update';
+    public $passwordConfirm;
+    public $password;
+    public $oldPassword;
     /**
      * {@inheritdoc}
      */
@@ -56,9 +62,14 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             [['auth_key'], 'string', 'max' => 32],
             [['description'], 'string', 'max' => 320],
             [['email'], 'unique'],
+            [['profile_img', 'banner_img'], 'string', 'max' => 200],
+            [['oldPassword'], 'findPasswords'],
             [['name'], 'unique'],
+            [['password'], 'trim', 'on' => [self::SCENARIO_DEFAULT]],
+            [['passwordConfirm'], 'compare', 'compareAttribute'=>'password', 'message'=>"Las contraseñas no coinciden.",
+                'on' => [self::SCENARIO_DEFAULT, self::SCENARIO_UPDATE]],
             [['password_reset_token'], 'unique'],
-            [['default_board'], 'exist', 'skipOnError' => true, 'targetClass' => Board::className(), 'targetAttribute' => ['default_board' => 'id']],
+            [['default_board'], 'exist', 'skipOnError' => true, 'targetClass' => Board::class, 'targetAttribute' => ['default_board' => 'id']],
             [['provincia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provincias::class, 'targetAttribute' => ['provincia_id' => 'id']],
             [['localidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => localidades::class, 'targetAttribute' => ['localidad_id' => 'id']],
         ];
@@ -81,11 +92,16 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
-            'provincia_id' => 'Provincia ID',
+            'provincia_id' => 'Provincia',
             'postal_code' => 'Código postal',
             'description' => 'Descripción',
-            'localidad_id' => 'Localidad ID',
+            'localidad_id' => 'Localidad',
             'default_board' => 'Pizarra por defecto',
+            'profile_img' => 'Profile Img',
+            'banner_img' => 'Banner Img',
+            'password' => 'Nueva contraseña',
+            'passwordConfirm' => 'Confirmar contraseña',
+            'oldPassword' => 'Contraseña actual'
         ];
     }
 
@@ -264,6 +280,19 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Matching the old password with your existing password.
+     * @param $attribute
+     * @param $params
+     */
+    public function findPasswords($attribute, $params)
+    {
+        if (!$this->validatePassword($this->oldPassword))
+        {
+            $this->addError($attribute,'Old password is incorrect');
+        }
+    }
+
+    /**
      * Generates password hash from password and sets it to the model
      *
      * @param string $password
@@ -315,5 +344,67 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
             ->joinWith('user')
             ->where(['gym_id' => $gymId])
             ->all();
+    }
+
+    /**
+     * @param bool $insert
+     * @return bool
+     * @throws \yii\base\Exception
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        if(!$insert) {
+            if ( $this->scenario === self::SCENARIO_DEFAULT) {
+                if (empty($this->oldPassword) || is_null($this->oldPassword) ) {
+                    $this->password = $this->getOldAttribute('password');
+                } elseif (empty($this->password) || is_null($this->password)) {
+                    $this->password = $this->getOldAttribute('password');
+                }else {
+                    if ($this->validatePassword($this->oldPassword)){
+                        if ($this->password === null) {
+                            $this->password = $this->getOldAttribute('password');
+                        } else {
+                            $this->password = $this->setPassword($this->password);
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $provinciaId
+     * @return mixed|string|null
+     */
+    public function getProvinciaName($provinciaId)
+    {
+        $Provincias = Provincias::find()->where(['id' => $provinciaId])->one();
+        return isset($Provincias->nombre_provincia) ? $Provincias->nombre_provincia : '';
+    }
+
+    /**
+     * @param $localidadId
+     * @return mixed|string|null
+     */
+    public function getLocalidadName($localidadId)
+    {
+        $localidades = Localidades::find()->where(['id' => $localidadId])->one();
+        return isset($localidades->nombre_localidad) ? $localidades->nombre_localidad : '';
+    }
+
+    /**
+     * @param $gymId
+     * @return mixed|null
+     */
+    public function getGymName($gymId)
+    {
+        $gym = Gym::find()->where(['id' => $gymId])->one();
+        return $gym->name;
     }
 }
