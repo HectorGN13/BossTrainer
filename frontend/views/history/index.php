@@ -2,16 +2,19 @@
 
 use common\models\Gym;
 use common\models\TrainingSession;
+use kartik\grid\GridView;
+use kartik\rating\StarRating;
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\helpers\Url;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\UserTrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Mi Historial';
+
 ?>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
 <div class="history-index pt-5">
     <div class="history-list container">
         <div class="lines-effect">
@@ -25,8 +28,11 @@ $this->title = 'Mi Historial';
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
                 [
-                    'attribute' => 'ID de la sesión',
-                    'value' => 'id',
+                    'header' => 'ID',
+                    'content' => function ($model, $key, $index, $widget) {
+                        return Html::encode($model->id);
+                    },
+                    'enableSorting' => true,
                 ],
                 [
                     'header' => 'Nombre de la sesión',
@@ -58,7 +64,22 @@ $this->title = 'Mi Historial';
                 [
                     'header' => 'Calificación',
                     'content' => function ($model, $key, $index, $widget) {
-                        // return
+                        return StarRating::widget([
+
+                            'model' => $model,
+                            'attribute' => 'rating',
+                            'value' => $rating,
+
+                            'pluginOptions' => [
+                                'showClear' => false,
+                                'showCaption' => false,
+                                'format' => 'raw',
+                                'theme' => 'krajee-uni',
+                                'filledStar' => '&#x2605;',
+                                'emptyStar' => '&#x2606;'
+
+                            ]
+                        ]);
                     },
                     'enableSorting' => true,
                 ],

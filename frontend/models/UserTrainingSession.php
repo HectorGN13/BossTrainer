@@ -34,12 +34,13 @@ class UserTrainingSession extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'training_session_id'], 'default', 'value' => null],
-            [['user_id', 'training_session_id'], 'integer'],
+            [['user_id', 'training_session_id', 'rating'], 'default', 'value' => null],
+            [['user_id', 'training_session_id', 'rating'], 'integer'],
             [['training_session_id'], 'exist', 'skipOnError' => true, 'targetClass' => TrainingSession::className(), 'targetAttribute' => ['training_session_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
+
 
     /**
      * {@inheritdoc}
@@ -50,6 +51,7 @@ class UserTrainingSession extends ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'training_session_id' => 'Training Session ID',
+            'rating' => 'Rating',
         ];
     }
 
@@ -72,4 +74,14 @@ class UserTrainingSession extends ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id'])->inverseOf('userTrainingSessions');
     }
+
+
+    /**
+     * @return int|mixed
+     */
+    public function getRating()
+    {
+        return isset($rating) ? $rating : 0;
+    }
+
 }

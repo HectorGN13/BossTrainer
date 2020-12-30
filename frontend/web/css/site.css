@@ -84,7 +84,10 @@ html, body {height: 100%;}
     font-style: italic;
 }
 
-.custom-table table{ text-align: center;}
+.custom-table table{
+    text-align: center;
+    vertical-align: middle;
+}
 .custom-table table thead {
     background: #373739 !important;
     color: white !important;

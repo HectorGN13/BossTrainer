@@ -39,7 +39,9 @@
         "kartik-v/yii2-icons": "@dev",
         "ezyang/htmlpurifier": "^4.13",
         "antkaz/yii2-vue": "^1.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "kartik-v/yii2-widget-rating": "dev-master",
+        "kartik-v/yii2-grid": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
