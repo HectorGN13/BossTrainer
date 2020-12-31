@@ -35,7 +35,7 @@ MovementsAssets::register($this);
                     'header' => 'Mi Record',
                     'content' => function ($model, $key, $index, $widget) {
                       return Html::tag('span',
-                          !empty($model->recordsMovements) ? $model->recordsMovements . $model->getTypeMeasure() : '',
+                          !empty($model->recordsMovements) ? Html::encode($model->recordsMovements) . $model->getTypeMeasure() : '',
                             ['class' => 'badge badge-pill badge-warning']) ;
                       }
                 ],
