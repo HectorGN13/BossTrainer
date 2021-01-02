@@ -92,6 +92,12 @@ AppAsset::register($this);
                             'icon' => 'fas fa-bullhorn'
                         ],
                         [
+                            'url' => ['site/followers'],
+                            'options' => '',
+                            'label' => 'Usuarios',
+                            'icon' => 'fas fa-users'
+                        ],
+                        [
                             'url' => ['site/settings'],
                             'options' => '',
                             'label' => 'Settings',

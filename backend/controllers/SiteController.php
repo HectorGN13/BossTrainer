@@ -5,18 +5,18 @@ use common\models\Gym;
 use common\models\GymUser;
 use common\models\Notification;
 use Yii;
+use yii\bootstrap4\ActiveForm;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use kartik\mpdf\Pdf;
 use common\models\Provincias;
 use common\models\Localidades;
-use backend\models\PasswordForm;
 use yii\helpers\ArrayHelper;
 use backend\models\GymUserSearch;
+use backend\models\Rate;
 
 
 /**
@@ -47,7 +47,11 @@ class SiteController extends Controller
                             'settings',
                             'getprovincia',
                             'getlocalidades',
-                            'view'
+                            'view',
+                            'followers',
+                            'assignrate',
+                            'updaterate',
+                            'deleterate',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -284,4 +288,108 @@ class SiteController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * Finds the Rate model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param $user_id
+     * @return Rate the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModelRate($user_id)
+    {
+        if (($model = Rate::findOne(['gym_id' => Yii::$app->user->identity->id, 'user_id' => $user_id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionFollowers()
+    {
+        $searchModel = new GymUserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('followers', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return array|string|Response
+     */
+    public function actionAssignrate($id)
+    {
+        $model = new Rate();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->start_date = date('Y-m-d H:i:s', strtotime(Yii::$app->request->post('Rate')['start_date']));
+            $model->end_date = date('Y-m-d H:i:s', strtotime(Yii::$app->request->post('Rate')['end_date']));
+            $model->save();
+            return $this->redirect(['followers']);
+        }
+        return $this->render('assignrate', [
+            'model' => $model,
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * Updates an existing Rate model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $rate_id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdaterate($user_id)
+    {
+        $model = $this->findModelRate($user_id);
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su Tarifa.');
+                return $this->redirect(['followers']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('assignrate', [
+                'model' => $model,
+            ]);
+        }else {
+            return $this->render('assignrate', [
+                'model' => $model,
+                'id' => $user_id
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing Rate model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDeleterate()
+    {
+        $user_id = Yii::$app->request->post('rate_id');
+        $model = Rate::findOne(['gym_id' => Yii::$app->user->identity->id, 'user_id' => $user_id]);
+        if ( $model->delete() != false ) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado con éxito su Tarifa.');
+            return $this->redirect(['site/followers']);
+        } else {
+            Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+            return $this->redirect(['site/followers']);
+        }
+    }
 }
