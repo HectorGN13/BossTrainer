@@ -2,6 +2,9 @@
 namespace frontend\controllers;
 
 
+use backend\models\Rate;
+use common\models\Gym;
+use common\models\Notification;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -105,6 +108,28 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $userId = Yii::$app->user->id;
+            $expiredRates = Rate::find()
+                ->where(['user_id' => $userId])
+                ->andWhere(['<', 'end_date', date('Y-m-d H:i:s')])
+                ->all();
+
+            $content = '';
+            $gym = new Gym();
+            $title = 'Tu tarifa ha terminado.';
+            foreach($expiredRates as $rate)
+            {
+                $gymName = $gym->getGymName($rate->gym_id);
+                $content .= 'Tu tarifa ha terminado en el gimnasio '.$gymName.', debe renovar su tarifa
+                 para seguir disfrutando de los servicios de su gimnasio.';
+            }
+            $notification = new Notification;
+            $notification->recipient = $userId;
+            $notification->title = $title;
+            $notification->body = $content;
+            $notification->read = 10;
+            $notification->created_at = date('Y-m-d H:i:s');
+            $notification->save();
             return $this->goBack();
         } else {
             $model->password = '';
