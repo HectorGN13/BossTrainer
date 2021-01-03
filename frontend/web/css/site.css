@@ -92,7 +92,12 @@ html, body {height: 100%;}
     background: #373739 !important;
     color: white !important;
 }
-
+.truncate {
+    max-width: 150px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 
 /* add sorting icons to gridview sort links */

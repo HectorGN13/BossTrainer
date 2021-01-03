@@ -30,6 +30,7 @@ $this->title = 'Mis Notificaciones';
                 'attribute' => 'Contenido',
                 'value' => 'body',
                 'enableSorting' => false,
+                'contentOptions' => ['class' => 'truncate'],
             ],
             [
                 'attribute' => 'Fecha',
