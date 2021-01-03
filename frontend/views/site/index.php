@@ -35,7 +35,7 @@ $this->title = 'BossTrainer';
     'minHeight' => '400px',
     'content' => $parallaxContain2,
 ]); ?>
-
+<section>
 <div class="site-index">
     <div class="container">
         <div class="jumbotron">
@@ -92,9 +92,8 @@ $this->title = 'BossTrainer';
             <p><a class="btn btn-lg btn-rounded btn-dark" href="http://www.yiiframework.com">MÁS INFORMACIÓN</a></p>
         </div>
     </div>
-
+</section>
     <div class="container body-content">
-
     </div>
     <?php
      $parallaxContain3 = '<div class="col-12 mx-auto d-fex align-middle" >'
@@ -108,7 +107,7 @@ $this->title = 'BossTrainer';
                'minHeight' => '400px',
             'content' => $parallaxContain3,
         ]) ?>
-
+<section>
     <div class="container" id="contact" style="padding: 64px 15px">
         <div class="row">
             <div class="col-12">
@@ -158,7 +157,8 @@ $this->title = 'BossTrainer';
             </div>
         </div>
     </div>
-
+</section>
+<section>
     <div class="container" style="padding: 64px 15px">
         <div class="row">
             <div class="col-lg-8 ml-auto mr-auto text-center">
@@ -168,5 +168,5 @@ $this->title = 'BossTrainer';
             </div>
         </div>
     </div>
-
+</section>
 </div>
