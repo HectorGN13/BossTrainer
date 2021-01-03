@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 
+use backend\models\Rate;
 use common\models\Board;
 use common\models\GymUser;
 use DateTime;
@@ -15,6 +16,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\TrainingSession;
 use common\models\UserTrainingSession;
+use yii\web\Response;
 
 /**
  * GymController implements the CRUD actions for Gym model.
@@ -167,6 +169,8 @@ class GymController extends Controller
     }
 
     /**
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionFollow()
     {
@@ -188,33 +192,59 @@ class GymController extends Controller
     }
 
     /**
-     * @return \yii\web\Response
+     * @return Response
      */
     public function actionJoin()
     {
+        $ok = false;
         $useTrainingSession = new UserTrainingSession();
         $userId = Yii::$app->user->id;
         $trainingSessionId = Yii::$app->request->get('id');
-        $userCount = UserTrainingSession::find()->where(['user_id' => $userId, 'training_session_id' => $trainingSessionId])->count();
-        if($userCount < 1)
-        {
-            $useTrainingSession->user_id = $userId;
-            $useTrainingSession->training_session_id = $trainingSessionId;
-            $useTrainingSession->save();
-            Yii::$app->session->setFlash('success', "Te has unido correctamente.");
+
+        $gym = TrainingSession::findOne(['id' => $trainingSessionId]);
+        $follow = GymUser::find()->where(['user_id' => $userId, 'gym_id' => $gym['id']])->exists();
+
+        $userCount = UserTrainingSession::find()
+            ->where(['user_id' => $userId, 'training_session_id' => $trainingSessionId])
+            ->count();
+
+        $rate = Rate::findOne(['user_id' => $userId, 'gym_id' => $gym['id']]);
+        if (isset($rate)){
+            $ok = !($rate->isRateExpired($gym['id'],$userId));
+        }
+
+        if ($follow && $ok){
+            if($userCount < 1) {
+                $useTrainingSession->user_id = $userId;
+                $useTrainingSession->training_session_id = $trainingSessionId;
+                $useTrainingSession->save();
+                Yii::$app->session->setFlash('success', "Te has unido correctamente.");
+                return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+            }
+            else {
+                Yii::$app->session->setFlash('error', "Ya estabas unido/a a esta sesion de entrenamiento.");
+                return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+            }
+        } else {
+            Yii::$app->session->setFlash('error', "No puedes unirte a esta sesión de entrenamiento.");
             return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
         }
-        else
-        {
-            Yii::$app->session->setFlash('error', "Ya estabas unido/a a esta sesion de entrenamiento.");
-            return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
-        }
+
     }
 
+    /**
+     * @param $id
+     * @return Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionLeave($id)
     {
         $userId = Yii::$app->user->id;
-        $useTrainingSession = UserTrainingSession::find()->where(['user_id' => $userId, 'training_session_id' => $id])->one()->delete();
+        $useTrainingSession = UserTrainingSession::find()
+            ->where(['user_id' => $userId, 'training_session_id' => $id])
+            ->one()
+            ->delete();
         Yii::$app->session->setFlash('success', "Te has salido de la sesión de entrenamiento correctamente.");
         return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
     }
