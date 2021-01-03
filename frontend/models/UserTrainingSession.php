@@ -14,6 +14,7 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property int|null $user_id
  * @property int|null $training_session_id
+ * @property int|null $rating
  *
  * @property TrainingSession $trainingSession
  * @property User $user

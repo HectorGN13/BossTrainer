@@ -6,6 +6,7 @@ use Yii;
 use frontend\models\UserTrainingSession;
 use frontend\models\UserTrainingSessionSearch;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -100,8 +101,21 @@ class HistoryController extends Controller
     /**
      *
      */
-    public function ratingAction()
+    public function actionRating()
     {
+        $response['success'] = false;
+        $id = Yii::$app->request->post('id');
+        $model = $this->findModel($id);
 
+        if (Yii::$app->request->post()){
+            $request = Yii::$app->request->post();
+            $model->rating = intval($request['rate']);
+            $model->save();
+            $newRating = $model->rating;
+            $response['rating'] = intval($newRating);
+            $response['success'] = true;
+        }
+        echo Json::encode($response);
+        Yii::$app->end();
     }
 }

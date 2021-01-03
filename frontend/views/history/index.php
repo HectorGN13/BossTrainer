@@ -5,6 +5,7 @@ use common\models\TrainingSession;
 use kartik\grid\GridView;
 use kartik\rating\StarRating;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -64,11 +65,13 @@ $this->title = 'Mi Historial';
                 [
                     'header' => 'Calificación',
                     'content' => function ($model, $key, $index, $widget) {
+
                         return StarRating::widget([
 
                             'model' => $model,
                             'attribute' => 'rating',
-                            'value' => $rating,
+                            'value' => $model->rating,
+
 
                             'pluginOptions' => [
                                 'showClear' => false,
@@ -78,6 +81,19 @@ $this->title = 'Mi Historial';
                                 'filledStar' => '&#x2605;',
                                 'emptyStar' => '&#x2606;'
 
+                            ],
+                            'pluginEvents' => [
+                                'rating:change' => "function(event, value, caption){
+                                    $.ajax({
+                                        url:'rating',
+                                        method:'post',
+                                        data:{rate:value, id:'$model->id'},
+                                        dataType:'json',
+                                        success:function(data){
+                                            $(event.currentTarget).rating('update',data.rating);
+                                        }
+                                    });
+                                }"
                             ]
                         ]);
                     },

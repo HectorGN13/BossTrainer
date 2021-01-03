@@ -90,7 +90,6 @@ $this->registerJs($script);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<nav>
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -122,11 +121,9 @@ $this->registerJs($script);
     ]);
     NavBar::end();
     ?>
-</nav>
     <div class="container-fluid">
         <?= ModalAlert::widget() ?>
     </div>
-<aside>
     <div class="container-fluid">
         <div id="wrapper" class="wrapper d-flex align-items-stretch">
             <?php
@@ -194,7 +191,6 @@ $this->registerJs($script);
             </div>
         </div>
     </div>
-</aside>
 </div>
 <footer class="footer text-white bg-dark">
     <div class="container">
