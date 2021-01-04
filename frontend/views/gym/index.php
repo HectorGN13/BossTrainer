@@ -23,11 +23,11 @@ $this->title = 'Gimnasios';
         <div class="col mb-4">
             <div class="card h-100">
                 <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header">
-                <div class="text-center">
-                    <img src="<?= $model->profile_img?>" class="rounded-circle widget-img" alt="">
-                </div>
                 <div class="card text-center">
                     <div class="card-body py-5">
+                        <div class="text-center">
+                            <img src="<?= $model->profile_img?>" class="rounded-circle" alt="">
+                        </div>
                         <h5 class="card-title mt-3"><?= Html::encode($model->name) ?></h5>
                         <p class="card-text"><?= Html::encode($model->description) ?></p>
                         <p class="card-text"><?php if(isset($model->address)) echo Html::encode($model->address) . ","; ?>
@@ -43,24 +43,4 @@ $this->title = 'Gimnasios';
         <?php endforeach; ?>
     </div>
 </div>
-
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'address',
-            'email:email',
-            'auth_key',
-
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-
 </div>
