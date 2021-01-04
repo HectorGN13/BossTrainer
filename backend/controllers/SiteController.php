@@ -1,11 +1,19 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\TrainingSessionSearch;
 use common\models\Gym;
 use common\models\GymUser;
 use common\models\Notification;
+use common\models\TrainingSession;
+use frontend\models\UserTrainingSession;
+use frontend\models\Weight;
+use frontend\models\WeightSeach;
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use Yii;
 use yii\bootstrap4\ActiveForm;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -86,7 +94,37 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new TrainingSessionSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => TrainingSession::find()
+                ->where(['created_by' =>  Yii::$app->user->identity->id ])
+                ->andWhere(['>=', 'start_time',date('Y-m-d 00:00:01')])
+                ->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])
+                ->orderBy(['start_time'=>SORT_ASC]),
+            'sort' => ['attributes' => ['start_time']],
+        ]);
+
+        $ocupation = TrainingSession::find()
+                ->select('count(ut.user_id) AS counter')
+                ->where(['created_by' =>  Yii::$app->user->identity->id ])
+                ->andWhere(['>=', 'start_time',date('Y-m-d 00:00:01')])
+                ->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])
+                ->alias('t')
+                ->joinWith('uTSessions ut')
+                ->groupBy(['t.id'])
+                ->indexBy('id')
+                ->column();
+
+        $it = new RecursiveIteratorIterator(new RecursiveArrayIterator($ocupation));
+        foreach($it as $v) {
+            $counter[] = $v;
+        }
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'ocupation' => $counter,
+        ]);
     }
 
     /**

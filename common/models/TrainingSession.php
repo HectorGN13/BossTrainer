@@ -22,6 +22,7 @@ use yii\db\Query;
  * @property int|null $created_by
  *
  * @property UserTrainingSession[] $userTrainingSessions
+ * @property WaitingList[] $waitingLists
  */
 class TrainingSession extends ActiveRecord
 {
@@ -77,6 +78,16 @@ class TrainingSession extends ActiveRecord
             ->all();
         
         //return $this->hasMany(UserTrainingSession::className(), ['training_session_id' => 'user_id']);
+    }
+
+    /**
+     * Gets query for [[UserTrainingSessions]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUTSessions()
+    {
+        return $this->hasMany(UserTrainingSession::className(), ['training_session_id' => 'id'])->inverseOf('trainingSession');
     }
 
     /**

@@ -22,11 +22,12 @@ $this->title = 'Gimnasios';
         <?php foreach ($dataProvider->models as $model):?>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header">
+                <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header"
+                     style="width: 400px;height: 200px;overflow: hidden;background-size: cover;background-position: center center;">
                 <div class="card text-center">
                     <div class="card-body py-5">
                         <div class="text-center">
-                            <img src="<?= $model->profile_img?>" class="rounded-circle" alt="">
+                            <img src="<?= $model->profile_img?>" class="rounded-circle" alt="logo" style="width: 120px;" >
                         </div>
                         <h5 class="card-title mt-3"><?= Html::encode($model->name) ?></h5>
                         <p class="card-text"><?= Html::encode($model->description) ?></p>

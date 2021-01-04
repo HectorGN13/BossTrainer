@@ -199,18 +199,18 @@ class GymController extends Controller
         $ok = false;
         $useTrainingSession = new UserTrainingSession();
         $userId = Yii::$app->user->id;
-        $trainingSessionId = Yii::$app->request->get('id');
+        $trainingSessionId = intval(Yii::$app->request->get('id'));
 
         $gym = TrainingSession::findOne(['id' => $trainingSessionId]);
-        $follow = GymUser::find()->where(['user_id' => $userId, 'gym_id' => $gym['id']])->exists();
+        $follow = GymUser::find()->where(['user_id' => $userId, 'gym_id' => $gym['created_by']])->exists();
 
         $userCount = UserTrainingSession::find()
             ->where(['user_id' => $userId, 'training_session_id' => $trainingSessionId])
             ->count();
 
-        $rate = Rate::findOne(['user_id' => $userId, 'gym_id' => $gym['id']]);
+        $rate = Rate::findOne(['user_id' => $userId, 'gym_id' => $gym['created_by']]);
         if (isset($rate)){
-            $ok = !($rate->isRateExpired($gym['id'],$userId));
+            $ok = !($rate->isRateExpired($gym['created_by'],$userId));
         }
 
         if ($follow && $ok){
