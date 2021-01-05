@@ -6,9 +6,6 @@ use common\models\Gym;
 use common\models\GymUser;
 use common\models\Notification;
 use common\models\TrainingSession;
-use frontend\models\UserTrainingSession;
-use frontend\models\Weight;
-use frontend\models\WeightSeach;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 use Yii;
@@ -104,26 +101,37 @@ class SiteController extends Controller
             'sort' => ['attributes' => ['start_time']],
         ]);
 
-        $ocupation = TrainingSession::find()
+        $occupation = TrainingSession::find()
                 ->select('count(ut.user_id) AS counter')
                 ->where(['created_by' =>  Yii::$app->user->identity->id ])
                 ->andWhere(['>=', 'start_time',date('Y-m-d 00:00:01')])
                 ->andWhere(['<=', 'end_time',date('Y-m-d 23:59:59')])
+                ->orderBy(['start_time'=>SORT_ASC])
                 ->alias('t')
                 ->joinWith('uTSessions ut')
                 ->groupBy(['t.id'])
                 ->indexBy('id')
                 ->column();
 
-        $it = new RecursiveIteratorIterator(new RecursiveArrayIterator($ocupation));
+        $it = new RecursiveIteratorIterator(new RecursiveArrayIterator($occupation));
+        $counter = [];
         foreach($it as $v) {
             $counter[] = $v;
         }
 
+        $rates = new ActiveDataProvider([
+            'query' => Rate::find()
+                ->where(['gym_id' =>  Yii::$app->user->identity->id ])
+                ->andWhere(['>=', 'start_date', date( 'Y-m-d 00:00:00' , strtotime('first day of this month'))])
+                ->orderBy(['price' => SORT_DESC]),
+            'pagination' => false,
+        ]);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'ocupation' => $counter,
+            'occupation' => $counter,
+            'rates' => $rates,
         ]);
     }
 

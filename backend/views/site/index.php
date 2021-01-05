@@ -3,11 +3,12 @@
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\TrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $ocupation yii\data\ActiveDataProvider */
+/* @var $rates yii\data\ActiveDataProvider */
+/* @var $occupation yii\data\ActiveDataProvider */
 
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
-//var_dump($ocupation);
+//var_dump($rates);
 //die();
 $this->title = 'BossTrainer';
 ?>
@@ -43,7 +44,7 @@ $this->title = 'BossTrainer';
                             'series' => [
                                 [
                                     'name' => 'Ocupación',
-                                    'data' => $ocupation,
+                                    'data' => $occupation,
                                 ]
                             ],
                         ],
@@ -60,14 +61,48 @@ $this->title = 'BossTrainer';
                 </div>
             </div>
             <div class="col-lg-6">
-                <h2>Heading</h2>
+                <div>
+                    <?php
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    echo Highcharts::widget([
+                        'options' => [
+                            'chart' => [
+                                'plotBackgroundColor' => null,
+                                'plotBorderWidth' => null,
+                                'plotShadow' => false,
+                                'type' => 'pie'
+                            ],
+                            'credits' => ['enabled' => false],
+                            'title' => ['text' => 'Ingresos totales en el mes de '.date('F')],
+                            'plotOptions' => [
+                                'pie' => [
+                                    'allowPointSelect' => true,
+                                    'cursor' => 'pointer',
+                                    'dataLabels' => [
+                                        'enabled' => false,
+                                    ],
+                                    'showInLegend' => true,
+                                ],
+                            ],
+                            'series' => [
+                                [
+                                    'name' => 'Ingresos',
+                                    'colorByPoint' => true,
+                                    'data' => new SeriesDataHelper($rates, ['title:string', 'price:int']),
+                                ]
+                            ],
+                        ],
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                        'scripts' => [
+                            'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
+                            'modules/exporting',
+                            'themes/grid'
+                        ],
+
+
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
 
