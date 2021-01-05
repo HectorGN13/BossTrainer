@@ -1,7 +1,5 @@
-Proyecto integrado
+![BossTrainer](images/logo.png) 
 ==================
-
-Este es el documento principal, que incluye la portada  y el índice de contenidos.
 
 Descripción general
 -------------------

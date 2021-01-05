@@ -92,9 +92,8 @@ $this->title = 'BossTrainer';
             <p><a class="btn btn-lg btn-rounded btn-dark" href="http://www.yiiframework.com">MÁS INFORMACIÓN</a></p>
         </div>
     </div>
+</div>
 </section>
-    <div class="container body-content">
-    </div>
     <?php
      $parallaxContain3 = '<div class="col-12 mx-auto d-fex align-middle" >'
          . Html::img('@web/images/logoBlanco.png',
@@ -144,7 +143,7 @@ $this->title = 'BossTrainer';
                 <div class="row">
                     <div class="col-6">
                         <?= $form->field($model, 'agree',
-                            ['options' => ['tag' => 'span',]])->checkbox(['checked' => false]); ?>
+                            ['options' => ['tag' => 'div',]])->checkbox(['checked' => false]); ?>
                         <?= $form->field($model, 'reCaptcha')->widget(ReCaptchaWidget::class) ?>
                     </div>
                     <div class="form-group col-6">
@@ -169,7 +168,6 @@ $this->title = 'BossTrainer';
         </div>
     </div>
 </section>
-</div>
 <?= CookieConsent::widget([
     'name' => 'cookie_consent_status',
     'path' => '/',
