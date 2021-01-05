@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w2407" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2407-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w2407-collapse" class="collapse navbar-collapse"><ul id="w2408" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-2398" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-2398" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2399" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-2399" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2400" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-2400" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2401" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-2401" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2402" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-2402" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2403" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-2403" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2404" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-2404" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2405" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-2405" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-2406" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-2406" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Git workflow for yii2-grid contributors <span id="git-workflow-for-yii2-grid-contributors"></span><a href="#git-workflow-for-yii2-grid-contributors" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#setup-the-development-environment">Setup the development environment</a></li>
+<li><a href="#working-on-bugs-and-features">Working on bugs and features</a></li></ol></div>
+<p>So you want to contribute to yii2-grid? Great! But to increase the chances of your changes being accepted quickly, please
+follow the following steps. If you are new to Git and GitHub, you might want to first check out <a href="http://help.github.com/">GitHub help</a>, <a href="https://try.github.com">try Git</a>
+or learn something about <a href="http://nfarina.com/post/9868516270/git-is-simpler">Git internal data model</a>.</p>
+<h2>Setup the development environment <span id="setup-the-development-environment"></span><a href="#setup-the-development-environment" class="hashlink">&para;</a></h2><p>Assuming you already have a yii2 development environment, carry out the following steps to create a development environment for the repo.</p>
+<h3>1. <a href="http://help.github.com/fork-a-repo/">Fork</a> the yii2-grid repository on GitHub and clone your fork to your development environment <span id="1-fork-the-yii2-grid-repository-on-github-and-clone-your-fork-to-your-development-environment"></span><a href="#1-fork-the-yii2-grid-repository-on-github-and-clone-your-fork-to-your-development-environment" class="hashlink">&para;</a></h3><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> clone git<span class="hljs-variable">@github</span>.com:YOUR-GITHUB-USERNAME/yii2-grid.git
+</code></pre>
+<p>If you have trouble setting up Git with GitHub in Linux, or are getting errors like "Permission Denied (publickey)",
+then you must <a href="http://help.github.com/linux-set-up-git/">setup your Git installation to work with GitHub</a></p>
+<blockquote class="tip"><p><strong>Tip: </strong>if you're not fluent with Git, we recommend reading excellent free <a href="https://git-scm.com/book/en/v2">Pro Git book</a>.</p>
+</blockquote>
+<h3>2. Add the main yii2-grid repository as an additional git remote called "upstream" <span id="2-add-the-main-yii2-grid-repository-as-an-additional-git-remote-called-upstream"></span><a href="#2-add-the-main-yii2-grid-repository-as-an-additional-git-remote-called-upstream" class="hashlink">&para;</a></h3><p>Change to the directory where you cloned yii2-grid, normally, "yii2-grid". Then enter the following command:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">git</span> remote add upstream git://github.com/kartik-v/yii2-grid.git
+</code></pre>
+<h3>3. Prepare the testing environment <span id="3-prepare-the-testing-environment"></span><a href="#3-prepare-the-testing-environment" class="hashlink">&para;</a></h3><ul>
+<li>You should have a working yii 2 development environment in which you have already installed <code>yii2-grid</code> and includes latest and updated <code>yii2-grid</code> fork from source.</li>
+<li>Ensure you have the latest <code>dev-master</code> releases of all dependent extensions via your composer updates</li>
+<li>Ensure you use the above cloned latest <code>yii2-grid</code> code in your testing environment</li>
+</ul>
+<p><strong>Now you have a working playground for hacking on yii2-grid.</strong></p>
+<h2>Working on bugs and features <span id="working-on-bugs-and-features"></span><a href="#working-on-bugs-and-features" class="hashlink">&para;</a></h2><p>Having prepared your development environment as explained above you can now start working on the feature or bugfix.</p>
+<h3>1. Make sure there is an issue created for the thing you are working on if it requires significant effort to fix <span id="1-make-sure-there-is-an-issue-created-for-the-thing-you-are-working-on-if-it-requires-significant-effort-to-fix"></span><a href="#1-make-sure-there-is-an-issue-created-for-the-thing-you-are-working-on-if-it-requires-significant-effort-to-fix" class="hashlink">&para;</a></h3><p>All new features and bug fixes should have an associated issue to provide a single point of reference for discussion
+and documentation. Take a few minutes to look through the existing issue list for one that matches the contribution you
+intend to make. If you find one already on the issue list, then please leave a comment on that issue indicating you
+intend to work on that item. If you do not find an existing issue matching what you intend to work on, please
+open a new issue or create a pull request directly if it is straightforward fix. This will allow the team to
+review your suggestion, and provide appropriate feedback along the way.</p>
+<blockquote><p>For small changes or documentation issues or straightforward fixes, you don't need to create an issue, a pull request is enough in this case.</p>
+</blockquote>
+<h3>2. Fetch the latest code from the main yii2-grid branch <span id="2-fetch-the-latest-code-from-the-main-yii2-grid-branch"></span><a href="#2-fetch-the-latest-code-from-the-main-yii2-grid-branch" class="hashlink">&para;</a></h3><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> fetch upstream
+</code></pre>
+<p>You should start at this point for every new contribution to make sure you are working on the latest code.</p>
+<h3>3. Create a new branch for your feature based on the current yii2-grid master branch <span id="3-create-a-new-branch-for-your-feature-based-on-the-current-yii2-grid-master-branch"></span><a href="#3-create-a-new-branch-for-your-feature-based-on-the-current-yii2-grid-master-branch" class="hashlink">&para;</a></h3><blockquote><p>That's very important since you will not be able to submit more than one pull request from your account if you'll
+  use master.</p>
+</blockquote>
+<p>Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with
+the number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number.
+For example:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout upstream/master
+git checkout -b <span class="hljs-number">999</span>-name-of-your-branch-goes-here
+</code></pre>
+<h3>4. Do your magic, write your code <span id="4-do-your-magic-write-your-code"></span><a href="#4-do-your-magic-write-your-code" class="hashlink">&para;</a></h3><p>Make sure you have first updated the testing environment as mentioned in <a href="#3-prepare-the-testing-environment">prepare-the-testing-environment</a>. </p>
+<p>Then make sure you have the updated code with your change and it works :).</p>
+<p>Unit tests are always welcome. Tested and well covered code greatly simplifies the task of checking your contributions.
+Failing unit tests as issue description are also accepted.</p>
+<h3>5. Update the CHANGE log <span id="5-update-the-change-log"></span><a href="#5-update-the-change-log" class="hashlink">&para;</a></h3><p>Edit the <code>CHANGE.md</code> file to include your change, you should insert this at the top of the file under the
+first heading (the version that is currently under development), the line in the change log should look like one of the following:</p>
+<pre><code class="hljs dockerfile">Bug <span class="hljs-comment">#999: a description of the bug fix (Your Name)</span>
+Enh <span class="hljs-comment">#999: a description of the enhancement (Your Name)</span>
+</code></pre>
+<p><code>#999</code> is the issue number that the <code>Bug</code> or <code>Enh</code> is referring to.
+The changelog should be grouped by type (<code>Bug</code>,<code>Enh</code>) and ordered by issue number.</p>
+<p>For very small fixes, e.g. typos and documentation changes, there is no need to update the <code>CHANGE.md</code>.</p>
+<h3>6. Commit your changes <span id="6-commit-your-changes"></span><a href="#6-commit-your-changes" class="hashlink">&para;</a></h3><p>add the files/changes you want to commit to the <a href="http://gitref.org/basic/#add">staging area</a> with</p>
+<pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> path/to/my/file.php</span>
+</code></pre>
+<p>You can use the <code>-p</code> option to select the changes you want to have in your commit.</p>
+<p>Commit your changes with a descriptive commit message. Make sure to mention the ticket number with <code>#XXX</code> so GitHub will
+automatically link your commit with the ticket:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">"A brief description of this change which fixes #999 goes here"</span>
+</code></pre>
+<h3>7. Pull the latest yii2-grid code from upstream into your branch <span id="7-pull-the-latest-yii2-grid-code-from-upstream-into-your-branch"></span><a href="#7-pull-the-latest-yii2-grid-code-from-upstream-into-your-branch" class="hashlink">&para;</a></h3><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> pull upstream master
+</code></pre>
+<p>This ensures you have the latest code in your branch before you open your pull request. If there are any merge conflicts,
+you should fix them now and commit the changes again. This ensures that it's easy for the yii2-grid team to merge your changes
+with one click.</p>
+<h3>8. Having resolved any conflicts, push your code to GitHub <span id="8-having-resolved-any-conflicts-push-your-code-to-github"></span><a href="#8-having-resolved-any-conflicts-push-your-code-to-github" class="hashlink">&para;</a></h3><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> push -u origin <span class="hljs-number">999</span>-name-of-your-branch-goes-here
+</code></pre>
+<p>The <code>-u</code> parameter ensures that your branch will now automatically push and pull from the GitHub branch. That means
+if you type <code>git push</code> the next time it will know where to push to. This is useful if you want to later add more commits
+to the pull request.</p>
+<h3>9. Open a <a href="http://help.github.com/send-pull-requests/">pull request</a> against upstream. <span id="9-open-a-pull-request-against-upstream"></span><a href="#9-open-a-pull-request-against-upstream" class="hashlink">&para;</a></h3><p>Go to your repository on GitHub and click "Pull Request", choose your branch on the right and enter some more details
+in the comment box. To link the pull request to the issue put anywhere in the pull comment <code>#999</code> where 999 is the
+issue number.</p>
+<blockquote><p>Note that each pull-request should fix a single change. For multiple, unrelated changes, please open multiple pull requests.</p>
+</blockquote>
+<h3>10. Someone will review your code <span id="10-someone-will-review-your-code"></span><a href="#10-someone-will-review-your-code" class="hashlink">&para;</a></h3><p>Someone will review your code, and you might be asked to make some changes, if so go to step #6 (you don't need to open
+another pull request if your current one is still open). If your code is accepted it will be merged into the main branch
+and become part of the next yii2-grid release. If not, don't be disheartened, different people need different features and yii2-grid
+can't be everything to everyone, your code will still be available on GitHub as a reference for people who need it.</p>
+<h3>11. Cleaning it up <span id="11-cleaning-it-up"></span><a href="#11-cleaning-it-up" class="hashlink">&para;</a></h3><p>After your code was either accepted or declined you can delete branches you've worked with from your local repository
+and <code>origin</code>.</p>
+<pre><code class="hljs sql">git checkout master
+git branch -D 999-name-of-your-branch-goes-here
+git push origin <span class="hljs-comment">--delete 999-name-of-your-branch-goes-here</span>
+</code></pre>
+<h3>Command overview (for advanced contributors) <span id="command-overview-for-advanced-contributors"></span><a href="#command-overview-for-advanced-contributors" class="hashlink">&para;</a></h3><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> clone git<span class="hljs-variable">@github</span>.com:YOUR-GITHUB-USERNAME/yii2-grid.git
+git remote add upstream git://github.com/kartik-v/yii2-grid.git
+</code></pre>
+<pre><code class="hljs sql">git fetch upstream
+git checkout upstream/master
+git checkout -b 999-name-of-your-branch-goes-here
+
+<span class="hljs-comment">/* do your magic, update changelog if needed */</span>
+
+git add path/to/my/file.php
+git <span class="hljs-keyword">commit</span> -m <span class="hljs-string">"A brief description of this change which fixes #999 goes here"</span>
+git pull upstream <span class="hljs-keyword">master</span>
+git push -u origin <span class="hljs-number">999</span>-<span class="hljs-keyword">name</span>-<span class="hljs-keyword">of</span>-your-branch-goes-here
+</code></pre>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:24:00 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

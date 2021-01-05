@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w3089" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w3089-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w3089-collapse" class="collapse navbar-collapse"><ul id="w3090" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-3080" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-3080" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3081" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-3081" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3082" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-3082" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3083" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-3083" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3084" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-3084" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3085" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-3085" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3086" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-3086" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3087" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-3087" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3088" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-3088" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Yii2 Highcharts Widget Examples <span id="yii2-highcharts-widget-examples"></span><a href="#yii2-highcharts-widget-examples" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#combination-chart">Combination Chart</a></li>
+<li><a href="#gantt-chart">Gantt Chart</a></li></ol></div>
+<h2>Combination Chart <span id="combination-chart"></span><a href="#combination-chart" class="hashlink">&para;</a></h2><p>This example is ported from the Highcharts <a href="https://www.highcharts.com/demo/combo/grid-light">"Column, Line and Pie" demo</a>
+with optional exporting module and Grid Light theme enabled.</p>
+<pre><code class="hljs php language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">miloschuman</span>\<span class="hljs-title">highcharts</span>\<span class="hljs-title">Highcharts</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">web</span>\<span class="hljs-title">JsExpression</span>;
+
+<span class="hljs-keyword">echo</span> Highcharts::widget([
+    <span class="hljs-string">'scripts'</span> =&gt; [
+        <span class="hljs-string">'modules/exporting'</span>,
+        <span class="hljs-string">'themes/grid-light'</span>,
+    ],
+    <span class="hljs-string">'options'</span> =&gt; [
+        <span class="hljs-string">'title'</span> =&gt; [
+            <span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Combination chart'</span>,
+        ],
+        <span class="hljs-string">'xAxis'</span> =&gt; [
+            <span class="hljs-string">'categories'</span> =&gt; [<span class="hljs-string">'Apples'</span>, <span class="hljs-string">'Oranges'</span>, <span class="hljs-string">'Pears'</span>, <span class="hljs-string">'Bananas'</span>, <span class="hljs-string">'Plums'</span>],
+        ],
+        <span class="hljs-string">'labels'</span> =&gt; [
+            <span class="hljs-string">'items'</span> =&gt; [
+                [
+                    <span class="hljs-string">'html'</span> =&gt; <span class="hljs-string">'Total fruit consumption'</span>,
+                    <span class="hljs-string">'style'</span> =&gt; [
+                        <span class="hljs-string">'left'</span> =&gt; <span class="hljs-string">'50px'</span>,
+                        <span class="hljs-string">'top'</span> =&gt; <span class="hljs-string">'18px'</span>,
+                        <span class="hljs-string">'color'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'(Highcharts.theme &amp;&amp; Highcharts.theme.textColor) || "black"'</span>),
+                    ],
+                ],
+            ],
+        ],
+        <span class="hljs-string">'series'</span> =&gt; [
+            [
+                <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'column'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Jane'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+            ],
+            [
+                <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'column'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'John'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>],
+            ],
+            [
+                <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'column'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Joe'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">9</span>, <span class="hljs-number">0</span>],
+            ],
+            [
+                <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'spline'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Average'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [<span class="hljs-number">3</span>, <span class="hljs-number">2.67</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6.33</span>, <span class="hljs-number">3.33</span>],
+                <span class="hljs-string">'marker'</span> =&gt; [
+                    <span class="hljs-string">'lineWidth'</span> =&gt; <span class="hljs-number">2</span>,
+                    <span class="hljs-string">'lineColor'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Highcharts.getOptions().colors[3]'</span>),
+                    <span class="hljs-string">'fillColor'</span> =&gt; <span class="hljs-string">'white'</span>,
+                ],
+            ],
+            [
+                <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'pie'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Total consumption'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [
+                    [
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Jane'</span>,
+                        <span class="hljs-string">'y'</span> =&gt; <span class="hljs-number">13</span>,
+                        <span class="hljs-string">'color'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Highcharts.getOptions().colors[0]'</span>), <span class="hljs-comment">// Jane's color</span>
+                    ],
+                    [
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'John'</span>,
+                        <span class="hljs-string">'y'</span> =&gt; <span class="hljs-number">23</span>,
+                        <span class="hljs-string">'color'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Highcharts.getOptions().colors[1]'</span>), <span class="hljs-comment">// John's color</span>
+                    ],
+                    [
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Joe'</span>,
+                        <span class="hljs-string">'y'</span> =&gt; <span class="hljs-number">19</span>,
+                        <span class="hljs-string">'color'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Highcharts.getOptions().colors[2]'</span>), <span class="hljs-comment">// Joe's color</span>
+                    ],
+                ],
+                <span class="hljs-string">'center'</span> =&gt; [<span class="hljs-number">100</span>, <span class="hljs-number">80</span>],
+                <span class="hljs-string">'size'</span> =&gt; <span class="hljs-number">100</span>,
+                <span class="hljs-string">'showInLegend'</span> =&gt; <span class="hljs-keyword">false</span>,
+                <span class="hljs-string">'dataLabels'</span> =&gt; [
+                    <span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">false</span>,
+                ],
+            ],
+        ],
+    ]
+]);
+</code></pre>
+<h2>Gantt Chart <span id="gantt-chart"></span><a href="#gantt-chart" class="hashlink">&para;</a></h2><p>This example is ported from the Highcharts <a href="https://www.highcharts.com/docs/gantt/getting-started-gantt">"Simple Gantt Chart" example</a></p>
+<pre><code class="hljs php language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">miloschuman</span>\<span class="hljs-title">highcharts</span>\<span class="hljs-title">GanttChart</span>;
+<span class="hljs-keyword">echo</span> GanttChart::widget([
+    <span class="hljs-string">'options'</span> =&gt; [
+        <span class="hljs-string">'title'</span> =&gt; [<span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Simple Gantt Chart'</span>],
+        <span class="hljs-string">'series'</span> =&gt; [
+            [
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Project 1'</span>,
+                <span class="hljs-string">'data'</span> =&gt; [
+                    [
+                        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'s'</span>,
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Start prototype'</span>,
+                        <span class="hljs-string">'start'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 18)'</span>),
+                        <span class="hljs-string">'end'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 20)'</span>),
+                    ],
+                    [
+                        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'b'</span>,
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Develop'</span>,
+                        <span class="hljs-string">'start'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 20)'</span>),
+                        <span class="hljs-string">'end'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 25)'</span>),
+                        <span class="hljs-string">'dependency'</span> =&gt; <span class="hljs-string">'s'</span>,
+                    ],
+                    [
+                        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'a'</span>,
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Run acceptance tests'</span>,
+                        <span class="hljs-string">'start'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 23)'</span>),
+                        <span class="hljs-string">'end'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 26)'</span>),
+                    ],
+                    [
+                        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Test prototype'</span>,
+                        <span class="hljs-string">'start'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 27)'</span>),
+                        <span class="hljs-string">'end'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Date.UTC(2014, 10, 29)'</span>),
+                        <span class="hljs-string">'dependency'</span> =&gt; [
+                            <span class="hljs-string">'a'</span>,
+                            <span class="hljs-string">'b'</span>,
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+]);
+</code></pre>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:24:02 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w1205" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1205-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w1205-collapse" class="collapse navbar-collapse"><ul id="w1206" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-1190" data-toggle="collapse" data-parent="#navigation">backend\assets <b class="caret"></b></a><div id="navigation-1190" class="submenu panel-collapse collapse"><a class="list-group-item" href="./backend-assets-appasset.html">AppAsset</a>
+<a class="list-group-item" href="./backend-assets-boardasset.html">BoardAsset</a>
+<a class="list-group-item" href="./backend-assets-sessionsassets.html">SessionsAssets</a></div>
+<a class="list-group-item" href="#navigation-1191" data-toggle="collapse" data-parent="#navigation">backend\components\navbar <b class="caret"></b></a><div id="navigation-1191" class="submenu panel-collapse collapse"><a class="list-group-item" href="./backend-components-navbar-navsidebar.html">NavSidebar</a>
+<a class="list-group-item" href="./backend-components-navbar-navsidebarasset.html">NavSidebarAsset</a></div>
+<a class="list-group-item" href="#navigation-1192" data-toggle="collapse" data-parent="#navigation">backend\controllers <b class="caret"></b></a><div id="navigation-1192" class="submenu panel-collapse collapse"><a class="list-group-item" href="./backend-controllers-boardcontroller.html">BoardController</a>
+<a class="list-group-item" href="./backend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./backend-controllers-trainingsessioncontroller.html">TrainingsessionController</a></div>
+<a class="list-group-item" href="#navigation-1193" data-toggle="collapse" data-parent="#navigation">backend\models <b class="caret"></b></a><div id="navigation-1193" class="submenu panel-collapse collapse"><a class="list-group-item" href="./backend-models-gymusersearch.html">GymUserSearch</a>
+<a class="list-group-item" href="./backend-models-rate.html">Rate</a>
+<a class="list-group-item" href="./backend-models-trainingsessionsearch.html">TrainingSessionSearch</a></div>
+<a class="list-group-item" href="#navigation-1194" data-toggle="collapse" data-parent="#navigation">common\components <b class="caret"></b></a><div id="navigation-1194" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-request.html">Request</a></div>
+<a class="list-group-item" href="#navigation-1195" data-toggle="collapse" data-parent="#navigation">common\fixtures <b class="caret"></b></a><div id="navigation-1195" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-fixtures-userfixture.html">UserFixture</a></div>
+<a class="list-group-item" href="#navigation-1196" data-toggle="collapse" data-parent="#navigation">common\models <b class="caret"></b></a><div id="navigation-1196" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-models-board.html">Board</a>
+<a class="list-group-item" href="./common-models-boardsearch.html">BoardSearch</a>
+<a class="list-group-item" href="./common-models-gym.html">Gym</a>
+<a class="list-group-item" href="./common-models-gymsearch.html">GymSearch</a>
+<a class="list-group-item" href="./common-models-gymuser.html">GymUser</a>
+<a class="list-group-item" href="./common-models-localidades.html">Localidades</a>
+<a class="list-group-item" href="./common-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./common-models-movements.html">Movements</a>
+<a class="list-group-item" href="./common-models-movementssearch.html">MovementsSearch</a>
+<a class="list-group-item" href="./common-models-notification.html">Notification</a>
+<a class="list-group-item" href="./common-models-notificationsearch.html">NotificationSearch</a>
+<a class="list-group-item" href="./common-models-provincias.html">Provincias</a>
+<a class="list-group-item" href="./common-models-record.html">Record</a>
+<a class="list-group-item" href="./common-models-recordsearch.html">RecordSearch</a>
+<a class="list-group-item" href="./common-models-trainingsession.html">TrainingSession</a>
+<a class="list-group-item" href="./common-models-user.html">User</a>
+<a class="list-group-item" href="./common-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./common-models-usertrainingsession.html">UserTrainingSession</a></div>
+<a class="list-group-item" href="#navigation-1197" data-toggle="collapse" data-parent="#navigation">common\widgets <b class="caret"></b></a><div id="navigation-1197" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-alert.html">Alert</a></div>
+<a class="list-group-item" href="#navigation-1198" data-toggle="collapse" data-parent="#navigation">dmstr\cookieconsent\assets <b class="caret"></b></a><div id="navigation-1198" class="submenu panel-collapse collapse"><a class="list-group-item" href="./dmstr-cookieconsent-assets-cookieconsentasset.html">CookieConsentAsset</a>
+<a class="list-group-item" href="./dmstr-cookieconsent-assets-cookieconsentjsasset.html">CookieConsentJSAsset</a></div>
+<a class="list-group-item" href="#navigation-1199" data-toggle="collapse" data-parent="#navigation">frontend\assets <b class="caret"></b></a><div id="navigation-1199" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-assets-appasset.html">AppAsset</a>
+<a class="list-group-item" href="./frontend-assets-gymsasset.html">GymsAsset</a>
+<a class="list-group-item" href="./frontend-assets-gymsindexasset.html">GymsIndexAsset</a>
+<a class="list-group-item" href="./frontend-assets-loginasset.html">LoginAsset</a>
+<a class="list-group-item" href="./frontend-assets-materialasset.html">MaterialAsset</a>
+<a class="list-group-item" href="./frontend-assets-movementsassets.html">MovementsAssets</a>
+<a class="list-group-item" href="./frontend-assets-signupasset.html">SignupAsset</a>
+<a class="list-group-item" href="./frontend-assets-weightasset.html">WeightAsset</a></div>
+<a class="list-group-item" href="#navigation-1200" data-toggle="collapse" data-parent="#navigation">frontend\components\modalalert <b class="caret"></b></a><div id="navigation-1200" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-components-modalalert-modalalert.html">ModalAlert</a></div>
+<a class="list-group-item" href="#navigation-1201" data-toggle="collapse" data-parent="#navigation">frontend\components\navbar <b class="caret"></b></a><div id="navigation-1201" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-components-navbar-navsidebar.html">NavSidebar</a>
+<a class="list-group-item" href="./frontend-components-navbar-navsidebarasset.html">NavSidebarAsset</a></div>
+<a class="list-group-item" href="#navigation-1202" data-toggle="collapse" data-parent="#navigation">frontend\components\parallax <b class="caret"></b></a><div id="navigation-1202" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-components-parallax-customparallax.html">CustomParallax</a>
+<a class="list-group-item" href="./frontend-components-parallax-customparallaxasset.html">CustomParallaxAsset</a></div>
+<a class="list-group-item" href="#navigation-1203" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-1203" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-gymcontroller.html">GymController</a>
+<a class="list-group-item" href="./frontend-controllers-historycontroller.html">HistoryController</a>
+<a class="list-group-item" href="./frontend-controllers-movementscontroller.html">MovementsController</a>
+<a class="list-group-item" href="./frontend-controllers-notificationcontroller.html">NotificationController</a>
+<a class="list-group-item" href="./frontend-controllers-recordcontroller.html">RecordController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-trainingsessioncontroller.html">TrainingsessionController</a>
+<a class="list-group-item" href="./frontend-controllers-usercontroller.html">UserController</a>
+<a class="list-group-item" href="./frontend-controllers-weightcontroller.html">WeightController</a></div>
+<a class="list-group-item" href="#navigation-1204" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-1204" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-imagenform.html">ImagenForm</a>
+<a class="list-group-item" href="./frontend-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-usertrainingsession.html">UserTrainingSession</a>
+<a class="list-group-item" href="./frontend-models-usertrainingsessionsearch.html">UserTrainingSessionSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a>
+<a class="list-group-item" href="./frontend-models-waitinglist.html">WaitingList</a>
+<a class="list-group-item" href="./frontend-models-weight.html">Weight</a>
+<a class="list-group-item" href="./frontend-models-weightseach.html">WeightSeach</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class Reference</h1>
+
+<table class="summaryTable docIndex table table-bordered table-striped table-hover">
+    <colgroup>
+        <col class="col-package" />
+        <col class="col-class" />
+        <col class="col-description" />
+    </colgroup>
+    <tr>
+        <th>Class</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="backend-assets-appasset.html">backend\assets\AppAsset</a></td>
+        <td>Main backend application asset bundle.</td>
+    </tr>
+    <tr>
+        <td><a href="backend-assets-boardasset.html">backend\assets\BoardAsset</a></td>
+        <td>Main backend application asset bundle.</td>
+    </tr>
+    <tr>
+        <td><a href="backend-assets-sessionsassets.html">backend\assets\SessionsAssets</a></td>
+        <td>Main backend application asset bundle.</td>
+    </tr>
+    <tr>
+        <td><a href="backend-components-navbar-navsidebar.html">backend\components\navbar\NavSidebar</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="backend-components-navbar-navsidebarasset.html">backend\components\navbar\NavSidebarAsset</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="backend-controllers-boardcontroller.html">backend\controllers\BoardController</a></td>
+        <td>BoardController implements the CRUD actions for Board model.</td>
+    </tr>
+    <tr>
+        <td><a href="backend-controllers-sitecontroller.html">backend\controllers\SiteController</a></td>
+        <td>Site controller</td>
+    </tr>
+    <tr>
+        <td><a href="backend-controllers-trainingsessioncontroller.html">backend\controllers\TrainingsessionController</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="backend-models-gymusersearch.html">backend\models\GymUserSearch</a></td>
+        <td>GymUserSearch represents the model behind the search form of <code>backend\models\GymUser</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="backend-models-rate.html">backend\models\Rate</a></td>
+        <td>This is the model class for table "rate".</td>
+    </tr>
+    <tr>
+        <td><a href="backend-models-trainingsessionsearch.html">backend\models\TrainingSessionSearch</a></td>
+        <td>TrainingSessionSearch represents the model behind the search form of <code>backend\models\TrainingSession</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-request.html">common\components\Request</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="common-fixtures-userfixture.html">common\fixtures\UserFixture</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="common-models-board.html">common\models\Board</a></td>
+        <td>Esta es la clase modelo para tabla "board".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-boardsearch.html">common\models\BoardSearch</a></td>
+        <td>BoardSearch representa el modelo detrás de la forma de búsqueda de <code>backend\models\Board</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-gym.html">common\models\Gym</a></td>
+        <td>This is the model class for table "gym".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-gymsearch.html">common\models\GymSearch</a></td>
+        <td>GymSearch represents the model behind the search form of <code>common\models\Gym</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-gymuser.html">common\models\GymUser</a></td>
+        <td>This is the model class for table "user_gym".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-localidades.html">common\models\Localidades</a></td>
+        <td>This is the model class for table "localidades".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-loginform.html">common\models\LoginForm</a></td>
+        <td>Login form</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-movements.html">common\models\Movements</a></td>
+        <td>This is the model class for table "movements".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-movementssearch.html">common\models\MovementsSearch</a></td>
+        <td>MovementsSearch represents the model behind the search form of <code>common\models\Movements</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-notification.html">common\models\Notification</a></td>
+        <td>This is the model class for table "notification".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-notificationsearch.html">common\models\NotificationSearch</a></td>
+        <td>NotificationSearch represents the model behind the search form of <code>common\models\Notification</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-provincias.html">common\models\Provincias</a></td>
+        <td>This is the model class for table "provincias".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-record.html">common\models\Record</a></td>
+        <td>This is the model class for table "record".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-recordsearch.html">common\models\RecordSearch</a></td>
+        <td>RecordSearch represents the model behind the search form of <code>common\models\Record</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-trainingsession.html">common\models\TrainingSession</a></td>
+        <td>This is the model class for table "training_session".</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-user.html">common\models\User</a></td>
+        <td>User model</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-usersearch.html">common\models\UserSearch</a></td>
+        <td>UserSearch represents the model behind the search form of <code>common\models\User</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="common-models-usertrainingsession.html">common\models\UserTrainingSession</a></td>
+        <td>This is the model class for table "user_training_session".</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-alert.html">common\widgets\Alert</a></td>
+        <td>Alert widget renders a message from session flash. All flash messages are displayed
+in the sequence they were assigned using setFlash. You can set message as following:</td>
+    </tr>
+    <tr>
+        <td><a href="dmstr-cookieconsent-assets-cookieconsentasset.html">dmstr\cookieconsent\assets\CookieConsentAsset</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="dmstr-cookieconsent-assets-cookieconsentjsasset.html">dmstr\cookieconsent\assets\CookieConsentJSAsset</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-appasset.html">frontend\assets\AppAsset</a></td>
+        <td>Paquete de archivos de la interfaz principal de la aplicación.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-gymsasset.html">frontend\assets\GymsAsset</a></td>
+        <td>Paquete de archivos de la interfaz Gym.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-gymsindexasset.html">frontend\assets\GymsIndexAsset</a></td>
+        <td>Paquete de archivos de la interfaz GymIndex.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-loginasset.html">frontend\assets\LoginAsset</a></td>
+        <td>Paquete de archivos de la interfaz Login.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-materialasset.html">frontend\assets\MaterialAsset</a></td>
+        <td>Paquete de archivos material-design.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-movementsassets.html">frontend\assets\MovementsAssets</a></td>
+        <td>Paquete de archivos de la interfaz Movements.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-signupasset.html">frontend\assets\SignupAsset</a></td>
+        <td>Paquete de archivos de la interfaz Singup.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-assets-weightasset.html">frontend\assets\WeightAsset</a></td>
+        <td>Paquete de archivos de la interfaz Weight.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-components-modalalert-modalalert.html">frontend\components\modalalert\ModalAlert</a></td>
+        <td>This widget show bootstrap modal or magnific popup when you set session flash message
+For magnific popups you must install magnific js before using this widget - <a href="http://dimsemenov.com/plugins/magnific-popup/">http://dimsemenov.com/plugins/magnific-popup/</a></td>
+    </tr>
+    <tr>
+        <td><a href="frontend-components-navbar-navsidebar.html">frontend\components\navbar\NavSidebar</a></td>
+        <td>Este widget añade una barra de navegación lateral que puede esconderse. El siguiente ejemplo muestra como podemos
+añadir elementos a la barra lateral, además podremos acompañarlos con iconos se recomienda usar FontAwesome.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-components-navbar-navsidebarasset.html">frontend\components\navbar\NavSidebarAsset</a></td>
+        <td>Class NavSidebarAsset</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-components-parallax-customparallax.html">frontend\components\parallax\CustomParallax</a></td>
+        <td>Este widget crea un bonito paralax en tu vista. Además puedes añadir contenido dentro del paralax.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-components-parallax-customparallaxasset.html">frontend\components\parallax\CustomParallaxAsset</a></td>
+        <td>Paquete de archivos para la interfaz CustomParallax
+Class CustomParallaxAsset</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-gymcontroller.html">frontend\controllers\GymController</a></td>
+        <td>GymController implementa las acciones de agregar, borrar y editar elementos para el modelo de Gym. Además de implentar
+las acciones encargadas de renderizar las vistas.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-historycontroller.html">frontend\controllers\HistoryController</a></td>
+        <td>History implementa las acciones de agregar, borrar y editar elementos para el modelo de UserTrainingSession. Además de implentar
+las acciones encargadas de renderizar las vistas.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-movementscontroller.html">frontend\controllers\MovementsController</a></td>
+        <td>MovementsController implementa las acciones de agregar, borrar y editar elementos para el modelo de Movements. Además de implentar
+las acciones encargadas de renderizar las vistas.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-notificationcontroller.html">frontend\controllers\NotificationController</a></td>
+        <td>NotificationController implementa las acciones de agregar, borrar y editar elementos para el modelo de Movements.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-recordcontroller.html">frontend\controllers\RecordController</a></td>
+        <td>RecordController implementa las acciones de agregar, borrar y editar elementos para el modelo de Records. Además de implentar
+las acciones encargadas de renderizar las vistas.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+        <td>Controlador principal de site.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-trainingsessioncontroller.html">frontend\controllers\TrainingsessionController</a></td>
+        <td>Controlador para las acciones y el renderizado de las vistas del modelo de TrainingSession.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-usercontroller.html">frontend\controllers\UserController</a></td>
+        <td>Clase que implementa todas las acciones para el modelo User.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-controllers-weightcontroller.html">frontend\controllers\WeightController</a></td>
+        <td>WeightController implementa el crud de las acciones para el modelo Weight.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-contactform.html">frontend\models\ContactForm</a></td>
+        <td>ContactForm es el modelo detrás del formulario de contacto.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-imagenform.html">frontend\models\ImagenForm</a></td>
+        <td>Clase encarga de subir la foto de perfil de un usuario.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-loginform.html">frontend\models\LoginForm</a></td>
+        <td>Formulario de inicio de sesión.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-passwordresetrequestform.html">frontend\models\PasswordResetRequestForm</a></td>
+        <td>Formulario de solicitud de reinicio de contraseña.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-resendverificationemailform.html">frontend\models\ResendVerificationEmailForm</a></td>
+        <td>Class ResendVerificationEmailForm</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-resetpasswordform.html">frontend\models\ResetPasswordForm</a></td>
+        <td>Formulario de reinicio de contraseña
+Password reset form</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-signupform.html">frontend\models\SignupForm</a></td>
+        <td>Formulario de registro.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-usertrainingsession.html">frontend\models\UserTrainingSession</a></td>
+        <td>Clase modelo de la tabla "user_training_session".</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-usertrainingsessionsearch.html">frontend\models\UserTrainingSessionSearch</a></td>
+        <td>UserTrainingSessionSearch represents the model behind the search form of <code>frontend\models\UserTrainingSession</code>.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-verifyemailform.html">frontend\models\VerifyEmailForm</a></td>
+        <td>Modelo del formulario de verificación de email.</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-waitinglist.html">frontend\models\WaitingList</a></td>
+        <td>Esta es la clase model para la tabla "waiting_list".</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-weight.html">frontend\models\Weight</a></td>
+        <td>Esta es la clase de modelo para la tabla "weight".</td>
+    </tr>
+    <tr>
+        <td><a href="frontend-models-weightseach.html">frontend\models\WeightSeach</a></td>
+        <td>WeightSeach represents the model behind the search form of <code>frontend\models\Weight</code>.</td>
+    </tr>
+</table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:21:20 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w1769" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1769-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w1769-collapse" class="collapse navbar-collapse"><ul id="w1770" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-1760" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-1760" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1761" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-1761" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1762" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-1762" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1763" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-1763" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1764" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-1764" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1765" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-1765" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1766" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-1766" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1767" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-1767" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1768" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-1768" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h2>Codeception\Stub <span id="codeceptionstub"></span><a href="#codeceptionstub" class="hashlink">&para;</a></h2><h4><em>public static</em> make($class, $params = null, $testCase = null) <span id="public-static-makeclass-params-null-testcase-null"></span><a href="#public-static-makeclass-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates a class without executing a constructor.
+Properties and methods can be set as a second parameter.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::make('User');
+Stub::make('User', ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+Stub::make(new User, ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>To replace method provide it's name as a key in second parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::make('User', ['save' =&gt; function () { return true; }]);
+Stub::make('User', ['save' =&gt; true]);
+?&gt;
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::make(<span class="hljs-string">'User'</span>, [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class - A class to be mocked</li>
+<li><code>param array</code> $params - properties and methods to set</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li>return object - mock</li>
+<li>throws \RuntimeException when class does not exist</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> factory($class, $num = null, $params = null) <span id="public-static-factoryclass-num-null-params-null"></span><a href="#public-static-factoryclass-num-null-params-null" class="hashlink">&para;</a></h4><p>Creates $num instances of class through <code>Stub::make</code>.</p>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param int</code> $num</li>
+<li><p><code>param array</code> $params</p>
+</li>
+<li>return array</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> makeEmptyExcept($class, $method, $params = null, $testCase = null) <span id="public-static-makeemptyexceptclass-method-params-null-testcase-null"></span><a href="#public-static-makeemptyexceptclass-method-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates class having all methods replaced with dummies except one.
+Constructor is not triggered.
+Properties and methods can be replaced.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::makeEmptyExcept('User', 'save');
+Stub::makeEmptyExcept('User', 'save', ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+* Stub::makeEmptyExcept(new User, 'save');
+?&gt;
+</code></pre>
+<p>To replace method provide it's name as a key in second parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::makeEmptyExcept('User', 'save', ['isValid' =&gt; function () { return true; }]);
+Stub::makeEmptyExcept('User', 'save', ['isValid' =&gt; true]);
+?&gt;
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::makeEmptyExcept(<span class="hljs-string">'User'</span>, <span class="hljs-string">'validate'</span>, [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param string</code> $method</li>
+<li><code>param array</code> $params</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li>return object</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> makeEmpty($class, $params = null, $testCase = null) <span id="public-static-makeemptyclass-params-null-testcase-null"></span><a href="#public-static-makeemptyclass-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates class having all methods replaced with dummies.
+Constructor is not triggered.
+Properties and methods can be set as a second parameter.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::makeEmpty('User');
+Stub::makeEmpty('User', ['name' =&gt; 'davert']);
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+Stub::makeEmpty(new User, ['name' =&gt; 'davert']);
+</code></pre>
+<p>To replace method provide it's name as a key in second parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::makeEmpty('User', ['save' =&gt; function () { return true; }]);
+Stub::makeEmpty('User', ['save' =&gt; true));
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::makeEmpty(<span class="hljs-string">'User'</span>, [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param array</code> $params</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li>return object</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> copy($obj, $params = null) <span id="public-static-copyobj-params-null"></span><a href="#public-static-copyobj-params-null" class="hashlink">&para;</a></h4><p>Clones an object and redefines it's properties (even protected and private)</p>
+<ul>
+<li><code>param</code>       $obj</li>
+<li><p><code>param array</code> $params</p>
+</li>
+<li>return mixed</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> construct($class, $constructorParams = null, $params = null, $testCase = null) <span id="public-static-constructclass-constructorparams-null-params-null-testcase-null"></span><a href="#public-static-constructclass-constructorparams-null-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates a class instance by running constructor.
+Parameters for constructor passed as second argument
+Properties and methods can be set in third argument.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::construct('User', ['autosave' =&gt; false]);
+Stub::construct('User', ['autosave' =&gt; false], ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+Stub::construct(new User, ['autosave' =&gt; false), ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>To replace method provide it's name as a key in third parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::construct('User', [], ['save' =&gt; function () { return true; }]);
+Stub::construct('User', [], ['save' =&gt; true]);
+?&gt;
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::construct(<span class="hljs-string">'User'</span>, [], [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param array</code> $constructorParams</li>
+<li><code>param array</code> $params</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li>return object</li>
+<li>throws \Exception</li>
+</ul>
+<h4><em>public static</em> constructEmpty($class, $constructorParams = null, $params = null, $testCase = null) <span id="public-static-constructemptyclass-constructorparams-null-params-null-testcase-null"></span><a href="#public-static-constructemptyclass-constructorparams-null-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates a class instance by running constructor with all methods replaced with dummies.
+Parameters for constructor passed as second argument
+Properties and methods can be set in third argument.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmpty('User', ['autosave' =&gt; false]);
+Stub::constructEmpty('User', ['autosave' =&gt; false), ['name' =&gt; 'davert']);
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmpty(new User, ['autosave' =&gt; false], ['name' =&gt; 'davert']);
+</code></pre>
+<p>To replace method provide it's name as a key in third parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmpty('User', [], ['save' =&gt; function () { return true; }]);
+Stub::constructEmpty('User', [], ['save' =&gt; true]);
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::constructEmpty(<span class="hljs-string">'User'</span>, [], [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param array</code> $constructorParams</li>
+<li><code>param array</code> $params</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li><p>return object</p>
+</li>
+</ul>
+<h4><em>public static</em> constructEmptyExcept($class, $method, $constructorParams = null, $params = null, $testCase = null) <span id="public-static-constructemptyexceptclass-method-constructorparams-null-params-null-testcase-null"></span><a href="#public-static-constructemptyexceptclass-method-constructorparams-null-params-null-testcase-null" class="hashlink">&para;</a></h4><p>Instantiates a class instance by running constructor with all methods replaced with dummies, except one.
+Parameters for constructor passed as second argument
+Properties and methods can be set in third argument.
+Even protected and private properties can be set.</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmptyExcept('User', 'save');
+Stub::constructEmptyExcept('User', 'save', ['autosave' =&gt; false], ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>Accepts either name of class or object of that class</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmptyExcept(new User, 'save', ['autosave' =&gt; false], ['name' =&gt; 'davert']);
+?&gt;
+</code></pre>
+<p>To replace method provide it's name as a key in third parameter
+and it's return value or callback function as parameter</p>
+<pre><code class="language- php">&lt;?php
+Stub::constructEmptyExcept('User', 'save', [], ['save' =&gt; function () { return true; }]);
+Stub::constructEmptyExcept('User', 'save', [], ['save' =&gt; true]);
+?&gt;
+</code></pre>
+<p><strong>To create a mock, pass current testcase name as last argument:</strong></p>
+<pre><code class="hljs php language-php"><span class="hljs-meta">&lt;?php</span>
+Stub::constructEmptyExcept(<span class="hljs-string">'User'</span>, <span class="hljs-string">'save'</span>, [], [
+     <span class="hljs-string">'save'</span> =&gt; \Codeception\Stub\Expected::once()
+], <span class="hljs-keyword">$this</span>);
+</code></pre>
+<ul>
+<li><code>param mixed</code> $class</li>
+<li><code>param string</code> $method</li>
+<li><code>param array</code> $constructorParams</li>
+<li><code>param array</code> $params</li>
+<li><p><code>param bool|\PHPUnit\Framework\TestCase</code> $testCase</p>
+</li>
+<li><p>return object</p>
+</li>
+</ul>
+<h4><em>public static</em> update($mock, array $params) <span id="public-static-updatemock-array-params"></span><a href="#public-static-updatemock-array-params" class="hashlink">&para;</a></h4><p>Replaces properties of current stub</p>
+<ul>
+<li><code>param \PHPUnit\Framework\MockObject\MockObject</code> $mock</li>
+<li><p><code>param array</code> $params</p>
+</li>
+<li>return mixed</li>
+<li>throws \LogicException</li>
+</ul>
+<h4><em>public static</em> consecutive() <span id="public-static-consecutive"></span><a href="#public-static-consecutive" class="hashlink">&para;</a></h4><p>Stubbing a method call to return a list of values in the specified order.</p>
+<pre><code class="language- php">&lt;?php
+$user = Stub::make('User', array('getName' =&gt; Stub::consecutive('david', 'emma', 'sam', 'amy')));
+$user-&gt;getName(); //david
+$user-&gt;getName(); //emma
+$user-&gt;getName(); //sam
+$user-&gt;getName(); //amy
+?&gt;
+</code></pre>
+<ul>
+<li>return ConsecutiveMap</li>
+</ul>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:23:58 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

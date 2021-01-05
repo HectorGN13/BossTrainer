@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w3100" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w3100-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w3100-collapse" class="collapse navbar-collapse"><ul id="w3101" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-3091" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-3091" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3092" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-3092" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3093" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-3093" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3094" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-3094" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3095" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-3095" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3096" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-3096" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3097" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-3097" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3098" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-3098" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-3099" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-3099" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Yii2 Highmaps Widget Examples <span id="yii2-highmaps-widget-examples"></span><a href="#yii2-highmaps-widget-examples" class="hashlink">&para;</a></h1><h2>Basic Example <span id="basic-example"></span><a href="#basic-example" class="hashlink">&para;</a></h2><p>This is a basic map example using the free <a href="https://www.highcharts.com/docs/maps/map-collection">Highcharts Map Collection</a>
+data. Add the following code to any view file.</p>
+<pre><code class="hljs php language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">miloschuman</span>\<span class="hljs-title">highcharts</span>\<span class="hljs-title">Highmaps</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">web</span>\<span class="hljs-title">JsExpression</span>;
+
+
+ <span class="hljs-comment">// To use Highcharts Map Collection, we must register those files separately.</span>
+ <span class="hljs-comment">// The 'depends' option ensures that the main Highmaps script gets loaded first.</span>
+<span class="hljs-keyword">$this</span>-&gt;registerJsFile(<span class="hljs-string">'https://code.highcharts.com/mapdata/countries/de/de-all.js'</span>, [
+    <span class="hljs-string">'depends'</span> =&gt; <span class="hljs-string">'miloschuman\highcharts\HighchartsAsset'</span>
+]);
+
+<span class="hljs-keyword">echo</span> Highmaps::widget([
+    <span class="hljs-string">'options'</span> =&gt; [
+        <span class="hljs-string">'title'</span> =&gt; [
+            <span class="hljs-string">'text'</span> =&gt; <span class="hljs-string">'Highmaps basic demo'</span>,
+        ],
+        <span class="hljs-string">'mapNavigation'</span> =&gt; [
+            <span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'buttonOptions'</span> =&gt; [
+                <span class="hljs-string">'verticalAlign'</span> =&gt; <span class="hljs-string">'bottom'</span>,
+            ]
+        ],
+        <span class="hljs-string">'colorAxis'</span> =&gt; [
+            <span class="hljs-string">'min'</span> =&gt; <span class="hljs-number">0</span>,
+        ],
+        <span class="hljs-string">'series'</span> =&gt; [
+            [
+                <span class="hljs-string">'data'</span> =&gt; [
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-ni'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">0</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-hb'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">1</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-sh'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">2</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-be'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">3</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-mv'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">4</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-hh'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">5</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-rp'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">6</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-sl'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">7</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-by'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">8</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-th'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">9</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-st'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">10</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-sn'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">11</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-br'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">12</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-nw'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">13</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-bw'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">14</span>],
+                    [<span class="hljs-string">'hc-key'</span> =&gt; <span class="hljs-string">'de-he'</span>, <span class="hljs-string">'value'</span> =&gt; <span class="hljs-number">15</span>],
+                ],
+                <span class="hljs-string">'mapData'</span> =&gt; <span class="hljs-keyword">new</span> JsExpression(<span class="hljs-string">'Highcharts.maps["countries/de/de-all"]'</span>),
+                <span class="hljs-string">'joinBy'</span> =&gt; <span class="hljs-string">'hc-key'</span>,
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Random data'</span>,
+                <span class="hljs-string">'states'</span> =&gt; [
+                    <span class="hljs-string">'hover'</span> =&gt; [
+                        <span class="hljs-string">'color'</span> =&gt; <span class="hljs-string">'#BADA55'</span>,
+                    ]
+                ],
+                <span class="hljs-string">'dataLabels'</span> =&gt; [
+                    <span class="hljs-string">'enabled'</span> =&gt; <span class="hljs-keyword">true</span>,
+                    <span class="hljs-string">'format'</span> =&gt; <span class="hljs-string">'{point.name}'</span>,
+                ]
+            ]
+        ]
+    ]
+]);
+</code></pre>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:24:02 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

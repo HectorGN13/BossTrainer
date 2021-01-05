@@ -1,0 +1,1351 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [1] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [2] => Array
+        (
+            [file] => 
+            [message] => broken link to WaitingLists
+        )
+
+    [3] => Array
+        (
+            [file] => 
+            [message] => broken link to CreatedBy
+        )
+
+    [4] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [5] => Array
+        (
+            [file] => 
+            [message] => broken link to CreatedBy
+        )
+
+    [6] => Array
+        (
+            [file] => 
+            [message] => broken link to CreatedBy
+        )
+
+    [7] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [8] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [9] => Array
+        (
+            [file] => 
+            [message] => broken link to CreatedBy
+        )
+
+    [10] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [11] => Array
+        (
+            [file] => 
+            [message] => broken link to Boards
+        )
+
+    [12] => Array
+        (
+            [file] => 
+            [message] => broken link to DefaultBoard
+        )
+
+    [13] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [14] => Array
+        (
+            [file] => 
+            [message] => broken link to Localidad
+        )
+
+    [15] => Array
+        (
+            [file] => 
+            [message] => broken link to Provincia
+        )
+
+    [16] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [17] => Array
+        (
+            [file] => 
+            [message] => broken link to Boards
+        )
+
+    [18] => Array
+        (
+            [file] => 
+            [message] => broken link to DefaultBoard
+        )
+
+    [19] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [20] => Array
+        (
+            [file] => 
+            [message] => broken link to Localidad
+        )
+
+    [21] => Array
+        (
+            [file] => 
+            [message] => broken link to Provincia
+        )
+
+    [22] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [23] => Array
+        (
+            [file] => 
+            [message] => broken link to Boards
+        )
+
+    [24] => Array
+        (
+            [file] => 
+            [message] => broken link to DefaultBoard
+        )
+
+    [25] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [26] => Array
+        (
+            [file] => 
+            [message] => broken link to Localidad
+        )
+
+    [27] => Array
+        (
+            [file] => 
+            [message] => broken link to Provincia
+        )
+
+    [28] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [29] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [30] => Array
+        (
+            [file] => 
+            [message] => broken link to Provincia
+        )
+
+    [31] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [32] => Array
+        (
+            [file] => 
+            [message] => broken link to Provincia
+        )
+
+    [33] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [34] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [35] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [36] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [37] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [38] => Array
+        (
+            [file] => 
+            [message] => broken link to Users
+        )
+
+    [39] => Array
+        (
+            [file] => 
+            [message] => broken link to Recipient0
+        )
+
+    [40] => Array
+        (
+            [file] => 
+            [message] => broken link to Recipient0
+        )
+
+    [41] => Array
+        (
+            [file] => 
+            [message] => broken link to Recipient0
+        )
+
+    [42] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [43] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [44] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [45] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [46] => Array
+        (
+            [file] => 
+            [message] => broken link to WaitingLists
+        )
+
+    [47] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [48] => Array
+        (
+            [file] => 
+            [message] => broken link to UserTrainingSessions
+        )
+
+    [49] => Array
+        (
+            [file] => 
+            [message] => broken link to WaitingLists
+        )
+
+    [50] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [51] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [52] => Array
+        (
+            [file] => 
+            [message] => broken link to Notifications
+        )
+
+    [53] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [54] => Array
+        (
+            [file] => 
+            [message] => broken link to Weights
+        )
+
+    [55] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [56] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [57] => Array
+        (
+            [file] => 
+            [message] => broken link to Notifications
+        )
+
+    [58] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [59] => Array
+        (
+            [file] => 
+            [message] => broken link to Weights
+        )
+
+    [60] => Array
+        (
+            [file] => 
+            [message] => broken link to UserGyms
+        )
+
+    [61] => Array
+        (
+            [file] => 
+            [message] => broken link to Gyms
+        )
+
+    [62] => Array
+        (
+            [file] => 
+            [message] => broken link to Notifications
+        )
+
+    [63] => Array
+        (
+            [file] => 
+            [message] => broken link to Records
+        )
+
+    [64] => Array
+        (
+            [file] => 
+            [message] => broken link to Weights
+        )
+
+    [65] => Array
+        (
+            [file] => 
+            [message] => broken link to \yii\bootstrap\Alert::closeButton
+        )
+
+    [66] => Array
+        (
+            [line] => 23
+            [file] => C:\wamp64\www\bosstrainer\backend\controllers\BoardController.php
+            [message] => Method behaviors has no parent to inherit from in backend\controllers\BoardController.
+        )
+
+    [67] => Array
+        (
+            [line] => 402
+            [file] => C:\wamp64\www\bosstrainer\backend\controllers\SiteController.php
+            [message] => Undefined parameter documented: $rate_id in actionUpdaterate().
+        )
+
+    [68] => Array
+        (
+            [line] => 35
+            [file] => C:\wamp64\www\bosstrainer\backend\controllers\SiteController.php
+            [message] => Method behaviors has no parent to inherit from in backend\controllers\SiteController.
+        )
+
+    [69] => Array
+        (
+            [line] => 78
+            [file] => C:\wamp64\www\bosstrainer\backend\controllers\SiteController.php
+            [message] => Method actions has no parent to inherit from in backend\controllers\SiteController.
+        )
+
+    [70] => Array
+        (
+            [line] => 21
+            [file] => C:\wamp64\www\bosstrainer\backend\controllers\TrainingsessionController.php
+            [message] => Method behaviors has no parent to inherit from in backend\controllers\TrainingsessionController.
+        )
+
+    [71] => Array
+        (
+            [line] => 27
+            [file] => C:\wamp64\www\bosstrainer\backend\models\GymUserSearch.php
+            [message] => Method scenarios has no parent to inherit from in backend\models\GymUserSearch.
+        )
+
+    [72] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\backend\models\Rate.php
+            [message] => Method tableName has no parent to inherit from in backend\models\Rate.
+        )
+
+    [73] => Array
+        (
+            [line] => 40
+            [file] => C:\wamp64\www\bosstrainer\backend\models\Rate.php
+            [message] => Method rules has no parent to inherit from in backend\models\Rate.
+        )
+
+    [74] => Array
+        (
+            [line] => 57
+            [file] => C:\wamp64\www\bosstrainer\backend\models\Rate.php
+            [message] => Method attributeLabels has no parent to inherit from in backend\models\Rate.
+        )
+
+    [75] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\backend\models\TrainingSessionSearch.php
+            [message] => Method scenarios has no parent to inherit from in backend\models\TrainingSessionSearch.
+        )
+
+    [76] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method tableName has no parent to inherit from in common\models\Board.
+        )
+
+    [77] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method rules has no parent to inherit from in common\models\Board.
+        )
+
+    [78] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Board.
+        )
+
+    [79] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method tableName has no parent to inherit from in common\models\Board.
+        )
+
+    [80] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method rules has no parent to inherit from in common\models\Board.
+        )
+
+    [81] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\Board.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Board.
+        )
+
+    [82] => Array
+        (
+            [line] => 30
+            [file] => C:\wamp64\www\bosstrainer\common\models\BoardSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\BoardSearch.
+        )
+
+    [83] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method tableName has no parent to inherit from in common\models\Gym.
+        )
+
+    [84] => Array
+        (
+            [line] => 55
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method rules has no parent to inherit from in common\models\Gym.
+        )
+
+    [85] => Array
+        (
+            [line] => 82
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Gym.
+        )
+
+    [86] => Array
+        (
+            [line] => 180
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in common\models\Gym.
+        )
+
+    [87] => Array
+        (
+            [line] => 187
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method findIdentity has no parent to inherit from in common\models\Gym.
+        )
+
+    [88] => Array
+        (
+            [line] => 251
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method getId has no parent to inherit from in common\models\Gym.
+        )
+
+    [89] => Array
+        (
+            [line] => 259
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method getAuthKey has no parent to inherit from in common\models\Gym.
+        )
+
+    [90] => Array
+        (
+            [line] => 267
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method validateAuthKey has no parent to inherit from in common\models\Gym.
+        )
+
+    [91] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method tableName has no parent to inherit from in common\models\Gym.
+        )
+
+    [92] => Array
+        (
+            [line] => 55
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method rules has no parent to inherit from in common\models\Gym.
+        )
+
+    [93] => Array
+        (
+            [line] => 82
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Gym.
+        )
+
+    [94] => Array
+        (
+            [line] => 180
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in common\models\Gym.
+        )
+
+    [95] => Array
+        (
+            [line] => 187
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method findIdentity has no parent to inherit from in common\models\Gym.
+        )
+
+    [96] => Array
+        (
+            [line] => 251
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method getId has no parent to inherit from in common\models\Gym.
+        )
+
+    [97] => Array
+        (
+            [line] => 259
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method getAuthKey has no parent to inherit from in common\models\Gym.
+        )
+
+    [98] => Array
+        (
+            [line] => 267
+            [file] => C:\wamp64\www\bosstrainer\common\models\Gym.php
+            [message] => Method validateAuthKey has no parent to inherit from in common\models\Gym.
+        )
+
+    [99] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\GymSearch.
+        )
+
+    [100] => Array
+        (
+            [line] => 23
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method tableName has no parent to inherit from in common\models\GymUser.
+        )
+
+    [101] => Array
+        (
+            [line] => 31
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method rules has no parent to inherit from in common\models\GymUser.
+        )
+
+    [102] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\GymUser.
+        )
+
+    [103] => Array
+        (
+            [line] => 23
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method tableName has no parent to inherit from in common\models\GymUser.
+        )
+
+    [104] => Array
+        (
+            [line] => 31
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method rules has no parent to inherit from in common\models\GymUser.
+        )
+
+    [105] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\GymUser.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\GymUser.
+        )
+
+    [106] => Array
+        (
+            [line] => 22
+            [file] => C:\wamp64\www\bosstrainer\common\models\Localidades.php
+            [message] => Method tableName has no parent to inherit from in common\models\Localidades.
+        )
+
+    [107] => Array
+        (
+            [line] => 30
+            [file] => C:\wamp64\www\bosstrainer\common\models\Localidades.php
+            [message] => Method rules has no parent to inherit from in common\models\Localidades.
+        )
+
+    [108] => Array
+        (
+            [line] => 44
+            [file] => C:\wamp64\www\bosstrainer\common\models\Localidades.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Localidades.
+        )
+
+    [109] => Array
+        (
+            [line] => 23
+            [file] => C:\wamp64\www\bosstrainer\common\models\LoginForm.php
+            [message] => Method rules has no parent to inherit from in common\models\LoginForm.
+        )
+
+    [110] => Array
+        (
+            [line] => 42
+            [file] => C:\wamp64\www\bosstrainer\common\models\LoginForm.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\LoginForm.
+        )
+
+    [111] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method tableName has no parent to inherit from in common\models\Movements.
+        )
+
+    [112] => Array
+        (
+            [line] => 34
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method rules has no parent to inherit from in common\models\Movements.
+        )
+
+    [113] => Array
+        (
+            [line] => 50
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Movements.
+        )
+
+    [114] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method tableName has no parent to inherit from in common\models\Movements.
+        )
+
+    [115] => Array
+        (
+            [line] => 34
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method rules has no parent to inherit from in common\models\Movements.
+        )
+
+    [116] => Array
+        (
+            [line] => 50
+            [file] => C:\wamp64\www\bosstrainer\common\models\Movements.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Movements.
+        )
+
+    [117] => Array
+        (
+            [line] => 29
+            [file] => C:\wamp64\www\bosstrainer\common\models\MovementsSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\MovementsSearch.
+        )
+
+    [118] => Array
+        (
+            [line] => 25
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method tableName has no parent to inherit from in common\models\Notification.
+        )
+
+    [119] => Array
+        (
+            [line] => 33
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method rules has no parent to inherit from in common\models\Notification.
+        )
+
+    [120] => Array
+        (
+            [line] => 49
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Notification.
+        )
+
+    [121] => Array
+        (
+            [line] => 25
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method tableName has no parent to inherit from in common\models\Notification.
+        )
+
+    [122] => Array
+        (
+            [line] => 33
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method rules has no parent to inherit from in common\models\Notification.
+        )
+
+    [123] => Array
+        (
+            [line] => 49
+            [file] => C:\wamp64\www\bosstrainer\common\models\Notification.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Notification.
+        )
+
+    [124] => Array
+        (
+            [line] => 29
+            [file] => C:\wamp64\www\bosstrainer\common\models\NotificationSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\NotificationSearch.
+        )
+
+    [125] => Array
+        (
+            [line] => 20
+            [file] => C:\wamp64\www\bosstrainer\common\models\Provincias.php
+            [message] => Method tableName has no parent to inherit from in common\models\Provincias.
+        )
+
+    [126] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\common\models\Provincias.php
+            [message] => Method rules has no parent to inherit from in common\models\Provincias.
+        )
+
+    [127] => Array
+        (
+            [line] => 38
+            [file] => C:\wamp64\www\bosstrainer\common\models\Provincias.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Provincias.
+        )
+
+    [128] => Array
+        (
+            [line] => 22
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method tableName has no parent to inherit from in common\models\Record.
+        )
+
+    [129] => Array
+        (
+            [line] => 30
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method rules has no parent to inherit from in common\models\Record.
+        )
+
+    [130] => Array
+        (
+            [line] => 46
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Record.
+        )
+
+    [131] => Array
+        (
+            [line] => 22
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method tableName has no parent to inherit from in common\models\Record.
+        )
+
+    [132] => Array
+        (
+            [line] => 30
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method rules has no parent to inherit from in common\models\Record.
+        )
+
+    [133] => Array
+        (
+            [line] => 46
+            [file] => C:\wamp64\www\bosstrainer\common\models\Record.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\Record.
+        )
+
+    [134] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\common\models\RecordSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\RecordSearch.
+        )
+
+    [135] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method tableName has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [136] => Array
+        (
+            [line] => 40
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method rules has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [137] => Array
+        (
+            [line] => 54
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [138] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method tableName has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [139] => Array
+        (
+            [line] => 40
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method rules has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [140] => Array
+        (
+            [line] => 54
+            [file] => C:\wamp64\www\bosstrainer\common\models\TrainingSession.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\TrainingSession.
+        )
+
+    [141] => Array
+        (
+            [line] => 52
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method tableName has no parent to inherit from in common\models\User.
+        )
+
+    [142] => Array
+        (
+            [line] => 60
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method behaviors has no parent to inherit from in common\models\User.
+        )
+
+    [143] => Array
+        (
+            [line] => 70
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method rules has no parent to inherit from in common\models\User.
+        )
+
+    [144] => Array
+        (
+            [line] => 105
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\User.
+        )
+
+    [145] => Array
+        (
+            [line] => 130
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method findIdentity has no parent to inherit from in common\models\User.
+        )
+
+    [146] => Array
+        (
+            [line] => 138
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in common\models\User.
+        )
+
+    [147] => Array
+        (
+            [line] => 205
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method getId has no parent to inherit from in common\models\User.
+        )
+
+    [148] => Array
+        (
+            [line] => 213
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method getAuthKey has no parent to inherit from in common\models\User.
+        )
+
+    [149] => Array
+        (
+            [line] => 221
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method validateAuthKey has no parent to inherit from in common\models\User.
+        )
+
+    [150] => Array
+        (
+            [line] => 52
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method tableName has no parent to inherit from in common\models\User.
+        )
+
+    [151] => Array
+        (
+            [line] => 60
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method behaviors has no parent to inherit from in common\models\User.
+        )
+
+    [152] => Array
+        (
+            [line] => 70
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method rules has no parent to inherit from in common\models\User.
+        )
+
+    [153] => Array
+        (
+            [line] => 105
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\User.
+        )
+
+    [154] => Array
+        (
+            [line] => 130
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method findIdentity has no parent to inherit from in common\models\User.
+        )
+
+    [155] => Array
+        (
+            [line] => 138
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in common\models\User.
+        )
+
+    [156] => Array
+        (
+            [line] => 205
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method getId has no parent to inherit from in common\models\User.
+        )
+
+    [157] => Array
+        (
+            [line] => 213
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method getAuthKey has no parent to inherit from in common\models\User.
+        )
+
+    [158] => Array
+        (
+            [line] => 221
+            [file] => C:\wamp64\www\bosstrainer\common\models\User.php
+            [message] => Method validateAuthKey has no parent to inherit from in common\models\User.
+        )
+
+    [159] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\common\models\UserSearch.php
+            [message] => Method scenarios has no parent to inherit from in common\models\UserSearch.
+        )
+
+    [160] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\common\models\UserTrainingSession.php
+            [message] => Method tableName has no parent to inherit from in common\models\UserTrainingSession.
+        )
+
+    [161] => Array
+        (
+            [line] => 34
+            [file] => C:\wamp64\www\bosstrainer\common\models\UserTrainingSession.php
+            [message] => Method rules has no parent to inherit from in common\models\UserTrainingSession.
+        )
+
+    [162] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\common\models\UserTrainingSession.php
+            [message] => Method attributeLabels has no parent to inherit from in common\models\UserTrainingSession.
+        )
+
+    [163] => Array
+        (
+            [line] => 50
+            [file] => C:\wamp64\www\bosstrainer\common\widgets\Alert.php
+            [message] => Method run has no parent to inherit from in common\widgets\Alert.
+        )
+
+    [164] => Array
+        (
+            [line] => 31
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\GymController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\GymController.
+        )
+
+    [165] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\HistoryController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\HistoryController.
+        )
+
+    [166] => Array
+        (
+            [line] => 23
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\MovementsController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\MovementsController.
+        )
+
+    [167] => Array
+        (
+            [line] => 148
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\NotificationController.php
+            [message] => Undefined parameter documented: $id in actionRead().
+        )
+
+    [168] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\NotificationController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\NotificationController.
+        )
+
+    [169] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\RecordController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\RecordController.
+        )
+
+    [170] => Array
+        (
+            [line] => 33
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\SiteController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\SiteController.
+        )
+
+    [171] => Array
+        (
+            [line] => 64
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\SiteController.php
+            [message] => Method actions has no parent to inherit from in frontend\controllers\SiteController.
+        )
+
+    [172] => Array
+        (
+            [line] => 25
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\TrainingsessionController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\TrainingsessionController.
+        )
+
+    [173] => Array
+        (
+            [line] => 30
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\UserController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\UserController.
+        )
+
+    [174] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\frontend\controllers\WeightController.php
+            [message] => Method behaviors has no parent to inherit from in frontend\controllers\WeightController.
+        )
+
+    [175] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\ContactForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\ContactForm.
+        )
+
+    [176] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\ContactForm.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\ContactForm.
+        )
+
+    [177] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\LoginForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\LoginForm.
+        )
+
+    [178] => Array
+        (
+            [line] => 43
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\LoginForm.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\LoginForm.
+        )
+
+    [179] => Array
+        (
+            [line] => 20
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\PasswordResetRequestForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\PasswordResetRequestForm.
+        )
+
+    [180] => Array
+        (
+            [line] => 25
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\ResendVerificationEmailForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\ResendVerificationEmailForm.
+        )
+
+    [181] => Array
+        (
+            [line] => 48
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\ResetPasswordForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\ResetPasswordForm.
+        )
+
+    [182] => Array
+        (
+            [line] => 75
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\ResetPasswordForm.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\ResetPasswordForm.
+        )
+
+    [183] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\SignupForm.php
+            [message] => Method rules has no parent to inherit from in frontend\models\SignupForm.
+        )
+
+    [184] => Array
+        (
+            [line] => 65
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\SignupForm.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\SignupForm.
+        )
+
+    [185] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method tableName has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [186] => Array
+        (
+            [line] => 36
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method rules has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [187] => Array
+        (
+            [line] => 50
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [188] => Array
+        (
+            [line] => 28
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method tableName has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [189] => Array
+        (
+            [line] => 36
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method rules has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [190] => Array
+        (
+            [line] => 50
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSession.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\UserTrainingSession.
+        )
+
+    [191] => Array
+        (
+            [line] => 27
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\UserTrainingSessionSearch.php
+            [message] => Method scenarios has no parent to inherit from in frontend\models\UserTrainingSessionSearch.
+        )
+
+    [192] => Array
+        (
+            [line] => 26
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\WaitingList.php
+            [message] => Method tableName has no parent to inherit from in frontend\models\WaitingList.
+        )
+
+    [193] => Array
+        (
+            [line] => 34
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\WaitingList.php
+            [message] => Method rules has no parent to inherit from in frontend\models\WaitingList.
+        )
+
+    [194] => Array
+        (
+            [line] => 48
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\WaitingList.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\WaitingList.
+        )
+
+    [195] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method tableName has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [196] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method rules has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [197] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [198] => Array
+        (
+            [line] => 24
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method tableName has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [199] => Array
+        (
+            [line] => 32
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method rules has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [200] => Array
+        (
+            [line] => 47
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\Weight.php
+            [message] => Method attributeLabels has no parent to inherit from in frontend\models\Weight.
+        )
+
+    [201] => Array
+        (
+            [line] => 29
+            [file] => C:\wamp64\www\bosstrainer\frontend\models\WeightSeach.php
+            [message] => Method scenarios has no parent to inherit from in frontend\models\WeightSeach.
+        )
+
+)

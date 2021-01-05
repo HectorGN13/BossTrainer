@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w647" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w647-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w647-collapse" class="collapse navbar-collapse"><ul id="w648" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-638" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-638" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-639" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-639" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-640" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-640" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-641" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-641" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-642" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-642" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-643" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-643" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-644" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-644" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-645" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-645" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-646" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-646" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>numeric extensions <span id="numeric-extensions"></span><a href="#numeric-extensions" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#aliases">Aliases</a></li>
+<li><a href="#options">Options</a></li></ol></div>
+<h2>Aliases <span id="aliases"></span><a href="#aliases" class="hashlink">&para;</a></h2><ul>
+<li>numeric</li>
+<li>currency</li>
+<li>decimal</li>
+<li>integer</li>
+<li>percentage</li>
+</ul>
+<h2>Options <span id="options"></span><a href="#options" class="hashlink">&para;</a></h2><h3>digits <span id="digits"></span><a href="#digits" class="hashlink">&para;</a></h3><p>Number of fractionalDigits
+Default: "*"</p>
+<p>The value can be a number, *, or a quantifier syntax like 2,4
+When the quantifier syntax is used, the digitsOptional option is ignored</p>
+<h3>digitsOptional <span id="digitsoptional"></span><a href="#digitsoptional" class="hashlink">&para;</a></h3><p>Specify wheter the digits are optional.
+Default: true</p>
+<h3>enforceDigitsOnBlur <span id="enforcedigitsonblur"></span><a href="#enforcedigitsonblur" class="hashlink">&para;</a></h3><p>Enforces the decimal part when leaving the input field.</p>
+<h3>groupSize <span id="groupsize"></span><a href="#groupsize" class="hashlink">&para;</a></h3><p>Define the grouping of the integer part.
+Default: 3</p>
+<h3>autoGroup <span id="autogroup"></span><a href="#autogroup" class="hashlink">&para;</a></h3><p>Enable grouping of the integer part.
+Default: false</p>
+<h3>allowMinus <span id="allowminus"></span><a href="#allowminus" class="hashlink">&para;</a></h3><p>Allow to enter -.
+Default: true</p>
+<h3>negationSymbol <span id="negationsymbol"></span><a href="#negationsymbol" class="hashlink">&para;</a></h3><p>Define your negationSymbol.
+Default: {
+  front: "-", //"("
+  back: "" //")"
+}</p>
+<h3>integerDigits <span id="integerdigits"></span><a href="#integerdigits" class="hashlink">&para;</a></h3><p>Number of integerDigits
+Default: "+"</p>
+<h3>integerOptional <span id="integeroptional"></span><a href="#integeroptional" class="hashlink">&para;</a></h3><p>Specify wheter the integerdigits are optional.
+Default: true</p>
+<h3>prefix <span id="prefix"></span><a href="#prefix" class="hashlink">&para;</a></h3><p>Define a prefix.
+Default: ""</p>
+<h3>suffix <span id="suffix"></span><a href="#suffix" class="hashlink">&para;</a></h3><p>Define a suffix.
+Default: ""</p>
+<h3>decimalProtect <span id="decimalprotect"></span><a href="#decimalprotect" class="hashlink">&para;</a></h3><p>Do not allow assumption of decimals input without entering the radixpoint.
+Default: true</p>
+<h3>min <span id="min"></span><a href="#min" class="hashlink">&para;</a></h3><p>Minimum value
+Default: undefined</p>
+<h3>max <span id="max"></span><a href="#max" class="hashlink">&para;</a></h3><p>Maximum value
+Default: undefined</p>
+<h3>step <span id="step"></span><a href="#step" class="hashlink">&para;</a></h3><p>Define the step the ctrl-up &amp; ctrl-down must take.
+Default: 1</p>
+<h3>unmaskAsNumber <span id="unmaskasnumber"></span><a href="#unmaskasnumber" class="hashlink">&para;</a></h3><p>Make unmasking returning a number instead of a string.
+Default: false</p>
+<p>Be warned that using the unmaskAsNumber option together with jQuery.serialize will fail as serialize expects a string. (See issue <a href="https://github.com/RobinHerbots/jquery.inputmask/issues/1288">#1288</a>)</p>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:22:50 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

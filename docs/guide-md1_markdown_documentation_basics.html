@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w1351" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1351-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w1351-collapse" class="collapse navbar-collapse"><ul id="w1352" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-1342" data-toggle="collapse" data-parent="#navigation">Terms <b class="caret"></b></a><div id="navigation-1342" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1343" data-toggle="collapse" data-parent="#navigation">Runtime + Compiler vs. Runtime-only <b class="caret"></b></a><div id="navigation-1343" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1344" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-1344" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1345" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-1345" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1346" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-1346" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1347" data-toggle="collapse" data-parent="#navigation">Development vs. Production Mode <b class="caret"></b></a><div id="navigation-1347" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1348" data-toggle="collapse" data-parent="#navigation">Webpack <b class="caret"></b></a><div id="navigation-1348" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1349" data-toggle="collapse" data-parent="#navigation">Rollup <b class="caret"></b></a><div id="navigation-1349" class="submenu panel-collapse collapse"></div>
+<a class="list-group-item" href="#navigation-1350" data-toggle="collapse" data-parent="#navigation">Browserify <b class="caret"></b></a><div id="navigation-1350" class="submenu panel-collapse collapse"></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Markdown: Basics <span id="markdown-basics"></span><a href="#markdown-basics" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#getting-the-gist-of-markdowns-formatting-syntax">Getting the Gist of Markdown's Formatting Syntax</a></li>
+<li><a href="#paragraphs-headers-blockquotes">Paragraphs, Headers, Blockquotes</a></li>
+<li><a href="#lists">Lists</a></li></ol></div>
+<ul id="ProjectSubmenu">
+    <li><a href="/projects/markdown/" title="Markdown Project Page">Main</a></li>
+    <li><a class="selected" title="Markdown Basics">Basics</a></li>
+    <li><a href="/projects/markdown/syntax" title="Markdown Syntax Documentation">Syntax</a></li>
+    <li><a href="/projects/markdown/license" title="Pricing and License Information">License</a></li>
+    <li><a href="/projects/markdown/dingus" title="Online Markdown Web Form">Dingus</a></li>
+</ul>
+<h2>Getting the Gist of Markdown's Formatting Syntax <span id="getting-the-gist-of-markdowns-formatting-syntax"></span><a href="#getting-the-gist-of-markdowns-formatting-syntax" class="hashlink">&para;</a></h2><p>This page offers a brief overview of what it's like to use Markdown.
+The <a href="/projects/markdown/syntax" title="Markdown Syntax">syntax page</a> provides complete, detailed documentation for
+every feature, but Markdown should be very easy to pick up simply by
+looking at a few examples of it in action. The examples on this page
+are written in a before/after style, showing example syntax and the
+HTML output produced by Markdown.</p>
+<p>It's also helpful to simply try Markdown out; the <a href="/projects/markdown/dingus" title="Markdown Dingus">Dingus</a> is a
+web application that allows you type your own Markdown-formatted text
+and translate it to XHTML.</p>
+<p><strong>Note:</strong> This document is itself written using Markdown; you
+can <a href="/projects/markdown/basics.text">see the source for it by adding '.text' to the URL</a>.</p>
+<h2>Paragraphs, Headers, Blockquotes <span id="paragraphs-headers-blockquotes"></span><a href="#paragraphs-headers-blockquotes" class="hashlink">&para;</a></h2><p>A paragraph is simply one or more consecutive lines of text, separated
+by one or more blank lines. (A blank line is any line that looks like a
+blank line -- a line containing nothing spaces or tabs is considered
+blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
+<p>Markdown offers two styles of headers: <em>Setext</em> and <em>atx</em>.
+Setext-style headers for <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code> are created by
+"underlining" with equal signs (<code>=</code>) and hyphens (<code>-</code>), respectively.
+To create an atx-style header, you put 1-6 hash marks (<code>#</code>) at the
+beginning of the line -- the number of hashes equals the resulting
+HTML header level.</p>
+<p>Blockquotes are indicated using email-style '<code>&gt;</code>' angle brackets.</p>
+<p>Markdown:</p>
+<pre><code class="hljs markdown"><span class="hljs-section">A First Level Header
+====================</span>
+
+<span class="hljs-section">A Second Level Header
+---------------------</span>
+
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
+
+The quick brown fox jumped over the lazy
+dog's back.
+
+<span class="hljs-section">### Header 3</span>
+
+<span class="hljs-quote">&gt; This is a blockquote.</span>
+<span class="hljs-quote">&gt; 
+&gt; This is the second paragraph in the blockquote.</span>
+<span class="hljs-quote">&gt;
+&gt; ## This is an H2 in a blockquote</span>
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>A First Level Header<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>A Second Level Header<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>The quick brown fox jumped over the lazy
+dog's back.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Header 3<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a blockquote.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the second paragraph in the blockquote.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>This is an H2 in a blockquote<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+</span></code></pre>
+<h3>Phrase Emphasis <span id="phrase-emphasis"></span><a href="#phrase-emphasis" class="hashlink">&para;</a></h3><p>Markdown uses asterisks and underscores to indicate spans of emphasis.</p>
+<p>Markdown:</p>
+<pre><code class="hljs markdown">Some of these words <span class="hljs-emphasis">*are emphasized*</span>.
+Some of these words <span class="hljs-emphasis">_are emphasized also_</span>.
+
+Use two asterisks for <span class="hljs-strong">**strong emphasis**</span>.
+Or, if you prefer, <span class="hljs-strong">__use two underscores instead__</span>.
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Some of these words <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>are emphasized<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>.
+Some of these words <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>are emphasized also<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Use two asterisks for <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>strong emphasis<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>.
+Or, if you prefer, <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>use two underscores instead<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<h2>Lists <span id="lists"></span><a href="#lists" class="hashlink">&para;</a></h2><p>Unordered (bulleted) lists use asterisks, pluses, and hyphens (<code>*</code>,
+<code>+</code>, and <code>-</code>) as list markers. These three markers are
+interchangable; this:</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">*   </span>Candy.
+<span class="hljs-bullet">*   </span>Gum.
+<span class="hljs-bullet">*   </span>Booze.
+</code></pre>
+<p>this:</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">+   </span>Candy.
+<span class="hljs-bullet">+   </span>Gum.
+<span class="hljs-bullet">+   </span>Booze.
+</code></pre>
+<p>and this:</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">-   </span>Candy.
+<span class="hljs-bullet">-   </span>Gum.
+<span class="hljs-bullet">-   </span>Booze.
+</code></pre>
+<p>all produce the same output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Candy.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Gum.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Booze.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</span></code></pre>
+<p>Ordered (numbered) lists use regular numbers, followed by periods, as
+list markers:</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">1.  </span>Red
+<span class="hljs-bullet">2.  </span>Green
+<span class="hljs-bullet">3.  </span>Blue
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Red<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Green<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Blue<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</span></code></pre>
+<p>If you put blank lines between items, you'll get <code>&lt;p&gt;</code> tags for the
+list item text. You can create multi-paragraph list items by indenting
+the paragraphs by 4 spaces or 1 tab:</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">*   </span>A list item.
+
+<span class="hljs-code">    With multiple paragraphs.</span>
+<span class="hljs-bullet">
+*   </span>Another item in the list.
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A list item.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>With multiple paragraphs.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Another item in the list.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+</span></code></pre>
+<h3>Links <span id="links"></span><a href="#links" class="hashlink">&para;</a></h3><p>Markdown supports two styles for creating links: <em>inline</em> and
+<em>reference</em>. With both styles, you use square brackets to delimit the
+text you want to turn into a link.</p>
+<p>Inline-style links use parentheses immediately after the link text.
+For example:</p>
+<pre><code class="hljs markdown">This is an [<span class="hljs-string">example link</span>](<span class="hljs-link">http://example.com/</span>).
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is an <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/"</span>&gt;</span>
+example link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<p>Optionally, you may include a title attribute in the parentheses:</p>
+<pre><code class="hljs markdown">This is an [<span class="hljs-string">example link</span>](<span class="hljs-link">http://example.com/ "With a Title"</span>).
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is an <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"With a Title"</span>&gt;</span>
+example link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<p>Reference-style links allow you to refer to your links by names, which
+you define elsewhere in your document:</p>
+<pre><code class="hljs markdown">I get 10 times more traffic from [<span class="hljs-string">Google</span>][<span class="hljs-symbol">1</span>] than from
+[<span class="hljs-string">Yahoo</span>][<span class="hljs-symbol">2</span>] or [<span class="hljs-string">MSN</span>][<span class="hljs-symbol">3</span>].
+
+[<span class="hljs-symbol">1</span>]: <span class="hljs-link">http://google.com/        "Google"</span>
+[<span class="hljs-symbol">2</span>]: <span class="hljs-link">http://search.yahoo.com/  "Yahoo Search"</span>
+[<span class="hljs-symbol">3</span>]: <span class="hljs-link">http://search.msn.com/    "MSN Search"</span>
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I get 10 times more traffic from <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://google.com/"</span>
+<span class="hljs-attr">title</span>=<span class="hljs-string">"Google"</span>&gt;</span>Google<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> than from <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://search.yahoo.com/"</span>
+<span class="hljs-attr">title</span>=<span class="hljs-string">"Yahoo Search"</span>&gt;</span>Yahoo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> or <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://search.msn.com/"</span>
+<span class="hljs-attr">title</span>=<span class="hljs-string">"MSN Search"</span>&gt;</span>MSN<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<p>The title attribute is optional. Link names may contain letters,
+numbers and spaces, but are <em>not</em> case sensitive:</p>
+<pre><code class="hljs markdown">I start my morning with a cup of coffee and
+[<span class="hljs-string">The New York Times</span>][<span class="hljs-symbol">NY Times</span>].
+
+[<span class="hljs-symbol">ny times</span>]: <span class="hljs-link">http://www.nytimes.com/</span>
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I start my morning with a cup of coffee and
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.nytimes.com/"</span>&gt;</span>The New York Times<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<h3>Images <span id="images"></span><a href="#images" class="hashlink">&para;</a></h3><p>Image syntax is very much like link syntax.</p>
+<p>Inline (titles are optional):</p>
+<pre><code class="hljs markdown">![<span class="hljs-string">alt text</span>](<span class="hljs-link">/path/to/img.jpg "Title"</span>)
+</code></pre>
+<p>Reference-style:</p>
+<pre><code class="hljs markdown">![<span class="hljs-string">alt text</span>][<span class="hljs-symbol">id</span>]
+
+[<span class="hljs-symbol">id</span>]: <span class="hljs-link">/path/to/img.jpg "Title"</span>
+</code></pre>
+<p>Both of the above examples produce the same output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/path/to/img.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"alt text"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Title"</span> /&gt;</span>
+</span></code></pre>
+<h3>Code <span id="code"></span><a href="#code" class="hashlink">&para;</a></h3><p>In a regular paragraph, you can create code span by wrapping text in
+backtick quotes. Any ampersands (<code>&amp;</code>) and angle brackets (<code>&lt;</code> or
+<code>&gt;</code>) will automatically be translated into HTML entities. This makes
+it easy to use Markdown to write about HTML example code:</p>
+<pre><code class="hljs javascript">I strongly recommend against using any <span class="hljs-string">`&lt;blink&gt;`</span> tags.
+
+I wish SmartyPants used named entities like <span class="hljs-string">`&amp;mdash;`</span>
+instead <span class="hljs-keyword">of</span> decimal-encoded entites like <span class="hljs-string">`&amp;#8212;`</span>.
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I strongly recommend against using any
+<span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-symbol">&amp;lt;</span>blink<span class="hljs-symbol">&amp;gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> tags.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I wish SmartyPants used named entities like
+<span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-symbol">&amp;amp;</span>mdash;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> instead of decimal-encoded
+entites like <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-symbol">&amp;amp;</span>#8212;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span></code></pre>
+<p>To specify an entire block of pre-formatted code, indent every line of
+the block by 4 spaces or 1 tab. Just like with code spans, <code>&amp;</code>, <code>&lt;</code>,
+and <code>&gt;</code> characters will be escaped automatically.</p>
+<p>Markdown:</p>
+<pre><code class="hljs twig"><span class="xml">If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>For example.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+</span></code></pre>
+<p>Output:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-symbol">&amp;lt;</span>blockquote<span class="hljs-symbol">&amp;gt;</span>
+    <span class="hljs-symbol">&amp;lt;</span>p<span class="hljs-symbol">&amp;gt;</span>For example.<span class="hljs-symbol">&amp;lt;</span>/p<span class="hljs-symbol">&amp;gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>/blockquote<span class="hljs-symbol">&amp;gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+</span></code></pre>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 05 Jan 2021 22:23:34 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
