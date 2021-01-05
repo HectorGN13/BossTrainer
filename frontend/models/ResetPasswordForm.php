@@ -7,6 +7,7 @@ use yii\base\Model;
 use common\models\User;
 
 /**
+ * Formulario de reinicio de contraseña
  * Password reset form
  */
 class ResetPasswordForm extends Model
@@ -22,6 +23,7 @@ class ResetPasswordForm extends Model
 
 
     /**
+     * Crea un nuevo modelo de formulario de reinicio de contraseña según un token pasado por parámetro.
      * Creates a form model given a token.
      *
      * @param string $token
@@ -79,6 +81,7 @@ class ResetPasswordForm extends Model
     }
 
     /**
+     * Reinicia la contraseña.
      * Resets password.
      *
      * @return bool if password was reset.

@@ -7,12 +7,32 @@ use yii\base\Widget;
 use yii\helpers\Url;
 
 
+/**
+ * Este widget añade una barra de navegación lateral que puede esconderse. El siguiente ejemplo muestra como podemos
+ * añadir elementos a la barra lateral, además podremos acompañarlos con iconos se recomienda usar FontAwesome.
+ *
+ * Ejemplo en la vista:
+ *
+ *echo NavSidebar::widget([
+ * 'imgProfile' =>  $avatarImage,
+ * 'nameProfile' => $value = (Yii::$app->user->isGuest) ? "invitado" : Html::encode(Yii::$app->user->identity->username),
+ * 'items' => [['url' => ['movements/benchmark'],'label' => 'Mis Benchmarks','icon' => 'fas fa-trophy']],
+ * ])
+ *
+ *
+ *
+ * Class NavSidebar
+ * @package frontend\components\navbar
+ */
 class NavSidebar extends Widget
 {
     public $items = [];
     public $imgProfile = "";
     public $nameProfile = "";
 
+    /**
+     * Inicializa el objeto.
+     */
     public function init()
     {
         parent::init();
@@ -20,7 +40,7 @@ class NavSidebar extends Widget
     }
 
     /**
-     * Registers the needed assets
+     * Registro de Assets
      */
     public function registerAssets()
     {
@@ -28,6 +48,10 @@ class NavSidebar extends Widget
         NavSidebarAsset::register($view);
     }
 
+    /**
+     * Función que ejecuta el widget
+     * @return string
+     */
     public function run()
     {
 

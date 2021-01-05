@@ -11,6 +11,8 @@ use yii\filters\VerbFilter;
 
 
 /**
+ * MovementsController implementa las acciones de agregar, borrar y editar elementos para el modelo de Movements. Además de implentar
+ * las acciones encargadas de renderizar las vistas.
  * MovementsController implements the CRUD actions for Movements model.
  */
 class MovementsController extends Controller
@@ -31,6 +33,7 @@ class MovementsController extends Controller
     }
 
     /**
+     * Renderizará un listado de los modelos de movements en función del tipo recibido en la petición get.
      * Lists all Movements models.
      * @return mixed
      */
@@ -69,6 +72,7 @@ class MovementsController extends Controller
 
 
     /**
+     * Mostrará un modelo de Movements en conctreto según se le pase por el parámetro id(Clave primaria).
      * Displays a single Movements model.
      * @param integer $id
      * @return mixed
@@ -88,6 +92,8 @@ class MovementsController extends Controller
     }
 
     /**
+     * Busca un modelo de Movements en concreto pasándole como parámetro el id (clave primaria).
+     * Si no lo encuentra, se lanzará una excepción 404 HTTP.
      * Finds the Movements model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

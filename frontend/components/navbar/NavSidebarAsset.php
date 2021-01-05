@@ -4,6 +4,10 @@ namespace frontend\components\navbar;
 
 use yii\web\AssetBundle;
 
+/**
+ * Class NavSidebarAsset
+ * @package frontend\components\navbar
+ */
 class NavSidebarAsset extends AssetBundle
 {
     public $sourcePath = __DIR__ . '/assets';

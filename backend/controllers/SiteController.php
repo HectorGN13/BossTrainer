@@ -174,6 +174,7 @@ class SiteController extends Controller
 
 
     /**
+     * Acción encargada de generar la vista para enviar un mensaje digundido a todos los usuarios del gimnasio.
      * @return string
      */
     public function actionBroadcast()
@@ -206,6 +207,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Renderiza la vista para el generador de facturas.
      * @return string
      */
     public function actionInvoice()
@@ -216,6 +218,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Genera la vista para la confugaración es decir el update del modelo de gym
      * @return string|Response
      * @throws NotFoundHttpException
      */
@@ -285,6 +288,7 @@ class SiteController extends Controller
 
 
     /**
+     * Accion para obtener la provincia en funcion del codigo postal introducido
      * @return string
      */
     public function actionGetprovincia()
@@ -296,6 +300,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Accion que genera las localidades en función de la provincia introducida.
      * @return string
      */
     public function actionGetlocalidades()
@@ -307,6 +312,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Genera la vista del perfil de un gimnasio.
      * @param $id
      * @return string
      */
@@ -351,6 +357,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Lista los seguidores del gimnasio.
      * @return string
      */
     public function actionFollowers()
@@ -365,6 +372,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Asigna una tarifa a un determinado usuario que sigue al gimnasio conectado.
      * @param $id
      * @return array|string|Response
      */

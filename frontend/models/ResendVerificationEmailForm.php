@@ -7,6 +7,10 @@ use Yii;
 use common\models\User;
 use yii\base\Model;
 
+/**
+ * Class ResendVerificationEmailForm
+ * @package frontend\models
+ */
 class ResendVerificationEmailForm extends Model
 {
     /**
@@ -33,6 +37,7 @@ class ResendVerificationEmailForm extends Model
     }
 
     /**
+     * Manda un email de confirmación al correo del usuario.
      * Sends confirmation email to user
      *
      * @return bool whether the email was sent

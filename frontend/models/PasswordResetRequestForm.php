@@ -6,6 +6,7 @@ use yii\base\Model;
 use common\models\User;
 
 /**
+ * Formulario de solicitud de reinicio de contraseña.
  * Password reset request form
  */
 class PasswordResetRequestForm extends Model
@@ -31,6 +32,7 @@ class PasswordResetRequestForm extends Model
     }
 
     /**
+     * Manda un email con un link, para restablecer la contraseña
      * Sends an email with a link, for resetting the password.
      *
      * @return bool whether the email was send

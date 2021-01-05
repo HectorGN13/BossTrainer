@@ -294,9 +294,9 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates password hash from password and sets it to the model
-     *
-     * @param string $password
+     * Modifica contraseña
+     * @param $password
+     * @throws \yii\base\Exception
      */
     public function setPassword($password)
     {
@@ -380,6 +380,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Obtiene el nombre de la provincia
      * @param $provinciaId
      * @return mixed|string|null
      */
@@ -390,6 +391,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Obtiene el nobre de la localidad
      * @param $localidadId
      * @return mixed|string|null
      */
@@ -400,6 +402,7 @@ class Gym extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Obtiene el nombre del gimnasio.
      * @param $gymId
      * @return mixed|null
      */

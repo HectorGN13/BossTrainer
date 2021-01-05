@@ -141,6 +141,7 @@ class BoardController extends Controller
     }
 
     /**
+     * Establece una pizarra por defecto o la elimina.
      * @return \yii\web\Response
      */
     public function actionDefault()

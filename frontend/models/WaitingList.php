@@ -8,6 +8,7 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
+ * Esta es la clase model para la tabla "waiting_list".
  * This is the model class for table "waiting_list".
  *
  * @property int $id
@@ -54,6 +55,7 @@ class WaitingList extends ActiveRecord
     }
 
     /**
+     * Obtiene la query para [[TrainingSession]].
      * Gets query for [[TrainingSession]].
      *
      * @return ActiveQuery
@@ -64,6 +66,7 @@ class WaitingList extends ActiveRecord
     }
 
     /**
+     * Obtiene la query para [[User]].
      * Gets query for [[User]].
      *
      * @return ActiveQuery

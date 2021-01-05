@@ -6,6 +6,11 @@ use common\models\User;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
 
+/**
+ * Modelo del formulario de verificación de email.
+ * Class VerifyEmailForm
+ * @package frontend\models
+ */
 class VerifyEmailForm extends Model
 {
     /**
@@ -20,6 +25,7 @@ class VerifyEmailForm extends Model
 
 
     /**
+     * Crea un modelo de formulario según un token dado.
      * Creates a form model with given token.
      *
      * @param string $token
@@ -39,6 +45,7 @@ class VerifyEmailForm extends Model
     }
 
     /**
+     * Método encargado de verificar el email.
      * Verify email
      *
      * @return User|null the saved model or null if saving fails

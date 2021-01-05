@@ -9,6 +9,7 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
+ * Clase modelo de la tabla "user_training_session".
  * This is the model class for table "user_training_session".
  *
  * @property int $id
@@ -57,6 +58,7 @@ class UserTrainingSession extends ActiveRecord
     }
 
     /**
+     * Recibe una query de [[TrainingSession]].
      * Gets query for [[TrainingSession]].
      *
      * @return ActiveQuery
@@ -67,6 +69,7 @@ class UserTrainingSession extends ActiveRecord
     }
 
     /**
+     * Recibe una query de [[User]].
      * Gets query for [[User]].
      *
      * @return ActiveQuery
@@ -78,6 +81,7 @@ class UserTrainingSession extends ActiveRecord
 
 
     /**
+     * Recibe un entero de la columna rating en el caso de ser null devuelve un cero.
      * @return int|mixed
      */
     public function getRating()

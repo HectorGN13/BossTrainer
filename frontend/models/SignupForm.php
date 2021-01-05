@@ -7,6 +7,7 @@ use yii\base\Model;
 use common\models\User;
 
 /**
+ * Formulario de registro.
  * Signup form
  */
 class SignupForm extends Model
@@ -72,6 +73,7 @@ class SignupForm extends Model
     }
 
     /**
+     * Registra a un nuevo usuario. Es decir crea una nueva cuenta.
      * Signs user up.
      *
      * @return bool whether the creating new account was successful and email was sent
@@ -93,6 +95,7 @@ class SignupForm extends Model
     }
 
     /**
+     * Manda un email de confirmación a la dirección del usuario.
      * Sends confirmation email to user
      * @param User $user user model to with email should be send
      * @return bool whether the email was sent

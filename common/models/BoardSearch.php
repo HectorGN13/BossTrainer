@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Board;
 
 /**
+ * BoardSearch representa el modelo detrás de la forma de búsqueda de `backend\models\Board`.
  * BoardSearch represents the model behind the search form of `backend\models\Board`.
  */
 class BoardSearch extends Board
@@ -33,6 +34,7 @@ class BoardSearch extends Board
     }
 
     /**
+     * Crea una instancia de data provider con la consulta de búsqueda aplicada
      * Creates data provider instance with search query applied
      *
      * @param array $params

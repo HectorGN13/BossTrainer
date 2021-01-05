@@ -6,6 +6,7 @@ use common\models\Gym;
 use yii\db\ActiveRecord;
 
 /**
+ * Esta es la clase modelo para tabla "board".
  * This is the model class for table "board".
  *
  * @property int $id
@@ -54,6 +55,7 @@ class Board extends ActiveRecord
     }
 
     /**
+     * Obtiene una consulta para [[CreatedBy]].
      * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery
@@ -64,6 +66,7 @@ class Board extends ActiveRecord
     }
 
     /**
+     * Obtiene una consulta para [[Gyms]].
      * Gets query for [[Gyms]].
      *
      * @return \yii\db\ActiveQuery

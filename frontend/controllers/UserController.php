@@ -2,7 +2,6 @@
 
 namespace frontend\controllers;
 
-use app\models\ImagenForm;
 use common\models\Notification;
 use Yii;
 use common\models\User;
@@ -19,6 +18,7 @@ use yii\web\UploadedFile;
 
 
 /**
+ * Clase que implementa todas las acciones para el modelo User.
  * UserController implements the CRUD actions for User model.
  */
 class UserController extends Controller
@@ -55,6 +55,7 @@ class UserController extends Controller
     }
 
     /**
+     * Muestra el perfil del usuario.
      * Displays a single User model.
      * @param integer $id
      * @return mixed
@@ -68,7 +69,7 @@ class UserController extends Controller
     }
 
     /**
-     *
+     * Muestra un listado de mis benchmarks del usuario actual.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -81,6 +82,7 @@ class UserController extends Controller
     }
 
     /**
+     * Modifica el modelo de User, además puede añadir foto a un Bucket de AWS
      * @param $id
      * @return array|string|Response
      * @throws NotFoundHttpException
@@ -147,6 +149,10 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Cuenta la cantidad de notificaciones no leidas.
+     * @return false|string
+     */
     public function actionNotify()
     {
         Yii::$app->response->format = yii\web\Response::FORMAT_JSON;

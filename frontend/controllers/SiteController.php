@@ -22,6 +22,7 @@ use frontend\models\ContactForm;
 use yii\web\Response;
 
 /**
+ * Controlador principal de site.
  * Site controller
  */
 class SiteController extends Controller
@@ -74,6 +75,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Muestra el home o página principal del sitio.
      * Displays homepage.
      *
      * @return mixed
@@ -96,6 +98,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Acción para entrar en el sistema.
      * Logs in a user.
      *
      * @return mixed
@@ -141,6 +144,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Acción para desconectar del sistema al usuario actual.
      * Logs out the current user.
      *
      * @return mixed
@@ -163,6 +167,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Crear un nuevo modelo de usuario. Registrarse en el sistema.
      * Signs user up.
      *
      * @return mixed
@@ -187,6 +192,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Petión de reinicio de pasword.
      * Requests password reset.
      *
      * @return mixed
@@ -218,6 +224,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Vista para reiniciar password.
      * Resets password.
      *
      * @param string $token
@@ -246,6 +253,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Acción para verificar el correo electrónico.
      * Verify email address
      *
      * @param string $token
@@ -275,6 +283,7 @@ class SiteController extends Controller
     }
 
     /**
+     * Volver a enviar el correo de verificación.
      * Resend verification email
      *
      * @return mixed

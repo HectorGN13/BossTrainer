@@ -15,6 +15,7 @@ use yii\filters\VerbFilter;
 use yii\web\Response;
 
 /**
+ * WeightController implementa el crud de las acciones para el modelo Weight.
  * WeightController implements the CRUD actions for Weight model.
  */
 class WeightController extends Controller
@@ -45,6 +46,7 @@ class WeightController extends Controller
     }
 
     /**
+     * Muestra un listado de todos los modelos de Weight del usuario conectado
      * Lists all Weight models.
      * @return mixed
      */
@@ -67,6 +69,8 @@ class WeightController extends Controller
 
 
     /**
+     * Crea un nuevo modelo de Weight.
+     * Si se crea con éxito el navegador te redireccionará la vista principal de la página weight.
      * Creates a new Weight model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -101,6 +105,7 @@ class WeightController extends Controller
     }
 
     /**
+     * Borra un modelo existente de Weight
      * Deletes an existing Weight model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @return mixed
@@ -120,6 +125,8 @@ class WeightController extends Controller
     }
 
     /**
+     * Encuentra el modelo de Weight según el id(Clave primaria) que se le pase por parámetro.
+     *
      * Finds the Weight model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

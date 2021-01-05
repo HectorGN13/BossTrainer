@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 
 /**
+ * Formulario de inicio de sesión.
  * Login form
  */
 class LoginForm extends Model
@@ -49,6 +50,8 @@ class LoginForm extends Model
     }
 
     /**
+     * Método encargado de validar la contraseña.
+     * Este método sirve como validación en línea para la contraseña.
      * Validates the password.
      * This method serves as the inline validation for password.
      *
@@ -66,6 +69,7 @@ class LoginForm extends Model
     }
 
     /**
+     * Inicia sesión como usuario con el nombre de usuario y la contraseña proporcionados.
      * Logs in a user using the provided username and password.
      *
      * @return bool whether the user is logged in successfully
@@ -80,6 +84,7 @@ class LoginForm extends Model
     }
 
     /**
+     * Busca un usuarío por [[username]]
      * Finds user by [[username]]
      *
      * @return User|null

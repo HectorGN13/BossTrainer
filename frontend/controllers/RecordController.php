@@ -14,6 +14,8 @@ use yii\filters\VerbFilter;
 use yii\web\Response;
 
 /**
+ * RecordController implementa las acciones de agregar, borrar y editar elementos para el modelo de Records. Además de implentar
+ * las acciones encargadas de renderizar las vistas.
  * RecordController implements the CRUD actions for Record model.
  */
 class RecordController extends Controller
@@ -45,6 +47,7 @@ class RecordController extends Controller
 
 
     /**
+     * Renderizará un listado de los modelos de Record.
      * Lists all Record models.
      * @return mixed
      */
@@ -60,6 +63,7 @@ class RecordController extends Controller
     }
 
     /**
+     * Mostrará un modelo de Movement en concreto según el id que reciba por la petición post.
      * Displays a single Record model.
      * @param integer $movements_id
      * @return mixed
@@ -73,6 +77,8 @@ class RecordController extends Controller
     }
 
     /**
+     * Crea un nuevo modelo de Record.
+     * En el caso de que la creación haga efecto el navegador te redirecciona a la vista de ese record
      * Creates a new Record model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -110,6 +116,7 @@ class RecordController extends Controller
     }
 
     /**
+     * Modifica un modelo existenten de Record según el movimiento id que se le pase por parámetro.
      * Updates an existing Record model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $movements_id
@@ -145,6 +152,8 @@ class RecordController extends Controller
     }
 
     /**
+     * Borra un Modelo existente de Record.
+     * Si el borrado se realiza con éxito el navegador te redireccionará a un index donde todos los movimientos se mostrarán.
      * Deletes an existing Record model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @return mixed
@@ -163,6 +172,7 @@ class RecordController extends Controller
     }
 
     /**
+     * Encuentra un modelo de Record en concreto, segun el id (Clave primaria) que se le pase por parámetro.
      * Finds the Record model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $movements_id

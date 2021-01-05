@@ -6,6 +6,7 @@ use common\models\User;
 use Yii;
 
 /**
+ * Esta es la clase de modelo para la tabla "weight".
  * This is the model class for table "weight".
  *
  * @property int $id
@@ -54,6 +55,7 @@ class Weight extends \yii\db\ActiveRecord
     }
 
     /**
+     * Obtiene una consulta para [[User]].
      * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery

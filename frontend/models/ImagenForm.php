@@ -19,6 +19,11 @@ class ImagenForm extends Model
         ];
     }
 
+    /**
+     * Método encargado de subir la imagen a local.
+     * @param $id
+     * @return bool
+     */
     public function uploadLocal($id)
     {
         if ($this->validate()) {
@@ -34,6 +39,11 @@ class ImagenForm extends Model
         }
     }
 
+    /**
+     * Método encargado de subir los archivos a AWS.
+     * @param $id
+     * @return bool
+     */
     public function uploadAWS($id)
     {
         $filename = $id . '.' . $this->imagen->extension;
@@ -76,6 +86,10 @@ class ImagenForm extends Model
         return true;
     }
 
+    /**
+     * Borra el archivo en local.
+     * @param $id
+     */
     public function deleteLocal($id)
     {
         unlink(Yii::getAlias('@img/' . $id . '.' . $this->imagen->extension));

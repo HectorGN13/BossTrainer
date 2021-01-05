@@ -4,6 +4,7 @@ namespace frontend\assets;
 use yii\web\AssetBundle;
 
 /**
+ * Paquete de archivos material-design.
  * Material AssetBundle
  * @since 0.1
  */

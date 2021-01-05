@@ -7,6 +7,7 @@ use Yii;
 use yii\base\Model;
 
 /**
+ * ContactForm es el modelo detrás del formulario de contacto.
  * ContactForm is the model behind the contact form.
  */
 class ContactForm extends Model
@@ -57,6 +58,7 @@ class ContactForm extends Model
     }
 
     /**
+     * Manda un email a la dirección especificada por parámetro usando la información recogida en el formulario de contacto.
      * Sends an email to the specified email address using the information collected by this model.
      *
      * @param string $email the target email address

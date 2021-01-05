@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
+ * NotificationController implementa las acciones de agregar, borrar y editar elementos para el modelo de Movements.
+ * Además de implentar las acciones encargadas de renderizar las vistas.
  * NotificationController implements the CRUD actions for Notification model.
  */
 class NotificationController extends Controller
@@ -32,6 +34,7 @@ class NotificationController extends Controller
     }
 
     /**
+     * Renderizará un listado de los modelos de Notification según el usuario que este conectado en ese momento.
      * Lists all Notification models.
      * @return mixed
      */
@@ -52,8 +55,8 @@ class NotificationController extends Controller
     }
 
     /**
+     * Mostrará un modelo de Notification en concreto según el id que reciba por la petición post.
      * Displays a single Notification model.
-     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -73,9 +76,9 @@ class NotificationController extends Controller
     }
 
     /**
+     * Borrará un Modelo de Notification existente, si el borrado se hace correctamente el navegador redireccionará al index de notification
      * Deletes an existing Notification model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -92,6 +95,8 @@ class NotificationController extends Controller
     }
 
     /**
+     * Busca un modelo de Notification en concreto pasándole como parámetro el id (clave primaria).
+     * Si no lo encuentra, se lanzará una excepción 404 HTTP.
      * Finds the Notification model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -134,6 +139,7 @@ class NotificationController extends Controller
     }
 
     /**
+     * Muestra un modelo de notificación en concreto y además modifica el atributo read una vez renderizado marcandolo como leído.
      * Displays a single Notification model.
      * @param integer $id
      * @return mixed

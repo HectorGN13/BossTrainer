@@ -5,6 +5,11 @@ namespace frontend\components\parallax;
 
 use yii\web\AssetBundle;
 
+/**
+ * Paquete de archivos para la interfaz CustomParallax
+ * Class CustomParallaxAsset
+ * @package frontend\components\parallax
+ */
 class CustomParallaxAsset extends AssetBundle
 {
     public $sourcePath = __DIR__ . '/assets';

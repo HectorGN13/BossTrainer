@@ -12,6 +12,11 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\GymUser;
 
+/**
+ * Controlador para las acciones y el renderizado de las vistas del modelo de TrainingSession.
+ * Class TrainingsessionController
+ * @package frontend\controllers
+ */
 class TrainingsessionController extends Controller
 {
     /**
@@ -30,6 +35,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Muestra un listado de las sesiones de entrenamiento del día actual.
      * Lists all TrainingSession models.
      * @return mixed
      */
@@ -50,6 +56,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Muestra una sesión de entrenamiento en concreto según el id que se le pasa como parámetro.
      * Displays a single TrainingSession model.
      * @param integer $id
      * @return mixed
@@ -63,6 +70,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Crea un nuevo modelo de TrainingSession.
      * Creates a new TrainingSession model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -83,6 +91,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Modifica un modelo existente de TrainingSession. Si se modifica con éxito el navegador te redireccionará a vista index.
      * Updates an existing TrainingSession model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -103,6 +112,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Borra un modelo existente de TrainingSession y te redirecciona al index
      * Deletes an existing TrainingSession model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -133,6 +143,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Devuelve los datos del modelo.
      * @return array|mixed|null
      */
     public function actiongetdetail()
@@ -141,6 +152,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Función encargada de obtener un listado de todas las sesiones de entrenamiento de el día actual.
      * @return string
      */
     public function actionGetsessions()
@@ -168,6 +180,7 @@ class TrainingsessionController extends Controller
     }
 
     /**
+     * Función que crea un nuevo modelo de WaitingList si no existe o lo elimina en el caso de que exista.
      * @throws NotFoundHttpException
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException

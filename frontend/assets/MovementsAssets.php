@@ -6,7 +6,8 @@ namespace frontend\assets;
 use yii\web\AssetBundle;
 
 /**
- * Main frontend application asset bundle.
+ * Paquete de archivos de la interfaz Movements.
+ * Movements frontend application asset bundle.
  */
 class MovementsAssets extends AssetBundle
 {

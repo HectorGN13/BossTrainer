@@ -19,6 +19,8 @@ use common\models\UserTrainingSession;
 use yii\web\Response;
 
 /**
+ * GymController implementa las acciones de agregar, borrar y editar elementos para el modelo de Gym. Además de implentar
+ * las acciones encargadas de renderizar las vistas.
  * GymController implements the CRUD actions for Gym model.
  */
 class GymController extends Controller
@@ -39,6 +41,7 @@ class GymController extends Controller
     }
 
     /**
+     * Muestra la vista de todos los gimnasios cargadon un scroll infinito.
      * Lists all Gym models.
      * @return mixed
      */
@@ -54,6 +57,7 @@ class GymController extends Controller
     }
 
     /**
+     * Listado de los gimnasios a los que un usuario se ha unido.
      * Lists my Gym models.
      * @return mixed
      */
@@ -75,6 +79,7 @@ class GymController extends Controller
     }
 
     /**
+     * Muestra el modelo de un gimnasio en concreto, según se le pase por id.
      * Displays a single Gym model.
      * @param integer $id
      * @return mixed
@@ -101,6 +106,8 @@ class GymController extends Controller
     }
 
     /**
+     * Crea un nuevo modelo de gimnasio. En el caso de que la creación haga efecto el navegador te redirecciona a la
+     * vista de ese gimnasio
      * Creates a new Gym model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -119,6 +126,8 @@ class GymController extends Controller
     }
 
     /**
+     * Modifica un modelo de Gym ya existente. Si la modificación se realiza con éxito el navegador te redirigirá a la
+     * página de la vista del Modelo.
      * Updates an existing Gym model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -139,6 +148,8 @@ class GymController extends Controller
     }
 
     /**
+     * Elimina un modelo de Gym ya existente. Si la eliminación se realiza con éxito el navegador te redirigirá a la
+     * página Index de gimnasios.
      * Deletes an existing Gym model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -153,6 +164,8 @@ class GymController extends Controller
     }
 
     /**
+     * Encunetra el modoelo según el id que le pases al método. Es decir buscaría por su clave primaria.
+     * Si el modelo no se encuentra se lanzará una excepcion 404 HTTP. Indicando que la página requerida no existe.
      * Finds the Gym model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -169,6 +182,7 @@ class GymController extends Controller
     }
 
     /**
+     * Crea un nuevo modelo de GymUser. En el caso de que ya exista se elimina.
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
@@ -192,6 +206,7 @@ class GymController extends Controller
     }
 
     /**
+     * Crea un nuevo modelo de UserTrainingSession. En el caso de que sea posible, es decir si tu tarifa no ha terminado.
      * @return Response
      */
     public function actionJoin()
@@ -233,6 +248,7 @@ class GymController extends Controller
     }
 
     /**
+     * Elimina el modelo UserTrainingSession.
      * @param $id
      * @return Response
      * @throws \Throwable

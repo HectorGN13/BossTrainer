@@ -159,9 +159,6 @@ class TrainingsessionController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    /**
-     * @return array|mixed|null
-     */
     public function actiongetdetail()
     {
         return Yii::$app->request->post('id');
@@ -169,6 +166,7 @@ class TrainingsessionController extends Controller
 
 
     /**
+     * Obtiene las sesiones de entrenamiento del dia actual.
      * @return string
      */
     public function actionGetsessions()
