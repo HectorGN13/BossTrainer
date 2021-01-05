@@ -41,7 +41,8 @@
         "antkaz/yii2-vue": "^1.0",
         "ext-json": "*",
         "kartik-v/yii2-widget-rating": "dev-master",
-        "kartik-v/yii2-grid": "dev-master"
+        "kartik-v/yii2-grid": "dev-master",
+        "dmstr/yii2-cookie-consent": "^1.4"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",

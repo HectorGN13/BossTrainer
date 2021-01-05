@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ace2fc9db57b859d4ff3ccef1ba8849",
+    "content-hash": "c31774e0b48f58e8893fa5d1570df3d2",
     "packages": [
         {
             "name": "antkaz/yii2-vue",
@@ -398,6 +398,56 @@
                 "source": "https://github.com/lipis/flag-icon-css/tree/3.5.0"
             },
             "time": "2020-06-10T11:53:19+00:00"
+        },
+        {
+            "name": "dmstr/yii2-cookie-consent",
+            "version": "1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-cookie-consent.git",
+                "reference": "49d57b7c250584bc3508e09225a8711699d06555"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-cookie-consent/zipball/49d57b7c250584bc3508e09225a8711699d06555",
+                "reference": "49d57b7c250584bc3508e09225a8711699d06555",
+                "shasum": ""
+            },
+            "require": {
+                "npm-asset/dmstr--cookie-consent": "^0.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\cookieconsent\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "German Bisurgi",
+                    "email": "g.bisurgi@herzogkommunikation.de"
+                },
+                {
+                    "name": "Elias Luhr",
+                    "email": "e.luhr@herzogkommunikation.de"
+                }
+            ],
+            "description": "Yii2 Cookie Consent Widget",
+            "keywords": [
+                "cookie consent",
+                "extension",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/dmstr/yii2-cookie-consent/issues",
+                "source": "https://github.com/dmstr/yii2-cookie-consent/tree/master"
+            },
+            "time": "2020-04-24T10:39:10+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -2147,6 +2197,18 @@
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.3.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/dmstr--cookie-consent",
+            "version": "0.4.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/@dmstr/cookie-consent/-/cookie-consent-0.4.0.tgz"
             },
             "type": "npm-asset",
             "license": [

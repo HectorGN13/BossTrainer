@@ -6,7 +6,7 @@
 /* @var $content string */
 
 
-
+use dmstr\cookieconsent\widgets\CookieConsent;
 use frontend\assets\AppAsset;
 use kekaadrenalin\recaptcha3\ReCaptchaWidget;
 use yii\helpers\Html;
@@ -170,3 +170,16 @@ $this->title = 'BossTrainer';
     </div>
 </section>
 </div>
+<?= CookieConsent::widget([
+    'name' => 'cookie_consent_status',
+    'path' => '/',
+    'domain' => '',
+    'expiryDays' => 365,
+    'message' => Yii::t('cookie-consent',
+        'Utilizamos cookies para asegurar el correcto funcionamiento de nuestro sitio web. 
+      Para una mejor experiencia de visita utilizamos productos de análisis. Se utilizan cuando está de acuerdo con "Estadísticas"..'),
+    'acceptAll' => Yii::t('cookie-consent', 'Aceptar'),
+    'controlsOpen' => false,
+    'detailsOpen' => false,
+    'learnMore' =>  false,
+]) ?>

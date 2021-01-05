@@ -5,7 +5,17 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'cookie-consent' => [
+                    'class'          => \yii\i18n\PhpMessageSource::class,
+                    'basePath'       => '@app/messages',
+                    'sourceLanguage' => 'es',
+                ],
+            ],
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -32,6 +42,9 @@ return [
             'region' => 'eu-central-1',
             'version' => 'latest',
         ],
+        'cookieConsentHelper' => [
+            'class' => dmstr\cookieconsent\components\CookieConsentHelper::class
+        ]
     ],
 
 ];
