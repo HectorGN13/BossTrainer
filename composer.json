@@ -52,7 +52,8 @@
         "codeception/module-filesystem": "^1.0",
         "codeception/verify": "~0.5.0 || ~1.1.0",
         "symfony/browser-kit": ">=2.7 <=4.2.4",
-        "purrweb/yii2-heroku": "*"
+        "purrweb/yii2-heroku": "*",
+        "yiisoft/yii2-apidoc": "~2.1.0"
     },
     "config": {
         "process-timeout": 1800,
