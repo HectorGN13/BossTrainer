@@ -71,7 +71,7 @@ class MovementsSearch extends Movements
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 15,
             ],
         ]);
 
