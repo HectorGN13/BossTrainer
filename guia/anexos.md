@@ -1,6 +1,6 @@
 # Anexos
 
-### **(R68) Validación de HTML y CSS, nivel de accesibilidad AA y prueba del seis**
+**(R68) Validación de HTML y CSS, nivel de accesibilidad AA y prueba del seis**
 ---
 ### Validación de HTML y CSS
 
