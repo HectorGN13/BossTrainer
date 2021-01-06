@@ -72,6 +72,7 @@ $this->title = 'Mi Historial';
                             'attribute' => 'rating',
                             'value' => $model->rating,
 
+                            'options' => ['id' => 'rating-'.$key],
 
                             'pluginOptions' => [
                                 'showClear' => false,
