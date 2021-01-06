@@ -36,7 +36,7 @@ class Record extends \yii\db\ActiveRecord
             [['user_id', 'movements_id'], 'unique', 'targetAttribute' => ['user_id', 'movements_id']],
             [['movements_id'], 'exist', 'skipOnError' => true, 'targetClass' => Movements::className(), 'targetAttribute' => ['movements_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            [['value'], 'match', 'pattern' => '#(^([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])$)|(^([0-9]|[1][0-9]|[2][0-3])$)#'],
+            [['value'], 'match', 'pattern' => '#(^([0-9]|[1-9][0-9]|[1-9][0-9][0-9]):([0-5][0-9])$)|(^([0-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$)#'],
         ];
     }
 
