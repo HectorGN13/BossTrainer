@@ -28,7 +28,7 @@ $userTrainingSession = new UserTrainingSession();
                     <?= Html::a((!$model->userFollowExist()) ? 'Unirse al Gim': 'Dejar el Gim', ['gym/follow','id' => $model->id], ['class' => 'btn btn-dark btn-md btn-follow']) ?>
                     <div class="profile">
                         <div class="avatar">
-                            <img src="<?= $model->profile_img?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px;">
+                            <img src="<?= $model->profile_img?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px; background-color: white;">
                         </div>
 
                         <div class="name">

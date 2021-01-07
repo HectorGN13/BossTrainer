@@ -13,11 +13,11 @@ class GymsAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
         'css/index.css',
         'css/gym.css',
         'css/material-kit.css',
-        'css/board.css'
+        'css/board.css',
+        'css/site.css',
     ];
     public $js = [
         'js/script.js',

@@ -82,7 +82,6 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'La direccion de correo ya está en uso.'],
             [['password_reset_token'], 'unique'],
             [['username'], 'unique'],
-            [['username','bio','name'], 'match', 'pattern' => '/^\p{L}+$/u'],
 
             [['oldPassword'], 'trim', 'on' => [self::SCENARIO_DEFAULT]],
             [['oldPassword'], function($attribute, $params, $validator) {

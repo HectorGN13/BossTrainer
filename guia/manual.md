@@ -122,14 +122,57 @@ En la parte superior izquierda hay un botón para añadir registros a nuestra ta
 
 ---
 
+### Mis gimnasios
+
+![Mi gimnasios](images/manual/misgyms.png)
+
+En esta parte de la aplicación el usuario verá las tarjetas de presentación de los gimnasios a los cuales él sigue. 
+
+Además en la parte superior derecha hay una barra de busqueda, el usuario podrá buscar por cualquier palabra y el buscador será el encargado de devolver las coincidencias.
+
+
+---
+
+### Notificaciones
+
+![Notificaciones](images/manual/notificaciones.png)
+
+Aquí el usuario podrá ver de un vistazo general las notificaciones recibidas, aparecerá ordenadas en una tabla de la más reciente a la más antigua.
+
+Si se observa bien en la parte derecha donde pone acciones el usuario dispondrá de 3 botones de acciones:
+
+- **Ver** En ``verde`` y con el icono de un ojo. este botón redireccionará al usuario a una vista donde podrá ver los detalles de la notificación así como de su contenido completo.
+
+- **Marcar como leído** En ``azul`` y con el icono de un sobre. Mostrará el estado de la notificacion si está leida (sobre abierto) o no (sobre cerrado). En cualquier caso pulsando el botón podremos cambiar el estado.
+
+- **Borrar** En ``rojo`` y con el icono de una papelera. Sirve para borrar la notificación.
+
+Además en la barra de navegación lateral, encontraremos un número al lado del enlace de notificaciones. Este número indica la cantidad de notificaciones sin leer que el usuario tiene actualmente.
+
+---
+
 ### Mi perfil
 
 ![Mi perfil](images/manual/perfil.png)
 
 En esta página podremos configurar todo lo relacionado con la cuenta del usuario:
 1. **Avatar**
-- Aquí se eligirá la foto de perfil del usuario.
-2. **Cambiar contraseña**
+- Con el boton cambiar foto el usuario podrá cambiar su imagen de perfil.
+2. **Datos del usuario**
+- Todos los datos referentes al perfil del usuario podrán cambiarse en esta sección a excepción del nombre de usuario.
+3. **Cambiar contraseña**
 - Aquí se podrá cambiar la contraseña de acceso a la aplicación. Por seguridad se pedirá la contraseña antigua y por duplicado la nueva.
+
+![Mi perfil](images/manual/perfil2.png)
+
+---
+
+### Gimnasios
+
+![Gimnasios](images/manual/gimnasios.png)
+
+Esta sección es el padre de la sección mis gimnasios, aquí aparecerán todas las cartas de presentación de los gimnasios de nuestra base de datos en un scroll infinito. 
+
+En la parte superior derecha el usuario dispondrá de una barra de búsqueda que le ayudará encontrar el gimnasio que desea. (Se recuerda que puede buscar por cualquier palabra y se mostrará las coincidencias.)
 
 ---
