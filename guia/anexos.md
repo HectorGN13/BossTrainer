@@ -80,6 +80,6 @@ La página index cumple el nivel AA de accesibilidad, el error que presenta es p
 
 ### **(R61) Pruebas funcionales con Codeception**
 
-![Pruebas Codeception](images/capturas/captura_codeception.png)
+![Pruebas Codeception](images/capturas/codecept.jpeg)
 
 ---
