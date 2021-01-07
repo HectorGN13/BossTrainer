@@ -17,14 +17,6 @@ FontAwesomeAsset::register($this);
         <div class="col-12">
             <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'title')->textInput()->input('text',  ['placeholder' => "Introduce el nombre de la sesión."])->label(false) ?>
-            <?= $form->field($model, 'description')->widget(Summernote::class, [
-                'options' => [
-                    'placeholder' => 'Edita tu pizarra aquí...',
-                ]
-            ])->textarea(['rows' => 10])->label(false);
-            ?>
-
             <?php
             echo $form->field($model, 'start_time')->widget(DateTimePicker::classname(), [
                 'name' => 'start_time',
@@ -55,6 +47,14 @@ FontAwesomeAsset::register($this);
                     'format' => 'dd-M-yyyy HH:ii P'
                 ],
             ])->label(false);
+            ?>
+
+            <?= $form->field($model, 'title')->textInput()->input('text',  ['placeholder' => "Introduce el nombre de la sesión."])->label(false) ?>
+            <?= $form->field($model, 'description')->widget(Summernote::class, [
+                'options' => [
+                    'placeholder' => 'Edita tu pizarra aquí...',
+                ]
+            ])->textarea(['rows' => 10])->label(false);
             ?>
 
             <?= $form->field($model, 'capacity')->textInput(['type' => 'number', 'min' => 1])->input('number',  ['placeholder' => "Introduce el aforo."])->label(false) ?>

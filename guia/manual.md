@@ -176,3 +176,33 @@ Esta sección es el padre de la sección mis gimnasios, aquí aparecerán todas 
 En la parte superior derecha el usuario dispondrá de una barra de búsqueda que le ayudará encontrar el gimnasio que desea. (Se recuerda que puede buscar por cualquier palabra y se mostrará las coincidencias.)
 
 ---
+
+### Perfil gimnasio
+
+![perfil gimnasio](images/manual/perfil_gym.png)
+
+Esta es la pagina principal de cada gimnasio, que está personalizada según la configuración que hayan elegido los gimnasios.
+
+En la parte central podemos encontrar una imagen del logo del gimnasio en cuestión. Junto a este en la parte izquierda el usuario tendrá a su disposición un botón para seguir a ese gimnasio.
+
+Una vez el usuario siga al gimnasio, este podrá activar los servicios que haya contratado previamente.
+
+Además en la parte inferior del perfil del gimnasio podemos encontrar 3 pestañas: ``Pizarra``, ``Records`` y ``Horarios``.
+
+- La pizarra mostrará una pizarra por defecto que el gimnasio haya creado y decidido colocar. 
+
+![perfil gimnasio pizarra](images/manual/perfil_gym_pizarra.png)
+
+- Horarios mostrará una lista de todas las clases disponibles para ese día.
+
+En la parte superior se encuentra tres botones que ayudará al usuario a navegar y seleccionar el dia que desea entrenar.
+
+Una vez decidido en que sesión de entrenamiento desea participar solo tendrá que hacer click en el botón unirse. Y si esta al corriente en los pagos o su tarifa se lo permite podrá entrenar en esa clase. Una vez hecho esto tendrá la opción de salirse cuando quiera.
+
+![perfil gimnasio pizarra](images/manual/perfil_gym_horarios.png)
+
+*El numero de recuadros significa la cantidad de plazas disponibles para esa sesión.
+
+En el caso de que una sesión estuviera llena el usuario tendría la opción de entrar en lista de espera. Esta opción habilitará notificaciones para el usuario en el caso de que una plaza quede libre en la sesión de entrenamiento.
+
+---
