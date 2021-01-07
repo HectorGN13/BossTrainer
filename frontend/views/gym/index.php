@@ -18,14 +18,14 @@ $this->title = 'Gimnasios';
         </div>
     </div>
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="card-columns">
         <?php foreach ($dataProvider->models as $model):?>
-        <div class="col mb-4">
-            <div class="card h-100">
+        <div class="col">
+            <div class="card">
                 <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header"
                      style="height: 200px;overflow: hidden;background-size: cover;background-position: center center;">
-                <div class="card text-center">
-                    <div class="card-body py-5">
+                <div class="text-center">
+                    <div class="card-body">
                         <div class="text-center">
                             <img src="<?= $model->profile_img?>" class="rounded-circle" alt="logo" style="width: 120px;" >
                         </div>

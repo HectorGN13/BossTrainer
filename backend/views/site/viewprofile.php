@@ -31,7 +31,7 @@ if(isset($model->profile_img) && !empty($model->profile_img))
                 <div class="col-md-6 ml-auto mr-auto">
                     <div class="profile">
                         <div class="avatar">
-                            <img src="<?= $profileImg?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px;">
+                            <img src="<?= $profileImg?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 400px; background-color: white;">
                         </div>
 
                         <div class="name">
@@ -47,7 +47,7 @@ if(isset($model->profile_img) && !empty($model->profile_img))
                     </div>
                 </div>
             </div>
-            <div class="description text-center">
+            <div class="description text-center mb-5 pb-5">
                 <p><?= $model->description ?></p>
             </div>
         </div>
