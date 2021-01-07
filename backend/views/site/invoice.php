@@ -44,7 +44,7 @@ VueAsset::register($this);
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="<?= $model->profile_img ?>" style="width:100%; max-width:300px;">
+                            <img src="<?= $model->profile_img ?>" style="width:100%; max-width:150px;">
                         </td>
 
                         <td>

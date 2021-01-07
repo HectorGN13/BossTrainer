@@ -23,7 +23,7 @@ $this->title = 'Gimnasios';
         <div class="col mb-4">
             <div class="card h-100">
                 <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header"
-                     style="width: 400px;height: 200px;overflow: hidden;background-size: cover;background-position: center center;">
+                     style="height: 200px;overflow: hidden;background-size: cover;background-position: center center;">
                 <div class="card text-center">
                     <div class="card-body py-5">
                         <div class="text-center">
