@@ -3,7 +3,6 @@
 namespace backend\tests\functional;
 
 use backend\tests\FunctionalTester;
-use common\fixtures\UserFixture;
 
 /**
  * Class LoginCest
@@ -17,28 +16,18 @@ class LoginCest
      * @see \Codeception\Module\Yii2::loadFixtures()
      * @return array
      */
-    public function _fixtures()
-    {
-        return [
-            'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'login_data.php'
-            ]
-        ];
-    }
-    
+
     /**
      * @param FunctionalTester $I
      */
     public function loginUser(FunctionalTester $I)
     {
         $I->amOnPage('/site/login');
-        $I->fillField('Username', 'erau');
-        $I->fillField('Password', 'password_0');
-        $I->click('login-button');
+        $I->submitForm('#login-form', [
+            'LoginForm[username]' => 'admin@centralbox.com',
+            'LoginForm[password]' => 'centralbox',
+        ]);
 
-        $I->see('Logout (erau)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
+        $I->see('Desconectarse', 'form button[type=submit]');
     }
 }

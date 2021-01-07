@@ -16,12 +16,11 @@ class SignupCest
 
     public function signupWithEmptyFields(FunctionalTester $I)
     {
-        $I->see('Signup', 'h1');
-        $I->see('Please fill out the following fields to signup:');
         $I->submitForm($this->formId, []);
-        $I->seeValidationError('Username cannot be blank.');
-        $I->seeValidationError('Email cannot be blank.');
-        $I->seeValidationError('Password cannot be blank.');
+        $I->seeValidationError('Debes introducir un nombre de usuario.');
+        $I->seeValidationError('Debes introducir un correo electrónico.');
+        $I->seeValidationError('Debes introducir una contraseña.');
+        $I->seeValidationError('Debes confirmar tu contraseña.');
 
     }
 
@@ -29,14 +28,16 @@ class SignupCest
     {
         $I->submitForm(
             $this->formId, [
-            'SignupForm[username]'  => 'tester',
-            'SignupForm[email]'     => 'ttttt',
-            'SignupForm[password]'  => 'tester_password',
+                'SignupForm[username]'  => 'tester',
+                'SignupForm[email]'     => 'ttttt',
+                'SignupForm[password]'  => 'tester_password',
+                'SignupForm[passwordConfirm]'  => 'tester_password',
         ]
         );
-        $I->dontSee('Username cannot be blank.', '.help-block');
-        $I->dontSee('Password cannot be blank.', '.help-block');
-        $I->see('Email is not a valid email address.', '.help-block');
+        $I->dontSee('Debes introducir un nombre de usuario.', '.help-block');
+        $I->dontSee('Debes introducir un correo electrónico.', '.help-block');
+        $I->dontSee('Debes confirmar tu contraseña.', '.help-block');
+        $I->see('Correo electrónico is not a valid email address.', '.help-block');
     }
 
     public function signupSuccessfully(FunctionalTester $I)
@@ -45,6 +46,7 @@ class SignupCest
             'SignupForm[username]' => 'tester',
             'SignupForm[email]' => 'tester.email@example.com',
             'SignupForm[password]' => 'tester_password',
+            'SignupForm[passwordConfirm]'  => 'tester_password',
         ]);
 
         $I->seeRecord('common\models\User', [
@@ -54,6 +56,10 @@ class SignupCest
         ]);
 
         $I->seeEmailIsSent();
-        $I->see('Thank you for registration. Please check your inbox for verification email.');
+        $I->see('Muchas gracias por registrarte.
+    Hemos enviado a tu email un correo de verificación.
+    Este proceso puede tardar varios minutos, 
+                si todavía no lo has recibido compruebe su bandeja de spam, 
+                o utilice este enlace.');
     }
 }
