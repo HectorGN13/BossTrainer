@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/8d549815/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/b3a627e1/solarized_light.css" rel="stylesheet">
+<link href="./assets/c9aef3d0/style.css" rel="stylesheet">
+<script src="./assets/8954ddc3/jquery.js"></script>
+<script src="./assets/8d549815/js/bootstrap.js"></script>
+<script src="./assets/7ac1a8d2/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w94" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w94-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w94-collapse" class="collapse navbar-collapse"><ul id="w95" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-84" data-toggle="collapse" data-parent="#navigation">Descripción general <b class="caret"></b></a><div id="navigation-84" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-descripcion.html#funcionalidad-principal-de-la-aplicacion">Funcionalidad principal de la aplicación</a>
+<a class="list-group-item" href="./guide-descripcion.html#objetivos-generales">Objetivos generales</a>
+<a class="list-group-item" href="./guide-descripcion.html#url-del-repositorio">URL del repositorio</a>
+<a class="list-group-item" href="./guide-descripcion.html#url-de-la-documentacion">URL de la documentación</a></div>
+<a class="list-group-item" href="#navigation-85" data-toggle="collapse" data-parent="#navigation">Instrucciones de instalación y despliegue <b class="caret"></b></a><div id="navigation-85" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-instalacion.html#en-local">En local</a>
+<a class="list-group-item" href="./guide-instalacion.html#en-la-nube">En la nube</a></div>
+<a class="list-group-item" href="#navigation-86" data-toggle="collapse" data-parent="#navigation">Catálogo de requisitos <b class="caret"></b></a><div id="navigation-86" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-requisitos.html#cuadro-resumen">Cuadro resumen</a></div>
+<a class="list-group-item" href="#navigation-87" data-toggle="collapse" data-parent="#navigation">Manual de usuario <b class="caret"></b></a><div id="navigation-87" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-manual.html">Manual de usuario</a></div>
+<a class="list-group-item" href="#navigation-88" data-toggle="collapse" data-parent="#navigation">Decisiones adoptadas <b class="caret"></b></a><div id="navigation-88" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-decisiones.html">Decisiones adoptadas</a></div>
+<a class="list-group-item" href="#navigation-89" data-toggle="collapse" data-parent="#navigation">Dificultades encontradas <b class="caret"></b></a><div id="navigation-89" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-dificultades.html">Dificultades encontradas</a></div>
+<a class="list-group-item" href="#navigation-90" data-toggle="collapse" data-parent="#navigation">Diagramas <b class="caret"></b></a><div id="navigation-90" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-diagramas.html#diagramas-de-clases">Diagramas de clases</a>
+<a class="list-group-item" href="./guide-diagramas.html#diagramas-de-estructura-logica-de-datos">Diagramas de estructura lógica de datos</a></div>
+<a class="list-group-item" href="#navigation-91" data-toggle="collapse" data-parent="#navigation">Glosario de términos <b class="caret"></b></a><div id="navigation-91" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-glosario.html">Glosario de términos</a></div>
+<a class="list-group-item" href="#navigation-92" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-92" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-conclusiones.html">Conclusiones</a></div>
+<a class="list-group-item" href="#navigation-93" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-93" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-anexos.html">Anexos</a></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Instrucciones de instalación y despliegue <span id="instrucciones-de-instalacion-y-despliegue"></span><a href="#instrucciones-de-instalacion-y-despliegue" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#en-local">En local</a></li>
+<li><a href="#en-la-nube">En la nube</a></li></ol></div>
+<h2>En local <span id="en-local"></span><a href="#en-local" class="hashlink">&para;</a></h2><h4>Debes tener: <span id="debes-tener"></span><a href="#debes-tener" class="hashlink">&para;</a></h4><ul>
+<li><strong> PHP 7.4.0 </strong></li>
+<li><strong> PostgreSQL 12 o superior </strong></li>
+<li><strong> Composer </strong></li>
+<li><strong> Cuenta en Amazon S3 </strong></li>
+<li><strong> Cuenta de email </strong></li>
+</ul>
+<h4>Instalación: <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h4><ol>
+<li><p>Crear un directorio <code>web/bosstrainer</code> y nos cambiamos a ese directorio.</p>
+</li>
+<li>Ejecutamos los siguientes comandos:<pre><code class="hljs javascript">~<span class="hljs-regexp">/web/</span>bosstrainer ᐅ:<span class="hljs-comment">//github.com/HectorGN13/BossTrainer.git .</span>
+~<span class="hljs-regexp">/web/</span>bosstrainer ᐅ
+~<span class="hljs-regexp">/web/</span>bosstrainer ᐅ/init --env=Development --overwrite=n
+</code></pre>
+</li>
+<li>Cambiar la dirección de correo en <code>/common/config/params.php</code><pre><code class="hljs php"><span class="hljs-string">'adminEmail'</span> =&gt; <span class="hljs-string">'nueva dirección de correo'</span>,
+</code></pre>
+</li>
+<li><p>Crear varias variable de entorno en el archivo <code>.env</code>:</p>
+<ul>
+<li><code>MAIL_DRIVER</code>=smtp</li>
+<li><code>MAIL_HOST</code>=smtp.gmail.com</li>
+<li><code>MAIL_PORT</code>=587</li>
+<li><code>MAIL_USERNAME</code>= direccion del correo del email de la app</li>
+<li><code>MAIL_PASSWORD</code>= Contraseña de el email de la app</li>
+<li><code>MAIL_ENCRYPTION</code>=tls</li>
+<li><code>AWS_ACCESS_KEY_ID</code> = la key de Amazon S3</li>
+<li><code>AWS_SECRET_ACCESS_KEY</code>= el password de Amazon S3.</li>
+</ul>
+</li>
+<li><p>Creamos la base de datos y las respectivas tablas para hacer funcionar la aplicación:
+<code>yii migrate</code></p>
+</li>
+</ol>
+<h2>En la nube <span id="en-la-nube"></span><a href="#en-la-nube" class="hashlink">&para;</a></h2><h4>Requisitos: <span id="requisitos"></span><a href="#requisitos" class="hashlink">&para;</a></h4><ul>
+<li><strong> Heroku cli </strong></li>
+</ul>
+<h4>Despliegue: <span id="despliegue"></span><a href="#despliegue" class="hashlink">&para;</a></h4><ol>
+<li><p>Hacemos la instalación en local arriba indicada.</p>
+</li>
+<li><p>Creamos una aplicación en heroku</p>
+</li>
+<li><p>Añadiremos el add-on <strong>Heroku Postgres</strong></p>
+</li>
+<li>Nos vamos al directorio donde hemos clonado la aplicación y ejecutamos:<pre><code class="hljs dockerfile">heroku login
+heroku git:remote -a nombre_app_heroku
+git push heroku master
+heroku <span class="hljs-keyword">run</span><span class="bash"> bash</span>
+./yii migrate
+</code></pre>
+</li>
+<li>Configuramos las variables de entorno:</li>
+</ol>
+<ul>
+<li>AWS_ACCESS_KEY_ID: La key de Amazon S3</li>
+<li>AWS_SECRET_ACCESS_KEY: La clave secreta de Amazon S3</li>
+<li>MAIL_USERNAME: Dirección de la cuenta de correo</li>
+<li>MAIL_PASSWORD: Contraseña de la cuenta de correo</li>
+</ul>
+<ol>
+<li>La aplicación está lista para funcionar</li>
+</ol>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Thu, 07 Jan 2021 20:30:23 +0100</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
