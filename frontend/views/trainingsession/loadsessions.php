@@ -4,17 +4,17 @@ use common\models\UserTrainingSession;
 $userTrainingSession = new UserTrainingSession();
 ?>
 <?php foreach($trainingSessions as $session):?>
-    <div class="session-item">
+    <div itemscope itemtype="http://schema.org/SportEvent"  class="session-item">
       <div class="row">
           <div class="col-lg-10 col-md-10 text-left">
-              <h4 class="session-title"><?= $session['title']?></h4>
+              <h4 itemscope="name" class="session-title"><?= $session['title']?></h4>
           </div>
           <div class="col-lg-2 col-md-2 text-right">
-              <h4 class="session-start-time"><?= date('H:i', strtotime($session['start_time']))?></h4>
+              <h4 itemscope="startDate" class="session-start-time"><?= date('H:i', strtotime($session['start_time']))?></h4>
           </div>
       </div>
       <div class="row">
-          <div class="col-lg-9 col-md-9 text-left d-flex_">
+          <div itemscope="offers" class="col-lg-9 col-md-9 text-left d-flex_">
               <?php
               $members = $userTrainingSession->getSessionMembers($session['id']);
               $totalMembers = count($members);
@@ -45,7 +45,7 @@ $userTrainingSession = new UserTrainingSession();
                   <?php endif;?>
               <?php endif;?>
               
-              <button type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver Descripción</button>
+              <button itemscope="description" type="button" class="btn btn-actions btn-view-description btn-block btn-default" data-href="<?= Url::to(['trainingsession/view', 'id' => $session['id']])?>">Ver Descripción</button>
           </div>
       </div>
     </div>
