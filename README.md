@@ -15,5 +15,5 @@ BossTrainer es una aplicación orientada a la gestión de gimnasios, debido a la
  (Es la parte pública de la aplicación) y [Bosstrainer/backend](https://bosstrainer.herokuapp.com/backend) (parte de administración)
 donde los propietarios gestionarán todo lo que concierne a su gimnasio (Sesiones de entrenamiento, Usuarios, tarifas, etc...).  
 
-> [Documentación del proyecto](docs/guide/README.md).
+> [Documentación del proyecto](docs/index.html).
 
