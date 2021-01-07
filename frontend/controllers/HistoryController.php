@@ -42,8 +42,10 @@ class HistoryController extends Controller
     {
         $searchModel = new UserTrainingSessionSearch();
         $dataProvider = new ActiveDataProvider([
-            'query' =>UserTrainingSession::find()->where(['user_id' => Yii::$app->user->identity->id]),
-        ]);;
+            'query' =>UserTrainingSession::find()
+                ->where(['user_id' => Yii::$app->user->identity->id])
+                ->orderBy(['id' => SORT_DESC])
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
