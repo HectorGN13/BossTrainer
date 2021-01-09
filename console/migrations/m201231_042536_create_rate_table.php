@@ -14,12 +14,32 @@ class m201231_042536_create_rate_table extends Migration
     {
         $this->createTable('{{%rate}}', [
             'id' => $this->bigPrimaryKey(),
+            'gym_id' => $this->integer()->notNull(),
             'user_id' => $this->integer()->notNull(),
-            'type' => $this->integer()->notNull(),
+            'title' => $this->string(255)->notNull(),
+            'type' => $this->string(50)->notNull(),
+            'price' => $this->string(50)->notNull(),
+            'description' => $this->string()->notNull(),
             'start_date' => $this->datetime()->notNull(),
             'end_date' => $this->datetime()->notNull(),
         ]);
 
+        // creates index for column `gym_id`
+        $this->createIndex(
+            '{{%idx-rate-gym_id}}',
+            '{{%rate}}',
+            'gym_id'
+        );
+
+        // add foreign key for table `{{%gym}}`
+        $this->addForeignKey(
+            '{{%fk-rate-gym_id}}',
+            '{{%rate}}',
+            'gym_id',
+            '{{%gym}}',
+            'id',
+            'CASCADE'
+        );
 
         // creates index for column `user_id`
         $this->createIndex(
@@ -37,23 +57,6 @@ class m201231_042536_create_rate_table extends Migration
             'id',
             'CASCADE'
         );
-
-        // creates index for column `type`
-        $this->createIndex(
-            '{{%idx-rate-type}}',
-            '{{%rate}}',
-            'type'
-        );
-
-        // add foreign key for table `{{%type_rate}}`
-        $this->addForeignKey(
-            '{{%fk-rate-type_rate}}',
-            '{{%rate}}',
-            'type',
-            '{{%type_rate}}',
-            'id',
-            'CASCADE'
-        );
     }
 
     /**
@@ -61,6 +64,16 @@ class m201231_042536_create_rate_table extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey(
+            '{{%fk-rate-gym_id}}',
+            '{{%rate}}'
+        );
+
+        // drops index for column `user_id`
+        $this->dropIndex(
+            '{{%idx-rate-gym_id}}',
+            '{{%rate}}'
+        );
 
         $this->dropForeignKey(
             '{{%fk-rate-user_id}}',
@@ -70,17 +83,6 @@ class m201231_042536_create_rate_table extends Migration
         // drops index for column `user_id`
         $this->dropIndex(
             '{{%idx-rate-user_id}}',
-            '{{%rate}}'
-        );
-
-        $this->dropForeignKey(
-            '{{%fk-rate-type_rate}}',
-            '{{%rate}}'
-        );
-
-        // drops index for column `type`
-        $this->dropIndex(
-            '{{%idx-rate-type}}',
             '{{%rate}}'
         );
 
