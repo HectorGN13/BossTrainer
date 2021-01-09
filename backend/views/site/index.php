@@ -4,11 +4,12 @@
 /* @var $searchModel backend\models\TrainingSessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $rates yii\data\ActiveDataProvider */
+/* @var $namesRates yii\data\ActiveDataProvider */
 /* @var $occupation yii\data\ActiveDataProvider */
 
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
-//var_dump($rates);
+//var_dump($namesRates);
 //die();
 $this->title = 'BossTrainer';
 ?>
@@ -84,14 +85,18 @@ $this->title = 'BossTrainer';
                                     'showInLegend' => true,
                                 ],
                             ],
+                            'accessibility' => [
+                                'point' => [
+                                    'valueSuffix' => '€'
+                                ],
+                            ],
                             'series' => [
                                 [
                                     'name' => 'Ingresos',
                                     'colorByPoint' => true,
-                                    'data' => new SeriesDataHelper($rates, ['title:string', 'price:int']),
+                                    'data' => $namesRates,
                                 ]
                             ],
-                        ],
 
                         'scripts' => [
                             'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
@@ -100,7 +105,7 @@ $this->title = 'BossTrainer';
                         ],
 
 
-                    ]);
+                    ]]);
                     ?>
                 </div>
             </div>

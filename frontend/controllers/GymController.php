@@ -223,7 +223,7 @@ class GymController extends Controller
             ->where(['user_id' => $userId, 'training_session_id' => $trainingSessionId])
             ->count();
 
-        $rate = Rate::findOne(['user_id' => $userId, 'gym_id' => $gym['created_by']]);
+        $rate = Rate::find()->joinWith('type0 t')->where(['user_id' => $userId, 't.gym_id' => $gym['created_by']])->one();
         if (isset($rate)){
             $ok = !($rate->isRateExpired($gym['created_by'],$userId));
         }

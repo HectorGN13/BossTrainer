@@ -12,12 +12,8 @@ $this->title = 'Asignar tarifa';
         <div class="row">
         	<div class="col-12">
         		<?php $form = ActiveForm::begin(); ?>
-	        		<?= $form->field($model, 'gym_id')->hiddenInput(['value'=> Yii::$app->user->id, 'readonly' => true])->label(false);?>
 	        		<?= $form->field($model, 'user_id')->hiddenInput(['id'=> 'user_id', 'value' => $id, 'readonly' => true])->label(false);?>
-	        		<?= $form->field($model, 'title')->textInput()->input('text'); ?>
-	        		<?= $form->field($model, 'description')->textInput()->input('text'); ?>
-	        		<?= $form->field($model, 'price')->textInput()->input('number');?>
-	        		<?= $form->field($model, 'type')->textInput()->input('text');?>
+                    <?= $form->field($model, 'type')->dropDownList($items, ['prompt'=>'Selecciona el tipo de tarifa']); ?>
 	        		<?php
 			            echo $form->field($model, 'start_date')->widget(DatePicker::classname(), [
 			                'name' => 'start_date',

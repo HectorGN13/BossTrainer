@@ -3,7 +3,6 @@
 namespace backend\models;
 
 use Yii;
-use common\models\Gym;
 use common\models\User;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -12,16 +11,12 @@ use yii\db\ActiveRecord;
  * This is the model class for table "rate".
  *
  * @property int $id
- * @property int $gym_id
  * @property int $user_id
- * @property string $title
- * @property string $type
- * @property string $price
- * @property string $description
+ * @property int $type
  * @property string $start_date
  * @property string $end_date
  *
- * @property Gym $gym
+ * @property TypeRate $type0
  * @property User $user
  */
 class Rate extends ActiveRecord
@@ -40,13 +35,11 @@ class Rate extends ActiveRecord
     public function rules()
     {
         return [
-            [['gym_id', 'user_id', 'title', 'type', 'price', 'description', 'start_date', 'end_date'], 'required'],
-            [['gym_id', 'user_id'], 'default', 'value' => null],
-            [['gym_id', 'user_id'], 'integer'],
+            [['user_id', 'type', 'start_date', 'end_date'], 'required'],
+            [['user_id', 'type'], 'default', 'value' => null],
+            [['user_id', 'type'], 'integer'],
             [['start_date', 'end_date'], 'safe'],
-            [['title', 'description'], 'string', 'max' => 255],
-            [['type', 'price'], 'string', 'max' => 50],
-            [['gym_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gym::className(), 'targetAttribute' => ['gym_id' => 'id']],
+            [['type'], 'exist', 'skipOnError' => true, 'targetClass' => TypeRate::className(), 'targetAttribute' => ['type' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -58,25 +51,21 @@ class Rate extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'gym_id' => 'Gym ID',
             'user_id' => 'User ID',
-            'title' => 'Nombre de la Tarifa',
             'type' => 'Tipo de Tarifa',
-            'price' => 'Precio €',
-            'description' => 'Descripción',
             'start_date' => 'Fecha de inicio',
             'end_date' => 'Fecha de finalización',
         ];
     }
 
     /**
-     * Gets query for [[Gym]].
+     * Gets query for [[Type0]].
      *
-     * @return ActiveQuery
+     * @return \yii\db\ActiveQuery
      */
-    public function getGym()
+    public function getType0()
     {
-        return $this->hasOne(Gym::class, ['id' => 'gym_id']);
+        return $this->hasOne(TypeRate::class, ['id' => 'type'])->inverseOf('rates');
     }
 
     /**
@@ -97,9 +86,10 @@ class Rate extends ActiveRecord
     public function isRateExpired($gymId, $userId)
     {
         $expiredRates = Rate::find()
+            ->joinWith('type0 t')
             ->where(['user_id' => $userId])
             ->andWhere(['<', 'end_date', date('Y-m-d H:i:s')])
-            ->andWhere(['gym_id' => $gymId])
+            ->andWhere(['t.gym_id' => $gymId])
             ->count();
         return $expiredRates > 0;
     }

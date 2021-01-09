@@ -66,6 +66,12 @@ AppAsset::register($this);
                 echo NavSidebar::widget([
                     'items' => [
                         [
+                            'url' => ['site/index'],
+                            'options' => '',
+                            'label' => 'Estadísticas',
+                            'icon' => 'fas fa-tachometer-alt'
+                        ],
+                        [
                             'url' => ['trainingsession/index'],
                             'options' => '',
                             'label' => 'Entrenamientos',
@@ -76,6 +82,12 @@ AppAsset::register($this);
                             'options' => '',
                             'label' => 'Pizarras',
                             'icon' => 'fas fa-chalkboard-teacher'
+                        ],
+                        [
+                            'url' => ['typerate/index'],
+                            'options' => '',
+                            'label' => 'Tarifas',
+                            'icon' => 'fas fa-tags'
                         ],
                         [
                             'url' => ['site/invoice'],

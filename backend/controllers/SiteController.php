@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use backend\models\TrainingSessionSearch;
+use backend\models\TypeRate;
 use common\models\Gym;
 use common\models\GymUser;
 use common\models\Notification;
@@ -11,6 +12,7 @@ use RecursiveIteratorIterator;
 use Yii;
 use yii\bootstrap4\ActiveForm;
 use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -119,19 +121,32 @@ class SiteController extends Controller
             $counter[] = $v;
         }
 
-        $rates = new ActiveDataProvider([
-            'query' => Rate::find()
-                ->where(['gym_id' =>  Yii::$app->user->identity->id ])
-                ->andWhere(['>=', 'start_date', date( 'Y-m-d 00:00:00' , strtotime('first day of this month'))])
-                ->orderBy(['price' => SORT_DESC]),
-            'pagination' => false,
-        ]);
+        $r = [['name' => '', 'y' => '']];
+
+        $rates = Rate::find()
+                ->alias('r')
+                ->select(['sum(price) AS total'])
+                ->where(['t.gym_id' =>  Yii::$app->user->identity->id ])
+                ->andWhere(['>=', 'r.start_date', date( 'Y-m-d 00:00:00' , strtotime('first day of this month'))])
+                ->orderBy(['t.price' => SORT_DESC])
+                ->joinWith('type0 t')
+                ->groupBy(['t.id'])
+                ->indexBy('t.title')
+                ->column();
+
+        $newArray = [];
+
+        foreach($rates as $k => $v) {
+            $r['y'] = $v;
+            $r['name'] = $k;
+            array_push($newArray, $r);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'namesRates' => $newArray,
             'occupation' => $counter,
-            'rates' => $rates,
         ]);
     }
 
@@ -349,7 +364,7 @@ class SiteController extends Controller
      */
     protected function findModelRate($user_id)
     {
-        if (($model = Rate::findOne(['gym_id' => Yii::$app->user->identity->id, 'user_id' => $user_id])) !== null) {
+        if (($model = Rate::findOne(['user_id' => $user_id])) !== null) {
             return $model;
         }
 
@@ -379,6 +394,7 @@ class SiteController extends Controller
     public function actionAssignrate($id)
     {
         $model = new Rate();
+        $items = ArrayHelper::map(TypeRate::find()->all(), 'id', 'title');
 
         if ($model->load(Yii::$app->request->post())) {
             $model->start_date = date('Y-m-d H:i:s', strtotime(Yii::$app->request->post('Rate')['start_date']));
@@ -387,6 +403,7 @@ class SiteController extends Controller
             return $this->redirect(['followers']);
         }
         return $this->render('assignrate', [
+            'items'=>$items,
             'model' => $model,
             'id' => $id
         ]);
@@ -402,6 +419,8 @@ class SiteController extends Controller
     public function actionUpdaterate($user_id)
     {
         $model = $this->findModelRate($user_id);
+        $items = ArrayHelper::map(TypeRate::find()->all(), 'id', 'title');
+
         if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
@@ -418,10 +437,12 @@ class SiteController extends Controller
 
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax('assignrate', [
+                'items'=>$items,
                 'model' => $model,
             ]);
         }else {
             return $this->render('assignrate', [
+                'items'=>$items,
                 'model' => $model,
                 'id' => $user_id
             ]);

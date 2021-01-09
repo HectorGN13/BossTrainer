@@ -1,12 +1,17 @@
 <?php
 
+use backend\assets\BoardAsset;
 use backend\models\Rate;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\GymUserSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Usuarios';
+BoardAsset::register($this);
 ?>
 <div class="gymuser-index">
 	<div class="board-list container mb-5">
@@ -15,7 +20,11 @@ $this->title = 'Usuarios';
         </div>
         <?= GridView::widget([
 	        'dataProvider' => $dataProvider,
-	        'filterModel' => null,
+            'filterModel' => $searchModel,
+            'options' => ['class' => 'custom-table'],
+            'tableOptions' => ['class' => 'table table-hover table-sm'],
+            'layout' => '{items}{pager}',
+
 	        'columns' => [
 	            ['class' => 'yii\grid\SerialColumn'],
                 [
@@ -56,7 +65,7 @@ $this->title = 'Usuarios';
                             ['site/assignrate', 'id' => $model->user_id],
                             ['id'=>'btn-assign-rate', 'data-userid'=>$model->user_id]);
 
-                        return (Rate::findOne(['gym_id' => Yii::$app->user->identity->id, 'user_id' => $model->user_id]) !== null ) ?  $upd . $del : $add;
+                        return (Rate::findOne(['user_id' => $model->user_id]) !== null ) ?  $upd . $del : $add;
                     }
                 ],
 	        ]

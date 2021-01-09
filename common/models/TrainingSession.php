@@ -44,7 +44,8 @@ class TrainingSession extends ActiveRecord
             [['description', 'title'], 'string'],
             [['start_time', 'end_time'], 'safe'],
             [['capacity', 'created_by'], 'default', 'value' => null],
-            [['capacity', 'created_by'], 'integer'],
+            [['created_by'], 'integer'],
+            [['capacity'], 'integer', 'min' => 1],
         ];
     }
 

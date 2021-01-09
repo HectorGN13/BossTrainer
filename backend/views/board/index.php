@@ -24,6 +24,7 @@ BoardAsset::register($this);
             </p>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
                 'options' => ['class' => 'custom-table'],
                 'tableOptions' => ['class' => 'table table-hover table-sm'],
                 'layout' => '{items}{pager}',
