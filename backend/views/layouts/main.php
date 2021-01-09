@@ -49,9 +49,7 @@ AppAsset::register($this);
             'class' => 'navbar navbar-dark sticky-top navbar-expand-lg',
         ],
     ]);
-    $menuItems = [
-        ['label' => Html::tag('i','', ['class' => 'fas fa-inbox']), 'url' => ['#'], "linkOptions" => ["class" => '']],
-    ];
+    $menuItems = [];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right user-navbar navbar navbar-dark bg-dark'],
         'items' => $menuItems,

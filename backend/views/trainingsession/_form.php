@@ -23,28 +23,36 @@ FontAwesomeAsset::register($this);
                 'type' => DateTimePicker::TYPE_INPUT,
                 'value' => date('d-M-Y H:i A'),
                 'model' => $model,
+                'readonly' => true,
                 'options' => [
                     'placeholder' => 'Introduce la hora de Inicio.',
                 ],
                 'pluginOptions' => [
+                    'todayHighlight' => true,
                     'autoclose'=>true,
                     'format' => 'dd-M-yyyy HH:ii P',
+                    'daysOfWeekDisabled' => [6],
+                    'startDate' => date('Y-m-d H:i:s'),
                 ]
             ])->label(false);
             ?>
 
             <?php
             echo $form->field($model, 'end_time')->widget(DateTimePicker::classname(), [
-                'name' => 'start_time',
+                'name' => 'end_time',
                 'type' => DateTimePicker::TYPE_INPUT,
                 'value' => date('d-M-Y H:i A'),
                 'model' => $model,
+                'readonly' => true,
                 'options' => [
                     'placeholder' => 'Introduce la hora de Fin.',
                 ],
                 'pluginOptions' => [
+                    'todayHighlight' => true,
                     'autoclose'=>true,
-                    'format' => 'dd-M-yyyy HH:ii P'
+                    'format' => 'dd-M-yyyy HH:ii P',
+                    'daysOfWeekDisabled' => [6],
+                    'startDate' => date('Y-m-d H:i:s'),
                 ],
             ])->label(false);
             ?>
