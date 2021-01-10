@@ -21,9 +21,12 @@ use yii\widgets\ActiveForm;
             'options' => ['placeholder' => 'Fecha del registro.'],
             'language' => 'es',
             'type' => DatePicker::TYPE_COMPONENT_APPEND,
+            'readonly' => true,
             'pluginOptions' => [
+                'todayHighlight' => true,
                 'autoclose'=>true,
                 'format' => 'yyyy-m-d',
+                'endDate'=> '0d'
             ]
         ])->label(false);?>
 
