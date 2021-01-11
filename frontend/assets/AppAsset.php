@@ -15,6 +15,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/index.css',
+        'css/cookie-consent',
     ];
     public $js = [
         'js/script.js',
@@ -23,6 +24,6 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
-        'yii\bootstrap4\BootstrapPluginAsset'
+        'yii\bootstrap4\BootstrapPluginAsset',
     ];
 }

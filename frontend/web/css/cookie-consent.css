@@ -1,0 +1,60 @@
+
+.cookie-consent-popup {
+    animation-name: show;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    display: none;
+    z-index: 999999;
+    position: fixed;
+    bottom: 40px;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    padding: 5px 14px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #000000a8;
+    color: white;
+}
+
+.cookie-consent-message {
+    margin-bottom: 1px !important;
+}
+
+.cookie-consent-open,
+.cookie-consent-close,
+.cookie-consent-toggle,
+.cookie-consent-controls-open,
+.cookie-consent-controls-close,
+.cookie-consent-controls-toggle,
+.cookie-consent-details-open,
+.cookie-consent-details-close,
+.cookie-consent-details-toggle,
+.cookie-consent-accept-all,
+.cookie-consent-save {
+    color: #000 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #FFF;
+    border: none;
+    padding: 4px 8px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: all 0.4s ease 0s;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px 10px rgba(0,0,0,0.57);
+}
+.cookie-consent-accept-all:hover {
+    color: #fff !important;
+    background: #d22222;
+}
+
+.cookie-consent-details-toggle, .cookie-consent-controls-toggle {
+    display: none;
+}
+

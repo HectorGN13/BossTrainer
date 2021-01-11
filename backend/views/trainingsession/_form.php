@@ -28,10 +28,11 @@ FontAwesomeAsset::register($this);
                     'placeholder' => 'Introduce la hora de Inicio.',
                 ],
                 'pluginOptions' => [
+                    'weekStart'=> '1',
                     'todayHighlight' => true,
                     'autoclose'=>true,
                     'format' => 'dd-M-yyyy HH:ii P',
-                    'daysOfWeekDisabled' => [6],
+                    'daysOfWeekDisabled' => [0],
                     'startDate' => date('Y-m-d H:i:s'),
                 ]
             ])->label(false);
@@ -48,10 +49,11 @@ FontAwesomeAsset::register($this);
                     'placeholder' => 'Introduce la hora de Fin.',
                 ],
                 'pluginOptions' => [
+                    'weekStart'=> '1',
                     'todayHighlight' => true,
                     'autoclose'=>true,
                     'format' => 'dd-M-yyyy HH:ii P',
-                    'daysOfWeekDisabled' => [6],
+                    'daysOfWeekDisabled' => [0],
                     'startDate' => date('Y-m-d H:i:s'),
                 ],
             ])->label(false);

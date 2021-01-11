@@ -35,7 +35,6 @@ $userTrainingSession = new UserTrainingSession();
                             <div class="lines-effect">
                                 <h1 class="text-responsive" style="text-transform: uppercase"><?= $model->name ?></h1>
                             </div>
-                            <h6>Designer</h6>
                             <a href="#" class="btn btn-just-icon btn-link "><i class="fab fa-facebook"></i></a>
                             <a href="#" class="btn btn-just-icon btn-link "><i class="fab fa-twitter"></i></a>
                             <a href="#" class="btn btn-just-icon btn-link "><i class="fab fa-instagram"></i></a>

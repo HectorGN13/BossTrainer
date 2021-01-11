@@ -173,10 +173,9 @@ $this->title = 'BossTrainer';
     'path' => '/',
     'domain' => '',
     'expiryDays' => 365,
-    'message' => Yii::t('cookie-consent',
-        'Utilizamos cookies para asegurar el correcto funcionamiento de nuestro sitio web. 
-      Para una mejor experiencia de visita utilizamos productos de análisis. Se utilizan cuando está de acuerdo con "Estadísticas"..'),
-    'acceptAll' => Yii::t('cookie-consent', 'Aceptar'),
+    'message' => 'Utilizamos cookies para asegurar el correcto funcionamiento de nuestro sitio web. 
+      Para una mejor experiencia de visita utilizamos productos de análisis. Se utilizan cuando está de acuerdo con "Estadísticas"..',
+    'acceptAll' => 'Aceptar',
     'controlsOpen' => false,
     'detailsOpen' => false,
     'learnMore' =>  false,

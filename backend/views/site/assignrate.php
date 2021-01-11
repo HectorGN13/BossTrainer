@@ -24,6 +24,7 @@ $this->title = 'Asignar tarifa';
 			                    'placeholder' => 'Ingrese la fecha de inicio',
 			                ],
 			                'pluginOptions' => [
+                                'weekStart'=> '1',
 			                    'autoclose'=>true,
 			                    'format' => 'dd-M-yyyy',
 			                ]
@@ -39,6 +40,7 @@ $this->title = 'Asignar tarifa';
 			                    'placeholder' => 'Ingrese la fecha de finalización',
 			                ],
 			                'pluginOptions' => [
+                                'weekStart'=> '1',
 			                    'autoclose'=>true,
 			                    'format' => 'dd-M-yyyy',
 			                ]

@@ -34,7 +34,7 @@ $this->title = 'BossTrainer';
                         'options' => [
                             'chart' => ['type' => 'column'],
                             'credits' => ['enabled' => false],
-                            'title' => ['text' => 'Ocupación de Sesiones '.date('d-m-Y')],
+                            'title' => ['text' => 'Ocupación diaria de las sesiones ('.date('d-m-Y').')'],
                             'xAxis' => [
                                 'categories' => new SeriesDataHelper($dataProvider, ['start_time:date']),
                             ],
@@ -64,6 +64,7 @@ $this->title = 'BossTrainer';
             <div class="col-lg-6">
                 <div>
                     <?php
+                    setlocale(LC_ALL,"es_ES");
 
                     echo Highcharts::widget([
                         'options' => [
