@@ -1,7 +1,7 @@
 <?php
 
 use frontend\assets\MovementsAssets;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4\Modal;
@@ -21,6 +21,9 @@ MovementsAssets::register($this);
         </div>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
+            'condensed' => true,
+            'bordered' => false,
+            'striped' => false,
             'options' => ['class' => 'custom-table'],
             'tableOptions' => ['class' => 'table table-hover table-sm'],
             'layout' => '{items}{pager}',

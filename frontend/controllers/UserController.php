@@ -119,7 +119,7 @@ class UserController extends Controller
             $model->profile_img = $avatarImage;
             $model->save();
             Yii::$app->session->setFlash('success', 'Se ha modificado correctamente.');
-            return $this->redirect(['profile', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
 
