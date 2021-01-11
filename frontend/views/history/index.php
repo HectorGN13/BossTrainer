@@ -18,7 +18,7 @@ $this->title = 'Mi Historial';
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
 <div class="history-index pt-5">
     <div class="history-list container">
-        <div class="lines-effect">
+        <div class="lines-effect" data-animation="zoomIn">
             <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
         </div>
         <?= GridView::widget([
@@ -102,6 +102,5 @@ $this->title = 'Mi Historial';
                 ],
         ],
     ]); ?>
-
     </div>
 </div>

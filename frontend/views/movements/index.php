@@ -16,7 +16,7 @@ MovementsAssets::register($this);
 ?>
 <div class="movements-index pt-5">
     <div class="movements-list container">
-        <div class="lines-effect">
+        <div class="lines-effect" data-animation="zoomIn">
             <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
         </div>
         <?= GridView::widget([
@@ -24,6 +24,8 @@ MovementsAssets::register($this);
             'condensed' => true,
             'bordered' => false,
             'striped' => false,
+            'pjax' => true,
+            'pjaxSettings' => ['loadingCssClass' => false],
             'options' => ['class' => 'custom-table'],
             'tableOptions' => ['class' => 'table table-hover table-sm'],
             'layout' => '{items}{pager}',

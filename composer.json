@@ -42,7 +42,8 @@
         "ext-json": "*",
         "kartik-v/yii2-widget-rating": "dev-master",
         "kartik-v/yii2-grid": "dev-master",
-        "dmstr/yii2-cookie-consent": "^1.4"
+        "dmstr/yii2-cookie-consent": "^1.4",
+        "simialbi/yii2-animate": "*"
     },
     "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",

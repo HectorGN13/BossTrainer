@@ -25,5 +25,6 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
         'yii\bootstrap4\BootstrapPluginAsset',
+        'simialbi\yii2\animatecss\AnimateCssPluginAsset',
     ];
 }

@@ -21,7 +21,7 @@ $this->title = 'Gimnasios';
     <div class="card-columns">
         <?php foreach ($dataProvider->models as $model):?>
         <div class="col">
-            <div class="card">
+            <div class="card" data-animation="fadeInUpBig">
                 <img src="<?= $model->banner_img?>" alt="Image" class="card-img-top img-responsive widget-header"
                      style="height: 200px;overflow: hidden;background-size: cover;background-position: center center;">
                 <div class="text-center">
