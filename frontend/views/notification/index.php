@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\NotificationSearch */
@@ -17,6 +17,11 @@ $this->title = 'Mis Notificaciones';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'options' => ['class' => 'custom-table'],
+        'condensed' => true,
+        'bordered' => false,
+        'striped' => false,
+        'pjax' => true,
+        'pjaxSettings' => ['loadingCssClass' => false],
         'tableOptions' => ['class' => 'table table-hover table-sm'],
         'layout' => '{items}{pager}',
         'columns' => [
