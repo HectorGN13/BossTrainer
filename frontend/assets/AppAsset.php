@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/index.css',
-        'css/cookie-consent',
+        'css/cookie-consent.css',
     ];
     public $js = [
         'js/script.js',
