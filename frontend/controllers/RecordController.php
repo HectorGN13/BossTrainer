@@ -134,7 +134,7 @@ class RecordController extends Controller
         if ($model->load(Yii::$app->request->post())) {
            if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Se ha actualizado con éxito su record.');
-                return $this->redirect(['view', 'movements_id' => $model->movements_id]);
+                return $this->goBack();
            } else {
                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
            }
