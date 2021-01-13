@@ -1,8 +1,8 @@
 <?php
 
 use backend\assets\BoardAsset;
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\TypeRateSearch */
@@ -26,6 +26,11 @@ BoardAsset::register($this);
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'condensed' => true,
+        'bordered' => false,
+        'striped' => false,
+        'pjax' => true,
+        'pjaxSettings' => ['loadingCssClass' => false],
         'options' => ['class' => 'custom-table'],
         'tableOptions' => ['class' => 'table table-hover table-sm'],
         'layout' => '{items}{pager}',

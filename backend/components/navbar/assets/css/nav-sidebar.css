@@ -67,6 +67,7 @@
     position:fixed;
     top:0;
     left:0;
+    overflow-y: scroll;
     z-index:5;
     outline:none;
     -webkit-transition: margin .25s ease-out;
