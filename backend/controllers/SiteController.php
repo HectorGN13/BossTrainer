@@ -194,26 +194,29 @@ class SiteController extends Controller
      */
     public function actionBroadcast()
     {
-        $model = new Notification();
-        if ($model->load(Yii::$app->request->post())) {
+        $recipients = GymUser::find()
+            ->where(['gym_id' => Yii::$app->user->id])
+            ->all();
+        $count = 0;
+        foreach ($recipients as $recipient) {
+            $model = new Notification();
             $var = false;
-            $recipients = GymUser::find()
-                ->where(['gym_id' => Yii::$app->user->id])
-                ->all();
-
-            foreach ($recipients as $recipient) {
+            if ($model->load(Yii::$app->request->post())) {
                 $model->recipient = $recipient['user_id'];
-                 if ($model->save()) {
-                     $var = true;
-                 }
+                if ($model->save()) {
+                    $var = true;
+                    $count++;
+                }
             }
+        }
 
-            if ($var) {
-                Yii::$app->session->setFlash('success', 'Su mensaje se ha difundido con éxito.');
-            } else {
-                Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
-            }
-            return $this->redirect(['index']);
+        if ($count >= count($recipients) ) {
+                if ($var) {
+                    Yii::$app->session->setFlash('success', 'Su mensaje se ha difundido con éxito.');
+                } else {
+                    Yii::$app->session->setFlash('error', 'Upss. Algo ha ocurrido mal.');
+                }
+                return $this->redirect(['index']);
         }
 
         return $this->render('createBroadcast', [
