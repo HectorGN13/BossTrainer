@@ -11,7 +11,7 @@ $this->title = 'Mis Notificaciones';
 ?>
 <div class="notification-index pt-5">
     <div class="notification-list container">
-        <div class="lines-effect" data-animation="zoomIn">
+        <div class="lines-effect">
             <h1 class="text-responsive" style="text-transform: uppercase"><?= Html::encode($this->title) ?></h1>
         </div>
     <?= GridView::widget([

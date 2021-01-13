@@ -102,7 +102,7 @@ $this->registerJs($script);
     ]);
     $menuItems = [
         ['label' => 'Inicio', 'url' => ['/site/index'], "linkOptions" => ["class" => "links-color"]],
-        ['label' => 'Sobre Nosotros', 'url' => ['/site/about'], "linkOptions" => ["class" => "links-color"]],
+        ['label' => 'Sobre Nosotros', 'url' => ['#'], "linkOptions" => ["class" => "links-color"]],
         ['label' => 'Contacto', 'url' => ['/site/index/#contact'], "linkOptions" => ["class" => "links-color"]],
 
     ];

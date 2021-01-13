@@ -2,7 +2,7 @@
 
 use backend\assets\BoardAsset;
 use backend\models\Rate;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -21,6 +21,11 @@ BoardAsset::register($this);
         <?= GridView::widget([
 	        'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            'condensed' => true,
+            'bordered' => false,
+            'striped' => false,
+            'pjax' => true,
+            'pjaxSettings' => ['loadingCssClass' => false],
             'options' => ['class' => 'custom-table'],
             'tableOptions' => ['class' => 'table table-hover table-sm'],
             'layout' => '{items}{pager}',

@@ -1,7 +1,7 @@
 <?php
 
 use backend\assets\BoardAsset;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
@@ -25,6 +25,11 @@ BoardAsset::register($this);
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'condensed' => true,
+                'bordered' => false,
+                'striped' => false,
+                'pjax' => true,
+                'pjaxSettings' => ['loadingCssClass' => false],
                 'options' => ['class' => 'custom-table'],
                 'tableOptions' => ['class' => 'table table-hover table-sm'],
                 'layout' => '{items}{pager}',
