@@ -198,6 +198,7 @@ $userTrainingSession = new UserTrainingSession();
                                   $remainSeat = (int)$session['capacity'] - (int)$totalMembers;
                                   $userId = Yii::$app->user->id;
                                   $isUserJoined = $userTrainingSession->isSessionIsJoined($session['id'], $userId);
+                                  $now =  strtotime(date("Y-m-d H:i:s"));
                                   ?>
                                   <?php foreach($members as $user):?>
                                       <?php 
@@ -215,7 +216,7 @@ $userTrainingSession = new UserTrainingSession();
                                   <?php endfor;?>
                               </div>
                               <div class="col-lg-3 col-md-3 text-left">
-                                  <?php if($model->userFollowExist()):?>
+                                  <?php if($model->userFollowExist() && strtotime($session['start_time']) >= $now):?>
                                     <?php if(!$isUserJoined && $totalMembers < $session['capacity']):?>
                                       <a href="<?= Url::to(['gym/join', 'id' => $session['id']])?>" class="btn btn-actions btn-join-session btn-block">Unirse</a>
                                     <?php elseif (!$isUserJoined && $totalMembers >= $session['capacity']):?>
